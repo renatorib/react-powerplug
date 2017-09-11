@@ -1,0 +1,5 @@
+*.log
+node_modules
+lib
+es
+dist
