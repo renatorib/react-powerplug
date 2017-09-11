@@ -31,8 +31,8 @@ import Checkbox from './MyDumbCheckbox'
 *If you want a more detailed **API Reference** and examples for each component see the [Docs](docs/README.md)*
 
 ## [State](docs/components/State.md)
-*Props:* `{ initial }`  
-*Args:* `{ state, setState }`
+**Props:** `{ initial }`  
+**Args:** `{ state, setState }`
 
 ```jsx
 <State initial={{ isLoading: false, data: null }}>
@@ -133,7 +133,7 @@ import Checkbox from './MyDumbCheckbox'
 ```
 
 ## [Compose](docs/components/Compose.md)
-**Props:** `{ states }`
+**Props:** `{ states }`  
 **Args:** *depends on passed states*
 
 For an example, see below.
