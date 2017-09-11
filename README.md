@@ -8,7 +8,7 @@
 
 :electric_plug: Give life to your Dumb Components.  
 
-React PowerPlug is a *Just add water™* set of components to you add different types of state in your dumb components. It create e state and pass a function to children with state values and setters/modifiers, so you can handle your data/callbacks in dumb components.
+React PowerPlug is a *Just add water™* set of components to you add different types of state in your dumb components. It creates a state and pass a function to children with state values and setters/modifiers, so you can handle your data/callbacks in dumb components.
 
 It's has been created to (but not limited to) use with storybook, react styleguidist, documentations, etc.
 
