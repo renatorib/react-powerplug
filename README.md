@@ -30,31 +30,31 @@ import Checkbox from './MyDumbCheckbox'
 *Note: This is a cheat sheet for fast search.*  
 *If you want a more detailed **API Reference** and examples for each component see the [Docs](docs/README.md)*
 
-### [State](docs/componentes/State.md)
+## [State](docs/componentes/State.md)
 *Props:* `{ initial = {} }`  
 *Args:* `{ state, setState }`
 
-### [Toggle](docs/componentes/Toggle.md)
+## [Toggle](docs/componentes/Toggle.md)
 *Props:* `{ initial = false }`  
 *Args:* `{ on, off, toggle, setOn }`
 
-### [Counter](docs/componentes/Counter.md)
+## [Counter](docs/componentes/Counter.md)
 *Props:* `{ initial = 0 }`  
 *Args:* `{ count, inc, dec }`
 
-### [Set](docs/componentes/Set.md)
+## [Set](docs/componentes/Set.md)
 *Props:* `{ initial = {} }`  
 *Args:* { `set`, `get`, `values` }
 
-### [List](docs/componentes/List.md)
+## [List](docs/componentes/List.md)
 *Props:* `{ initial = [] }`  
 *Args:* `{ list, push, pull, sort, setList }`
 
-### [Bind](docs/componentes/Bind.md)
+## [Bind](docs/componentes/Bind.md)
 *Props:* `{ initial = '' }`  
 *Args:* `{ value, setValue, bind }`   
 
-### [Compose](docs/componentes/Compose.md)
+## [Compose](docs/componentes/Compose.md)
 *Props:* `{ states }`
 *Args:* *depends on states* see below
 
@@ -119,4 +119,4 @@ Because of this, when you use `toggle` function, only `<Toggle>` will be rerende
 # Contribute
 
 You can help improving this project sending PRs and helping with issues.
-Also you ping me at Twitter
+Also you ping me at [Twitter](http://twitter.com/renatorib_)

@@ -23,7 +23,7 @@ import { Toggle } from 'react-powerplug'
 Specifies the initial count state, must be an number.
 By default, the initial count state is 0.
 
-## Toggle Callback Props
+## Toggle Children Props
 
 TL;DR: `{ on, off, toggle, setOn }`
 

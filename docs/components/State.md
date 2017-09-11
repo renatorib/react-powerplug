@@ -29,7 +29,7 @@ import { State } from 'react-powerplug'
 Specifies the initial state, must be an object.
 By default, the initial state is an empty object.
 
-## State Callback Props
+## State Children Props
 
 TL;DR: `{ state, setState }`
 

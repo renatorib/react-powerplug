@@ -10,4 +10,4 @@
   - [`<Compose>`](components/Compose.md)
 
 - Utils
-  -[`compose()`](components/Compose.md)
+  - [`compose()`](components/Compose.md)

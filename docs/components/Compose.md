@@ -44,10 +44,10 @@ Set an array of React PowerPlug components (instance elements, not types) to com
 Note: if you use `compose` utility to create Composed components, you don't
 need to pass an array, just pass by arguments: `compose(<Foo />, <Bar />, <Baz />)`
 
-## Compose Callback Props
+## Compose Children Props
 
 Depends on your choices.  
-Will be all callback props merged from your passed components.
+Will be all children props merged from your passed components.
 
 ## Known Issues
 
