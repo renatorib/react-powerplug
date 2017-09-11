@@ -8,9 +8,9 @@
 
 :electric_plug: Give life to your Dumb Components.  
 
-React PowerPlug is a *Just add water™* set of *function as a children* components that add different types of state logics in your dumb components. It creates a state and pass down the logic to the children, so you can handle your data/callbacks in dumb components.
+**React PowerPlug is a *Just add water™*** set of **function as children components** that add different types of state logics in your dumb components. It creates a state and pass down the logic to the children, so you can handle your data/callbacks in dumb components.
 
-It's has been created to (but not limited to) use with storybook, react styleguidist, documentations, etc. because it's the most common use case. Otherwise you can use in your normal components too, for example a Dropdown that needs to know if opened or not, and others cases.  
+It's has been created to (but not limited to) use with **storybook, react styleguidist, documentations, etc**. because it's the most common use case. Otherwise you can use in your normal components too, for example a Dropdown that needs to know if opened or not, and others cases.  
 
 [Play with live Toggle example on CodeSandbox](https://codesandbox.io/s/jp890p2x7w)
 
@@ -27,7 +27,7 @@ import Checkbox from './MyDumbCheckbox'
 
 # Components
 
-*Note: This is a kind of a cheat sheet for fast search.*  
+***Note:*** *This is a kind of a cheat sheet for fast search.*  
 *If you want a more detailed **API Reference** and examples for each component see the [Docs](docs/README.md)*
 
 ## [State](docs/components/State.md)
