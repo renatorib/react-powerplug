@@ -9,7 +9,7 @@ import { Compose, Toggle, Counter } from 'react-powerplug'
 ```jsx
 <Compose states={[<Counter />, <Toggle initial={false} />]}>
   {({ count, inc, dec, on, toggle }) => (
-    <ProducCard
+    <ProductCard
       {...productInfo}
       isFavorited={on}
       onFavorite={toggle}

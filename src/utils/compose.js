@@ -2,13 +2,13 @@ import React from 'react'
 
 const compose = (...elements) => {
   return ({ children }) => {
-    // Recursively stack children argument props and pass
-    // it down until the last component, that render children
+    // Recursively stack children arguments and pass
+    // it down until the last component that render children
     // with these stacked arguments
     function stackProps(i, elements, stacked = {}) {
-      // check if latest component,
-      // if latest render children,
-      // otherwise continue stacking props
+      // check if is latest component,
+      // if is latest render children,
+      // otherwise continue stacking arguments
       const childrenFn = props =>
         i === 0
           ? children({ ...props, ...stacked }) 

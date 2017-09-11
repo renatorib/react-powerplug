@@ -10,12 +10,12 @@ import { Set } from 'react-powerplug'
 <Set initial={{ sounds: true, music: true, graphics: 'medium' }}>
   {({ set, get }) => (
     <Settings>
-      <Toggle checked={get('sounds')} onChange={c => set('sounds', c)}>
+      <ToggleCheck checked={get('sounds')} onChange={c => set('sounds', c)}>
         Game Sounds
-      </Toggle>
-      <Toggle checked={get('music')} onChange={c => set('music', c)}>
+      </ToggleCheck>
+      <ToggleCheck checked={get('music')} onChange={c => set('music', c)}>
         Bg Music
-      </Toggle>
+      </ToggleCheck>
       <Select
         label="Graphics"
         options={['low', 'medium', 'high']}
