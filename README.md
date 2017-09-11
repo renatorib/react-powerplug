@@ -8,7 +8,7 @@
 
 :electric_plug: Give life to your Dumb Components.  
 
-React PowerPlug is a *Just add water™* set of components to you add different types of state in your dumb components. It creates a state and pass a function to children with state values and setters/modifiers, so you can handle your data/callbacks in dumb components.
+React PowerPlug is a *Just add water™* set of components to you add different types of state in your dumb components. It creates a state and pass down the logic to the children, so you can handle your data/callbacks in dumb components.
 
 It's has been created to (but not limited to) use with storybook, react styleguidist, documentations, etc.
 
@@ -27,36 +27,116 @@ import Checkbox from './MyDumbCheckbox'
 
 # Components
 
-*Note: This is a cheat sheet for fast search.*  
+*Note: This is a kind of a cheat sheet for fast search.*  
 *If you want a more detailed **API Reference** and examples for each component see the [Docs](docs/README.md)*
 
-## [State](docs/componentes/State.md)
-*Props:* `{ initial = {} }`  
+## [State](docs/components/State.md)
+*Props:* `{ initial }`  
 *Args:* `{ state, setState }`
 
-## [Toggle](docs/componentes/Toggle.md)
-*Props:* `{ initial = false }`  
-*Args:* `{ on, off, toggle, setOn }`
+```jsx
+<State initial={{ isLoading: false, data: null }}>
+  {({ state, setState }) => (
+    <DataReceiver
+      data={state.data}
+      onStart={() => setState({ isLoading: true })}
+      onFinish={data => setState({ data, isLoading: false })}
+    />
+  )}
+</State>
+```
 
-## [Counter](docs/componentes/Counter.md)
-*Props:* `{ initial = 0 }`  
-*Args:* `{ count, inc, dec }`
+## [Toggle](docs/components/Toggle.md)
+**Props:** `{ initial }`  
+**Args:** `{ on, off, toggle, setOn }`
 
-## [Set](docs/componentes/Set.md)
-*Props:* `{ initial = {} }`  
-*Args:* { `set`, `get`, `values` }
+```jsx
+<Toggle initial={true}>
+  {({ on, toggle }) => (
+    <Checkbox checked={on} onChange={toggle} />
+  )}
+</Toggle>
+```
 
-## [List](docs/componentes/List.md)
-*Props:* `{ initial = [] }`  
-*Args:* `{ list, push, pull, sort, setList }`
+## [Counter](docs/components/Counter.md)
+**Props:** `{ initial }`  
+**Args:** `{ count, inc, dec }`
 
-## [Bind](docs/componentes/Bind.md)
-*Props:* `{ initial = '' }`  
-*Args:* `{ value, setValue, bind }`   
+```jsx
+<Counter initial={0}>
+  {({ count, inc, dec }) => (
+    <CartItem
+      productName="Lorem ipsum"
+      unitPrice={19.90}
+      count={count}
+      onAdd={inc}
+      onRemove={dec}
+    />
+  )}
+</Counter>
+```
 
-## [Compose](docs/componentes/Compose.md)
-*Props:* `{ states }`
-*Args:* *depends on states* see below
+## [Set](docs/components/Set.md)
+**Props:** `{ initial }`  
+**Args:** `{ set, get, values }`
+
+```jsx
+<Set initial={{ sounds: true, graphics: 'medium' }}>
+  {({ set, get }) => (
+    <Settings>
+      <ToggleCheck checked={get('sounds')} onChange={c => set('sounds', c)}>
+        Game Sounds
+      </ToggleCheck>
+      <Select
+        label="Graphics"
+        options={['low', 'medium', 'high']}
+        selected={get('graphics')}
+        onSelect={value => set('graphics', value)}
+      />
+    </Settings>
+  )}
+</Set>
+```
+
+## [List](docs/components/List.md)
+**Props:** `{ initial }`  
+**Args:** `{ list, push, pull, sort, setList }`
+
+```jsx
+<List initial={['react', 'babel']}>
+  {({ list, pull, push }) => (
+    <div>
+      <FormInput onSubmit={push} />
+      {list.map(tag => (
+        <Tag onRemove={() => pull(value => value === tag)}>
+          {tag}
+        </Tag>
+      )}
+    </div>
+  )}
+</List>
+```
+
+## [Bind](docs/components/Bind.md)
+**Props:** `{ initial, getter }`  
+**Args:** `{ value, setValue, bind }`   
+
+```jsx
+<Bind initial="hello world">
+  {({ bind, value }) => (
+    <div>
+      <ControlledInput {...bind} />
+      <div>You typed {value}</div>
+    </div>
+  )}
+</Bind>
+```
+
+## [Compose](docs/components/Compose.md)
+**Props:** `{ states }`
+**Args:** *depends on passed states*
+
+For an example, see below.
 
 
 # Composing Components
@@ -88,8 +168,10 @@ Also, you can use a built-in Compose component and pass components on `states` p
 ```jsx
 import { Compose } from 'react-powerplug'
 
-<Compose states={[<Toggle initial={true}>, <Counter initial={2}>]}>
-  {({ on, toggle, count, inc, dec }) => <ProductCard {...} />}
+<Compose states={[<Toggle initial={true} />, <Counter initial={2} />]}>
+  {({ on, toggle, count, inc, dec }) => (
+    <ProductCard {...} />
+  )}
 </Compose>
 ``` 
 
@@ -118,5 +200,5 @@ Because of this, when you use `toggle` function, only `<Toggle>` will be rerende
 
 # Contribute
 
-You can help improving this project sending PRs and helping with issues.
+You can help improving this project sending PRs and helping with issues.  
 Also you ping me at [Twitter](http://twitter.com/renatorib_)
