@@ -27,7 +27,7 @@ import { List } from 'react-powerplug'
 Specifies the initial list state, must be an array.
 By default, the initial list state is an empty array.
 
-## List Callback Props
+## List Children Props
 
 TL;DR: `{ list, push, pull, sort, setList }`
 
