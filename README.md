@@ -12,6 +12,8 @@ React PowerPlug is a *Just add water™* set of components to you add different 
 
 It's has been created to (but not limited to) use with storybook, react styleguidist, documentations, etc.
 
+[Play with live Toggle example on CodeSandbox](https://codesandbox.io/s/jp890p2x7w)
+
 ```jsx
 import { Toggle } from 'react-powerplug'
 import Checkbox from './MyDumbCheckbox'
