@@ -50,7 +50,7 @@ pull(item => item.name === 'Renato')
 ```
 
 **sort**  
-`(comparator: (a: item, b: item) => number)) => void`
+`(comparator: (a: item, b: item) => number)) => void`  
 Use [Array.prototype.sort](https://www.w3schools.com/jsref/jsref_sort.asp) to sort your list state.  
 
 
@@ -62,8 +62,8 @@ Note: use it to handle array in the way you prefer
 import R from 'ramda'
 
 // list = [1, 2, 3, 4, 5, 6]
-setList(R.drop(2)) // remove two first items
+setList(R.drop(2, list)) // remove two first items
 // list = [3, 4, 5, 6]
-setList(R.dropLast(2)) // remove two last items
+setList(R.dropLast(2, list)) // remove two last items
 // list = [3, 4]
 ```
