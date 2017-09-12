@@ -198,6 +198,22 @@ It is the same to do this:
 
 Because of this, when you use `toggle` function, only `<Toggle>` will be rerendered, but if you use `inc` or `dec` functions, both `<Counter>` and `<Toggle>` will be rerendered. Even using `compose()` utility.
 
+# Install
+
+### Node Module
+```
+yarn add react-powerplug
+```
+```
+npm i react-powerplug
+```
+
+### UMD library
+```html
+<script src="https://unpkg.com/react-powerplug@0.0.2/dist/react-powerplug.min.js"></script>
+```
+exposed as `ReactPowerPlug`
+
 # Contribute
 
 You can help improving this project sending PRs and helping with issues.  
