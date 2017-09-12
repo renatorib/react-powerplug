@@ -147,7 +147,7 @@ For complete guide [see Compose docs](docs/components/Compose.md)
 ```jsx
 import { compose } from 'react-powerplug'
 
-const ToggleCounter = compose(<Toggle initial={true}>, <Counter initial={2}>)
+const ToggleCounter = compose(<Toggle initial={true} />, <Counter initial={2} />)
 
 <ToggleCounter>
   {({ count, inc, dec, on, toggle }) => (
