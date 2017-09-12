@@ -210,7 +210,7 @@ npm i react-powerplug
 
 ### UMD library
 ```html
-<script src="https://unpkg.com/react-powerplug@0.0.2/dist/react-powerplug.min.js"></script>
+<script src="https://unpkg.com/react-powerplug/dist/react-powerplug.min.js"></script>
 ```
 exposed as `ReactPowerPlug`
 
