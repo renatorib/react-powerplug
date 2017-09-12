@@ -178,9 +178,9 @@ import { Compose } from 'react-powerplug'
 It is the same to do this:
 
 ```jsx
-<Counter initial={true}>
+<Counter initial={2}>
   {({ count, inc, dec }) => (
-    <Toggle initial={2}>
+    <Toggle initial={true}>
       {({ on, toggle }) => (
         <ProductCard
           {...productInfo}
