@@ -47,7 +47,7 @@ By default, the initial count state is an empty string.
 Specifies the getter function, used in `setValue` method.  
 By default, the getter extracts the value from a input [Event](https://www.w3schools.com/jsref/dom_obj_event.asp)
 
-## Counter Children Props
+## Bind Children Props
 
 TL;DR: `{ value, setValue, bind }`
 
