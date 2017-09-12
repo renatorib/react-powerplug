@@ -9,10 +9,12 @@ class State extends Component {
     ...this.props.initial
   }
 
+  setState = this.setState.bind(this)
+
   render() {
     return this.props.children({
       state: this.state,
-      setState: this.setState.bind(this),
+      setState: this.setState,
     })
   }
 }
