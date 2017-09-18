@@ -7,5 +7,7 @@ export State from './components/State'
 export Toggle from './components/Toggle'
 export compose from './utils/compose'
 
-export default { ...exports }
-delete exports.default.default
+const all = Object.assign({}, exports)
+delete all.default
+
+export default all
