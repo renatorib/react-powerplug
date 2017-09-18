@@ -6,7 +6,7 @@ const complement = fn =>
 
 const List = ({ children, initial = [] }) => (
   <State initial={{ list: initial }}>
-    {({ state, setState }) => children({
+    {({ state, setState }) => children && children({
       list: state.list,
       setList: (list) => setState({ list }),
       push: (value) =>

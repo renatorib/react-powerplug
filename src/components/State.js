@@ -12,7 +12,8 @@ class State extends Component {
   setState = this.setState.bind(this)
 
   render() {
-    return this.props.children({
+    const { children } = this.props
+    return children && children({
       state: this.state,
       setState: this.setState,
     })

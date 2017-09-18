@@ -3,7 +3,7 @@ import State from './State'
 
 const Set = ({ children, initial = {} }) => (
   <State initial={{ ...initial }}>
-    {({ state, setState }) => children({
+    {({ state, setState }) => children && children({
       values: state,
       set: (key, value) => setState({ [key]: value }),
       over: (key, fn) => setState(s => ({ [key]: fn(s[key]) })),

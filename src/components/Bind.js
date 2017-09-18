@@ -10,10 +10,13 @@ const Bind = ({ children, getter = defaultGetter, initial = '' }) => (
       const setValue = (...args) =>
         setState({ value: getter(...args) })
 
-      return children({ 
+      return children && children({ 
         value: state.value,
         setValue,
-        bind: { onChange: setValue, value: state.value }
+        bind: {
+          onChange: setValue,
+          value: state.value,
+        }
       })
     }}
   </State>

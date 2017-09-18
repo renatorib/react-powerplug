@@ -3,7 +3,7 @@ import State from './State'
 
 const Counter = ({ children, initial = 0 }) => (
   <State initial={{ count: initial }}>
-    {({ state, setState }) => children({
+    {({ state, setState }) => children && children({
       count: state.count,
       inc: (value = 1) =>
         setState(s => ({ count: s.count + value })),
