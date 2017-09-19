@@ -1,9 +1,10 @@
 import React from 'react'
 import State from './State'
+import renderProps from '../utils/renderProps'
 
-const Toggle = ({ children, initial = false }) => (
+const Toggle = ({ initial = false, ...props }) => (
   <State initial={{ on: initial }}>
-    {({ state, setState }) => children && children({
+    {({ state, setState }) => renderProps(props, {
       on: state.on,
       off: !state.on,
       toggle: () => setState(s => ({ on: !s.on })),

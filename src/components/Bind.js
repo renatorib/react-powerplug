@@ -1,16 +1,17 @@
 import React from 'react'
 import State from './State'
+import renderProps from '../utils/renderProps'
 
 const defaultGetter = (event) =>
   event.target.value
 
-const Bind = ({ children, getter = defaultGetter, initial = '' }) => (
+const Bind = ({ getter = defaultGetter, initial = '', ...props }) => (
   <State initial={{ value: initial }}>
     {({ state, setState }) => { 
       const setValue = (...args) =>
         setState({ value: getter(...args) })
 
-      return children && children({ 
+      return renderProps(props, { 
         value: state.value,
         setValue,
         bind: {

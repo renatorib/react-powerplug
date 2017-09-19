@@ -1,12 +1,13 @@
 import React from 'react'
 import State from './State'
+import renderProps from '../utils/renderProps'
 
 const complement = fn =>
   (...args) => !fn(...args)
 
-const List = ({ children, initial = [] }) => (
+const List = ({ initial = [], ...props }) => (
   <State initial={{ list: initial }}>
-    {({ state, setState }) => children && children({
+    {({ state, setState }) => renderProps(props, {
       list: state.list,
       setList: (list) => setState({ list }),
       push: (value) =>
