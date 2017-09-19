@@ -2,7 +2,14 @@ import warn from './warn'
 
 const isFn = (prop) => typeof prop === 'function'
 
-const childrenRenderInterop = ({ children, render }, props) => {
+/**
+ * renderProps
+ * is a render/children props interop.
+ * will pick up the prop that was used,
+ * or children if both are used
+ */
+
+const renderProps = ({ children, render }, props) => {
   warn(isFn(children) && isFn(render), `
     You are using the children and render props together.
     This is impossible, therefore, only the children will be used.
@@ -15,4 +22,4 @@ const childrenRenderInterop = ({ children, render }, props) => {
   return fn && fn(props)
 }
 
-export default childrenRenderInterop
+export default renderProps
