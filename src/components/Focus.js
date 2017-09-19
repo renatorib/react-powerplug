@@ -1,26 +1,17 @@
-import { Component } from 'react'
+import React from 'react'
+import State from './State'
 import renderProps from '../utils/renderProps'
 
-class Focus extends Component {
-  state = {
-    focus: false,
-  }
-
-  handleFocusIn = () =>
-    this.setState({ focus: true })
-
-  handleFocusOut = () =>
-    this.setState({ focus: false })
-
-  render() {
-    return renderProps(this.props, {
-      focus: this.state.focus,
+const Focus = props => (
+  <State initial={{ isFocus: false }}>
+    {({ state, setState }) => renderProps(props, {
+      isFocus: state.isFocus,
       bindFocus: {
-        onFocusIn: this.handleFocusIn,
-        onFocusOut: this.handleFocusOut
+        onFocusIn: () => setState({ isFocus: true }),
+        onFocusOut: () => setState({ isFocus: false }),
       },
-    })
-  }
-}
+    })}
+  </State>
+)
 
 export default Focus
