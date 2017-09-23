@@ -1,26 +1,17 @@
-import { Component } from 'react'
+import React from 'react'
+import State from './State'
 import renderProps from '../utils/renderProps'
 
-class Active extends Component {
-  state = {
-    active: false,
-  }
-
-  handleMouseDown = () =>
-    this.setState({ active: true })
-
-  handleMouseUp = () =>
-    this.setState({ active: false })
-
-  render() {
-    return renderProps(this.props, {
-      active: this.state.active,
+const Active = props => (
+  <State initial={{ isActive: false }}>
+    {({ state, setState }) => renderProps(props, {
+      isActive: state.isActive,
       bindActive: {
-        onMouseDown: this.handleMouseDown,
-        onMouseUp: this.handleMouseUp
+        onMouseDown: () => setState({ isActive: true }),
+        onMouseUp: () => setState({ isActive: false }),
       },
-    })
-  }
-}
+    })}
+  </State>
+)
 
 export default Active

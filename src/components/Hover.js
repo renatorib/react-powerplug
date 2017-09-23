@@ -1,26 +1,17 @@
-import { Component } from 'react'
+import React from 'react'
+import State from './State'
 import renderProps from '../utils/renderProps'
 
-class Hover extends Component {
-  state = {
-    hover: false,
-  }
-
-  handleMouseEnter = () =>
-    this.setState({ hover: true })
-
-  handleMouseLeave = () =>
-    this.setState({ hover: false })
-
-  render() {
-    return renderProps(this.props, {
-      hover: this.state.hover,
+const Hover = props => (
+  <State initial={{ isHover: false }}>
+    {({ state, setState }) => renderProps(props, {
+      isHover: state.isHover,
       bindHover: {
-        onMouseEnter: this.handleMouseEnter,
-        onMouseLeave: this.handleMouseLeave
+        onMouseEnter: () => setState({ isHover: true }),
+        onMouseLeave: () => setState({ isHover: false }),
       },
-    })
-  }
-}
+    })}
+  </State>
+)
 
 export default Hover
