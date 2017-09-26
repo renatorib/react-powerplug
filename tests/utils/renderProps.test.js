@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import renderProps from '../src/utils/renderProps'
+import renderProps from '../../src/utils/renderProps'
 console.warn = jest.genMockFunction()
 console.trace = jest.genMockFunction()
 
