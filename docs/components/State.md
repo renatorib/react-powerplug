@@ -34,9 +34,9 @@ By default, the initial state is an empty object.
 TL;DR: `{ state, setState }`
 
 **state**  
-`object`
+`object`  
 Your state
 
 **setState**  
-`(object | (state: object) => object) => void`
+`(object | (state: object) => object) => void`  
 State setter. Is the [setState](https://facebook.github.io/react/docs/react-component.html#setstate) from React.Component.

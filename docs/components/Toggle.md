@@ -20,8 +20,8 @@ import { Toggle } from 'react-powerplug'
 ## Toggle Props
 
 **initial = false** *(optional)*  
-Specifies the initial count state, must be an number.
-By default, the initial count state is 0.
+Specifies the initial on state, must be an boolean.
+By default, the initial on state is false.
 
 ## Toggle Children Props
 

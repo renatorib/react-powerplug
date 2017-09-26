@@ -1,6 +1,7 @@
 # Bind
 
-The Bind component has a slightly different proposal from the other components. It's not so generic, and was made to deal with inputs.
+The Bind component is DEPRECATED and will renamed in v1.0 to BindInput.  
+You can use, for now, `Value` component.  
 
 ```js
 import { Bind } from 'react-powerplug'
@@ -52,15 +53,15 @@ By default, the getter extracts the value from a input [Event](https://www.w3sch
 TL;DR: `{ value, setValue, bind }`
 
 **value**  
-`any`
+`any`  
 Your value state
 
 **setValue**  
-`(getter)`
+`(getter)`  
 Set a new value based on your getter function
 
 **bind**  
-`{ onChange: setValue, value: value }`
+`{ onChange: setValue, value: value }`  
 Just add water™ object with onChange and value. So you can in a practical way bind your input.
 ```jsx
 <input {...bind} />

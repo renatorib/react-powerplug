@@ -47,7 +47,7 @@ need to pass an array, just pass by arguments: `compose(<Foo />, <Bar />, <Baz /
 ## Compose Children Props
 
 Depends on your choices.  
-Will be all children props merged from your passed components.
+Will be all children props merged from your passed components.  
 
 ## Known Issues
 
