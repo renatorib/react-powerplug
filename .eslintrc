@@ -15,14 +15,16 @@
   },
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "rules": {
     "valid-jsdoc": 2,
     "react/prop-types": 0,
     "react/jsx-uses-react": 1,
     "react/jsx-no-undef": 2,
-    "import/no-unresolved": ["error", { "ignore": ["^react$"] }]
+    "import/no-unresolved": ["error", { "ignore": ["^react$"] }],
+    "import/unambiguous": 0
   },
   "plugins": [
     "import",
