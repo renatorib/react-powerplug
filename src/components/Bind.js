@@ -8,6 +8,7 @@ const Bind = ({ initial = '', ...props }) => {
     Bind component is deprecated and will be renamed to BindInput in v1.  
     See the docs at https://github.com/renatorib/react-powerplug/blob/master/docs/components/Bind.md
   `)
+
   return (
     <State initial={{ value: initial }}>
       {({ state, setState }) => renderProps(props, { 

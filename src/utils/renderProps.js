@@ -19,7 +19,7 @@ const renderProps = ({ children, render }, props) => {
     ? children
     : render
   
-  return fn && fn(props)
+  return fn ? fn(props) : null
 }
 
 export default renderProps

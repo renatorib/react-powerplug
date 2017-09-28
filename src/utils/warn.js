@@ -1,12 +1,13 @@
 /* eslint-disable no-console */
 
-const isNotProd = process && process.env &&
-  process.env.NODE_ENV && process.env.NODE_ENV !== 'production'
+const hasEnv = process && process.env
 
-const warn = (condition, message) => {
+const isNotProd = hasEnv && process.env.NODE_ENV !== 'production'
+
+const warn = (condition, message, trace = true) => {
   if (isNotProd && !!condition) {
     console.warn(`[react-powerplug]: ${message}`)
-    console.trace && console.trace('Trace')
+    console.trace && trace && console.trace('Trace')
   }
 }
 

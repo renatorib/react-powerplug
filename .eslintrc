@@ -24,7 +24,8 @@
     "react/jsx-uses-react": 1,
     "react/jsx-no-undef": 2,
     "import/no-unresolved": ["error", { "ignore": ["^react$"] }],
-    "import/unambiguous": 0
+    "import/unambiguous": 0,
+    "react/jsx-key": 0
   },
   "plugins": [
     "import",
