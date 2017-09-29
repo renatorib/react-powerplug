@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import renderProps from '../utils/renderProps'
 
 class State extends Component {
   static defaultProps = {
@@ -12,8 +13,7 @@ class State extends Component {
   setState = this.setState.bind(this)
 
   render() {
-    const { children } = this.props
-    return children && children({
+    return renderProps(this.props, {
       state: this.state,
       setState: this.setState,
     })

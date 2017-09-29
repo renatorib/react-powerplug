@@ -1,9 +1,10 @@
 import React from 'react'
 import State from './State'
+import renderProps from '../utils/renderProps'
 
-const Counter = ({ children, initial = 0 }) => (
+const Counter = ({ initial = 0, ...props }) => (
   <State initial={{ count: initial }}>
-    {({ state, setState }) => children && children({
+    {({ state, setState }) => renderProps(props, {
       count: state.count,
       inc: (value = 1) =>
         setState(s => ({ count: s.count + value })),

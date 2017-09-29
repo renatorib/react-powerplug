@@ -38,15 +38,15 @@ By default, the initial count state is an empty object
 TL;DR: `{ values, set, get }`
 
 **values**  
-`object`
+`object`  
 Your values state  
 Behind the scenes it's just you raw state.
 
 **set**  
-`(key: string, value: any) => void`
+`(key: string, value: any) => void`  
 Assigns `value` to `key`.  
 
 **get**  
-`(key: string) => value: any`
+`(key: string) => value: any`  
 Get assigned `value` from `key`
 
