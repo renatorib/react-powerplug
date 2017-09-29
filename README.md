@@ -16,10 +16,26 @@
 
 It's has been created to (but not limited to) use with **storybook, react styleguidist, documentations, prototypes**. You can also use to create a bunch of uncontrolled components where the outside app don't care about your state, for example a menu dropdown.
 
+### Quick examples:
 
 ```jsx
-import { Toggle } from 'react-powerplug'
+import { State, Index, Toggle } from 'react-powerplug'
 import Checkbox from './MyDumbCheckbox'
+
+<State initial={{ offset: 0, limit: 10, totalCount: 200 }}>
+  {({ state, setState }) => (
+    <Pagination {...state} onChange={(offset) => setState({ offset })} />
+  )}
+</State>
+
+<Index initial={0}>
+  {({ index, setIndex }) => (
+    <Tabs selected={index} onChange={setIndex}>
+      <Tab title="First tab">Content from the first tab</Tab>
+      <Tab title="Second tab">Content from the second tab</Tab>
+    </Tabs>
+  )}
+</Index>
 
 <Toggle initial={true}>
   {({ on, toggle }) => (
@@ -27,7 +43,7 @@ import Checkbox from './MyDumbCheckbox'
   )}
 </Toggle>
 
-// you can also use a `render` prop instead
+// You can also use a `render` prop instead
 
 <Toggle
   initial={false}
