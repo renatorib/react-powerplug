@@ -42,7 +42,7 @@
   "homepage": "https://github.com/renatorib/react-powerplug",
   "dependencies": {},
   "devDependencies": {
-    "babel-cli": "^7.0.0-beta.2",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^21.0.2",
