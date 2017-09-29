@@ -9,12 +9,12 @@
 :electric_plug: Give life to your Dumb Components.  
 
 ---
+> I'm working on version 1.0. [Follow me on twitter](http://twitter.com/renatorib_) to know when news will come up.
+---
 
 **React PowerPlug is a *Just add water™*** set of **render props (or function as children) components** that provides different types of state and logics so you can use with your dumb components. It creates a state and pass down the logic to the children, so you can handle your data/callbacks.
 
 It's has been created to (but not limited to) use with **storybook, react styleguidist, documentations, prototypes**. You can also use to create a bunch of uncontrolled components where the outside app don't care about your state, for example a menu dropdown.
-
-> I'm working on version 1.0. [Follow me on twitter](http://twitter.com/renatorib_) to know when news will come up.
 
 
 ```jsx
