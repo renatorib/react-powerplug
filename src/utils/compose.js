@@ -1,6 +1,8 @@
 import React from 'react'
 import renderProps from './renderProps'
 
+const isElement = element => element.type === 'function'
+
 const compose = (...elements) => {
   return composedProps => {
 
@@ -8,15 +10,23 @@ const compose = (...elements) => {
     // it down until the last component that render children
     // with these stacked arguments
     function stackProps(i, elements, stacked = {}) {
+      const element = elements[i]
+      const isTheLast = i === 0
 
       // Check if is latest component.
       // If is latest then render children,
       // Otherwise continue stacking arguments
-      const renderFn = props => i === 0
+      const renderFn = props => isTheLast
         ? renderProps(composedProps, { ...props, ...stacked }) 
         : stackProps(i - 1, elements, { ...props, ...stacked })
 
-      return React.cloneElement(elements[i], {}, renderFn)
+      // Clone a element if it's passed created as <Element initial={} />
+      // Or create it if passed as just Element
+      const elementFn = isElement(element)
+        ? React.cloneElement
+        : React.createElement
+
+      return elementFn(element, {}, renderFn)
     }
 
     return stackProps(elements.length - 1, elements)

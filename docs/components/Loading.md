@@ -35,10 +35,6 @@ Your isLoading state
 `() => void`  
 Toggle isLoading value
 
-**setLoadingOn**  
-`() => void`  
-Set isLoading true
-
-**setLoadingOff**  
-`() => void`  
-Set isLoading false
+**setLoading**  
+`(loading: boolean) => void`  
+Set arbitrary isLoading to true/false

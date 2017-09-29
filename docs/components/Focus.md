@@ -12,7 +12,7 @@ import { Focus } from 'react-powerplug'
   {({ isFocus, bindFocus }) => (
     <div>
       <input {...bindFocus} placeholder="Focus me" />
-      <span>You are {isFocus ? 'focusing' : 'not focusing'} the input.</span>
+      <div>You are {isFocus ? 'focusing' : 'not focusing'} the input.</div>
     </div>
   )}
 </Focus>

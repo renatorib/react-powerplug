@@ -7,9 +7,14 @@ import { Value } from 'react-powerplug'
 ``` 
 
 ```jsx
-<Value initial="">
+<Value initial="React">
   {({ value, setValue }) => (
-    <ControlledInput value={value} onChange={setValue} />
+    <Select
+      label="Choose one"
+      options={['React', 'Preact', 'Vue']}
+      value={value}
+      onChange={setValue}
+    />
   )}
 </Value>
 ``` 

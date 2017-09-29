@@ -7,8 +7,7 @@ const Loading = ({ initial = false, ...props }) => (
     {({ state, setState }) => renderProps(props, {
       isLoading: state.loading,
       toggleLoading: () => setState(s => ({ loading: !s.loading })),
-      setLoadingOn: () => setState({ loading: true }),
-      setLoadingOff: () => setState({ loading: false }),
+      setLoading: (loading) => setState({ loading }),
     })}
   </State>
 )
