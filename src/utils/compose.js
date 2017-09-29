@@ -1,7 +1,7 @@
 import React from 'react'
 import renderProps from './renderProps'
 
-const isElement = element => element.type === 'function'
+const isElement = element => typeof element.type === 'function'
 
 const compose = (...elements) => {
   return composedProps => {
