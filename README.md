@@ -37,8 +37,6 @@ import Checkbox from './MyDumbCheckbox'
 />
 ```
 
----
-
 # Render Props
 
 For most people, this may look pretty weird. **But it's extremely powerful**. Usually you render some element whitin your component, but if you are creating an 'agnostic' component or a kind of abstraction component you can not simply render elements, you don't know what the user wants to render. So you render values, actions, states, data... props. You pick these props passing a function to children (or render prop) and now with this data you have total control of what you want to do. Now render what you want to render and do what you want to do. **Render props components are about abstracting some logic without any UI.**
