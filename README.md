@@ -20,7 +20,7 @@ It's has been created to (but not limited to) use with **storybook, react styleg
 
 ```jsx
 import { State, Index, Toggle } from 'react-powerplug'
-import Checkbox from './MyDumbCheckbox'
+import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 
 <State initial={{ offset: 0, limit: 10, totalCount: 200 }}>
   {({ state, setState }) => (
