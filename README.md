@@ -12,7 +12,7 @@
 
 > I'm working on version 1.0. [Follow me on twitter](http://twitter.com/renatorib_) to know when news will come up.
 
-**React PowerPlug is a *Just add water™*** set of **render props (or function as children) components** that provides different types of state and logics so you can use with your dumb components. It creates a state and pass down the logic to the children, so you can handle your data/callbacks.
+**React PowerPlug is a set of pluggable renderless components** that provides different types of state and logics so you can use with your dumb components. It creates a state and pass down the logic to the children, so you can handle your data/callbacks.
 
 It's has been created to (but not limited to) use with **storybook, react styleguidist, documentations, prototypes**. You can also use to create a bunch of uncontrolled components where the outside app don't care about your state, for example a menu dropdown.
 
@@ -55,7 +55,7 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 
 # Render Props
 
-For most people, this may look pretty weird. **But it's extremely powerful**. Usually you render some element whitin your component, but if you are creating an 'agnostic' component or a kind of abstraction component you can not simply render elements, you don't know what the user wants to render. So you render values, actions, states, data... props. You pick these props passing a function to children (or render prop) and now with this data you have total control of what you want to do. Now render what you want to render and do what you want to do. **Render props components are about abstracting some logic without any UI.**
+For most people, this may look pretty weird. **But it's extremely powerful**. Usually you render some element whitin your component, but if you are creating an 'agnostic' component or a kind of abstraction component you can not simply render elements, you don't know what the user wants to render. So you render values, actions, states, data... props. You pick these props passing a function to children (or render prop) and now with this data you have total control of what you want to do. Now render what you want to render and do what you want to do. **Renderless components are about abstracting some logic without any UI.**
 
 React PowerPlug brings to you a bunch of components that act as state and logic containers, so you can get this powerful abstraction and use it any way you want.
 
