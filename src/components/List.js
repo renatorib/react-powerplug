@@ -9,13 +9,14 @@ const List = ({ initial = [], ...props }) => (
   <State initial={{ list: initial }}>
     {({ state, setState }) => renderProps(props, {
       list: state.list,
-      setList: (list) => setState({ list }),
+      setList: (list) =>
+        setState({ list }),
       push: (value) =>
         setState(prevState => ({ list: [...prevState.list, value] })),
       pull: (predicate) =>
-        setState(prevState => ({ list: prevState.list.filter(complement(predicate)) })),
+        setState(prevState => ({ list: [...prevState.list].filter(complement(predicate)) })),
       sort: (compareFn) =>
-        setState({ list: state.list.sort(compareFn) }),
+        setState(prevState => ({ list: [...prevState.list].sort(compareFn) })),
     })}
   </State>
 )
