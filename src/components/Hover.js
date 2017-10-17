@@ -2,8 +2,8 @@ import React from 'react'
 import State from './State'
 import renderProps from '../utils/renderProps'
 
-const Hover = props => (
-  <State initial={{ isHover: false }}>
+const Hover = ({ onChange, ...props }) => (
+  <State initial={{ isHover: false }} onChange={onChange}>
     {({ state, setState }) => renderProps(props, {
       isHover: state.isHover,
       bindHover: {

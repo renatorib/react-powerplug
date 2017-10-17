@@ -2,8 +2,8 @@ import React from 'react'
 import State from './State'
 import renderProps from '../utils/renderProps'
 
-const Form = ({ initial = {}, ...props }) => (
-  <State initial={initial}>
+const Form = ({ initial = {}, onChange, ...props }) => (
+  <State initial={{ ...initial }} onChange={onChange}>
     {({ state, setState }) => renderProps(props, {
       input: (id) => {
         const value = state[id] || ''
