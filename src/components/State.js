@@ -3,19 +3,25 @@ import renderProps from '../utils/renderProps'
 
 class State extends Component {
   static defaultProps = {
-    initial: {}
+    initial: {},
+    onChange: null,
   }
 
   state = {
     ...this.props.initial
   }
 
-  setState = this.setState.bind(this)
+  _setState = (updater, cb) => {
+    this.setState(updater, () => {
+      this.props.onChange && this.props.onChange(this.state)
+      cb && cb()
+    })
+  }
 
   render() {
     return renderProps(this.props, {
       state: this.state,
-      setState: this.setState,
+      setState: this._setState,
     })
   }
 }

@@ -2,8 +2,8 @@ import React from 'react'
 import State from './State'
 import renderProps from '../utils/renderProps'
 
-const Focus = props => (
-  <State initial={{ isFocus: false }}>
+const Focus = ({ onChange, ...props }) => (
+  <State initial={{ isFocus: false }} onChange={onChange}>
     {({ state, setState }) => renderProps(props, {
       isFocus: state.isFocus,
       bindFocus: {

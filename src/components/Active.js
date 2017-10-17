@@ -2,8 +2,8 @@ import React from 'react'
 import State from './State'
 import renderProps from '../utils/renderProps'
 
-const Active = props => (
-  <State initial={{ isActive: false }}>
+const Active = ({ onChange, ...props }) => (
+  <State initial={{ isActive: false }} onChange={onChange}>
     {({ state, setState }) => renderProps(props, {
       isActive: state.isActive,
       bindActive: {

@@ -2,8 +2,8 @@ import React from 'react'
 import State from './State'
 import renderProps from '../utils/renderProps'
 
-const Counter = ({ initial = 0, ...props }) => (
-  <State initial={{ count: initial }}>
+const Counter = ({ initial = 0, onChange, ...props }) => (
+  <State initial={{ count: initial }} onChange={onChange}>
     {({ state, setState }) => renderProps(props, {
       count: state.count,
       inc: (value = 1) =>

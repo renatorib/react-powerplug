@@ -2,12 +2,12 @@ import React from 'react'
 import State from './State'
 import renderProps from '../utils/renderProps'
 
-const Loading = ({ initial = false, ...props }) => (
-  <State initial={{ loading: initial }}>
+const Loading = ({ initial = false, onChange, ...props }) => (
+  <State initial={{ isLoading: initial }} onChange={onChange}>
     {({ state, setState }) => renderProps(props, {
-      isLoading: state.loading,
-      toggleLoading: () => setState(s => ({ loading: !s.loading })),
-      setLoading: (loading) => setState({ loading }),
+      isLoading: state.isLoading,
+      toggleLoading: () => setState(s => ({ isLoading: !s.isLoading })),
+      setLoading: (isLoading) => setState({ isLoading }),
     })}
   </State>
 )

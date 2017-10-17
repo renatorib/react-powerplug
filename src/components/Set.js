@@ -2,8 +2,8 @@ import React from 'react'
 import State from './State'
 import renderProps from '../utils/renderProps'
 
-const Set = ({ initial = {}, ...props }) => (
-  <State initial={{ ...initial }}>
+const Set = ({ initial = {}, onChange, ...props }) => (
+  <State initial={{ ...initial }} onChange={onChange}>
     {({ state, setState }) => renderProps(props, {
       values: state,
       set: (key, value) => setState({ [key]: value }),
