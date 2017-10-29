@@ -3,7 +3,7 @@ import State from './State'
 import renderProps from '../utils/renderProps'
 
 const Set = ({ initial = {}, onChange, ...props }) => (
-  <State initial={{ ...initial }} onChange={onChange}>
+  <State initial={{ ...initial }} onChange={ onChange }>
     {({ state, setState }) => renderProps(props, {
       values: state,
       set: (key, value) => setState({ [key]: value }),

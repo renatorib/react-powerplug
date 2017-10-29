@@ -3,7 +3,7 @@ import State from './State'
 import renderProps from '../utils/renderProps'
 
 const Active = ({ onChange, ...props }) => (
-  <State initial={{ isActive: false }} onChange={onChange}>
+  <State initial={{ isActive: false }} onChange={ onChange }>
     {({ state, setState }) => renderProps(props, {
       isActive: state.isActive,
       bindActive: {
