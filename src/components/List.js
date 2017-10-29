@@ -1,20 +1,22 @@
 import React from 'react'
 import State from './State'
+import renderProps from '../utils/renderProps'
 
 const complement = fn =>
   (...args) => !fn(...args)
 
-const List = ({ children, initial = [] }) => (
-  <State initial={{ list: initial }}>
-    {({ state, setState }) => children({
+const List = ({ initial = [], onChange, ...props }) => (
+  <State initial={{ list: initial }} onChange={onChange}>
+    {({ state, setState }) => renderProps(props, {
       list: state.list,
-      setList: (list) => setState({ list }),
+      setList: (list) =>
+        setState({ list }),
       push: (value) =>
-        setState({ list: state.list.push(value) }),
+        setState(prevState => ({ list: [...prevState.list, value] })),
       pull: (predicate) =>
-        setState({ list: state.list.filter(complement(predicate)) }),
+        setState(prevState => ({ list: [...prevState.list].filter(complement(predicate)) })),
       sort: (compareFn) =>
-        setState({ list: state.list.sort(compareFn) }),
+        setState(prevState => ({ list: [...prevState.list].sort(compareFn) })),
     })}
   </State>
 )

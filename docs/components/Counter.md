@@ -31,11 +31,11 @@ By default, the initial count state is 0.
 TL;DR: `{ count, inc, dec }`
 
 **count**  
-`number`
+`number`  
 Your count state
 
 **inc**  
-`(value: number = 1) => void`
+`(value: number = 1) => void`  
 Increase your count state by `value`.  
 The default `value` is 1, so you can omit argument if you want.
 ```js
@@ -45,9 +45,9 @@ inc() // will increase count by 1
 ```
 
 **dec**  
-`(value: number = 1) => void`
+`(value: number = 1) => void`  
 Decrease your count state by `value`.  
-The default `value` is 1, so you can omit argument if you want.
+The default `value` is 1, so you can omit argument if you want.  
 ```js
 dec(2) // will decrease count by 2
 dec(1) // will decrease count by 1

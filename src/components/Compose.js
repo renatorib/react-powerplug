@@ -1,5 +1,6 @@
 import compose from '../utils/compose'
 
-const Compose = ({ states, children }) => compose(...states)({ children })
+const Compose = ({ states, ...props }) =>
+  compose(...states)(props)
 
 export default Compose

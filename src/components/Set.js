@@ -1,9 +1,10 @@
 import React from 'react'
 import State from './State'
+import renderProps from '../utils/renderProps'
 
-const Set = ({ children, initial = {} }) => (
-  <State initial={{ ...initial }}>
-    {({ state, setState }) => children({
+const Set = ({ initial = {}, onChange, ...props }) => (
+  <State initial={{ ...initial }} onChange={onChange}>
+    {({ state, setState }) => renderProps(props, {
       values: state,
       set: (key, value) => setState({ [key]: value }),
       over: (key, fn) => setState(s => ({ [key]: fn(s[key]) })),
