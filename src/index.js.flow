@@ -39,3 +39,16 @@ declare export var Counter: React.ComponentType<
   | {| initial?: number, onChange?: CounterChange, render: CounterRender |}
   | {| initial?: number, onChange?: CounterChange, children: CounterRender |}
 >;
+
+type FocusChange = ({| isFocus: boolean |}) => void;
+
+type FocusRender = ({|
+  isFocus: boolean,
+  bindFocus: {| onFocusIn: () => void, onFocusOut: () => void |}
+|}) => React.Node;
+
+declare export var Focus: React.ComponentType<
+  | {| onChange?: FocusChange, render: FocusRender |}
+  | {| onChange?: FocusChange, children: FocusRender |}
+>;
+

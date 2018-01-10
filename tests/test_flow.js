@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from "react";
-import { Active, Bind, Counter } from "../src";
+import { Active, Bind, Counter, Focus } from "../src";
 
 const noop = () => null;
 
@@ -97,5 +97,33 @@ const noop = () => null;
     <Counter />,
     // $FlowFixMe
     <Counter initial={''} render={noop} />,
+  ];
+}
+
+{
+  const render = ({ isFocus, bindFocus }) => {
+    (isFocus: boolean);
+    (bindFocus.onFocusIn: Function);
+    (bindFocus.onFocusOut: Function);
+    // $FlowFixMe
+    (isFocus: number);
+    // $FlowFixMe
+    (bindFocus.onFocusIn: number);
+    // $FlowFixMe
+    (bindFocus.onFocusOut: number);
+    return null;
+  };
+  const onChange = ({ isFocus }) => {
+    (isFocus: boolean);
+    // $FlowFixMe
+    (isFocus: number);
+  };
+  [
+    <Focus render={render} />,
+    <Focus>{render}</Focus>,
+    <Focus onChange={onChange} render={noop} />,
+    <Focus onChange={onChange}>{noop}</Focus>,
+    // $FlowFixMe
+    <Focus />
   ];
 }
