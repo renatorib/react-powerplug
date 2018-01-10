@@ -8,16 +8,19 @@
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
   "scripts": {
+    "build:types": "cpy src/index.js.flow lib",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
     "build:umd": "cross-env BABEL_ENV=rollup NODE_ENV=development rollup -c -o dist/react-powerplug.js",
     "build:umd:min": "cross-env BABEL_ENV=rollup NODE_ENV=production rollup -c -o dist/react-powerplug.min.js",
-    "build:all": "npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min",
+    "build:all": "npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min && npm run build:types",
     "build": "npm run clean && npm run build:all",
     "clean": "rimraf lib dist es",
+    "typecheck": "flow check && [[ $(flow check) == 'Found 0 errors' ]]",
     "lint": "eslint src",
     "test": "jest",
-    "prepublishOnly": "npm run lint && npm run clean && npm run build"
+    "posttest": "npm run typecheck",
+    "prepublishOnly": "npm run lint && npm run clean && npm run build && npm run typecheck"
   },
   "repository": {
     "type": "git",
@@ -52,6 +55,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
+    "cpy-cli": "^1.0.1",
     "cross-env": "^5.0.5",
     "enzyme": "^2.9.1",
     "eslint": "^4.6.1",
