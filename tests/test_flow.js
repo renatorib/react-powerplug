@@ -1,7 +1,7 @@
 // @flow
 
-import * as React from 'react';
-import { Active } from '../src';
+import * as React from "react";
+import { Active, Bind } from "../src";
 
 const noop = () => null;
 
@@ -27,9 +27,42 @@ const noop = () => null;
     <Active render={render} />,
     <Active>{render}</Active>,
     <Active onChange={onChange} render={noop} />,
-    <Active onChange={onChange} children={noop} />,
+    <Active onChange={onChange}>{noop}</Active>,
     // $FlowFixMe
-    <Active />,
+    <Active />
   ];
 }
 
+{
+  const render = ({ value, setValue, bind }) => {
+    (value: string);
+    setValue("");
+    (bind.value: string);
+    (bind.onChange: Function);
+    // $FlowFixMe
+    (value: number);
+    // $FlowFixMe
+    setValue(0);
+    // $FlowFixMe
+    (bind.value: number);
+    // $FlowFixMe
+    (bind.onChange: number);
+    return null;
+  };
+  const onChange = ({ value }) => {
+    (value: string);
+    // $FlowFixMe
+    (value: number);
+  };
+  [
+    <Bind render={render} />,
+    <Bind>{render}</Bind>,
+    <Bind onChange={onChange} render={noop} />,
+    <Bind onChange={onChange}>{noop}</Bind>,
+    <Bind initial={''} render={noop} />,
+    // $FlowFixMe
+    <Bind />,
+    // $FlowFixMe
+    <Bind initial={0} render={noop} />,
+  ];
+}

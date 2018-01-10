@@ -13,3 +13,16 @@ declare export var Active: React.ComponentType<
   | {| onChange?: ActiveChange, render: ActiveRender |}
   | {| onChange?: ActiveChange, children: ActiveRender |}
 >;
+
+type BindChange = ({| value: string |}) => void;
+
+type BindRender = ({|
+  value: string,
+  setValue: string => void,
+  bind: {| value: string, onChange: (SyntheticInputEvent<*>) => void |}
+|}) => React.Node;
+
+declare export var Bind: React.ComponentType<
+  | {| initial?: string, onChange?: BindChange, render: BindRender |}
+  | {| initial?: string, onChange?: BindChange, children: BindRender |}
+>;
