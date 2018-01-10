@@ -102,3 +102,15 @@ declare export var Toggle: React.ComponentType<
   | {| initial?: boolean, onChange?: ToggleChange, render: ToggleRender |}
   | {| initial?: boolean, onChange?: ToggleChange, children: ToggleRender |}
 >;
+
+type ValueChange = ({| value: string |}) => void;
+
+type ValueRender = ({|
+  value: string,
+  setValue: string => void
+|}) => React.Node;
+
+declare export var Value: React.ComponentType<
+  | {| initial?: string, onChange?: ValueChange, render: ValueRender |}
+  | {| initial?: string, onChange?: ValueChange, children: ValueRender |}
+>;

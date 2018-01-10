@@ -9,7 +9,8 @@ import {
   Hover,
   Index,
   Loading,
-  Toggle
+  Toggle,
+  Value
 } from "../src";
 
 const noop = () => null;
@@ -257,5 +258,33 @@ const noop = () => null;
     <Toggle />,
     // $FlowFixMe
     <Toggle initial={""} render={noop} />
+  ];
+}
+
+{
+  const render = ({ value, setValue }) => {
+    (value: string);
+    setValue("");
+    // $FlowFixMe
+    (value: number);
+    // $FlowFixMe
+    setValue(0);
+    return null;
+  };
+  const onChange = ({ value }) => {
+    (value: string);
+    // $FlowFixMe
+    (value: number);
+  };
+  [
+    <Value render={render} />,
+    <Value>{render}</Value>,
+    <Value onChange={onChange} render={noop} />,
+    <Value onChange={onChange}>{noop}</Value>,
+    <Value initial={""} render={noop} />,
+    // $FlowFixMe
+    <Value />,
+    // $FlowFixMe
+    <Value initial={0} render={noop} />
   ];
 }
