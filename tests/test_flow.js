@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from "react";
-import { Active, Bind, Counter, Focus, Hover } from "../src";
+import { Active, Bind, Counter, Focus, Hover, Index } from "../src";
 
 const noop = () => null;
 
@@ -153,5 +153,35 @@ const noop = () => null;
     <Hover onChange={onChange}>{noop}</Hover>,
     // $FlowFixMe
     <Hover />
+  ];
+}
+
+{
+  const render = ({ index, setIndex }) => {
+    (index: number);
+    setIndex(0);
+    // $FlowFixMe
+    (index: string);
+    // $FlowFixMe
+    setIndex('');
+    // $FlowFixMe
+    setIndex();
+    return null;
+  };
+  const onChange = ({ index }) => {
+    (index: number);
+    // $FlowFixMe
+    (index: string);
+  };
+  [
+    <Index render={render} />,
+    <Index>{render}</Index>,
+    <Index onChange={onChange} render={noop} />,
+    <Index onChange={onChange}>{noop}</Index>,
+    <Index initial={0} render={noop} />,
+    // $FlowFixMe
+    <Index />,
+    // $FlowFixMe
+    <Index initial={''} render={noop} />,
   ];
 }
