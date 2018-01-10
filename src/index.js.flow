@@ -26,3 +26,16 @@ declare export var Bind: React.ComponentType<
   | {| initial?: string, onChange?: BindChange, render: BindRender |}
   | {| initial?: string, onChange?: BindChange, children: BindRender |}
 >;
+
+type CounterChange = ({| count: number |}) => void;
+
+type CounterRender = ({|
+  count: number,
+  inc: (step?: number) => void,
+  dec: (step?: number) => void
+|}) => React.Node;
+
+declare export var Counter: React.ComponentType<
+  | {| initial?: number, onChange?: CounterChange, render: CounterRender |}
+  | {| initial?: number, onChange?: CounterChange, children: CounterRender |}
+>;

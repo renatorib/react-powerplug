@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from "react";
-import { Active, Bind } from "../src";
+import { Active, Bind, Counter } from "../src";
 
 const noop = () => null;
 
@@ -64,5 +64,38 @@ const noop = () => null;
     <Bind />,
     // $FlowFixMe
     <Bind initial={0} render={noop} />,
+  ];
+}
+
+{
+  const render = ({ count, inc, dec }) => {
+    (count: number);
+    inc();
+    inc(0);
+    dec();
+    dec(0);
+    // $FlowFixMe
+    (count: string);
+    // $FlowFixMe
+    inc('');
+    // $FlowFixMe
+    dec('');
+    return null;
+  };
+  const onChange = ({ count }) => {
+    (count: number);
+    // $FlowFixMe
+    (count: string);
+  };
+  [
+    <Counter render={render} />,
+    <Counter>{render}</Counter>,
+    <Counter onChange={onChange} render={noop} />,
+    <Counter onChange={onChange}>{noop}</Counter>,
+    <Counter initial={0} render={noop} />,
+    // $FlowFixMe
+    <Counter />,
+    // $FlowFixMe
+    <Counter initial={''} render={noop} />,
   ];
 }
