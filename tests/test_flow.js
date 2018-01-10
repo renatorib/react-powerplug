@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from "react";
-import { Active, Bind, Counter, Focus, Hover, Index } from "../src";
+import { Active, Bind, Counter, Focus, Hover, Index, Loading } from "../src";
 
 const noop = () => null;
 
@@ -183,5 +183,36 @@ const noop = () => null;
     <Index />,
     // $FlowFixMe
     <Index initial={''} render={noop} />,
+  ];
+}
+
+{
+  const render = ({ isLoading, toggleLoading, setLoading }) => {
+    (isLoading: boolean);
+    toggleLoading();
+    setLoading(true);
+    // $FlowFixMe
+    (isLoading: number);
+    // $FlowFixMe
+    toggleLoading(true);
+    // $FlowFixMe
+    setLoading(0);
+    return null;
+  };
+  const onChange = ({ isLoading }) => {
+    (isLoading: boolean);
+    // $FlowFixMe
+    (isLoading: number);
+  };
+  [
+    <Loading render={render} />,
+    <Loading>{render}</Loading>,
+    <Loading onChange={onChange} render={noop} />,
+    <Loading onChange={onChange}>{noop}</Loading>,
+    <Loading initial={true} render={noop} />,
+    // $FlowFixMe
+    <Loading />,
+    // $FlowFixMe
+    <Loading initial={''} render={noop} />,
   ];
 }
