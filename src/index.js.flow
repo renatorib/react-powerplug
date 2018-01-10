@@ -52,3 +52,15 @@ declare export var Focus: React.ComponentType<
   | {| onChange?: FocusChange, children: FocusRender |}
 >;
 
+type HoverChange = ({| isHover: boolean |}) => void;
+
+type HoverRender = ({|
+  isHover: boolean,
+  bindHover: {| onMouseEnter: () => void, onMouseLeave: () => void |}
+|}) => React.Node;
+
+declare export var Hover: React.ComponentType<
+  | {| onChange?: HoverChange, render: HoverRender |}
+  | {| onChange?: HoverChange, children: HoverRender |}
+>;
+

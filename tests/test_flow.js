@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from "react";
-import { Active, Bind, Counter, Focus } from "../src";
+import { Active, Bind, Counter, Focus, Hover } from "../src";
 
 const noop = () => null;
 
@@ -125,5 +125,33 @@ const noop = () => null;
     <Focus onChange={onChange}>{noop}</Focus>,
     // $FlowFixMe
     <Focus />
+  ];
+}
+
+{
+  const render = ({ isHover, bindHover }) => {
+    (isHover: boolean);
+    (bindHover.onMouseEnter: Function);
+    (bindHover.onMouseLeave: Function);
+    // $FlowFixMe
+    (isHover: number);
+    // $FlowFixMe
+    (bindHover.onMouseEnter: number);
+    // $FlowFixMe
+    (bindHover.onMouseLeave: number);
+    return null;
+  };
+  const onChange = ({ isHover }) => {
+    (isHover: boolean);
+    // $FlowFixMe
+    (isHover: number);
+  };
+  [
+    <Hover render={render} />,
+    <Hover>{render}</Hover>,
+    <Hover onChange={onChange} render={noop} />,
+    <Hover onChange={onChange}>{noop}</Hover>,
+    // $FlowFixMe
+    <Hover />
   ];
 }
