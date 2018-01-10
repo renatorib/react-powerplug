@@ -57,6 +57,7 @@
     "eslint": "^4.6.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-react": "^7.3.0",
+    "flow-bin": "^0.63.1",
     "jest": "^21.1.0",
     "react": "^15.6.2",
     "react-addons-test-utils": "^15.6.2",

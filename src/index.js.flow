@@ -1,0 +1,15 @@
+// @flow
+
+import * as React from "react";
+
+type ActiveChange = ({| isActive: boolean |}) => void;
+
+type ActiveRender = ({|
+  isActive: boolean,
+  bindActive: {| onMouseDown: () => void, onMouseUp: () => void |}
+|}) => React.Node;
+
+declare export var Active: React.ComponentType<
+  | {| onChange?: ActiveChange, render: ActiveRender |}
+  | {| onChange?: ActiveChange, children: ActiveRender |}
+>;
