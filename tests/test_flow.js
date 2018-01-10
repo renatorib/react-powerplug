@@ -1,7 +1,16 @@
 // @flow
 
 import * as React from "react";
-import { Active, Bind, Counter, Focus, Hover, Index, Loading } from "../src";
+import {
+  Active,
+  Bind,
+  Counter,
+  Focus,
+  Hover,
+  Index,
+  Loading,
+  Toggle
+} from "../src";
 
 const noop = () => null;
 
@@ -59,11 +68,11 @@ const noop = () => null;
     <Bind>{render}</Bind>,
     <Bind onChange={onChange} render={noop} />,
     <Bind onChange={onChange}>{noop}</Bind>,
-    <Bind initial={''} render={noop} />,
+    <Bind initial={""} render={noop} />,
     // $FlowFixMe
     <Bind />,
     // $FlowFixMe
-    <Bind initial={0} render={noop} />,
+    <Bind initial={0} render={noop} />
   ];
 }
 
@@ -77,9 +86,9 @@ const noop = () => null;
     // $FlowFixMe
     (count: string);
     // $FlowFixMe
-    inc('');
+    inc("");
     // $FlowFixMe
-    dec('');
+    dec("");
     return null;
   };
   const onChange = ({ count }) => {
@@ -96,7 +105,7 @@ const noop = () => null;
     // $FlowFixMe
     <Counter />,
     // $FlowFixMe
-    <Counter initial={''} render={noop} />,
+    <Counter initial={""} render={noop} />
   ];
 }
 
@@ -163,7 +172,7 @@ const noop = () => null;
     // $FlowFixMe
     (index: string);
     // $FlowFixMe
-    setIndex('');
+    setIndex("");
     // $FlowFixMe
     setIndex();
     return null;
@@ -182,7 +191,7 @@ const noop = () => null;
     // $FlowFixMe
     <Index />,
     // $FlowFixMe
-    <Index initial={''} render={noop} />,
+    <Index initial={""} render={noop} />
   ];
 }
 
@@ -213,6 +222,40 @@ const noop = () => null;
     // $FlowFixMe
     <Loading />,
     // $FlowFixMe
-    <Loading initial={''} render={noop} />,
+    <Loading initial={""} render={noop} />
+  ];
+}
+
+{
+  const render = ({ on, off, toggle, setOn }) => {
+    (on: boolean);
+    (off: boolean);
+    toggle();
+    setOn(true);
+    // $FlowFixMe
+    (on: number);
+    // $FlowFixMe
+    (off: number);
+    // $FlowFixMe
+    toggle(true);
+    // $FlowFixMe
+    setOn(0);
+    return null;
+  };
+  const onChange = ({ on }) => {
+    (on: boolean);
+    // $FlowFixMe
+    (on: number);
+  };
+  [
+    <Toggle render={render} />,
+    <Toggle>{render}</Toggle>,
+    <Toggle onChange={onChange} render={noop} />,
+    <Toggle onChange={onChange}>{noop}</Toggle>,
+    <Toggle initial={true} render={noop} />,
+    // $FlowFixMe
+    <Toggle />,
+    // $FlowFixMe
+    <Toggle initial={""} render={noop} />
   ];
 }

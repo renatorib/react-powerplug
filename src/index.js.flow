@@ -88,3 +88,17 @@ declare export var Loading: React.ComponentType<
   | {| initial?: boolean, onChange?: LoadingChange, render: LoadingRender |}
   | {| initial?: boolean, onChange?: LoadingChange, children: LoadingRender |}
 >;
+
+type ToggleChange = ({| on: boolean |}) => void;
+
+type ToggleRender = ({|
+  on: boolean,
+  off: boolean,
+  toggle: () => void,
+  setOn: (on: boolean) => void
+|}) => React.Node;
+
+declare export var Toggle: React.ComponentType<
+  | {| initial?: boolean, onChange?: ToggleChange, render: ToggleRender |}
+  | {| initial?: boolean, onChange?: ToggleChange, children: ToggleRender |}
+>;
