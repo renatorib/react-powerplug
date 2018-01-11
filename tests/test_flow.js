@@ -9,6 +9,7 @@ import {
   Hover,
   Index,
   Loading,
+  State,
   Toggle,
   Value
 } from "../src";
@@ -224,6 +225,57 @@ const noop = () => null;
     <Loading />,
     // $FlowFixMe
     <Loading initial={""} render={noop} />
+  ];
+}
+
+/* State with inferred generic */
+{
+  const render = ({ state, setState }) => {
+    (state.v: number);
+    setState({});
+    setState({ v: 1 });
+    // $FlowFixMe
+    (state.v: string);
+    // $FlowFixMe
+    setState({ v: '' });
+    // $FlowFixMe
+    setState({ t: 1 });
+    // $FlowFixMe
+    setState({ n: 2 });
+  };
+  const onChange = state => {
+    (state.v: number);
+    // $FlowFixMe
+    (state.v: string);
+  };
+  [
+    <State initial={{ v: 0, n: null }} render={render} />,
+    <State initial={{ v: 0, n: null }}>{render}</State>,
+    <State initial={{ v: 0, n: null }} onChange={onChange} render={noop} />,
+    <State initial={{ v: 0, n: null }} onChange={onChange}>{noop}</State>,
+    // $FlowFixMe
+    <State />,
+    // $FlowFixMe
+    <State render={noop} />,
+    // $FlowFixMe
+    <State initial={0} render={noop} />,
+  ];
+}
+
+/* State with specified generic */
+{
+  const render1 = ({ state, setState }) => {
+    (state.n: ?number);
+    setState({});
+    setState({ n: 1 });
+    // $FlowFixMe
+    (state.n: number);
+    // $FlowFixMe
+    setState({ n: '' });
+  };
+  [
+    <State initial={({ n: null }: { n: ?number })} render={render1} />,
+    <State initial={({ n: null }: { n: ?number })}>{render1}</State>,
   ];
 }
 
