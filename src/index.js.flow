@@ -2,6 +2,8 @@
 
 import * as React from "react";
 
+/* Active */
+
 type ActiveChange = ({| isActive: boolean |}) => void;
 
 type ActiveRender = ({|
@@ -13,6 +15,8 @@ declare export var Active: React.ComponentType<
   | {| onChange?: ActiveChange, render: ActiveRender |}
   | {| onChange?: ActiveChange, children: ActiveRender |}
 >;
+
+/* Bind */
 
 type BindChange = ({| value: string |}) => void;
 
@@ -27,6 +31,12 @@ declare export var Bind: React.ComponentType<
   | {| initial?: string, onChange?: BindChange, children: BindRender |}
 >;
 
+/* Compose */
+
+// TODO
+
+/* Counter */
+
 type CounterChange = ({| count: number |}) => void;
 
 type CounterRender = ({|
@@ -40,6 +50,8 @@ declare export var Counter: React.ComponentType<
   | {| initial?: number, onChange?: CounterChange, children: CounterRender |}
 >;
 
+/* Focus */
+
 type FocusChange = ({| isFocus: boolean |}) => void;
 
 type FocusRender = ({|
@@ -51,6 +63,12 @@ declare export var Focus: React.ComponentType<
   | {| onChange?: FocusChange, render: FocusRender |}
   | {| onChange?: FocusChange, children: FocusRender |}
 >;
+
+/* Form */
+
+// TODO
+
+/* Hover */
 
 type HoverChange = ({| isHover: boolean |}) => void;
 
@@ -64,6 +82,8 @@ declare export var Hover: React.ComponentType<
   | {| onChange?: HoverChange, children: HoverRender |}
 >;
 
+/* Index */
+
 type IndexChange = ({| index: number |}) => void;
 
 type IndexRender = ({|
@@ -75,6 +95,12 @@ declare export var Index: React.ComponentType<
   | {| initial?: number, onChange?: IndexChange, render: IndexRender |}
   | {| initial?: number, onChange?: IndexChange, children: IndexRender |}
 >;
+
+/* List */
+
+// TODO
+
+/* Loading */
 
 type LoadingChange = ({| isLoading: boolean |}) => void;
 
@@ -89,6 +115,16 @@ declare export var Loading: React.ComponentType<
   | {| initial?: boolean, onChange?: LoadingChange, children: LoadingRender |}
 >;
 
+/* Set */
+
+// TODO
+
+/* State */
+
+// TODO
+
+/* Toggle */
+
 type ToggleChange = ({| on: boolean |}) => void;
 
 type ToggleRender = ({|
@@ -102,6 +138,8 @@ declare export var Toggle: React.ComponentType<
   | {| initial?: boolean, onChange?: ToggleChange, render: ToggleRender |}
   | {| initial?: boolean, onChange?: ToggleChange, children: ToggleRender |}
 >;
+
+/* Value */
 
 type ValueChange = ({| value: string |}) => void;
 
