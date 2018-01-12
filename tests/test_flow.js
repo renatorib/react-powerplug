@@ -6,6 +6,7 @@ import {
   Bind,
   Counter,
   Focus,
+  Form,
   Hover,
   Index,
   Loading,
@@ -137,6 +138,47 @@ const noop = () => null;
     // $FlowFixMe
     <Focus />
   ];
+}
+
+{
+  const render = ({ input }) => {
+    const name = input('a');
+    (name.value: string);
+    name.setValue('');
+    (name.bind.value: string);
+    (name.bind.onChange: Function);
+    // $FlowFixMe
+    input('b');
+    // $FlowFixMe
+    (name.value: number);
+    // $FlowFixMe
+    name.setValue(0);
+    // $FlowFixMe
+    (name.bind.value: number);
+    // $FlowFixMe
+    (name.bind.onChange: number);
+  };
+  const onChange = data => {
+    (data.a: string);
+    // $FlowFixMe
+    (data.a: number);
+  };
+  [
+    <Form initial={{ a: '' }} render={render} />,
+    <Form initial={{ a: '' }}>{render}</Form>,
+    <Form initial={{ a: '' }} onChange={onChange} render={noop} />,
+    <Form initial={{ a: '' }} onChange={onChange}>{noop}</Form>,
+    // $FlowFixMe
+    <Form />,
+    // $FlowFixMe
+    <Form render={noop} />,
+    // $FlowFixMe
+    <Form>{noop}</Form>,
+    // $FlowFixMe
+    <Form initial={{ a: 0 }} render={noop} />,
+    // $FlowFixMe
+    <Form initial={{ a: 0 }}>{noop}</Form>
+  ]
 }
 
 {

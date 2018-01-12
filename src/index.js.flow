@@ -66,7 +66,29 @@ declare export var Focus: React.ComponentType<
 
 /* Form */
 
-// TODO
+type FormChange<T> = T => void;
+
+type FormRender<T> = ({|
+  input: <K: $Keys<T>>(
+    key: K
+  ) => {|
+    value: string,
+    setValue: string => void,
+    bind: {|
+      value: string,
+      onChange: (SyntheticInputEvent<*>) => void
+    |}
+  |}
+|}) => React.Node;
+
+type FormProps<T> =
+  | {| initial: T, onChange?: FormChange<T>, render: FormRender<T> |}
+  | {| initial: T, onChange?: FormChange<T>, children: FormRender<T> |};
+
+declare export class Form<T: { [string]: string }> extends React.Component<
+  FormProps<T>,
+  *
+> {}
 
 /* Hover */
 
@@ -125,14 +147,17 @@ type StateChange<T> = T => void;
 
 type StateRender<T> = ({
   state: T,
-  setState: (updated: $Shape<T> | T => $Shape<T>, cb?: () => void) => void
+  setState: (updated: $Shape<T> | (T => $Shape<T>), cb?: () => void) => void
 }) => React.Node;
 
-type StateProps<T> = 
+type StateProps<T> =
   | {| initial: T, onChange?: StateChange<T>, render: StateRender<T> |}
   | {| initial: T, onChange?: StateChange<T>, children: StateRender<T> |};
 
-declare export class State<T: Object> extends React.Component<StateProps<T>, *> {}
+declare export class State<T: Object> extends React.Component<
+  StateProps<T>,
+  *
+> {}
 
 /* Toggle */
 
