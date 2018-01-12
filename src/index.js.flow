@@ -120,7 +120,29 @@ declare export var Index: React.ComponentType<
 
 /* List */
 
-// TODO
+type ListChange<T> = ({| list: $ReadOnlyArray<T> |}) => void;
+
+type ListRender<T> = ({|
+  list: $ReadOnlyArray<T>,
+  setList: ($ReadOnlyArray<T>) => void,
+  push: (value: T) => void,
+  pull: (predicate: (T) => boolean) => void,
+  sort: (compare: (a: T, b: T) => -1 | 0 | 1) => void
+|}) => React.Node;
+
+type ListProps<T> =
+  | {|
+      initial: $ReadOnlyArray<T>,
+      onChange?: ListChange<T>,
+      render: ListRender<T>
+    |}
+  | {|
+      initial: $ReadOnlyArray<T>,
+      onChange?: ListChange<T>,
+      children: ListRender<T>
+    |};
+
+declare export class List<T> extends React.Component<ListProps<T>, *> {}
 
 /* Loading */
 

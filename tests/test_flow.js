@@ -9,6 +9,7 @@ import {
   Form,
   Hover,
   Index,
+  List,
   Loading,
   State,
   Toggle,
@@ -142,13 +143,13 @@ const noop = () => null;
 
 {
   const render = ({ input }) => {
-    const name = input('a');
+    const name = input("a");
     (name.value: string);
-    name.setValue('');
+    name.setValue("");
     (name.bind.value: string);
     (name.bind.onChange: Function);
     // $FlowFixMe
-    input('b');
+    input("b");
     // $FlowFixMe
     (name.value: number);
     // $FlowFixMe
@@ -164,10 +165,12 @@ const noop = () => null;
     (data.a: number);
   };
   [
-    <Form initial={{ a: '' }} render={render} />,
-    <Form initial={{ a: '' }}>{render}</Form>,
-    <Form initial={{ a: '' }} onChange={onChange} render={noop} />,
-    <Form initial={{ a: '' }} onChange={onChange}>{noop}</Form>,
+    <Form initial={{ a: "" }} render={render} />,
+    <Form initial={{ a: "" }}>{render}</Form>,
+    <Form initial={{ a: "" }} onChange={onChange} render={noop} />,
+    <Form initial={{ a: "" }} onChange={onChange}>
+      {noop}
+    </Form>,
     // $FlowFixMe
     <Form />,
     // $FlowFixMe
@@ -178,7 +181,7 @@ const noop = () => null;
     <Form initial={{ a: 0 }} render={noop} />,
     // $FlowFixMe
     <Form initial={{ a: 0 }}>{noop}</Form>
-  ]
+  ];
 }
 
 {
@@ -240,6 +243,54 @@ const noop = () => null;
 }
 
 {
+  const render = ({ list, setList, push, pull, sort }) => {
+    (list: $ReadOnlyArray<number>);
+    setList([]);
+    setList([0]);
+    push(0);
+    pull((d: number) => true);
+    sort((a: number, b: number) => -1);
+    // $FlowFixMe
+    (list: $ReadOnlyArray<string>);
+    //$FlowFixMe
+    setList([""]);
+    //$FlowFixMe
+    push("");
+    //$FlowFixMe
+    pull((d: string) => true);
+    //$FlowFixMe
+    sort((a: string, b: string) => -1);
+  };
+  const onChange = ({ list }) => {
+    (list: $ReadOnlyArray<number>);
+    // $FlowFixMe
+    (list: $ReadOnlyArray<string>);
+  };
+  [
+    <List initial={([]: $ReadOnlyArray<number>)} render={render} />,
+    <List initial={([]: $ReadOnlyArray<number>)}>{render}</List>,
+    <List
+      initial={([]: $ReadOnlyArray<number>)}
+      onChange={onChange}
+      render={noop}
+    />,
+    <List initial={([]: $ReadOnlyArray<number>)} onChange={onChange}>
+      {noop}
+    </List>,
+    // $FlowFixMe
+    <List />,
+    // $FlowFixMe
+    <List render={noop} />,
+    // $FlowFixMe
+    <List>{noop}</List>,
+    // $FlowFixMe
+    <List initial={{ a: 0 }} render={noop} />,
+    // $FlowFixMe
+    <List initial={{ a: 0 }}>{noop}</List>
+  ];
+}
+
+{
   const render = ({ isLoading, toggleLoading, setLoading }) => {
     (isLoading: boolean);
     toggleLoading();
@@ -279,7 +330,7 @@ const noop = () => null;
     // $FlowFixMe
     (state.v: string);
     // $FlowFixMe
-    setState({ v: '' });
+    setState({ v: "" });
     // $FlowFixMe
     setState({ t: 1 });
     // $FlowFixMe
@@ -294,13 +345,15 @@ const noop = () => null;
     <State initial={{ v: 0, n: null }} render={render} />,
     <State initial={{ v: 0, n: null }}>{render}</State>,
     <State initial={{ v: 0, n: null }} onChange={onChange} render={noop} />,
-    <State initial={{ v: 0, n: null }} onChange={onChange}>{noop}</State>,
+    <State initial={{ v: 0, n: null }} onChange={onChange}>
+      {noop}
+    </State>,
     // $FlowFixMe
     <State />,
     // $FlowFixMe
     <State render={noop} />,
     // $FlowFixMe
-    <State initial={0} render={noop} />,
+    <State initial={0} render={noop} />
   ];
 }
 
@@ -313,11 +366,11 @@ const noop = () => null;
     // $FlowFixMe
     (state.n: number);
     // $FlowFixMe
-    setState({ n: '' });
+    setState({ n: "" });
   };
   [
     <State initial={({ n: null }: { n: ?number })} render={render1} />,
-    <State initial={({ n: null }: { n: ?number })}>{render1}</State>,
+    <State initial={({ n: null }: { n: ?number })}>{render1}</State>
   ];
 }
 
