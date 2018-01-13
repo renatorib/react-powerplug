@@ -33,7 +33,7 @@ declare export var Bind: React.ComponentType<
 
 /* Compose */
 
-// TODO
+declare export var Compose: React.ComponentType<Object>;
 
 /* Counter */
 
