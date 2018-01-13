@@ -11,6 +11,7 @@ import {
   Index,
   List,
   Loading,
+  Set,
   State,
   Toggle,
   Value
@@ -318,6 +319,41 @@ const noop = () => null;
     <Loading />,
     // $FlowFixMe
     <Loading initial={""} render={noop} />
+  ];
+}
+
+{
+  const render = ({ values, set, over, get }) => {
+    (values.a: number);
+    set('a', 0);
+    over('a', (d: number) => d);
+    (get('a'): number);
+    // $FlowFixMe
+    (values.a: string);
+    // TODO should fail
+    set('a', '');
+    // $FlowFixMe
+    set('b', 0);
+    // $FlowFixMe
+    over('a', (d: string) => d);
+    // TODO should fail
+    over('a', () => '');
+    // $FlowFixMe
+    (get('a'): string);
+    return null;
+  };
+  const onChange = values => {
+    (values.a: number);
+    // $FlowFixMe
+    (values.a: string);
+  };
+  [
+    <Set initial={{ a: 0 }} render={render} />,
+    <Set initial={{ a: 0 }}>{render}</Set>,
+    <Set initial={{ a: 0 }} onChange={onChange} render={noop} />,
+    <Set initial={{ a: 0 }} onChange={onChange}>
+      {noop}
+    </Set>
   ];
 }
 

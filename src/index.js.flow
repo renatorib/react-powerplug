@@ -161,16 +161,29 @@ declare export var Loading: React.ComponentType<
 
 /* Set */
 
-// TODO
+type SetChange<T> = T => void;
+
+type SetRender<T, K = $Keys<T>> = ({|
+  values: T,
+  set: (key: K, value: $ElementType<T, K>) => void,
+  over: (key: K, fn: ($ElementType<T, K>) => $ElementType<T, K>) => void,
+  get: (key: K) => $ElementType<T, K>
+|}) => React.Node;
+
+type SetProps<T> =
+  | {| initial: T, onChange?: SetChange<T>, render: SetRender<T> |}
+  | {| initial: T, onChange?: SetChange<T>, children: SetRender<T> |};
+
+declare export class Set<T: Object> extends React.Component<SetProps<T>, *> {}
 
 /* State */
 
 type StateChange<T> = T => void;
 
-type StateRender<T> = ({
+type StateRender<T> = ({|
   state: T,
   setState: (updated: $Shape<T> | (T => $Shape<T>), cb?: () => void) => void
-}) => React.Node;
+|}) => React.Node;
 
 type StateProps<T> =
   | {| initial: T, onChange?: StateChange<T>, render: StateRender<T> |}
