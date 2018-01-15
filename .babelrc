@@ -1,12 +1,5 @@
 {
   "env": {
-    "rollup": {
-      "presets": [
-        ["@babel/env", { "modules": false }],
-        "@babel/react",
-        "@babel/stage-1"
-      ]
-    },
     "es": {
       "presets": [
         ["@babel/env", { "modules": false }],
@@ -14,7 +7,7 @@
         "@babel/stage-1"
       ],
       "plugins": [
-        ["@babel/transform-runtime", { "polyfill": false, "useESModules": true }]
+        ["@babel/transform-runtime", { "polyfill": false, "useBuiltIns": true, "useESModules": true }]
       ]
     },
     "commonjs": {
@@ -24,7 +17,7 @@
         "@babel/stage-1"
       ],
       "plugins": [
-        ["@babel/transform-runtime", { "polyfill": false }]
+        ["@babel/transform-runtime", { "polyfill": false, "useBuiltIns": true }]
       ]
     },
     "test": {
@@ -33,7 +26,7 @@
         "@babel/stage-1"
       ],
       "plugins": [
-        ["@babel/transform-runtime", { "polyfill": false }],
+        ["@babel/transform-runtime", { "polyfill": false, "useBuiltIns": true }],
         "@babel/transform-modules-commonjs"
       ]
     }

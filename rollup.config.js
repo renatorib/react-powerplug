@@ -20,6 +20,7 @@ const config = {
   plugins: [
     nodeResolve(),
     babel({
+      runtimeHelpers: true,
       exclude: '**/node_modules/**'
     }),
     replace({
