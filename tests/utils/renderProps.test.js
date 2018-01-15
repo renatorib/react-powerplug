@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
 
-import renderProps from '../../src/utils/renderProps'
-console.warn = jest.genMockFunction()
-console.trace = jest.genMockFunction()
+import { renderProps } from '../../src'
+
+console.warn = jest.fn()
+console.trace = jest.fn()
 
 test('renderProps should use children prop when alone', () => {
   const props = { children: value => value + 1 }
