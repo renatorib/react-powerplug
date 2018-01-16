@@ -1,20 +1,39 @@
-export Active from './components/Active'
-export Bind from './components/Bind'
-export Compose from './components/Compose'
-export Counter from './components/Counter'
-export Focus from './components/Focus'
-export Form from './components/Form'
-export Hover from './components/Hover'
-export Index from './components/Index'
-export List from './components/List'
-export Loading from './components/Loading'
-export Set from './components/Set'
-export State from './components/State'
-export Toggle from './components/Toggle'
-export Value from './components/Value'
+import Active from './components/Active'
+import Bind from './components/Bind'
+import Compose from './components/Compose'
+import Counter from './components/Counter'
+import Focus from './components/Focus'
+import Form from './components/Form'
+import Hover from './components/Hover'
+import Index from './components/Index'
+import List from './components/List'
+import Loading from './components/Loading'
+import Set from './components/Set'
+import State from './components/State'
+import Toggle from './components/Toggle'
+import Value from './components/Value'
 
-export compose from './utils/compose'
-export renderProps from './utils/renderProps'
+import compose from './utils/compose'
+import renderProps from './utils/renderProps'
+
+export {
+  Active,
+  Bind,
+  Compose,
+  Counter,
+  Focus,
+  Form,
+  Hover,
+  Index,
+  List,
+  Loading,
+  Set,
+  State,
+  Toggle,
+  Value,
+  compose,
+  renderProps,
+}
 
 export default {
   Active,
