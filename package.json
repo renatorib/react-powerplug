@@ -11,12 +11,9 @@
     "build:flow": "cpy src/index.js.flow lib & cpy src/index.js.flow es",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
-    "build:umd":
-      "cross-env BABEL_ENV=es NODE_ENV=development rollup -c -o dist/react-powerplug.js",
-    "build:umd:min":
-      "cross-env BABEL_ENV=es NODE_ENV=production rollup -c -o dist/react-powerplug.min.js",
-    "build:all":
-      "npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min && npm run build:flow",
+    "build:umd": "cross-env BABEL_ENV=es NODE_ENV=development rollup -c -o dist/react-powerplug.js",
+    "build:umd:min": "cross-env BABEL_ENV=es NODE_ENV=production rollup -c -o dist/react-powerplug.min.js",
+    "build:all": "npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min && npm run build:flow",
     "build": "npm run clean && npm run build:all",
     "clean": "rimraf lib dist es",
     "typecheck:flow": "flow check && [[ $(flow check) == 'Found 0 errors' ]]",
@@ -55,7 +52,7 @@
     "@babel/plugin-transform-runtime": "^7.0.0-beta.37",
     "@babel/preset-env": "^7.0.0-beta.37",
     "@babel/preset-react": "^7.0.0-beta.37",
-    "@babel/preset-stage-1": "^7.0.0-beta.37",
+    "@babel/preset-stage-3": "^7.0.0-beta.37",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^22.1.0",

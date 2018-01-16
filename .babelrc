@@ -4,7 +4,7 @@
       "presets": [
         ["@babel/env", { "modules": false }],
         "@babel/react",
-        "@babel/stage-1"
+        "@babel/stage-3"
       ],
       "plugins": [
         ["@babel/transform-runtime", { "polyfill": false, "useBuiltIns": true, "useESModules": true }]
@@ -14,7 +14,7 @@
       "presets": [
         "@babel/env",
         "@babel/react",
-        "@babel/stage-1"
+        "@babel/stage-3"
       ],
       "plugins": [
         ["@babel/transform-runtime", { "polyfill": false, "useBuiltIns": true }]
@@ -23,7 +23,7 @@
     "test": {
       "presets": [
         "@babel/react",
-        "@babel/stage-1"
+        "@babel/stage-3"
       ],
       "plugins": [
         ["@babel/transform-runtime", { "polyfill": false, "useBuiltIns": true }],
