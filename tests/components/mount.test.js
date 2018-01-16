@@ -31,9 +31,6 @@ test('<List />', () => {
 test('<Loading />', () => {
   TestRenderer.create(<PP.Loading />)
 })
-test('<Set />', () => {
-  TestRenderer.create(<PP.Set />)
-})
 test('<State />', () => {
   TestRenderer.create(<PP.State />)
 })

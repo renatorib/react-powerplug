@@ -159,22 +159,22 @@ declare export var Loading: React.ComponentType<
   | {| initial?: boolean, onChange?: LoadingChange, children: LoadingRender |}
 >;
 
-/* Set */
+/* Map */
 
-type SetChange<T> = T => void;
+type MapChange<T> = T => void;
 
-type SetRender<T, K = $Keys<T>> = ({|
+type MapRender<T, K = $Keys<T>> = ({|
   values: T,
   set: (key: K, value: $ElementType<T, K>) => void,
   over: (key: K, fn: ($ElementType<T, K>) => $ElementType<T, K>) => void,
   get: (key: K) => $ElementType<T, K>
 |}) => React.Node;
 
-type SetProps<T> =
-  | {| initial: T, onChange?: SetChange<T>, render: SetRender<T> |}
-  | {| initial: T, onChange?: SetChange<T>, children: SetRender<T> |};
+type MapProps<T> =
+  | {| initial: T, onChange?: MapChange<T>, render: MapRender<T> |}
+  | {| initial: T, onChange?: MapChange<T>, children: MapRender<T> |};
 
-declare export class Set<T: Object> extends React.Component<SetProps<T>, *> {}
+declare export class Map<T: Object> extends React.Component<MapProps<T>, *> {}
 
 /* State */
 
