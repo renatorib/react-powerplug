@@ -18,8 +18,15 @@
     "clean": "rimraf lib dist es",
     "typecheck:flow": "flow check && [[ $(flow check) == 'Found 0 errors' ]]",
     "lint": "eslint src",
-    "test": "jest",
+    "test:only": "jest",
+    "test:bundle": "jest --setupTestFrameworkScriptFile ./tests/jestBundleSetup.js",
+    "test:lib": "jest --setupTestFrameworkScriptFile ./tests/jestLibSetup.js",
+    "test:all": "npm run build && npm run test:only && npm run test:bundle && npm run test:lib",
+    "test": "npm run test:all",
     "prepublishOnly": "npm run lint && npm run clean && npm run build"
+  },
+  "jest": {
+    "transformIgnorePatterns": ["/node_modules/", "/lib/", "/dist/"]
   },
   "repository": {
     "type": "git",

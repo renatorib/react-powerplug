@@ -2,7 +2,7 @@
 
 import React from 'react'
 import TestRenderer from 'react-test-renderer'
-import PP from '../../src'
+import * as PP from '../../src'
 
 test('<Active />', () => {
   TestRenderer.create(<PP.Active />)
