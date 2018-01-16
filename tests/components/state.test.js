@@ -15,7 +15,7 @@ test('State integration test', () => {
   // Initial values
   expect(renderFn).lastCalledWith({
     state: { myValue: 1 },
-    setState: expect.any(Function)
+    setState: expect.any(Function),
   })
 
   last(renderFn.mock.calls)[0].setState({ myValue: 2 })
@@ -23,7 +23,7 @@ test('State integration test', () => {
   // Values after setState
   expect(renderFn).lastCalledWith({
     state: { myValue: 2 },
-    setState: expect.any(Function)
+    setState: expect.any(Function),
   })
   expect(onChangeFn).toBeCalledWith({ myValue: 2 })
 })
