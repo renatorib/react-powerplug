@@ -16,7 +16,21 @@ export Value from './components/Value'
 export compose from './utils/compose'
 export renderProps from './utils/renderProps'
 
-const all = Object.assign({}, exports)
-delete all.default
-
-export default all
+export default {
+  Active,
+  Bind,
+  Compose,
+  Counter,
+  Focus,
+  Form,
+  Hover,
+  Index,
+  List,
+  Loading,
+  Set,
+  State,
+  Toggle,
+  Value,
+  compose,
+  renderProps,
+}
