@@ -1,6 +1,6 @@
 // @flow
 
-import * as React from "react";
+import * as React from 'react'
 import {
   Active,
   Bind,
@@ -14,94 +14,94 @@ import {
   Set,
   State,
   Toggle,
-  Value
-} from "../src";
+  Value,
+} from '../src'
 
-const noop = () => null;
+const noop = () => null
 
 {
   const render = ({ isActive, bindActive }) => {
-    (isActive: boolean);
-    (bindActive.onMouseDown: Function);
-    (bindActive.onMouseUp: Function);
+    ;(isActive: boolean)
+    ;(bindActive.onMouseDown: Function)
+    ;(bindActive.onMouseUp: Function)
     // $FlowFixMe
-    (isActive: number);
+    ;(isActive: number)
     // $FlowFixMe
-    (bindActive.onMouseDown: number);
+    ;(bindActive.onMouseDown: number)
     // $FlowFixMe
-    (bindActive.onMouseUp: number);
-    return null;
-  };
+    ;(bindActive.onMouseUp: number)
+    return null
+  }
   const onChange = ({ isActive }) => {
-    (isActive: boolean);
+    ;(isActive: boolean)
     // $FlowFixMe
-    (isActive: number);
-  };
-  [
+    ;(isActive: number)
+  }
+  ;[
     <Active render={render} />,
     <Active>{render}</Active>,
     <Active onChange={onChange} render={noop} />,
     <Active onChange={onChange}>{noop}</Active>,
     // $FlowFixMe
-    <Active />
-  ];
+    <Active />,
+  ]
 }
 
 {
   const render = ({ value, setValue, bind }) => {
-    (value: string);
-    setValue("");
-    (bind.value: string);
-    (bind.onChange: Function);
+    ;(value: string)
+    setValue('')
+    ;(bind.value: string)
+    ;(bind.onChange: Function)
     // $FlowFixMe
-    (value: number);
+    ;(value: number)
     // $FlowFixMe
-    setValue(0);
+    setValue(0)
     // $FlowFixMe
-    (bind.value: number);
+    ;(bind.value: number)
     // $FlowFixMe
-    (bind.onChange: number);
-    return null;
-  };
+    ;(bind.onChange: number)
+    return null
+  }
   const onChange = ({ value }) => {
-    (value: string);
+    ;(value: string)
     // $FlowFixMe
-    (value: number);
-  };
-  [
+    ;(value: number)
+  }
+  ;[
     <Bind render={render} />,
     <Bind>{render}</Bind>,
     <Bind onChange={onChange} render={noop} />,
     <Bind onChange={onChange}>{noop}</Bind>,
-    <Bind initial={""} render={noop} />,
+    <Bind initial={''} render={noop} />,
     // $FlowFixMe
     <Bind />,
     // $FlowFixMe
-    <Bind initial={0} render={noop} />
-  ];
+    <Bind initial={0} render={noop} />,
+  ]
 }
 
 {
   const render = ({ count, inc, dec }) => {
-    (count: number);
-    inc();
-    inc(0);
-    dec();
-    dec(0);
+    ;(count: number)
+    inc()
+    inc(0)
+    dec()
+    dec(0)
     // $FlowFixMe
-    (count: string);
+    ;(count: string)
     // $FlowFixMe
-    inc("");
+    inc('')
     // $FlowFixMe
-    dec("");
-    return null;
-  };
+    dec('')
+    return null
+  }
   const onChange = ({ count }) => {
-    (count: number);
+    ;(count: number)
     // $FlowFixMe
-    (count: string);
-  };
-  [
+    ;(count: string)
+  }
+  ;[
     <Counter render={render} />,
     <Counter>{render}</Counter>,
     <Counter onChange={onChange} render={noop} />,
@@ -110,66 +110,66 @@ const noop = () => null;
     // $FlowFixMe
     <Counter />,
     // $FlowFixMe
-    <Counter initial={""} render={noop} />
-  ];
+    <Counter initial={''} render={noop} />,
+  ]
 }
 
 {
   const render = ({ isFocus, bindFocus }) => {
-    (isFocus: boolean);
-    (bindFocus.onFocusIn: Function);
-    (bindFocus.onFocusOut: Function);
+    ;(isFocus: boolean)
+    ;(bindFocus.onFocusIn: Function)
+    ;(bindFocus.onFocusOut: Function)
     // $FlowFixMe
-    (isFocus: number);
+    ;(isFocus: number)
     // $FlowFixMe
-    (bindFocus.onFocusIn: number);
+    ;(bindFocus.onFocusIn: number)
     // $FlowFixMe
-    (bindFocus.onFocusOut: number);
-    return null;
-  };
+    ;(bindFocus.onFocusOut: number)
+    return null
+  }
   const onChange = ({ isFocus }) => {
-    (isFocus: boolean);
+    ;(isFocus: boolean)
     // $FlowFixMe
-    (isFocus: number);
-  };
-  [
+    ;(isFocus: number)
+  }
+  ;[
     <Focus render={render} />,
     <Focus>{render}</Focus>,
     <Focus onChange={onChange} render={noop} />,
     <Focus onChange={onChange}>{noop}</Focus>,
     // $FlowFixMe
-    <Focus />
-  ];
+    <Focus />,
+  ]
 }
 
 {
   const render = ({ input }) => {
-    const name = input("a");
-    (name.value: string);
-    name.setValue("");
-    (name.bind.value: string);
-    (name.bind.onChange: Function);
+    const name = input('a')
+    ;(name.value: string)
+    name.setValue('')
+    ;(name.bind.value: string)
+    ;(name.bind.onChange: Function)
     // $FlowFixMe
-    input("b");
+    input('b')
     // $FlowFixMe
-    (name.value: number);
+    ;(name.value: number)
     // $FlowFixMe
-    name.setValue(0);
+    name.setValue(0)
     // $FlowFixMe
-    (name.bind.value: number);
+    ;(name.bind.value: number)
     // $FlowFixMe
-    (name.bind.onChange: number);
-  };
+    ;(name.bind.onChange: number)
+  }
   const onChange = data => {
-    (data.a: string);
+    ;(data.a: string)
     // $FlowFixMe
-    (data.a: number);
-  };
-  [
-    <Form initial={{ a: "" }} render={render} />,
-    <Form initial={{ a: "" }}>{render}</Form>,
-    <Form initial={{ a: "" }} onChange={onChange} render={noop} />,
-    <Form initial={{ a: "" }} onChange={onChange}>
+    ;(data.a: number)
+  }
+  ;[
+    <Form initial={{ a: '' }} render={render} />,
+    <Form initial={{ a: '' }}>{render}</Form>,
+    <Form initial={{ a: '' }} onChange={onChange} render={noop} />,
+    <Form initial={{ a: '' }} onChange={onChange}>
       {noop}
     </Form>,
     // $FlowFixMe
@@ -181,56 +181,56 @@ const noop = () => null;
     // $FlowFixMe
     <Form initial={{ a: 0 }} render={noop} />,
     // $FlowFixMe
-    <Form initial={{ a: 0 }}>{noop}</Form>
-  ];
+    <Form initial={{ a: 0 }}>{noop}</Form>,
+  ]
 }
 
 {
   const render = ({ isHover, bindHover }) => {
-    (isHover: boolean);
-    (bindHover.onMouseEnter: Function);
-    (bindHover.onMouseLeave: Function);
+    ;(isHover: boolean)
+    ;(bindHover.onMouseEnter: Function)
+    ;(bindHover.onMouseLeave: Function)
     // $FlowFixMe
-    (isHover: number);
+    ;(isHover: number)
     // $FlowFixMe
-    (bindHover.onMouseEnter: number);
+    ;(bindHover.onMouseEnter: number)
     // $FlowFixMe
-    (bindHover.onMouseLeave: number);
-    return null;
-  };
+    ;(bindHover.onMouseLeave: number)
+    return null
+  }
   const onChange = ({ isHover }) => {
-    (isHover: boolean);
+    ;(isHover: boolean)
     // $FlowFixMe
-    (isHover: number);
-  };
-  [
+    ;(isHover: number)
+  }
+  ;[
     <Hover render={render} />,
     <Hover>{render}</Hover>,
     <Hover onChange={onChange} render={noop} />,
     <Hover onChange={onChange}>{noop}</Hover>,
     // $FlowFixMe
-    <Hover />
-  ];
+    <Hover />,
+  ]
 }
 
 {
   const render = ({ index, setIndex }) => {
-    (index: number);
-    setIndex(0);
+    ;(index: number)
+    setIndex(0)
     // $FlowFixMe
-    (index: string);
+    ;(index: string)
     // $FlowFixMe
-    setIndex("");
+    setIndex('')
     // $FlowFixMe
-    setIndex();
-    return null;
-  };
+    setIndex()
+    return null
+  }
   const onChange = ({ index }) => {
-    (index: number);
+    ;(index: number)
     // $FlowFixMe
-    (index: string);
-  };
-  [
+    ;(index: string)
+  }
+  ;[
     <Index render={render} />,
     <Index>{render}</Index>,
     <Index onChange={onChange} render={noop} />,
@@ -239,35 +239,35 @@ const noop = () => null;
     // $FlowFixMe
     <Index />,
     // $FlowFixMe
-    <Index initial={""} render={noop} />
-  ];
+    <Index initial={''} render={noop} />,
+  ]
 }
 
 {
   const render = ({ list, setList, push, pull, sort }) => {
-    (list: $ReadOnlyArray<number>);
-    setList([]);
-    setList([0]);
-    push(0);
-    pull((d: number) => true);
-    sort((a: number, b: number) => -1);
+    ;(list: $ReadOnlyArray<number>)
+    setList([])
+    setList([0])
+    push(0)
+    pull((d: number) => true)
+    sort((a: number, b: number) => -1)
     // $FlowFixMe
-    (list: $ReadOnlyArray<string>);
+    ;(list: $ReadOnlyArray<string>)
     //$FlowFixMe
-    setList([""]);
+    setList([''])
     //$FlowFixMe
-    push("");
+    push('')
     //$FlowFixMe
-    pull((d: string) => true);
+    pull((d: string) => true)
     //$FlowFixMe
-    sort((a: string, b: string) => -1);
-  };
+    sort((a: string, b: string) => -1)
+  }
   const onChange = ({ list }) => {
-    (list: $ReadOnlyArray<number>);
+    ;(list: $ReadOnlyArray<number>)
     // $FlowFixMe
-    (list: $ReadOnlyArray<string>);
-  };
-  [
+    ;(list: $ReadOnlyArray<string>)
+  }
+  ;[
     <List initial={([]: $ReadOnlyArray<number>)} render={render} />,
     <List initial={([]: $ReadOnlyArray<number>)}>{render}</List>,
     <List
@@ -287,29 +287,29 @@ const noop = () => null;
     // $FlowFixMe
     <List initial={{ a: 0 }} render={noop} />,
     // $FlowFixMe
-    <List initial={{ a: 0 }}>{noop}</List>
-  ];
+    <List initial={{ a: 0 }}>{noop}</List>,
+  ]
 }
 
 {
   const render = ({ isLoading, toggleLoading, setLoading }) => {
-    (isLoading: boolean);
-    toggleLoading();
-    setLoading(true);
+    ;(isLoading: boolean)
+    toggleLoading()
+    setLoading(true)
     // $FlowFixMe
-    (isLoading: number);
+    ;(isLoading: number)
     // $FlowFixMe
-    toggleLoading(true);
+    toggleLoading(true)
     // $FlowFixMe
-    setLoading(0);
-    return null;
-  };
+    setLoading(0)
+    return null
+  }
   const onChange = ({ isLoading }) => {
-    (isLoading: boolean);
+    ;(isLoading: boolean)
     // $FlowFixMe
-    (isLoading: number);
-  };
-  [
+    ;(isLoading: number)
+  }
+  ;[
     <Loading render={render} />,
     <Loading>{render}</Loading>,
     <Loading onChange={onChange} render={noop} />,
@@ -318,66 +318,66 @@ const noop = () => null;
     // $FlowFixMe
     <Loading />,
     // $FlowFixMe
-    <Loading initial={""} render={noop} />
-  ];
+    <Loading initial={''} render={noop} />,
+  ]
 }
 
 {
   const render = ({ values, set, over, get }) => {
-    (values.a: number);
-    set('a', 0);
-    over('a', (d: number) => d);
-    (get('a'): number);
+    ;(values.a: number)
+    set('a', 0)
+    over('a', (d: number) => d)
+    ;(get('a'): number)
     // $FlowFixMe
-    (values.a: string);
+    ;(values.a: string)
     // TODO should fail
-    set('a', '');
+    set('a', '')
     // $FlowFixMe
-    set('b', 0);
+    set('b', 0)
     // $FlowFixMe
-    over('a', (d: string) => d);
+    over('a', (d: string) => d)
     // TODO should fail
-    over('a', () => '');
+    over('a', () => '')
     // $FlowFixMe
-    (get('a'): string);
-    return null;
-  };
+    ;(get('a'): string)
+    return null
+  }
   const onChange = values => {
-    (values.a: number);
+    ;(values.a: number)
     // $FlowFixMe
-    (values.a: string);
-  };
-  [
+    ;(values.a: string)
+  }
+  ;[
     <Set initial={{ a: 0 }} render={render} />,
     <Set initial={{ a: 0 }}>{render}</Set>,
     <Set initial={{ a: 0 }} onChange={onChange} render={noop} />,
     <Set initial={{ a: 0 }} onChange={onChange}>
       {noop}
-    </Set>
-  ];
+    </Set>,
+  ]
 }
 
 /* State with inferred generic */
 {
   const render = ({ state, setState }) => {
-    (state.v: number);
-    setState({});
-    setState({ v: 1 });
+    ;(state.v: number)
+    setState({})
+    setState({ v: 1 })
     // $FlowFixMe
-    (state.v: string);
+    ;(state.v: string)
     // $FlowFixMe
-    setState({ v: "" });
+    setState({ v: '' })
     // $FlowFixMe
-    setState({ t: 1 });
+    setState({ t: 1 })
     // $FlowFixMe
-    setState({ n: 2 });
-  };
+    setState({ n: 2 })
+  }
   const onChange = state => {
-    (state.v: number);
+    ;(state.v: number)
     // $FlowFixMe
-    (state.v: string);
-  };
-  [
+    ;(state.v: string)
+  }
+  ;[
     <State initial={{ v: 0, n: null }} render={render} />,
     <State initial={{ v: 0, n: null }}>{render}</State>,
     <State initial={{ v: 0, n: null }} onChange={onChange} render={noop} />,
@@ -389,49 +389,49 @@ const noop = () => null;
     // $FlowFixMe
     <State render={noop} />,
     // $FlowFixMe
-    <State initial={0} render={noop} />
-  ];
+    <State initial={0} render={noop} />,
+  ]
 }
 
 /* State with specified generic */
 {
   const render1 = ({ state, setState }) => {
-    (state.n: ?number);
-    setState({});
-    setState({ n: 1 });
+    ;(state.n: ?number)
+    setState({})
+    setState({ n: 1 })
     // $FlowFixMe
-    (state.n: number);
+    ;(state.n: number)
     // $FlowFixMe
-    setState({ n: "" });
-  };
-  [
+    setState({ n: '' })
+  }
+  ;[
     <State initial={({ n: null }: { n: ?number })} render={render1} />,
-    <State initial={({ n: null }: { n: ?number })}>{render1}</State>
-  ];
+    <State initial={({ n: null }: { n: ?number })}>{render1}</State>,
+  ]
 }
 
 {
   const render = ({ on, off, toggle, setOn }) => {
-    (on: boolean);
-    (off: boolean);
-    toggle();
-    setOn(true);
+    ;(on: boolean)
+    ;(off: boolean)
+    toggle()
+    setOn(true)
     // $FlowFixMe
-    (on: number);
+    ;(on: number)
     // $FlowFixMe
-    (off: number);
+    ;(off: number)
     // $FlowFixMe
-    toggle(true);
+    toggle(true)
     // $FlowFixMe
-    setOn(0);
-    return null;
-  };
+    setOn(0)
+    return null
+  }
   const onChange = ({ on }) => {
-    (on: boolean);
+    ;(on: boolean)
     // $FlowFixMe
-    (on: number);
-  };
-  [
+    ;(on: number)
+  }
+  ;[
     <Toggle render={render} />,
     <Toggle>{render}</Toggle>,
     <Toggle onChange={onChange} render={noop} />,
@@ -440,34 +440,34 @@ const noop = () => null;
     // $FlowFixMe
     <Toggle />,
     // $FlowFixMe
-    <Toggle initial={""} render={noop} />
-  ];
+    <Toggle initial={''} render={noop} />,
+  ]
 }
 
 {
   const render = ({ value, setValue }) => {
-    (value: string);
-    setValue("");
+    ;(value: string)
+    setValue('')
     // $FlowFixMe
-    (value: number);
+    ;(value: number)
     // $FlowFixMe
-    setValue(0);
-    return null;
-  };
+    setValue(0)
+    return null
+  }
   const onChange = ({ value }) => {
-    (value: string);
+    ;(value: string)
     // $FlowFixMe
-    (value: number);
-  };
-  [
+    ;(value: number)
+  }
+  ;[
     <Value render={render} />,
     <Value>{render}</Value>,
     <Value onChange={onChange} render={noop} />,
     <Value onChange={onChange}>{noop}</Value>,
-    <Value initial={""} render={noop} />,
+    <Value initial={''} render={noop} />,
     // $FlowFixMe
     <Value />,
     // $FlowFixMe
-    <Value initial={0} render={noop} />
-  ];
+    <Value initial={0} render={noop} />,
+  ]
 }

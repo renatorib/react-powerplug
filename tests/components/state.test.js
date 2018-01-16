@@ -1,32 +1,29 @@
 import React from 'react'
+import TestRenderer from 'react-test-renderer'
 import { State } from '../../src'
-import { mount } from 'enzyme'
+import { last } from './utils'
 
-it('State integration test', () => {
-  let sideValue = 0;
-  const wrapper = mount(
-    <State
-      initial={{ myValue: 1 }}
-      onChange={(state) => { sideValue = state.myValue }}
-    >
-      {({ state, setState }) => (
-        <div
-          data-setState
-          onClick={() => setState(prev => ({ myValue: prev.myValue + 1 }))}
-        >
-          {JSON.stringify(state)}
-        </div>
-      )}
+test('State integration test', () => {
+  const onChangeFn = jest.fn()
+  const renderFn = jest.fn().mockReturnValue(null)
+  const wrapper = TestRenderer.create(
+    <State initial={{ myValue: 1 }} onChange={onChangeFn}>
+      {renderFn}
     </State>
   )
 
   // Initial values
-  expect(JSON.parse(wrapper.text())).toEqual({ myValue: 1 })
-  expect(sideValue).toBe(0)
+  expect(renderFn).lastCalledWith({
+    state: { myValue: 1 },
+    setState: expect.any(Function),
+  })
 
-  wrapper.find('[data-setState]').simulate('click')
+  last(renderFn.mock.calls)[0].setState({ myValue: 2 })
 
-  // Values after onClick
-  expect(JSON.parse(wrapper.text())).toEqual({ myValue: 2 })
-  expect(sideValue).toBe(2)
+  // Values after setState
+  expect(renderFn).lastCalledWith({
+    state: { myValue: 2 },
+    setState: expect.any(Function),
+  })
+  expect(onChangeFn).toBeCalledWith({ myValue: 2 })
 })
