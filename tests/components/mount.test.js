@@ -1,24 +1,49 @@
 /* eslint-disable no-console */
 
 import React from 'react'
+import TestRenderer from 'react-test-renderer'
 import PP from '../../src'
-import { mount } from 'enzyme'
 
-console.warn = jest.genMockFunction()
-console.trace = jest.genMockFunction()
+test('<Active />', () => {
+  TestRenderer.create(<PP.Active />)
+})
+test('<Bind />', () => {
+  TestRenderer.create(<PP.Bind />)
+})
+test('<Counter />', () => {
+  TestRenderer.create(<PP.Counter />)
+})
+test('<Focus />', () => {
+  TestRenderer.create(<PP.Focus />)
+})
+test('<Form />', () => {
+  TestRenderer.create(<PP.Form />)
+})
+test('<Hover />', () => {
+  TestRenderer.create(<PP.Hover />)
+})
+test('<Index />', () => {
+  TestRenderer.create(<PP.Index />)
+})
+test('<List />', () => {
+  TestRenderer.create(<PP.List />)
+})
+test('<Loading />', () => {
+  TestRenderer.create(<PP.Loading />)
+})
+test('<Set />', () => {
+  TestRenderer.create(<PP.Set />)
+})
+test('<State />', () => {
+  TestRenderer.create(<PP.State />)
+})
+test('<Toggle />', () => {
+  TestRenderer.create(<PP.Toggle />)
+})
+test('<Value />', () => {
+  TestRenderer.create(<PP.Value />)
+})
 
-test('<Active />', () => { mount(<PP.Active />) })
-test('<Bind />', () => { mount(<PP.Bind />) })
-test('<Counter />', () => { mount(<PP.Counter />) })
-test('<Focus />', () => { mount(<PP.Focus />) })
-test('<Form />', () => { mount(<PP.Form />) })
-test('<Hover />', () => { mount(<PP.Hover />) })
-test('<Index />', () => { mount(<PP.Index />) })
-test('<List />', () => { mount(<PP.List />) })
-test('<Loading />', () => { mount(<PP.Loading />) })
-test('<Set />', () => { mount(<PP.Set />) })
-test('<State />', () => { mount(<PP.State />) })
-test('<Toggle />', () => { mount(<PP.Toggle />) })
-test('<Value />', () => { mount(<PP.Value />) })
-
-test('<Compose />', () => { mount(<PP.Compose states={[<PP.Toggle />, <PP.Counter />]} />) })
+test('<Compose />', () => {
+  TestRenderer.create(<PP.Compose states={[<PP.Toggle />, <PP.Counter />]} />)
+})
