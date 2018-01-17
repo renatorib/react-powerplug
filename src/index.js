@@ -9,6 +9,7 @@ import Index from './components/Index'
 import List from './components/List'
 import Loading from './components/Loading'
 import Map from './components/Map'
+import Set from './components/Set'
 import State from './components/State'
 import Toggle from './components/Toggle'
 import Value from './components/Value'
@@ -28,6 +29,7 @@ export {
   List,
   Loading,
   Map,
+  Set,
   State,
   Toggle,
   Value,
@@ -47,6 +49,7 @@ export default {
   List,
   Loading,
   Map,
+  Set,
   State,
   Toggle,
   Value,
