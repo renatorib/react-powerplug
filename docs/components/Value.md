@@ -1,6 +1,6 @@
 # Value
 
-The Value component is a generic component to store a some raw string/number value.
+The Value component is a generic component to store a some raw string value.
 
 ```js
 import { Value } from 'react-powerplug'
@@ -41,7 +41,7 @@ import { Value } from 'react-powerplug'
 ## Value Props
 
 **initial = ''** *(optional)*  
-Specifies the initial value state, must be an string or number.  
+Specifies the initial value state, must be a string.  
 By default, the initial value state is an empty string.
 
 ## Value Children Props
@@ -49,11 +49,11 @@ By default, the initial value state is an empty string.
 TL;DR: `{ value, setValue }`
 
 **value**   
-`number`  
+`string`  
 Your value state
 
 **setValue**  
-`(value: string | number) => void`  
+`(value: string) => void`  
 Set the value state
 
 
