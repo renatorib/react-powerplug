@@ -159,11 +159,11 @@ declare export var Loading: React.ComponentType<
   | {| initial?: boolean, onChange?: LoadingChange, children: LoadingRender |}
 >
 
-/* RealSet */
+/* Set */
 
-type RealSetChange<T> = ({| values: $ReadOnlyArray<T> |}) => void
+type SetChange<T> = ({| values: $ReadOnlyArray<T> |}) => void
 
-type RealSetRender<T> = ({|
+type SetRender<T> = ({|
   values: $ReadOnlyArray<T>,
   add: (key: T) => void,
   clear: () => void,
@@ -171,25 +171,25 @@ type RealSetRender<T> = ({|
   has: (key: T) => boolean,
 |}) => React.Node
 
-type RealSetProps<T> =
+type SetProps<T> =
   | {|
       initial: $ReadOnlyArray<T>,
-      onChange?: RealSetChange<T>,
-      render: RealSetRender<T>,
+      onChange?: SetChange<T>,
+      render: SetRender<T>,
     |}
   | {|
       initial: $ReadOnlyArray<T>,
-      onChange?: RealSetChange<T>,
-      children: RealSetRender<T>,
+      onChange?: SetChange<T>,
+      children: SetRender<T>,
     |}
 
-declare export class RealSet<T> extends React.Component<RealSetProps<T>> {}
+declare export class Set<T> extends React.Component<SetProps<T>> {}
 
-/* RealSet */
+/* Set */
 
-type RealSetChange<T> = ({| values: $ReadOnlyArray<T> |}) => void
+type SetChange<T> = ({| values: $ReadOnlyArray<T> |}) => void
 
-type RealSetRender<T> = ({|
+type SetRender<T> = ({|
   values: $ReadOnlyArray<T>,
   add: (key: T) => void,
   clear: () => void,
@@ -197,19 +197,19 @@ type RealSetRender<T> = ({|
   has: (key: T) => boolean,
 |}) => React.Node
 
-type RealSetProps<T> =
+type SetProps<T> =
   | {|
       initial: $ReadOnlyArray<T>,
-      onChange?: RealSetChange<T>,
-      render: RealSetRender<T>,
+      onChange?: SetChange<T>,
+      render: SetRender<T>,
     |}
   | {|
       initial: $ReadOnlyArray<T>,
-      onChange?: RealSetChange<T>,
-      children: RealSetRender<T>,
+      onChange?: SetChange<T>,
+      children: SetRender<T>,
     |}
 
-declare export class RealSet<T> extends React.Component<RealSetProps<T>> {}
+declare export class Set<T> extends React.Component<SetProps<T>> {}
 
 /* Map */
 

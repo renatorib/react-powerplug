@@ -9,7 +9,6 @@ import Index from './components/Index'
 import List from './components/List'
 import Loading from './components/Loading'
 import Map from './components/Map'
-import RealSet from './components/RealSet'
 import Set from './components/Set'
 import State from './components/State'
 import Toggle from './components/Toggle'
@@ -30,7 +29,7 @@ export {
   List,
   Loading,
   Map,
-  RealSet,
+  Set,
   State,
   Toggle,
   Value,
@@ -50,7 +49,7 @@ export default {
   List,
   Loading,
   Map,
-  RealSet,
+  Set,
   State,
   Toggle,
   Value,

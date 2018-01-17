@@ -12,7 +12,7 @@ import {
   List,
   Loading,
   Map,
-  RealSet,
+  Set,
   State,
   Toggle,
   Value,
@@ -349,19 +349,16 @@ const noop = () => null
     ;(values: $ReadOnlyArray<number>)
   }
   ;[
-    <RealSet initial={([]: $ReadOnlyArray<number | string>)} render={render} />,
-    <RealSet initial={([]: $ReadOnlyArray<number | string>)}>{render}</RealSet>,
-    <RealSet
+    <Set initial={([]: $ReadOnlyArray<number | string>)} render={render} />,
+    <Set initial={([]: $ReadOnlyArray<number | string>)}>{render}</Set>,
+    <Set
       initial={([]: $ReadOnlyArray<number | string>)}
       onChange={onChange}
       render={noop}
     />,
-    <RealSet
-      initial={([]: $ReadOnlyArray<number | string>)}
-      onChange={onChange}
-    >
+    <Set initial={([]: $ReadOnlyArray<number | string>)} onChange={onChange}>
       {noop}
-    </RealSet>,
+    </Set>,
   ]
 }
 
