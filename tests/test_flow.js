@@ -11,7 +11,7 @@ import {
   Index,
   List,
   Loading,
-  Set,
+  Map,
   State,
   Toggle,
   Value,
@@ -348,12 +348,12 @@ const noop = () => null
     ;(values.a: string)
   }
   ;[
-    <Set initial={{ a: 0 }} render={render} />,
-    <Set initial={{ a: 0 }}>{render}</Set>,
-    <Set initial={{ a: 0 }} onChange={onChange} render={noop} />,
-    <Set initial={{ a: 0 }} onChange={onChange}>
+    <Map initial={{ a: 0 }} render={render} />,
+    <Map initial={{ a: 0 }}>{render}</Map>,
+    <Map initial={{ a: 0 }} onChange={onChange} render={noop} />,
+    <Map initial={{ a: 0 }} onChange={onChange}>
       {noop}
-    </Set>,
+    </Map>,
   ]
 }
 
