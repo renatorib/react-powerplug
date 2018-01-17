@@ -185,6 +185,32 @@ type RealSetProps<T> =
 
 declare export class RealSet<T> extends React.Component<RealSetProps<T>> {}
 
+/* RealSet */
+
+type RealSetChange<T> = ({| values: $ReadOnlyArray<T> |}) => void
+
+type RealSetRender<T> = ({|
+  values: $ReadOnlyArray<T>,
+  add: (key: T) => void,
+  clear: () => void,
+  remove: (key: T) => void,
+  has: (key: T) => boolean,
+|}) => React.Node
+
+type RealSetProps<T> =
+  | {|
+      initial: $ReadOnlyArray<T>,
+      onChange?: RealSetChange<T>,
+      render: RealSetRender<T>,
+    |}
+  | {|
+      initial: $ReadOnlyArray<T>,
+      onChange?: RealSetChange<T>,
+      children: RealSetRender<T>,
+    |}
+
+declare export class RealSet<T> extends React.Component<RealSetProps<T>> {}
+
 /* Map */
 
 type MapChange<T> = T => void
