@@ -8,11 +8,9 @@ import Hover from './components/Hover'
 import Index from './components/Index'
 import List from './components/List'
 import Loading from './components/Loading'
-<<<<<<< HEAD
 import Map from './components/Map'
-=======
+import RealSet from './components/RealSet'
 import Set from './components/Set'
->>>>>>> fix index exports
 import State from './components/State'
 import Toggle from './components/Toggle'
 import Value from './components/Value'
@@ -31,11 +29,8 @@ export {
   Index,
   List,
   Loading,
-<<<<<<< HEAD
   Map,
-=======
-  Set,
->>>>>>> fix index exports
+  RealSet,
   State,
   Toggle,
   Value,
@@ -55,6 +50,7 @@ export default {
   List,
   Loading,
   Map,
+  RealSet,
   State,
   Toggle,
   Value,

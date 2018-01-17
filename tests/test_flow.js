@@ -12,6 +12,7 @@ import {
   List,
   Loading,
   Map,
+  RealSet,
   State,
   Toggle,
   Value,
@@ -319,6 +320,48 @@ const noop = () => null
     <Loading />,
     // $FlowFixMe
     <Loading initial={''} render={noop} />,
+  ]
+}
+
+{
+  const render = ({ values, add, clear, remove, has }) => {
+    ;(values: $ReadOnlyArray<number | string>)
+    add(0)
+    add('')
+    remove(0)
+    remove('')
+    ;(has(0): boolean)
+    ;(has(''): boolean)
+    clear()
+    // $FlowFixMe
+    ;(values: $ReadOnlyArray<number>)
+    // $FlowFixMe
+    add(true)
+    // $FlowFixMe
+    remove(true)
+    // $FlowFixMe
+    ;(has(true): boolean)
+    return null
+  }
+  const onChange = ({ values }) => {
+    ;(values: $ReadOnlyArray<number | string>)
+    // $FlowFixMe
+    ;(values: $ReadOnlyArray<number>)
+  }
+  ;[
+    <RealSet initial={([]: $ReadOnlyArray<number | string>)} render={render} />,
+    <RealSet initial={([]: $ReadOnlyArray<number | string>)}>{render}</RealSet>,
+    <RealSet
+      initial={([]: $ReadOnlyArray<number | string>)}
+      onChange={onChange}
+      render={noop}
+    />,
+    <RealSet
+      initial={([]: $ReadOnlyArray<number | string>)}
+      onChange={onChange}
+    >
+      {noop}
+    </RealSet>,
   ]
 }
 
