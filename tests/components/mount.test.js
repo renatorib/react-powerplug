@@ -2,7 +2,7 @@
 
 import React from 'react'
 import TestRenderer from 'react-test-renderer'
-import PP from '../../src'
+import * as PP from '../../src'
 
 test('<Active />', () => {
   TestRenderer.create(<PP.Active />)
@@ -30,9 +30,6 @@ test('<List />', () => {
 })
 test('<Loading />', () => {
   TestRenderer.create(<PP.Loading />)
-})
-test('<Set />', () => {
-  TestRenderer.create(<PP.Set />)
 })
 test('<State />', () => {
   TestRenderer.create(<PP.State />)

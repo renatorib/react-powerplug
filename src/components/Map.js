@@ -2,7 +2,7 @@ import React from 'react'
 import State from './State'
 import renderProps from '../utils/renderProps'
 
-const Set = ({ initial = {}, onChange, ...props }) => (
+const Map = ({ initial = {}, onChange, ...props }) => (
   <State initial={{ ...initial }} onChange={ onChange }>
     {({ state, setState }) => renderProps(props, {
       values: state,
@@ -13,4 +13,4 @@ const Set = ({ initial = {}, onChange, ...props }) => (
   </State>
 )
 
-export default Set
+export default Map
