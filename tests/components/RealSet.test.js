@@ -5,7 +5,7 @@ import { last } from './utils'
 
 test('<RealSet />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
-  TestRenderer.create(<plug.RealSet initial={[1, 2, 3]} render={renderFn} />)
+  TestRenderer.create(<plug.RealSet initial={[1, 2, 3, 1, 3]} render={renderFn} />)
   const lastCalled = () => last(renderFn.mock.calls)[0]
 
   expect(renderFn).toHaveBeenCalledTimes(1)
