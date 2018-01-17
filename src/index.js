@@ -8,6 +8,7 @@ import Hover from './components/Hover'
 import Index from './components/Index'
 import List from './components/List'
 import Loading from './components/Loading'
+import RealSet from './components/RealSet'
 import Set from './components/Set'
 import State from './components/State'
 import Toggle from './components/Toggle'
@@ -27,6 +28,7 @@ export {
   Index,
   List,
   Loading,
+  RealSet,
   Set,
   State,
   Toggle,
@@ -46,6 +48,7 @@ export default {
   Index,
   List,
   Loading,
+  RealSet,
   Set,
   State,
   Toggle,
