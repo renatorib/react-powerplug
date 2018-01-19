@@ -23,10 +23,21 @@
     "test:lib": "jest --setupTestFrameworkScriptFile ./tests/jestLibSetup.js",
     "test:all": "npm run build && npm run test:only && npm run test:bundle && npm run test:lib",
     "test": "npm run test:all",
+    "precommit": "lint-staged",
     "prepublishOnly": "npm run lint && npm run clean && npm run build"
   },
+  "lint-staged": {
+    "*.{js,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "jest": {
-    "transformIgnorePatterns": ["/node_modules/", "/lib/", "/dist/"]
+    "transformIgnorePatterns": [
+      "/node_modules/",
+      "/lib/",
+      "/dist/"
+    ]
   },
   "repository": {
     "type": "git",
@@ -69,7 +80,10 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-react": "^7.3.0",
     "flow-bin": "^0.63.1",
+    "husky": "^0.14.3",
     "jest": "^22.1.1",
+    "lint-staged": "^6.0.0",
+    "prettier": "^1.10.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-test-renderer": "^16.2.0",
