@@ -104,20 +104,6 @@ declare export var Hover: React.ComponentType<
   | {| onChange?: HoverChange, children: HoverRender |}
 >
 
-/* Index */
-
-type IndexChange = ({| index: number |}) => void
-
-type IndexRender = ({|
-  index: number,
-  setIndex: (step: number) => void,
-|}) => React.Node
-
-declare export var Index: React.ComponentType<
-  | {| initial?: number, onChange?: IndexChange, render: IndexRender |}
-  | {| initial?: number, onChange?: IndexChange, children: IndexRender |}
->
-
 /* List */
 
 type ListChange<T> = ({| list: $ReadOnlyArray<T> |}) => void
@@ -185,32 +171,6 @@ type SetProps<T> =
 
 declare export class Set<T> extends React.Component<SetProps<T>> {}
 
-/* Set */
-
-type SetChange<T> = ({| values: $ReadOnlyArray<T> |}) => void
-
-type SetRender<T> = ({|
-  values: $ReadOnlyArray<T>,
-  add: (key: T) => void,
-  clear: () => void,
-  remove: (key: T) => void,
-  has: (key: T) => boolean,
-|}) => React.Node
-
-type SetProps<T> =
-  | {|
-      initial: $ReadOnlyArray<T>,
-      onChange?: SetChange<T>,
-      render: SetRender<T>,
-    |}
-  | {|
-      initial: $ReadOnlyArray<T>,
-      onChange?: SetChange<T>,
-      children: SetRender<T>,
-    |}
-
-declare export class Set<T> extends React.Component<SetProps<T>> {}
-
 /* Map */
 
 type MapChange<T> = T => void
@@ -241,10 +201,7 @@ type StateProps<T> =
   | {| initial: T, onChange?: StateChange<T>, render: StateRender<T> |}
   | {| initial: T, onChange?: StateChange<T>, children: StateRender<T> |}
 
-declare export class State<T: Object> extends React.Component<
-  StateProps<T>,
-  *
-> {}
+declare export class State<T: Object> extends React.Component<StateProps<T>> {}
 
 /* Toggle */
 
@@ -264,14 +221,15 @@ declare export var Toggle: React.ComponentType<
 
 /* Value */
 
-type ValueChange = ({| value: string |}) => void
+type ValueChange<T> = ({| value: T |}) => void
 
-type ValueRender = ({|
-  value: string,
-  setValue: string => void,
+type ValueRender<T> = ({|
+  value: T,
+  setValue: T => void,
 |}) => React.Node
 
-declare export var Value: React.ComponentType<
-  | {| initial?: string, onChange?: ValueChange, render: ValueRender |}
-  | {| initial?: string, onChange?: ValueChange, children: ValueRender |}
->
+type ValueProps<T> =
+  | {| initial: T, onChange?: ValueChange<T>, render: ValueRender<T> |}
+  | {| initial: T, onChange?: ValueChange<T>, children: ValueRender<T> |}
+
+declare export class Value<T> extends React.Component<ValueProps<T>> {}
