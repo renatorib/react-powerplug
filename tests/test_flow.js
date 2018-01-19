@@ -8,7 +8,6 @@ import {
   Focus,
   Form,
   Hover,
-  Index,
   List,
   Loading,
   Map,
@@ -211,36 +210,6 @@ const noop = () => null
     <Hover onChange={onChange}>{noop}</Hover>,
     // $FlowFixMe
     <Hover />,
-  ]
-}
-
-{
-  const render = ({ index, setIndex }) => {
-    ;(index: number)
-    setIndex(0)
-    // $FlowFixMe
-    ;(index: string)
-    // $FlowFixMe
-    setIndex('')
-    // $FlowFixMe
-    setIndex()
-    return null
-  }
-  const onChange = ({ index }) => {
-    ;(index: number)
-    // $FlowFixMe
-    ;(index: string)
-  }
-  ;[
-    <Index render={render} />,
-    <Index>{render}</Index>,
-    <Index onChange={onChange} render={noop} />,
-    <Index onChange={onChange}>{noop}</Index>,
-    <Index initial={0} render={noop} />,
-    // $FlowFixMe
-    <Index />,
-    // $FlowFixMe
-    <Index initial={''} render={noop} />,
   ]
 }
 
@@ -484,30 +453,49 @@ const noop = () => null
   ]
 }
 
+/* Value with inferred generic */
 {
   const render = ({ value, setValue }) => {
-    ;(value: string)
-    setValue('')
+    (value: number | string | boolean);
     // $FlowFixMe
-    ;(value: number)
+    (value: number);
     // $FlowFixMe
-    setValue(0)
-    return null
+    (value: string);
+    // $FlowFixMe
+    (value: boolean);
+    setValue(true);
   }
   const onChange = ({ value }) => {
-    ;(value: string)
+    (value: number | string);
+    // $FlowFixMe
+    (value: number);
+    // $FlowFixMe
+    (value: string);
+  }
+  ;[
+    <Value initial={0} render={render} />,
+    <Value initial={''}>{render}</Value>,
+    <Value initial={1} onChange={onChange} render={noop} />,
+    <Value initial={''} onChange={onChange}>
+      {noop}
+    </Value>,
+    // $FlowFixMe
+    <Value />,
+    // $FlowFixMe
+    <Value render={noop} />,
+  ]
+}
+
+/* Value with specified generic */
+{
+  const render1 = ({ value, setValue }) => {
+    ;(value: number | string)
+    setValue('');
     // $FlowFixMe
     ;(value: number)
   }
   ;[
-    <Value render={render} />,
-    <Value>{render}</Value>,
-    <Value onChange={onChange} render={noop} />,
-    <Value onChange={onChange}>{noop}</Value>,
-    <Value initial={''} render={noop} />,
-    // $FlowFixMe
-    <Value />,
-    // $FlowFixMe
-    <Value initial={0} render={noop} />,
+    <Value initial={(0: number)} render={render1} />,
+    <Value initial={(0: number)}>{render1}</Value>,
   ]
 }

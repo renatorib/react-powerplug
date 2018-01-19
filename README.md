@@ -19,7 +19,7 @@ It's has been created to (but not limited to) use with **storybook, react styleg
 ### Quick examples:
 
 ```jsx
-import { State, Index, Toggle } from 'react-powerplug'
+import { State, Toggle } from 'react-powerplug'
 import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 
 <State initial={{ offset: 0, limit: 10, totalCount: 200 }}>
@@ -27,15 +27,6 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
     <Pagination {...state} onChange={(offset) => setState({ offset })} />
   )}
 </State>
-
-<Index initial={0}>
-  {({ index, setIndex }) => (
-    <Tabs selected={index} onChange={setIndex}>
-      <Tab title="First tab">Content from the first tab</Tab>
-      <Tab title="Second tab">Content from the second tab</Tab>
-    </Tabs>
-  )}
-</Index>
 
 <Toggle initial={true}>
   {({ on, toggle }) => (
@@ -133,23 +124,6 @@ _If you want a more detailed **API Reference** and examples for each component s
     />
   )}
 </Value>
-```
-
-### Index
-
-**Component Props:** `{ initial }`  
-**Render Props:** `{ index, setIndex }`  
-[see docs](docs/components/Index.md)
-
-```jsx
-<Index initial={0}>
-  {({ index, setIndex }) => (
-    <Tabs selected={index} onChange={setIndex}>
-      <Tab title="First tab">Content from the first tab</Tab>
-      <Tab title="Second tab">Content from the second tab</Tab>
-    </Tabs>
-  )}
-</Index>
 ```
 
 ### Map

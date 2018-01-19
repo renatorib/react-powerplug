@@ -5,7 +5,6 @@ import Counter from './components/Counter'
 import Focus from './components/Focus'
 import Form from './components/Form'
 import Hover from './components/Hover'
-import Index from './components/Index'
 import List from './components/List'
 import Loading from './components/Loading'
 import Map from './components/Map'
@@ -25,7 +24,6 @@ export {
   Focus,
   Form,
   Hover,
-  Index,
   List,
   Loading,
   Map,
@@ -45,7 +43,6 @@ export default {
   Focus,
   Form,
   Hover,
-  Index,
   List,
   Loading,
   Map,

@@ -22,9 +22,6 @@ test('<Form />', () => {
 test('<Hover />', () => {
   TestRenderer.create(<PP.Hover />)
 })
-test('<Index />', () => {
-  TestRenderer.create(<PP.Index />)
-})
 test('<List />', () => {
   TestRenderer.create(<PP.List />)
 })
@@ -36,9 +33,6 @@ test('<State />', () => {
 })
 test('<Toggle />', () => {
   TestRenderer.create(<PP.Toggle />)
-})
-test('<Value />', () => {
-  TestRenderer.create(<PP.Value />)
 })
 
 test('<Compose />', () => {
