@@ -82,18 +82,22 @@ const noop = () => null
 }
 
 {
-  const render = ({ count, inc, dec }) => {
+  const render = ({ count, inc, dec, incBy, decBy }) => {
     ;(count: number)
     inc()
-    inc(0)
     dec()
-    dec(0)
+    incBy(0)
+    decBy(0)
     // $FlowFixMe
     ;(count: string)
     // $FlowFixMe
     inc('')
     // $FlowFixMe
     dec('')
+    // $FlowFixMe
+    incBy('')
+    // $FlowFixMe
+    decBy('')
     return null
   }
   const onChange = ({ count }) => {
@@ -456,21 +460,21 @@ const noop = () => null
 /* Value with inferred generic */
 {
   const render = ({ value, setValue }) => {
-    (value: number | string | boolean);
+    ;(value: number | string | boolean)
     // $FlowFixMe
-    (value: number);
+    ;(value: number)
     // $FlowFixMe
-    (value: string);
+    ;(value: string)
     // $FlowFixMe
-    (value: boolean);
-    setValue(true);
+    ;(value: boolean)
+    setValue(true)
   }
   const onChange = ({ value }) => {
-    (value: number | string);
+    ;(value: number | string)
     // $FlowFixMe
-    (value: number);
+    ;(value: number)
     // $FlowFixMe
-    (value: string);
+    ;(value: string)
   }
   ;[
     <Value initial={0} render={render} />,
@@ -490,7 +494,7 @@ const noop = () => null
 {
   const render1 = ({ value, setValue }) => {
     ;(value: number | string)
-    setValue('');
+    setValue('')
     // $FlowFixMe
     ;(value: number)
   }
