@@ -2,12 +2,12 @@
 
 import React from 'react'
 import TestRenderer from 'react-test-renderer'
-import PP from '../../src'
+import * as plug from '../../src'
 import { last } from './utils'
 
 test('<Map />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
-  TestRenderer.create(<PP.Map initial={{ a: 0 }} render={renderFn} />)
+  TestRenderer.create(<plug.Map initial={{ a: 0 }} render={renderFn} />)
   const lastCalled = () => last(renderFn.mock.calls)[0]
 
   expect(renderFn).toHaveBeenCalledTimes(1)
