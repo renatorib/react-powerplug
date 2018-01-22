@@ -10,9 +10,6 @@ test('<Active />', () => {
 test('<Bind />', () => {
   TestRenderer.create(<PP.Bind />)
 })
-test('<Counter />', () => {
-  TestRenderer.create(<PP.Counter />)
-})
 test('<Focus />', () => {
   TestRenderer.create(<PP.Focus />)
 })
