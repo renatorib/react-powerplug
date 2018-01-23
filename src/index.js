@@ -34,22 +34,3 @@ export {
   compose,
   renderProps,
 }
-
-export default {
-  Active,
-  Bind,
-  Compose,
-  Counter,
-  Focus,
-  Form,
-  Hover,
-  Index,
-  List,
-  Loading,
-  Set,
-  State,
-  Toggle,
-  Value,
-  compose,
-  renderProps,
-}
