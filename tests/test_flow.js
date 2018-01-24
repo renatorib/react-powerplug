@@ -218,8 +218,10 @@ const noop = () => null
 }
 
 {
-  const render = ({ list, setList, push, pull, sort }) => {
+  const render = ({ list, first, last, setList, push, pull, sort }) => {
     ;(list: $ReadOnlyArray<number>)
+    ;(first(): string | number | void)
+    ;(last(): string | number | void)
     setList([])
     setList([0])
     push(0)

@@ -112,6 +112,8 @@ type ListChange<T> = ({| list: $ReadOnlyArray<T> |}) => void
 
 type ListRender<T> = ({|
   list: $ReadOnlyArray<T>,
+  first: () => T | void,
+  last: () => T | void,
   setList: ($ReadOnlyArray<T>) => void,
   push: (value: T) => void,
   pull: (predicate: (T) => boolean) => void,
