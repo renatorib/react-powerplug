@@ -1,11 +1,11 @@
 import React from 'react'
 import TestRenderer from 'react-test-renderer'
-import * as plug from '../../src'
+import { Set } from '../../src'
 import { last } from './utils'
 
 test('<Set />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
-  TestRenderer.create(<plug.Set initial={[1, 2, 3, 1, 3]} render={renderFn} />)
+  TestRenderer.create(<Set initial={[1, 2, 3, 1, 3]} render={renderFn} />)
   const lastCalled = () => last(renderFn.mock.calls)[0]
 
   expect(renderFn).toHaveBeenCalledTimes(1)

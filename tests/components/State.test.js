@@ -3,10 +3,10 @@ import TestRenderer from 'react-test-renderer'
 import { State } from '../../src'
 import { last } from './utils'
 
-test('State integration test', () => {
+test('<State />', () => {
   const onChangeFn = jest.fn()
   const renderFn = jest.fn().mockReturnValue(null)
-  const wrapper = TestRenderer.create(
+  TestRenderer.create(
     <State initial={{ myValue: 1 }} onChange={onChangeFn}>
       {renderFn}
     </State>
