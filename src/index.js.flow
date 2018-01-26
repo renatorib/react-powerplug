@@ -2,6 +2,11 @@
 
 import * as React from 'react'
 
+/* Utils */
+
+type Updater<T> = (value: T | (updater: T) => T) => void
+
+
 /* Active */
 
 type ActiveChange = ({| isActive: boolean |}) => void
@@ -213,9 +218,8 @@ type ToggleChange = ({| on: boolean |}) => void
 
 type ToggleRender = ({|
   on: boolean,
-  off: boolean,
   toggle: () => void,
-  setOn: (on: boolean) => void,
+  set: Updater<boolean>
 |}) => React.Node
 
 declare export var Toggle: React.ComponentType<

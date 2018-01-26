@@ -1,3 +1,4 @@
+/* eslint-disable */
 // @flow
 
 import * as React from 'react'
@@ -426,19 +427,17 @@ const noop = () => null
 }
 
 {
-  const render = ({ on, off, toggle, setOn }) => {
+  const render = ({ on, toggle, set }) => {
     ;(on: boolean)
-    ;(off: boolean)
     toggle()
-    setOn(true)
+    set(true)
+    set(v => !v)
     // $FlowFixMe
     ;(on: number)
     // $FlowFixMe
-    ;(off: number)
-    // $FlowFixMe
     toggle(true)
     // $FlowFixMe
-    setOn(0)
+    set(0)
     return null
   }
   const onChange = ({ on }) => {
