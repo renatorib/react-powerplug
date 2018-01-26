@@ -1,15 +1,15 @@
 import { Component } from 'react'
-import renderProps from '../utils/renderProps'
-import noop from '../utils/noop'
+import { renderProps } from '../utils/renderProps'
+import { noop } from '../utils/noop'
 
-class State extends Component {
+export class State extends Component {
   static defaultProps = {
     initial: {},
     onChange: noop,
   }
 
   state = {
-    ...this.props.initial
+    ...this.props.initial,
   }
 
   _setState = (updater, cb = noop) => {
@@ -26,5 +26,3 @@ class State extends Component {
     })
   }
 }
-
-export default State
