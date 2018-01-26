@@ -1,8 +1,8 @@
 import * as React from 'react'
-import State from './State'
-import renderProps from '../utils/renderProps'
+import { State } from './State'
+import { renderProps } from '../utils/renderProps'
 
-const Touch = ({ onChange, ...props }) => (
+export const Touch = ({ onChange, ...props }) => (
   <State initial={{ isTouched: false }} onChange={onChange}>
     {({ state, setState }) =>
       renderProps(props, {
@@ -15,5 +15,3 @@ const Touch = ({ onChange, ...props }) => (
     }
   </State>
 )
-
-export default Touch

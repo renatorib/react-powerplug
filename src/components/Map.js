@@ -1,8 +1,8 @@
 import * as React from 'react'
-import State from './State'
-import renderProps from '../utils/renderProps'
+import { State } from './State'
+import { renderProps } from '../utils/renderProps'
 
-const Map = ({ initial = {}, onChange, ...props }) => (
+export const Map = ({ initial = {}, onChange, ...props }) => (
   <State initial={{ ...initial }} onChange={onChange}>
     {({ state, setState }) =>
       renderProps(props, {
@@ -14,5 +14,3 @@ const Map = ({ initial = {}, onChange, ...props }) => (
     }
   </State>
 )
-
-export default Map

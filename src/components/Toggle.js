@@ -1,9 +1,9 @@
 import * as React from 'react'
-import State from './State'
-import renderProps from '../utils/renderProps'
-import set from '../utils/set'
+import { State } from './State'
+import { renderProps } from '../utils/renderProps'
+import { set } from '../utils/set'
 
-const Toggle = ({ initial = false, onChange, ...props }) => (
+export const Toggle = ({ initial = false, onChange, ...props }) => (
   <State initial={{ on: initial }} onChange={onChange}>
     {({ state, setState }) =>
       renderProps(props, {
@@ -14,5 +14,3 @@ const Toggle = ({ initial = false, onChange, ...props }) => (
     }
   </State>
 )
-
-export default Toggle

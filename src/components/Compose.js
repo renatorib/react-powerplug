@@ -1,6 +1,3 @@
-import compose from '../utils/compose'
+import { compose } from '../utils/compose'
 
-const Compose = ({ states, ...props }) =>
-  compose(...states)(props)
-
-export default Compose
+export const Compose = ({ states, ...props }) => compose(...states)(props)

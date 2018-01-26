@@ -1,9 +1,9 @@
 import * as React from 'react'
-import State from './State'
-import renderProps from '../utils/renderProps'
-import set from '../utils/set'
+import { State } from './State'
+import { renderProps } from '../utils/renderProps'
+import { set } from '../utils/set'
 
-const Input = ({ initial = '', onChange, ...props }) => (
+export const Input = ({ initial = '', onChange, ...props }) => (
   <State initial={{ value: initial }} onChange={onChange}>
     {({ state, setState }) =>
       renderProps(props, {
@@ -17,5 +17,3 @@ const Input = ({ initial = '', onChange, ...props }) => (
     }
   </State>
 )
-
-export default Input
