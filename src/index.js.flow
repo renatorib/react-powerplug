@@ -182,6 +182,16 @@ type MapProps<T> =
 
 declare export class Map<T: Object> extends React.Component<MapProps<T>, *> {}
 
+/* Mounting */
+
+type MountingProps<T> = {|
+  onMount?: () => T,
+  onUnmount?: T => void,
+  children: React.Node,
+|}
+
+declare export class Mounting<T> extends React.Component<MountingProps<T>> {}
+
 /* State */
 
 type StateChange<T> = T => void
