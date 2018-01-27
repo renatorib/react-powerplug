@@ -4,8 +4,7 @@ import * as React from 'react'
 
 /* Utils */
 
-type Updater<T> = (value: T | (updater: T) => T) => void
-
+type Updater<T> = (value: T | ((updater: T) => T)) => void
 
 /* Active */
 
@@ -197,6 +196,16 @@ type MapProps<T> =
 
 declare export class Map<T: Object> extends React.Component<MapProps<T>, *> {}
 
+/* Mounting */
+
+type MountingProps<T> = {|
+  onMount?: () => T,
+  onUnmount?: T => void,
+  children: React.Node,
+|}
+
+declare export class Mounting<T> extends React.Component<MountingProps<T>> {}
+
 /* State */
 
 type StateChange<T> = T => void
@@ -219,7 +228,7 @@ type ToggleChange = ({| on: boolean |}) => void
 type ToggleRender = ({|
   on: boolean,
   toggle: () => void,
-  set: Updater<boolean>
+  set: Updater<boolean>,
 |}) => React.Node
 
 declare export var Toggle: React.ComponentType<
