@@ -4,8 +4,7 @@ import * as React from 'react'
 
 /* Utils */
 
-type Updater<T> = (value: T | (updater: T) => T) => void
-
+type Updater<T> = (value: T | ((updater: T) => T)) => void
 
 /* Active */
 
@@ -19,21 +18,6 @@ type ActiveRender = ({|
 declare export var Active: React.ComponentType<
   | {| onChange?: ActiveChange, render: ActiveRender |}
   | {| onChange?: ActiveChange, children: ActiveRender |}
->
-
-/* Bind */
-
-type BindChange = ({| value: string |}) => void
-
-type BindRender = ({|
-  value: string,
-  setValue: string => void,
-  bind: {| value: string, onChange: (SyntheticInputEvent<*>) => void |},
-|}) => React.Node
-
-declare export var Bind: React.ComponentType<
-  | {| initial?: string, onChange?: BindChange, render: BindRender |}
-  | {| initial?: string, onChange?: BindChange, children: BindRender |}
 >
 
 /* Compose */
@@ -76,11 +60,12 @@ declare export var Focus: React.ComponentType<
 type FormChange<T> = T => void
 
 type FormRender<T> = ({|
+  values: T,
   input: <K: $Keys<T>>(
     key: K
   ) => {|
     value: string,
-    setValue: string => void,
+    set: Updater<string>,
     bind: {|
       value: string,
       onChange: (SyntheticInputEvent<*>) => void,
@@ -111,6 +96,21 @@ declare export var Hover: React.ComponentType<
   | {| onChange?: HoverChange, children: HoverRender |}
 >
 
+/* Input */
+
+type InputChange = ({| value: string |}) => void
+
+type InputRender = ({|
+  value: string,
+  set: Updater<string>,
+  bind: {| value: string, onChange: (SyntheticInputEvent<*>) => void |},
+|}) => React.Node
+
+declare export var Bind: React.ComponentType<
+  | {| initial?: string, onChange?: InputChange, render: InputRender |}
+  | {| initial?: string, onChange?: InputChange, children: InputRender |}
+>
+
 /* List */
 
 type ListChange<T> = ({| list: $ReadOnlyArray<T> |}) => void
@@ -138,21 +138,6 @@ type ListProps<T> =
     |}
 
 declare export class List<T> extends React.Component<ListProps<T>, *> {}
-
-/* Loading */
-
-type LoadingChange = ({| isLoading: boolean |}) => void
-
-type LoadingRender = ({|
-  isLoading: boolean,
-  toggleLoading: () => void,
-  setLoading: (isLoading: boolean) => void,
-|}) => React.Node
-
-declare export var Loading: React.ComponentType<
-  | {| initial?: boolean, onChange?: LoadingChange, render: LoadingRender |}
-  | {| initial?: boolean, onChange?: LoadingChange, children: LoadingRender |}
->
 
 /* Set */
 
@@ -219,7 +204,7 @@ type ToggleChange = ({| on: boolean |}) => void
 type ToggleRender = ({|
   on: boolean,
   toggle: () => void,
-  set: Updater<boolean>
+  set: Updater<boolean>,
 |}) => React.Node
 
 declare export var Toggle: React.ComponentType<
