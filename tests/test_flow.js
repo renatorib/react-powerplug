@@ -1,3 +1,4 @@
+/* eslint-disable */
 // @flow
 
 import * as React from 'react'
@@ -8,9 +9,9 @@ import {
   Focus,
   Form,
   Hover,
-  Index,
   List,
   Loading,
+  Map,
   Set,
   State,
   Toggle,
@@ -82,18 +83,22 @@ const noop = () => null
 }
 
 {
-  const render = ({ count, inc, dec }) => {
+  const render = ({ count, inc, dec, incBy, decBy }) => {
     ;(count: number)
     inc()
-    inc(0)
     dec()
-    dec(0)
+    incBy(0)
+    decBy(0)
     // $FlowFixMe
     ;(count: string)
     // $FlowFixMe
     inc('')
     // $FlowFixMe
     dec('')
+    // $FlowFixMe
+    incBy('')
+    // $FlowFixMe
+    decBy('')
     return null
   }
   const onChange = ({ count }) => {
@@ -214,38 +219,10 @@ const noop = () => null
 }
 
 {
-  const render = ({ index, setIndex }) => {
-    ;(index: number)
-    setIndex(0)
-    // $FlowFixMe
-    ;(index: string)
-    // $FlowFixMe
-    setIndex('')
-    // $FlowFixMe
-    setIndex()
-    return null
-  }
-  const onChange = ({ index }) => {
-    ;(index: number)
-    // $FlowFixMe
-    ;(index: string)
-  }
-  ;[
-    <Index render={render} />,
-    <Index>{render}</Index>,
-    <Index onChange={onChange} render={noop} />,
-    <Index onChange={onChange}>{noop}</Index>,
-    <Index initial={0} render={noop} />,
-    // $FlowFixMe
-    <Index />,
-    // $FlowFixMe
-    <Index initial={''} render={noop} />,
-  ]
-}
-
-{
-  const render = ({ list, setList, push, pull, sort }) => {
+  const render = ({ list, first, last, setList, push, pull, sort }) => {
     ;(list: $ReadOnlyArray<number>)
+    ;(first(): string | number | void)
+    ;(last(): string | number | void)
     setList([])
     setList([0])
     push(0)
@@ -323,6 +300,45 @@ const noop = () => null
 }
 
 {
+  const render = ({ values, add, clear, remove, has }) => {
+    ;(values: $ReadOnlyArray<number | string>)
+    add(0)
+    add('')
+    remove(0)
+    remove('')
+    ;(has(0): boolean)
+    ;(has(''): boolean)
+    clear()
+    // $FlowFixMe
+    ;(values: $ReadOnlyArray<number>)
+    // $FlowFixMe
+    add(true)
+    // $FlowFixMe
+    remove(true)
+    // $FlowFixMe
+    ;(has(true): boolean)
+    return null
+  }
+  const onChange = ({ values }) => {
+    ;(values: $ReadOnlyArray<number | string>)
+    // $FlowFixMe
+    ;(values: $ReadOnlyArray<number>)
+  }
+  ;[
+    <Set initial={([]: $ReadOnlyArray<number | string>)} render={render} />,
+    <Set initial={([]: $ReadOnlyArray<number | string>)}>{render}</Set>,
+    <Set
+      initial={([]: $ReadOnlyArray<number | string>)}
+      onChange={onChange}
+      render={noop}
+    />,
+    <Set initial={([]: $ReadOnlyArray<number | string>)} onChange={onChange}>
+      {noop}
+    </Set>,
+  ]
+}
+
+{
   const render = ({ values, set, over, get }) => {
     ;(values.a: number)
     set('a', 0)
@@ -348,12 +364,12 @@ const noop = () => null
     ;(values.a: string)
   }
   ;[
-    <Set initial={{ a: 0 }} render={render} />,
-    <Set initial={{ a: 0 }}>{render}</Set>,
-    <Set initial={{ a: 0 }} onChange={onChange} render={noop} />,
-    <Set initial={{ a: 0 }} onChange={onChange}>
+    <Map initial={{ a: 0 }} render={render} />,
+    <Map initial={{ a: 0 }}>{render}</Map>,
+    <Map initial={{ a: 0 }} onChange={onChange} render={noop} />,
+    <Map initial={{ a: 0 }} onChange={onChange}>
       {noop}
-    </Set>,
+    </Map>,
   ]
 }
 
@@ -411,19 +427,17 @@ const noop = () => null
 }
 
 {
-  const render = ({ on, off, toggle, setOn }) => {
+  const render = ({ on, toggle, set }) => {
     ;(on: boolean)
-    ;(off: boolean)
     toggle()
-    setOn(true)
+    set(true)
+    set(v => !v)
     // $FlowFixMe
     ;(on: number)
     // $FlowFixMe
-    ;(off: number)
-    // $FlowFixMe
     toggle(true)
     // $FlowFixMe
-    setOn(0)
+    set(0)
     return null
   }
   const onChange = ({ on }) => {
@@ -444,30 +458,49 @@ const noop = () => null
   ]
 }
 
+/* Value with inferred generic */
 {
   const render = ({ value, setValue }) => {
-    ;(value: string)
-    setValue('')
+    ;(value: number | string | boolean)
     // $FlowFixMe
     ;(value: number)
     // $FlowFixMe
-    setValue(0)
-    return null
+    ;(value: string)
+    // $FlowFixMe
+    ;(value: boolean)
+    setValue(true)
   }
   const onChange = ({ value }) => {
+    ;(value: number | string)
+    // $FlowFixMe
+    ;(value: number)
+    // $FlowFixMe
     ;(value: string)
+  }
+  ;[
+    <Value initial={0} render={render} />,
+    <Value initial={''}>{render}</Value>,
+    <Value initial={1} onChange={onChange} render={noop} />,
+    <Value initial={''} onChange={onChange}>
+      {noop}
+    </Value>,
+    // $FlowFixMe
+    <Value />,
+    // $FlowFixMe
+    <Value render={noop} />,
+  ]
+}
+
+/* Value with specified generic */
+{
+  const render1 = ({ value, setValue }) => {
+    ;(value: number | string)
+    setValue('')
     // $FlowFixMe
     ;(value: number)
   }
   ;[
-    <Value render={render} />,
-    <Value>{render}</Value>,
-    <Value onChange={onChange} render={noop} />,
-    <Value onChange={onChange}>{noop}</Value>,
-    <Value initial={''} render={noop} />,
-    // $FlowFixMe
-    <Value />,
-    // $FlowFixMe
-    <Value initial={0} render={noop} />,
+    <Value initial={(0: number)} render={render1} />,
+    <Value initial={(0: number)}>{render1}</Value>,
   ]
 }

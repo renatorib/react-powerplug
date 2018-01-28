@@ -19,7 +19,7 @@ It's has been created to (but not limited to) use with **storybook, react styleg
 ### Quick examples:
 
 ```jsx
-import { State, Index, Toggle } from 'react-powerplug'
+import { State, Toggle } from 'react-powerplug'
 import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 
 <State initial={{ offset: 0, limit: 10, totalCount: 200 }}>
@@ -27,15 +27,6 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
     <Pagination {...state} onChange={(offset) => setState({ offset })} />
   )}
 </State>
-
-<Index initial={0}>
-  {({ index, setIndex }) => (
-    <Tabs selected={index} onChange={setIndex}>
-      <Tab title="First tab">Content from the first tab</Tab>
-      <Tab title="Second tab">Content from the second tab</Tab>
-    </Tabs>
-  )}
-</Index>
 
 <Toggle initial={true}>
   {({ on, toggle }) => (
@@ -65,12 +56,13 @@ You decide which one is best for you.
 
 # Components
 
-***Note:*** *This is a kind of a cheat sheet for fast search.*  
-*If you want a more detailed **API Reference** and examples for each component see the [Docs](/docs)*
+**_Note:_** _This is a kind of a cheat sheet for fast search._  
+_If you want a more detailed **API Reference** and examples for each component see the [Docs](/docs)_
 
 ## State Containers
 
 ### State
+
 **Component Props:** `{ initial }`  
 **Render Props:** `{ state, setState }`  
 [see docs](docs/components/State.md)
@@ -88,19 +80,19 @@ You decide which one is best for you.
 ```
 
 ### Toggle
+
 **Component Props:** `{ initial }`  
 **Render Props:** `{ on, off, toggle, setOn }`  
 [see docs](docs/components/Toggle.md)
 
 ```jsx
 <Toggle initial={true}>
-  {({ on, toggle }) => (
-    <Checkbox checked={on} onChange={toggle} />
-  )}
+  {({ on, toggle }) => <Checkbox checked={on} onChange={toggle} />}
 </Toggle>
 ```
 
 ### Loading
+
 **Component Props:** `{ initial }`  
 **Render Props:** `{ isLoading, toggle, setLoading }`  
 [see docs](docs/components/Loading.md)
@@ -116,6 +108,7 @@ You decide which one is best for you.
 ```
 
 ### Value
+
 **Component Props:** `{ initial }`  
 **Render Props:** `{ value, setValue }`  
 [see docs](docs/components/Value.md)
@@ -133,31 +126,16 @@ You decide which one is best for you.
 </Value>
 ```
 
-### Index
-**Component Props:** `{ initial }`  
-**Render Props:** `{ index, setIndex }`  
-[see docs](docs/components/Index.md)
+### Map
 
-```jsx
-<Index initial={0}>
-  {({ index, setIndex }) => (
-    <Tabs selected={index} onChange={setIndex}>
-      <Tab title="First tab">Content from the first tab</Tab>
-      <Tab title="Second tab">Content from the second tab</Tab>
-    </Tabs>
-  )}
-</Index>
-```
-
-### Set
 **Component Props:** `{ initial }`  
 **Render Props:** `{ set, get, values }`  
-[see docs](docs/components/Set.md)
+[see docs](docs/components/Map.md)
 
 ```jsx
-<Set initial={{ sounds: true, graphics: 'medium' }}>
+<Map initial={{ sounds: true, graphics: 'medium' }}>
   {({ set, get }) => (
-    <Settings>
+    <Maptings>
       <ToggleCheck checked={get('sounds')} onChange={c => set('sounds', c)}>
         Game Sounds
       </ToggleCheck>
@@ -167,12 +145,13 @@ You decide which one is best for you.
         selected={get('graphics')}
         onSelect={value => set('graphics', value)}
       />
-    </Settings>
+    </Maptings>
   )}
-</Set>
+</Map>
 ```
 
 ### List
+
 **Component Props:** `{ initial }`  
 **Render Props:** `{ list, push, pull, sort, setList }`  
 [see docs](docs/components/List.md)
@@ -197,6 +176,7 @@ You decide which one is best for you.
 It's like css pseudo-selectors, but in js :)
 
 ### Hover
+
 **Component Props:** `{ }`  
 **Render Props:** `{ isHover, bindHover }`  
 [see docs](docs/components/Hover.md)
@@ -212,6 +192,7 @@ It's like css pseudo-selectors, but in js :)
 ```
 
 ### Active
+
 **Component Props:** `{ }`  
 **Render Props:** `{ isActive, bindActive }`  
 [see docs](docs/components/Active.md)
@@ -227,6 +208,7 @@ It's like css pseudo-selectors, but in js :)
 ```
 
 ### Focus
+
 **Component Props:** `{ }`  
 **Render Props:** `{ isFocus, bindFocus }`  
 [see docs](docs/components/Focus.md)
@@ -244,11 +226,12 @@ It's like css pseudo-selectors, but in js :)
 
 ## Form Containers
 
-**Note:** *v1.0 will have more powerful form-related components, stay tuned!*
+**Note:** _v1.0 will have more powerful form-related components, stay tuned!_
 
 ### Bind
+
 **Component Props:** `{ initial }`  
-**Render Props:** `{ value, setValue, bind }`   
+**Render Props:** `{ value, setValue, bind }`  
 [see docs](docs/components/Bind.md)
 
 ```jsx
@@ -263,8 +246,9 @@ It's like css pseudo-selectors, but in js :)
 ```
 
 ### Form
+
 **Component Props:** `{ initial }`  
-**Render Props:** `{ input }`   
+**Render Props:** `{ input }`  
 [see docs](docs/components/Form.md)
 
 ```jsx
@@ -321,7 +305,10 @@ const ToggleCounter = compose(Toggle, Counter)
 If you need to pass props, especially for `initial`, just pass a created element. Internals this will be cloned.
 
 ```jsx
-const ToggleCounter = compose(<Toggle initial={false} />, <Counter initial={2} />)
+const ToggleCounter = compose(
+  <Toggle initial={false} />,
+  <Counter initial={2} />
+)
 
 // or just mix it
 const ToggleCounter = compose(Toggle, <Counter initial={3} />)
@@ -337,7 +324,7 @@ import { Compose } from 'react-powerplug'
     <ProductCard {...} />
   )}
 </Compose>
-``` 
+```
 
 Behind the scenes, that's what happens:
 
@@ -370,17 +357,21 @@ Because of that, when you use `toggle` function, only `<Toggle>` will be rerende
 # Install
 
 ### Node Module
+
 ```
 yarn add react-powerplug
 ```
+
 ```
 npm i react-powerplug
 ```
 
 ### UMD library
+
 ```html
 <script src="https://unpkg.com/react-powerplug/dist/react-powerplug.min.js"></script>
 ```
+
 exposed as `ReactPowerPlug`
 
 # Contribute

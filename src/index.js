@@ -1,55 +1,17 @@
-import Active from './components/Active'
-import Bind from './components/Bind'
-import Compose from './components/Compose'
-import Counter from './components/Counter'
-import Focus from './components/Focus'
-import Form from './components/Form'
-import Hover from './components/Hover'
-import Index from './components/Index'
-import List from './components/List'
-import Loading from './components/Loading'
-import Set from './components/Set'
-import State from './components/State'
-import Toggle from './components/Toggle'
-import Value from './components/Value'
+export { default as Active } from './components/Active'
+export { default as Bind } from './components/Bind'
+export { default as Compose } from './components/Compose'
+export { default as Counter } from './components/Counter'
+export { default as Focus } from './components/Focus'
+export { default as Form } from './components/Form'
+export { default as Hover } from './components/Hover'
+export { default as List } from './components/List'
+export { default as Loading } from './components/Loading'
+export { default as Map } from './components/Map'
+export { default as Set } from './components/Set'
+export { default as State } from './components/State'
+export { default as Toggle } from './components/Toggle'
+export { default as Value } from './components/Value'
 
-import compose from './utils/compose'
-import renderProps from './utils/renderProps'
-
-export {
-  Active,
-  Bind,
-  Compose,
-  Counter,
-  Focus,
-  Form,
-  Hover,
-  Index,
-  List,
-  Loading,
-  Set,
-  State,
-  Toggle,
-  Value,
-  compose,
-  renderProps,
-}
-
-export default {
-  Active,
-  Bind,
-  Compose,
-  Counter,
-  Focus,
-  Form,
-  Hover,
-  Index,
-  List,
-  Loading,
-  Set,
-  State,
-  Toggle,
-  Value,
-  compose,
-  renderProps,
-}
+export { default as compose } from './utils/compose'
+export { default as renderProps } from './utils/renderProps'

@@ -2,16 +2,13 @@
 
 import React from 'react'
 import TestRenderer from 'react-test-renderer'
-import PP from '../../src'
+import * as PP from '../../src'
 
 test('<Active />', () => {
   TestRenderer.create(<PP.Active />)
 })
 test('<Bind />', () => {
   TestRenderer.create(<PP.Bind />)
-})
-test('<Counter />', () => {
-  TestRenderer.create(<PP.Counter />)
 })
 test('<Focus />', () => {
   TestRenderer.create(<PP.Focus />)
@@ -22,26 +19,17 @@ test('<Form />', () => {
 test('<Hover />', () => {
   TestRenderer.create(<PP.Hover />)
 })
-test('<Index />', () => {
-  TestRenderer.create(<PP.Index />)
-})
 test('<List />', () => {
   TestRenderer.create(<PP.List />)
 })
 test('<Loading />', () => {
   TestRenderer.create(<PP.Loading />)
 })
-test('<Set />', () => {
-  TestRenderer.create(<PP.Set />)
-})
 test('<State />', () => {
   TestRenderer.create(<PP.State />)
 })
 test('<Toggle />', () => {
   TestRenderer.create(<PP.Toggle />)
-})
-test('<Value />', () => {
-  TestRenderer.create(<PP.Value />)
 })
 
 test('<Compose />', () => {

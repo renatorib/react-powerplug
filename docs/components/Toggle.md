@@ -4,41 +4,35 @@ The Toggle component is used to toggle a boolean. True/false.
 
 ```js
 import { Toggle } from 'react-powerplug'
-``` 
+```
 
 ```jsx
 <Toggle initial={false}>
-  {({ on, toggle }) => (
-    <Checkbox
-      onClick={toggle}
-      checked={on}
-    />
-  )}
+  {({ on, toggle }) => <Checkbox onClick={toggle} checked={on} />}
 </Toggle>
-``` 
+```
 
 ## Toggle Props
 
-**initial = false** *(optional)*  
+**initial = false** _(optional)_  
 Specifies the initial on state, must be an boolean.
 By default, the initial on state is false.
 
+**onChange** _(optional)_
+Callback that fires when state changes.
+
 ## Toggle Children Props
 
-TL;DR: `{ on, off, toggle, setOn }`
+TL;DR: `{ on, toggle, set }`
 
 **on**  
 `boolean`  
-Your on state
-
-**off**  
-`boolean`  
-Negate your on state
+Your `on` state value
 
 **toggle**  
 `() => void`  
-Toggle your on state value
+Toggle your `on` state value
 
-**setOn**  
+**set**  
 `(value: boolean) => void`  
-Set `value` to your on state
+Arbitrary set a value to `on` state

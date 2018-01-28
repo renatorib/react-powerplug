@@ -1,72 +1,79 @@
 // @flow
 
-import * as React from "react";
+import * as React from 'react'
+
+/* Utils */
+
+type Updater<T> = (value: T | (updater: T) => T) => void
+
 
 /* Active */
 
-type ActiveChange = ({| isActive: boolean |}) => void;
+type ActiveChange = ({| isActive: boolean |}) => void
 
 type ActiveRender = ({|
   isActive: boolean,
-  bindActive: {| onMouseDown: () => void, onMouseUp: () => void |}
-|}) => React.Node;
+  bindActive: {| onMouseDown: () => void, onMouseUp: () => void |},
+|}) => React.Node
 
 declare export var Active: React.ComponentType<
   | {| onChange?: ActiveChange, render: ActiveRender |}
   | {| onChange?: ActiveChange, children: ActiveRender |}
->;
+>
 
 /* Bind */
 
-type BindChange = ({| value: string |}) => void;
+type BindChange = ({| value: string |}) => void
 
 type BindRender = ({|
   value: string,
   setValue: string => void,
-  bind: {| value: string, onChange: (SyntheticInputEvent<*>) => void |}
-|}) => React.Node;
+  bind: {| value: string, onChange: (SyntheticInputEvent<*>) => void |},
+|}) => React.Node
 
 declare export var Bind: React.ComponentType<
   | {| initial?: string, onChange?: BindChange, render: BindRender |}
   | {| initial?: string, onChange?: BindChange, children: BindRender |}
->;
+>
 
 /* Compose */
 
-declare export var Compose: React.ComponentType<Object>;
+declare export var Compose: React.ComponentType<Object>
 
 /* Counter */
 
-type CounterChange = ({| count: number |}) => void;
+type CounterChange = ({| count: number |}) => void
 
 type CounterRender = ({|
   count: number,
-  inc: (step?: number) => void,
-  dec: (step?: number) => void
-|}) => React.Node;
+  inc: () => void,
+  dec: () => void,
+  incBy: (step: number) => void,
+  decBy: (step: number) => void,
+|}) => React.Node
 
 declare export var Counter: React.ComponentType<
   | {| initial?: number, onChange?: CounterChange, render: CounterRender |}
   | {| initial?: number, onChange?: CounterChange, children: CounterRender |}
->;
+>
 
 /* Focus */
 
-type FocusChange = ({| isFocus: boolean |}) => void;
+type FocusChange = ({| isFocus: boolean |}) => void
 
 type FocusRender = ({|
   isFocus: boolean,
-  bindFocus: {| onFocusIn: () => void, onFocusOut: () => void |}
-|}) => React.Node;
+  bindFocus: {| onFocusIn: () => void, onFocusOut: () => void |},
+|}) => React.Node
 
 declare export var Focus: React.ComponentType<
   | {| onChange?: FocusChange, render: FocusRender |}
   | {| onChange?: FocusChange, children: FocusRender |}
->;
+>
 
 /* Form */
 
-type FormChange<T> = T => void;
+type FormChange<T> = T => void
 
 type FormRender<T> = ({|
   input: <K: $Keys<T>>(
@@ -76,14 +83,14 @@ type FormRender<T> = ({|
     setValue: string => void,
     bind: {|
       value: string,
-      onChange: (SyntheticInputEvent<*>) => void
-    |}
-  |}
-|}) => React.Node;
+      onChange: (SyntheticInputEvent<*>) => void,
+    |},
+  |},
+|}) => React.Node
 
 type FormProps<T> =
   | {| initial: T, onChange?: FormChange<T>, render: FormRender<T> |}
-  | {| initial: T, onChange?: FormChange<T>, children: FormRender<T> |};
+  | {| initial: T, onChange?: FormChange<T>, children: FormRender<T> |}
 
 declare export class Form<T: { [string]: string }> extends React.Component<
   FormProps<T>,
@@ -92,134 +99,145 @@ declare export class Form<T: { [string]: string }> extends React.Component<
 
 /* Hover */
 
-type HoverChange = ({| isHover: boolean |}) => void;
+type HoverChange = ({| isHover: boolean |}) => void
 
 type HoverRender = ({|
   isHover: boolean,
-  bindHover: {| onMouseEnter: () => void, onMouseLeave: () => void |}
-|}) => React.Node;
+  bindHover: {| onMouseEnter: () => void, onMouseLeave: () => void |},
+|}) => React.Node
 
 declare export var Hover: React.ComponentType<
   | {| onChange?: HoverChange, render: HoverRender |}
   | {| onChange?: HoverChange, children: HoverRender |}
->;
-
-/* Index */
-
-type IndexChange = ({| index: number |}) => void;
-
-type IndexRender = ({|
-  index: number,
-  setIndex: (step: number) => void
-|}) => React.Node;
-
-declare export var Index: React.ComponentType<
-  | {| initial?: number, onChange?: IndexChange, render: IndexRender |}
-  | {| initial?: number, onChange?: IndexChange, children: IndexRender |}
->;
+>
 
 /* List */
 
-type ListChange<T> = ({| list: $ReadOnlyArray<T> |}) => void;
+type ListChange<T> = ({| list: $ReadOnlyArray<T> |}) => void
 
 type ListRender<T> = ({|
   list: $ReadOnlyArray<T>,
+  first: () => T | void,
+  last: () => T | void,
   setList: ($ReadOnlyArray<T>) => void,
   push: (value: T) => void,
   pull: (predicate: (T) => boolean) => void,
-  sort: (compare: (a: T, b: T) => -1 | 0 | 1) => void
-|}) => React.Node;
+  sort: (compare: (a: T, b: T) => -1 | 0 | 1) => void,
+|}) => React.Node
 
 type ListProps<T> =
   | {|
       initial: $ReadOnlyArray<T>,
       onChange?: ListChange<T>,
-      render: ListRender<T>
+      render: ListRender<T>,
     |}
   | {|
       initial: $ReadOnlyArray<T>,
       onChange?: ListChange<T>,
-      children: ListRender<T>
-    |};
+      children: ListRender<T>,
+    |}
 
 declare export class List<T> extends React.Component<ListProps<T>, *> {}
 
 /* Loading */
 
-type LoadingChange = ({| isLoading: boolean |}) => void;
+type LoadingChange = ({| isLoading: boolean |}) => void
 
 type LoadingRender = ({|
   isLoading: boolean,
   toggleLoading: () => void,
-  setLoading: (isLoading: boolean) => void
-|}) => React.Node;
+  setLoading: (isLoading: boolean) => void,
+|}) => React.Node
 
 declare export var Loading: React.ComponentType<
   | {| initial?: boolean, onChange?: LoadingChange, render: LoadingRender |}
   | {| initial?: boolean, onChange?: LoadingChange, children: LoadingRender |}
->;
+>
 
 /* Set */
 
-type SetChange<T> = T => void;
+type SetChange<T> = ({| values: $ReadOnlyArray<T> |}) => void
 
-type SetRender<T, K = $Keys<T>> = ({|
+type SetRender<T> = ({|
+  values: $ReadOnlyArray<T>,
+  add: (key: T) => void,
+  clear: () => void,
+  remove: (key: T) => void,
+  has: (key: T) => boolean,
+|}) => React.Node
+
+type SetProps<T> =
+  | {|
+      initial: $ReadOnlyArray<T>,
+      onChange?: SetChange<T>,
+      render: SetRender<T>,
+    |}
+  | {|
+      initial: $ReadOnlyArray<T>,
+      onChange?: SetChange<T>,
+      children: SetRender<T>,
+    |}
+
+declare export class Set<T> extends React.Component<SetProps<T>> {}
+
+/* Map */
+
+type MapChange<T> = T => void
+
+type MapRender<T, K = $Keys<T>> = ({|
   values: T,
   set: (key: K, value: $ElementType<T, K>) => void,
   over: (key: K, fn: ($ElementType<T, K>) => $ElementType<T, K>) => void,
-  get: (key: K) => $ElementType<T, K>
-|}) => React.Node;
+  get: (key: K) => $ElementType<T, K>,
+|}) => React.Node
 
-type SetProps<T> =
-  | {| initial: T, onChange?: SetChange<T>, render: SetRender<T> |}
-  | {| initial: T, onChange?: SetChange<T>, children: SetRender<T> |};
+type MapProps<T> =
+  | {| initial: T, onChange?: MapChange<T>, render: MapRender<T> |}
+  | {| initial: T, onChange?: MapChange<T>, children: MapRender<T> |}
 
-declare export class Set<T: Object> extends React.Component<SetProps<T>, *> {}
+declare export class Map<T: Object> extends React.Component<MapProps<T>, *> {}
 
 /* State */
 
-type StateChange<T> = T => void;
+type StateChange<T> = T => void
 
 type StateRender<T> = ({|
   state: T,
-  setState: (updated: $Shape<T> | (T => $Shape<T>), cb?: () => void) => void
-|}) => React.Node;
+  setState: (updated: $Shape<T> | (T => $Shape<T>), cb?: () => void) => void,
+|}) => React.Node
 
 type StateProps<T> =
   | {| initial: T, onChange?: StateChange<T>, render: StateRender<T> |}
-  | {| initial: T, onChange?: StateChange<T>, children: StateRender<T> |};
+  | {| initial: T, onChange?: StateChange<T>, children: StateRender<T> |}
 
-declare export class State<T: Object> extends React.Component<
-  StateProps<T>,
-  *
-> {}
+declare export class State<T: Object> extends React.Component<StateProps<T>> {}
 
 /* Toggle */
 
-type ToggleChange = ({| on: boolean |}) => void;
+type ToggleChange = ({| on: boolean |}) => void
 
 type ToggleRender = ({|
   on: boolean,
-  off: boolean,
   toggle: () => void,
-  setOn: (on: boolean) => void
-|}) => React.Node;
+  set: Updater<boolean>
+|}) => React.Node
 
 declare export var Toggle: React.ComponentType<
   | {| initial?: boolean, onChange?: ToggleChange, render: ToggleRender |}
   | {| initial?: boolean, onChange?: ToggleChange, children: ToggleRender |}
->;
+>
 
 /* Value */
 
-type ValueChange = ({| value: string |}) => void;
+type ValueChange<T> = ({| value: T |}) => void
 
-type ValueRender = ({|
-  value: string,
-  setValue: string => void
-|}) => React.Node;
+type ValueRender<T> = ({|
+  value: T,
+  setValue: T => void,
+|}) => React.Node
 
-declare export var Value: React.ComponentType<
-  | {| initial?: string, onChange?: ValueChange, render: ValueRender |}
-  | {| initial?: string, onChange?: ValueChange, children: ValueRender |}
->;
+type ValueProps<T> =
+  | {| initial: T, onChange?: ValueChange<T>, render: ValueRender<T> |}
+  | {| initial: T, onChange?: ValueChange<T>, children: ValueRender<T> |}
+
+declare export class Value<T> extends React.Component<ValueProps<T>> {}
