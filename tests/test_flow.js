@@ -4,13 +4,12 @@
 import * as React from 'react'
 import {
   Active,
-  Bind,
+  Input,
   Counter,
   Focus,
   Form,
   Hover,
   List,
-  Loading,
   Map,
   Set,
   State,
@@ -49,15 +48,15 @@ const noop = () => null
 }
 
 {
-  const render = ({ value, setValue, bind }) => {
+  const render = ({ value, set, bind }) => {
     ;(value: string)
-    setValue('')
+    set('')
     ;(bind.value: string)
     ;(bind.onChange: Function)
     // $FlowFixMe
     ;(value: number)
     // $FlowFixMe
-    setValue(0)
+    set(0)
     // $FlowFixMe
     ;(bind.value: number)
     // $FlowFixMe
@@ -70,15 +69,15 @@ const noop = () => null
     ;(value: number)
   }
   ;[
-    <Bind render={render} />,
-    <Bind>{render}</Bind>,
-    <Bind onChange={onChange} render={noop} />,
-    <Bind onChange={onChange}>{noop}</Bind>,
-    <Bind initial={''} render={noop} />,
+    <Input render={render} />,
+    <Input>{render}</Input>,
+    <Input onChange={onChange} render={noop} />,
+    <Input onChange={onChange}>{noop}</Input>,
+    <Input initial={''} render={noop} />,
     // $FlowFixMe
-    <Bind />,
+    <Input />,
     // $FlowFixMe
-    <Bind initial={0} render={noop} />,
+    <Input initial={0} render={noop} />,
   ]
 }
 
@@ -265,37 +264,6 @@ const noop = () => null
     <List initial={{ a: 0 }} render={noop} />,
     // $FlowFixMe
     <List initial={{ a: 0 }}>{noop}</List>,
-  ]
-}
-
-{
-  const render = ({ isLoading, toggleLoading, setLoading }) => {
-    ;(isLoading: boolean)
-    toggleLoading()
-    setLoading(true)
-    // $FlowFixMe
-    ;(isLoading: number)
-    // $FlowFixMe
-    toggleLoading(true)
-    // $FlowFixMe
-    setLoading(0)
-    return null
-  }
-  const onChange = ({ isLoading }) => {
-    ;(isLoading: boolean)
-    // $FlowFixMe
-    ;(isLoading: number)
-  }
-  ;[
-    <Loading render={render} />,
-    <Loading>{render}</Loading>,
-    <Loading onChange={onChange} render={noop} />,
-    <Loading onChange={onChange}>{noop}</Loading>,
-    <Loading initial={true} render={noop} />,
-    // $FlowFixMe
-    <Loading />,
-    // $FlowFixMe
-    <Loading initial={''} render={noop} />,
   ]
 }
 

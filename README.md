@@ -1,4 +1,13 @@
-![react-powerplug](./logo.png)
+<p align="center">
+  <img src="./logo.png" alt="react-powerplug" />
+</p>
+
+<h1 align="center"></h1>
+
+<br />
+
+> This branch is **unstable** and is in **active development**.  
+> To the latest stable version go to [0.1-stable branch](/tree/0.1-stable)
 
 [![npm](https://img.shields.io/npm/v/react-powerplug.svg?style=flat-square)](https://www.npmjs.com/package/react-powerplug)
 [![npm](https://img.shields.io/npm/dt/react-powerplug.svg?style=flat-square)](https://www.npmjs.com/package/react-powerplug)
@@ -9,8 +18,6 @@
 :electric_plug: Renderless Pluggable State Containers
 
 ---
-
-> I'm working on version 1.0. [Follow me on twitter](http://twitter.com/renatorib_) to know when news will come up.
 
 **React PowerPlug is a set of pluggable renderless components** that provides different types of state and logics so you can use with your dumb components. It creates a state and pass down the logic to the children, so you can handle your data/callbacks.
 
@@ -63,7 +70,7 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ### State
 
-**Component Props:** `{ initial }`  
+**Component Props:** `{ initial, onChange }`  
 **Render Props:** `{ state, setState }`  
 [see docs](docs/components/State.md)
 
@@ -81,7 +88,7 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ### Toggle
 
-**Component Props:** `{ initial }`  
+**Component Props:** `{ initial, onChange }`  
 **Render Props:** `{ on, off, toggle, setOn }`  
 [see docs](docs/components/Toggle.md)
 
@@ -93,7 +100,7 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ### Loading
 
-**Component Props:** `{ initial }`  
+**Component Props:** `{ initial, onChange }`  
 **Render Props:** `{ isLoading, toggle, setLoading }`  
 [see docs](docs/components/Loading.md)
 
@@ -109,7 +116,7 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ### Value
 
-**Component Props:** `{ initial }`  
+**Component Props:** `{ initial, onChange }`  
 **Render Props:** `{ value, setValue }`  
 [see docs](docs/components/Value.md)
 
@@ -128,7 +135,7 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ### Map
 
-**Component Props:** `{ initial }`  
+**Component Props:** `{ initial, onChange }`  
 **Render Props:** `{ set, get, values }`  
 [see docs](docs/components/Map.md)
 
@@ -152,7 +159,7 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ### List
 
-**Component Props:** `{ initial }`  
+**Component Props:** `{ initial, onChange }`  
 **Render Props:** `{ list, push, pull, sort, setList }`  
 [see docs](docs/components/List.md)
 
@@ -173,11 +180,11 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ## Feedback Containers
 
-It's like css pseudo-selectors, but in js :)
+It's like css pseudo-selectors
 
 ### Hover
 
-**Component Props:** `{ }`  
+**Component Props:** `{ onChange }`  
 **Render Props:** `{ isHover, bindHover }`  
 [see docs](docs/components/Hover.md)
 
@@ -193,7 +200,7 @@ It's like css pseudo-selectors, but in js :)
 
 ### Active
 
-**Component Props:** `{ }`  
+**Component Props:** `{ onChange }`  
 **Render Props:** `{ isActive, bindActive }`  
 [see docs](docs/components/Active.md)
 
@@ -209,7 +216,7 @@ It's like css pseudo-selectors, but in js :)
 
 ### Focus
 
-**Component Props:** `{ }`  
+**Component Props:** `{ onChange }`  
 **Render Props:** `{ isFocus, bindFocus }`  
 [see docs](docs/components/Focus.md)
 
@@ -226,28 +233,26 @@ It's like css pseudo-selectors, but in js :)
 
 ## Form Containers
 
-**Note:** _v1.0 will have more powerful form-related components, stay tuned!_
+### Input
 
-### Bind
-
-**Component Props:** `{ initial }`  
-**Render Props:** `{ value, setValue, bind }`  
-[see docs](docs/components/Bind.md)
+**Component Props:** `{ initial, onChange, getValue }`  
+**Render Props:** `{ value, set, bind }`  
+[see docs](docs/components/Input.md)
 
 ```jsx
-<Bind initial="hello world">
+<Input initial="hello world">
   {({ bind, value }) => (
     <div>
       <ControlledInput {...bind} />
       <div>You typed {value}</div>
     </div>
   )}
-</Bind>
+</Input>
 ```
 
 ### Form
 
-**Component Props:** `{ initial }`  
+**Component Props:** `{ initial, onChange, getValue }`  
 **Render Props:** `{ input }`  
 [see docs](docs/components/Form.md)
 
@@ -270,7 +275,7 @@ It's like css pseudo-selectors, but in js :)
         <Submit>Send</Submit>
 
         {/*
-          input(id) => { bind, setValue, value }
+          input(id) => { bind, set, value }
         */}
       </div>
     )
@@ -289,7 +294,7 @@ import { compose } from 'react-powerplug'
 const ToggleCounter = compose(Toggle, Counter)
 
 <ToggleCounter>
-  {({ count, inc, dec, on, toggle }) => (
+  {({ toggle: { toggle, on }, counter: { count, inc, dec } }) => (
     <ProductCard
       {...productInfo}
       isFavorited={on}
@@ -320,7 +325,7 @@ Also, you can use a built-in Compose component and pass components on `states` p
 import { Compose } from 'react-powerplug'
 
 <Compose states={[Toggle, Counter]}>
-  {({ on, toggle, count, inc, dec }) => (
+  {({ toggle, counter }) => (
     <ProductCard {...} />
   )}
 </Compose>
@@ -330,16 +335,16 @@ Behind the scenes, that's what happens:
 
 ```jsx
 <Counter /* passed props */>
-  {({ count, inc, dec }) => (
+  {counter => (
     <Toggle /* passed props */>
-      {({ on, toggle }) => (s
+      {toggle => (
         <ProductCard
           {...productInfo}
-          isFavorited={on}
-          onFavorite={toggle}
-          count={count}
-          onAdd={inc}
-          onRemove={dec}
+          isFavorited={toggle.on}
+          onFavorite={toggle.toggle}
+          count={counter.count}
+          onAdd={counter.inc}
+          onRemove={counter.dec}
         />
       )}
     </Toggle>

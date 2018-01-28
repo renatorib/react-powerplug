@@ -2,10 +2,11 @@ import React from 'react'
 import renderProps from './renderProps'
 
 const isElement = element => typeof element.type === 'function'
+const name = element =>
+  (isElement(element) ? element.type.name : element.name).toLowerCase()
 
 const compose = (...elements) => {
   return composedProps => {
-
     // Stack children arguments recursively and pass
     // it down until the last component that render children
     // with these stacked arguments
@@ -16,9 +17,10 @@ const compose = (...elements) => {
       // Check if is latest component.
       // If is latest then render children,
       // Otherwise continue stacking arguments
-      const renderFn = props => isTheLast
-        ? renderProps(composedProps, { ...props, ...stacked }) 
-        : stackProps(i - 1, elements, { ...props, ...stacked })
+      const renderFn = props =>
+        isTheLast
+          ? renderProps(composedProps, { [name(element)]: props, ...stacked })
+          : stackProps(i - 1, elements, { [name(element)]: props, ...stacked })
 
       // Clone a element if it's passed created as <Element initial={} />
       // Or create it if passed as just Element
