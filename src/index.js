@@ -12,6 +12,7 @@ import Set from './components/Set'
 import State from './components/State'
 import Toggle from './components/Toggle'
 import Value from './components/Value'
+import Touch from './components/Touch'
 
 import compose from './utils/compose'
 import renderProps from './utils/renderProps'
@@ -31,6 +32,7 @@ export {
   State,
   Toggle,
   Value,
+  Touch,
   compose,
   renderProps,
 }
@@ -50,6 +52,7 @@ export default {
   State,
   Toggle,
   Value,
+  Touch,
   compose,
   renderProps,
 }
