@@ -1,4 +1,13 @@
-![react-powerplug](./logo.png)
+<p align="center">
+  <img src="./logo.png" alt="react-powerplug" />
+</p>
+
+<h1 align="center"></h1>
+
+<br />
+
+> This branch is **unstable** and is in **active development**.  
+> To the latest stable version go to [0.1-stable branch](/tree/0.1-stable)
 
 [![npm](https://img.shields.io/npm/v/react-powerplug.svg?style=flat-square)](https://www.npmjs.com/package/react-powerplug)
 [![npm](https://img.shields.io/npm/dt/react-powerplug.svg?style=flat-square)](https://www.npmjs.com/package/react-powerplug)
@@ -10,8 +19,6 @@
 
 ---
 
-> I'm working on version 1.0. [Follow me on twitter](http://twitter.com/renatorib_) to know when news will come up.
-
 **React PowerPlug is a set of pluggable renderless components** that provides different types of state and logics so you can use with your dumb components. It creates a state and pass down the logic to the children, so you can handle your data/callbacks.
 
 It's has been created to (but not limited to) use with **storybook, react styleguidist, documentations, prototypes**. You can also use to create a bunch of uncontrolled components where the outside app don't care about your state, for example a menu dropdown.
@@ -19,7 +26,7 @@ It's has been created to (but not limited to) use with **storybook, react styleg
 ### Quick examples:
 
 ```jsx
-import { State, Index, Toggle } from 'react-powerplug'
+import { State, Toggle } from 'react-powerplug'
 import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 
 <State initial={{ offset: 0, limit: 10, totalCount: 200 }}>
@@ -27,15 +34,6 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
     <Pagination {...state} onChange={(offset) => setState({ offset })} />
   )}
 </State>
-
-<Index initial={0}>
-  {({ index, setIndex }) => (
-    <Tabs selected={index} onChange={setIndex}>
-      <Tab title="First tab">Content from the first tab</Tab>
-      <Tab title="Second tab">Content from the second tab</Tab>
-    </Tabs>
-  )}
-</Index>
 
 <Toggle initial={true}>
   {({ on, toggle }) => (
@@ -65,13 +63,14 @@ You decide which one is best for you.
 
 # Components
 
-***Note:*** *This is a kind of a cheat sheet for fast search.*  
-*If you want a more detailed **API Reference** and examples for each component see the [Docs](/docs)*
+**_Note:_** _This is a kind of a cheat sheet for fast search._  
+_If you want a more detailed **API Reference** and examples for each component see the [Docs](/docs)_
 
 ## State Containers
 
 ### State
-**Component Props:** `{ initial }`  
+
+**Component Props:** `{ initial, onChange }`  
 **Render Props:** `{ state, setState }`  
 [see docs](docs/components/State.md)
 
@@ -88,20 +87,20 @@ You decide which one is best for you.
 ```
 
 ### Toggle
-**Component Props:** `{ initial }`  
+
+**Component Props:** `{ initial, onChange }`  
 **Render Props:** `{ on, off, toggle, setOn }`  
 [see docs](docs/components/Toggle.md)
 
 ```jsx
 <Toggle initial={true}>
-  {({ on, toggle }) => (
-    <Checkbox checked={on} onChange={toggle} />
-  )}
+  {({ on, toggle }) => <Checkbox checked={on} onChange={toggle} />}
 </Toggle>
 ```
 
 ### Loading
-**Component Props:** `{ initial }`  
+
+**Component Props:** `{ initial, onChange }`  
 **Render Props:** `{ isLoading, toggle, setLoading }`  
 [see docs](docs/components/Loading.md)
 
@@ -116,7 +115,8 @@ You decide which one is best for you.
 ```
 
 ### Value
-**Component Props:** `{ initial }`  
+
+**Component Props:** `{ initial, onChange }`  
 **Render Props:** `{ value, setValue }`  
 [see docs](docs/components/Value.md)
 
@@ -133,31 +133,16 @@ You decide which one is best for you.
 </Value>
 ```
 
-### Index
-**Component Props:** `{ initial }`  
-**Render Props:** `{ index, setIndex }`  
-[see docs](docs/components/Index.md)
+### Map
 
-```jsx
-<Index initial={0}>
-  {({ index, setIndex }) => (
-    <Tabs selected={index} onChange={setIndex}>
-      <Tab title="First tab">Content from the first tab</Tab>
-      <Tab title="Second tab">Content from the second tab</Tab>
-    </Tabs>
-  )}
-</Index>
-```
-
-### Set
-**Component Props:** `{ initial }`  
+**Component Props:** `{ initial, onChange }`  
 **Render Props:** `{ set, get, values }`  
-[see docs](docs/components/Set.md)
+[see docs](docs/components/Map.md)
 
 ```jsx
-<Set initial={{ sounds: true, graphics: 'medium' }}>
+<Map initial={{ sounds: true, graphics: 'medium' }}>
   {({ set, get }) => (
-    <Settings>
+    <Maptings>
       <ToggleCheck checked={get('sounds')} onChange={c => set('sounds', c)}>
         Game Sounds
       </ToggleCheck>
@@ -167,13 +152,14 @@ You decide which one is best for you.
         selected={get('graphics')}
         onSelect={value => set('graphics', value)}
       />
-    </Settings>
+    </Maptings>
   )}
-</Set>
+</Map>
 ```
 
 ### List
-**Component Props:** `{ initial }`  
+
+**Component Props:** `{ initial, onChange }`  
 **Render Props:** `{ list, push, pull, sort, setList }`  
 [see docs](docs/components/List.md)
 
@@ -194,10 +180,11 @@ You decide which one is best for you.
 
 ## Feedback Containers
 
-It's like css pseudo-selectors, but in js :)
+It's like css pseudo-selectors
 
 ### Hover
-**Component Props:** `{ }`  
+
+**Component Props:** `{ onChange }`  
 **Render Props:** `{ isHover, bindHover }`  
 [see docs](docs/components/Hover.md)
 
@@ -212,7 +199,8 @@ It's like css pseudo-selectors, but in js :)
 ```
 
 ### Active
-**Component Props:** `{ }`  
+
+**Component Props:** `{ onChange }`  
 **Render Props:** `{ isActive, bindActive }`  
 [see docs](docs/components/Active.md)
 
@@ -227,7 +215,8 @@ It's like css pseudo-selectors, but in js :)
 ```
 
 ### Focus
-**Component Props:** `{ }`  
+
+**Component Props:** `{ onChange }`  
 **Render Props:** `{ isFocus, bindFocus }`  
 [see docs](docs/components/Focus.md)
 
@@ -244,27 +233,27 @@ It's like css pseudo-selectors, but in js :)
 
 ## Form Containers
 
-**Note:** *v1.0 will have more powerful form-related components, stay tuned!*
+### Input
 
-### Bind
-**Component Props:** `{ initial }`  
-**Render Props:** `{ value, setValue, bind }`   
-[see docs](docs/components/Bind.md)
+**Component Props:** `{ initial, onChange, getValue }`  
+**Render Props:** `{ value, set, bind }`  
+[see docs](docs/components/Input.md)
 
 ```jsx
-<Bind initial="hello world">
+<Input initial="hello world">
   {({ bind, value }) => (
     <div>
       <ControlledInput {...bind} />
       <div>You typed {value}</div>
     </div>
   )}
-</Bind>
+</Input>
 ```
 
 ### Form
-**Component Props:** `{ initial }`  
-**Render Props:** `{ input }`   
+
+**Component Props:** `{ initial, onChange, getValue }`  
+**Render Props:** `{ input }`  
 [see docs](docs/components/Form.md)
 
 ```jsx
@@ -286,7 +275,7 @@ It's like css pseudo-selectors, but in js :)
         <Submit>Send</Submit>
 
         {/*
-          input(id) => { bind, setValue, value }
+          input(id) => { bind, set, value }
         */}
       </div>
     )
@@ -305,7 +294,7 @@ import { compose } from 'react-powerplug'
 const ToggleCounter = compose(Toggle, Counter)
 
 <ToggleCounter>
-  {({ count, inc, dec, on, toggle }) => (
+  {({ toggle: { toggle, on }, counter: { count, inc, dec } }) => (
     <ProductCard
       {...productInfo}
       isFavorited={on}
@@ -321,7 +310,10 @@ const ToggleCounter = compose(Toggle, Counter)
 If you need to pass props, especially for `initial`, just pass a created element. Internals this will be cloned.
 
 ```jsx
-const ToggleCounter = compose(<Toggle initial={false} />, <Counter initial={2} />)
+const ToggleCounter = compose(
+  <Toggle initial={false} />,
+  <Counter initial={2} />
+)
 
 // or just mix it
 const ToggleCounter = compose(Toggle, <Counter initial={3} />)
@@ -333,26 +325,26 @@ Also, you can use a built-in Compose component and pass components on `states` p
 import { Compose } from 'react-powerplug'
 
 <Compose states={[Toggle, Counter]}>
-  {({ on, toggle, count, inc, dec }) => (
+  {({ toggle, counter }) => (
     <ProductCard {...} />
   )}
 </Compose>
-``` 
+```
 
 Behind the scenes, that's what happens:
 
 ```jsx
 <Counter /* passed props */>
-  {({ count, inc, dec }) => (
+  {counter => (
     <Toggle /* passed props */>
-      {({ on, toggle }) => (s
+      {toggle => (
         <ProductCard
           {...productInfo}
-          isFavorited={on}
-          onFavorite={toggle}
-          count={count}
-          onAdd={inc}
-          onRemove={dec}
+          isFavorited={toggle.on}
+          onFavorite={toggle.toggle}
+          count={counter.count}
+          onAdd={counter.inc}
+          onRemove={counter.dec}
         />
       )}
     </Toggle>
@@ -370,17 +362,21 @@ Because of that, when you use `toggle` function, only `<Toggle>` will be rerende
 # Install
 
 ### Node Module
+
 ```
 yarn add react-powerplug
 ```
+
 ```
 npm i react-powerplug
 ```
 
 ### UMD library
+
 ```html
 <script src="https://unpkg.com/react-powerplug/dist/react-powerplug.min.js"></script>
 ```
+
 exposed as `ReactPowerPlug`
 
 # Contribute
