@@ -7,12 +7,16 @@ test('<Mounting />', () => {
   const unmountFn = jest.fn()
   const renderer = TestRenderer.create(
     <Mounting onMount={mountFn} onUnmount={unmountFn}>
-      {null}
+      {({ setRef }) => {
+        setRef(0)
+        return null
+      }}
     </Mounting>
   )
 
   expect(mountFn).toHaveBeenCalledTimes(1)
   expect(unmountFn).toHaveBeenCalledTimes(0)
+  expect(mountFn).lastCalledWith({ ref: 0 })
 
   renderer.unmount()
   expect(mountFn).toHaveBeenCalledTimes(1)
@@ -21,6 +25,6 @@ test('<Mounting />', () => {
 })
 
 test('<Mounting /> without callbacks', () => {
-  const renderer = TestRenderer.create(<Mounting>{null}</Mounting>)
+  const renderer = TestRenderer.create(<Mounting>{() => null}</Mounting>)
   renderer.unmount()
 })

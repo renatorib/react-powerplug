@@ -1,9 +1,13 @@
-import * as React from 'react'
+import React from 'react'
 
 class Mounting extends React.Component {
+  setRef = ref => {
+    this.ref = ref
+  }
+
   componentDidMount() {
     if (this.props.onMount) {
-      this.mountResult = this.props.onMount()
+      this.mountResult = this.props.onMount({ ref: this.ref })
     }
   }
 
@@ -14,7 +18,7 @@ class Mounting extends React.Component {
   }
 
   render() {
-    return this.props.children
+    return this.props.children({ setRef: this.setRef })
   }
 }
 
