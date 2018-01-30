@@ -6,7 +6,7 @@ const Touch = ({ onChange, ...props }) => (
   <State initial={{ isTouched: false }} onChange={ onChange }>
     {({ state, setState }) => renderProps(props, {
       isTouched: state.isTouched,
-      bindTouch: {
+      bind: {
         onTouchStart: () => setState({ isTouched: true }),
         onTouchEnd: () => setState({ isTouched: false }),
       },
