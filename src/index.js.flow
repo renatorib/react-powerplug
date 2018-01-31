@@ -106,7 +106,7 @@ type InputRender = ({|
   bind: {| value: string, onChange: (SyntheticInputEvent<*>) => void |},
 |}) => React.Node
 
-declare export var Bind: React.ComponentType<
+declare export var Input: React.ComponentType<
   | {| initial?: string, onChange?: InputChange, render: InputRender |}
   | {| initial?: string, onChange?: InputChange, children: InputRender |}
 >

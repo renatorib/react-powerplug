@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import renderProps from './renderProps'
 
 const isElement = element => typeof element.type === 'function'
