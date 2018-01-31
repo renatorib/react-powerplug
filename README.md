@@ -180,8 +180,6 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ## Feedback Containers
 
-It's like css pseudo-selectors
-
 ### Hover
 
 **Component Props:** `{ onChange }`  
@@ -229,6 +227,22 @@ It's like css pseudo-selectors
     </div>
   )}
 </Focus>
+```
+
+### Touch
+
+**Component Props:** `{ onChange }`  
+**Render Props:** `{ isTouched, bind }`  
+[see docs](docs/components/Touch.md)
+
+```jsx
+<Touch>
+  {({ isTouched, bind }) => (
+    <div {...bind}>
+      You are {isTouched ? 'touching' : 'not touching'} this div.
+    </div>
+  )}
+</Touch>
 ```
 
 ## Form Containers
