@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import State from './State'
 import renderProps from '../utils/renderProps'
 import set from '../utils/set'

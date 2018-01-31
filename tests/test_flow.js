@@ -150,7 +150,7 @@ const noop = () => null
   const render = ({ input }) => {
     const name = input('a')
     ;(name.value: string)
-    name.setValue('')
+    name.set('')
     ;(name.bind.value: string)
     ;(name.bind.onChange: Function)
     // $FlowFixMe
