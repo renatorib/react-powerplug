@@ -212,6 +212,20 @@ declare export var Toggle: React.ComponentType<
   | {| initial?: boolean, onChange?: ToggleChange, children: ToggleRender |}
 >
 
+/* Touch */
+
+type TouchChange = ({| isTouched: boolean |}) => void
+
+type TouchRender = ({|
+  isTouched: boolean,
+  bind: {| onTouchStart: () => void, onTouchEnd: () => void |},
+|}) => React.Node
+
+declare export var Touch: React.ComponentType<
+  | {| onChange?: TouchChange, render: TouchRender |}
+  | {| onChange?: TouchChange, children: TouchRender |}
+>
+
 /* Value */
 
 type ValueChange<T> = ({| value: T |}) => void
