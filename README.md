@@ -53,25 +53,25 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 
 # Renderless Components
 
-Note: Also known as `render props` or `children as function`.
+Note: Also known as `render props` or `children as function`.  
 For most people, this may look pretty weird. **But it's extremely powerful**. Usually you render some element whitin your component, but if you are creating an 'agnostic' component or a kind of abstraction component you can not simply render elements, you don't know what the user wants to render. So you render values, actions, states, data... props. You pick these props passing a function to children (or render prop) and now with this data you have total control of what you want to do. Now render what you want to render and do what you want to do. **Renderless components are about abstracting some logic without any UI.**
 
 React PowerPlug brings to you a bunch of components that act as state and logic containers, so you can get this powerful abstraction and use it any way you want.
 
-**Note:** with PowerPlug you can use `children` or `render` prop.
+**Note:** with PowerPlug you can use `children` or `render` prop.  
 You decide which one is best for you.
 
 # Components
 
-**_Note:_** _This is a kind of a cheat sheet for fast search._
+**_Note:_** _This is a kind of a cheat sheet for fast search._  
 _If you want a more detailed **API Reference** and examples for each component see the [Docs](/docs)_
 
 ## State Containers
 
 ### State
 
-**Component Props:** `{ initial, onChange }`
-**Render Props:** `{ state, setState }`
+**Component Props:** `{ initial, onChange }`  
+**Render Props:** `{ state, setState }`  
 [see docs](docs/components/State.md)
 
 ```jsx
@@ -88,8 +88,8 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ### Toggle
 
-**Component Props:** `{ initial, onChange }`
-**Render Props:** `{ on, off, toggle, setOn }`
+**Component Props:** `{ initial, onChange }`  
+**Render Props:** `{ on, off, toggle, setOn }`  
 [see docs](docs/components/Toggle.md)
 
 ```jsx
@@ -100,8 +100,8 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ### Loading
 
-**Component Props:** `{ initial, onChange }`
-**Render Props:** `{ isLoading, toggle, setLoading }`
+**Component Props:** `{ initial, onChange }`  
+**Render Props:** `{ isLoading, toggle, setLoading }`  
 [see docs](docs/components/Loading.md)
 
 ```jsx
@@ -116,8 +116,8 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ### Value
 
-**Component Props:** `{ initial, onChange }`
-**Render Props:** `{ value, setValue }`
+**Component Props:** `{ initial, onChange }`  
+**Render Props:** `{ value, setValue }`  
 [see docs](docs/components/Value.md)
 
 ```jsx
@@ -135,8 +135,8 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ### Map
 
-**Component Props:** `{ initial, onChange }`
-**Render Props:** `{ set, get, values }`
+**Component Props:** `{ initial, onChange }`  
+**Render Props:** `{ set, get, values }`  
 [see docs](docs/components/Map.md)
 
 ```jsx
@@ -159,8 +159,8 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ### List
 
-**Component Props:** `{ initial, onChange }`
-**Render Props:** `{ list, push, pull, sort, setList }`
+**Component Props:** `{ initial, onChange }`  
+**Render Props:** `{ list, push, pull, sort, setList }`  
 [see docs](docs/components/List.md)
 
 ```jsx
@@ -182,8 +182,8 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ### Hover
 
-**Component Props:** `{ onChange }`
-**Render Props:** `{ isHover, bindHover }`
+**Component Props:** `{ onChange }`  
+**Render Props:** `{ isHover, bindHover }`  
 [see docs](docs/components/Hover.md)
 
 ```jsx
@@ -198,8 +198,8 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ### Active
 
-**Component Props:** `{ onChange }`
-**Render Props:** `{ isActive, bindActive }`
+**Component Props:** `{ onChange }`  
+**Render Props:** `{ isActive, bindActive }`  
 [see docs](docs/components/Active.md)
 
 ```jsx
@@ -214,8 +214,8 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ### Focus
 
-**Component Props:** `{ onChange }`
-**Render Props:** `{ isFocus, bindFocus }`
+**Component Props:** `{ onChange }`  
+**Render Props:** `{ isFocus, bindFocus }`  
 [see docs](docs/components/Focus.md)
 
 ```jsx
@@ -231,8 +231,8 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ### Touch
 
-**Component Props:** `{ onChange }`
-**Render Props:** `{ isTouched, bind }`
+**Component Props:** `{ onChange }`  
+**Render Props:** `{ isTouched, bind }`  
 [see docs](docs/components/Touch.md)
 
 ```jsx
@@ -249,8 +249,8 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ### Input
 
-**Component Props:** `{ initial, onChange, getValue }`
-**Render Props:** `{ value, set, bind }`
+**Component Props:** `{ initial, onChange, getValue }`  
+**Render Props:** `{ value, set, bind }`  
 [see docs](docs/components/Input.md)
 
 ```jsx
@@ -266,8 +266,8 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 ### Form
 
-**Component Props:** `{ initial, onChange, getValue }`
-**Render Props:** `{ input }`
+**Component Props:** `{ initial, onChange, getValue }`  
+**Render Props:** `{ input }`  
 [see docs](docs/components/Form.md)
 
 ```jsx
@@ -299,7 +299,7 @@ _If you want a more detailed **API Reference** and examples for each component s
 
 # Composing Components
 
-If you want to merge two of more components functionalities, you can compose they in a single one.
+If you want to merge two of more components functionalities, you can compose they in a single one.  
 For complete guide [see Compose docs](docs/components/Compose.md)
 
 ```jsx
@@ -370,7 +370,7 @@ Because of that, when you use `toggle` function, only `<Toggle>` will be rerende
 
 # CodeSandbox examples
 
-[Using Toggle in a Checkbox](https://codesandbox.io/s/jp890p2x7w)
+[Using Toggle in a Checkbox](https://codesandbox.io/s/jp890p2x7w)  
 [Using State in a Pagination](https://codesandbox.io/s/8x9m4893l2)
 
 # Install
@@ -395,5 +395,5 @@ exposed as `ReactPowerPlug`
 
 # Contribute
 
-You can help improving this project sending PRs and helping with issues.
+You can help improving this project sending PRs and helping with issues.  
 Also you can ping me at [Twitter](http://twitter.com/renatorib_)
