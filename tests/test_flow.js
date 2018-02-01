@@ -14,11 +14,13 @@ import {
   Set,
   State,
   Toggle,
+  Touch,
   Value,
 } from '../src'
 
 const noop = () => null
 
+/* Active */
 {
   const render = ({ isActive, bindActive }) => {
     ;(isActive: boolean)
@@ -47,6 +49,7 @@ const noop = () => null
   ]
 }
 
+/* Input */
 {
   const render = ({ value, set, bind }) => {
     ;(value: string)
@@ -81,6 +84,7 @@ const noop = () => null
   ]
 }
 
+/* Counter */
 {
   const render = ({ count, inc, dec, incBy, decBy }) => {
     ;(count: number)
@@ -118,6 +122,7 @@ const noop = () => null
   ]
 }
 
+/* Focus */
 {
   const render = ({ isFocus, bindFocus }) => {
     ;(isFocus: boolean)
@@ -146,6 +151,7 @@ const noop = () => null
   ]
 }
 
+/* Form */
 {
   const render = ({ input }) => {
     const name = input('a')
@@ -189,6 +195,7 @@ const noop = () => null
   ]
 }
 
+/* Hover */
 {
   const render = ({ isHover, bindHover }) => {
     ;(isHover: boolean)
@@ -217,6 +224,7 @@ const noop = () => null
   ]
 }
 
+/* List */
 {
   const render = ({ list, first, last, setList, push, pull, sort }) => {
     ;(list: $ReadOnlyArray<number>)
@@ -267,6 +275,7 @@ const noop = () => null
   ]
 }
 
+/* Set */
 {
   const render = ({ values, add, clear, remove, has }) => {
     ;(values: $ReadOnlyArray<number | string>)
@@ -306,6 +315,7 @@ const noop = () => null
   ]
 }
 
+/* Map */
 {
   const render = ({ values, set, over, get }) => {
     ;(values.a: number)
@@ -394,6 +404,7 @@ const noop = () => null
   ]
 }
 
+/* Toggle */
 {
   const render = ({ on, toggle, set }) => {
     ;(on: boolean)
@@ -423,6 +434,35 @@ const noop = () => null
     <Toggle />,
     // $FlowFixMe
     <Toggle initial={''} render={noop} />,
+  ]
+}
+
+/* Touch */
+{
+  const render = ({ isTouched, bind }) => {
+    ;(isTouched: boolean)
+    ;(bind.onTouchStart: Function)
+    ;(bind.onTouchEnd: Function)
+    // $FlowFixMe
+    ;(isTouched: number)
+    // $FlowFixMe
+    ;(bind.onTouchStart: number)
+    // $FlowFixMe
+    ;(bind.onTouchEnd: number)
+    return null
+  }
+  const onChange = ({ isTouched }) => {
+    ;(isTouched: boolean)
+    // $FlowFixMe
+    ;(isTouched: number)
+  }
+  ;[
+    <Touch render={render} />,
+    <Touch>{render}</Touch>,
+    <Touch onChange={onChange} render={noop} />,
+    <Touch onChange={onChange}>{noop}</Touch>,
+    // $FlowFixMe
+    <Touch />,
   ]
 }
 
