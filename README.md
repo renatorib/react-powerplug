@@ -6,7 +6,7 @@
 
 <br />
 
-> This branch is **unstable** and is in **active development**.
+> This branch is **unstable** and is in **active development**.  
 > To the latest stable version go to [0.1-stable branch](/tree/0.1-stable)
 
 [![npm](https://img.shields.io/npm/v/react-powerplug.svg?style=flat-square)](https://www.npmjs.com/package/react-powerplug)
