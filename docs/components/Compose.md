@@ -4,7 +4,7 @@ The Compose component is a special component to you 'merge' two or more componen
 
 ```js
 import { Compose, Toggle, Counter } from 'react-powerplug'
-``` 
+```
 
 ```jsx
 <Compose states={[<Counter />, <Toggle initial={false} />]}>
@@ -19,14 +19,17 @@ import { Compose, Toggle, Counter } from 'react-powerplug'
     />
   )}
 </Compose>
-``` 
+```
 
 In addition you can use a utility to create a Composed component
 
 ```js
 import { compose } from 'react-powerplug' // note lowercased (c)ompose
 
-const ToggleCounter = compose(<Counter initial={5} />, <Toggle initial={false} />)
+const ToggleCounter = compose(
+  <Counter initial={5} />,
+  <Toggle initial={false} />
+)
 ```
 
 ```jsx
@@ -35,11 +38,10 @@ const ToggleCounter = compose(<Counter initial={5} />, <Toggle initial={false} /
 </ToggleCounter>
 ```
 
-
 ## Compose Props
 
-**states** *(required)*  
-Set an array of React PowerPlug components (instance elements, not types) to compose.  
+**states** _(required)_  
+Set an array of React PowerPlug components (instance elements, not types) to compose.
 
 Note: if you use `compose` utility to create Composed components, you don't
 need to pass an array, just pass by arguments: `compose(<Foo />, <Bar />, <Baz />)`
@@ -47,7 +49,7 @@ need to pass an array, just pass by arguments: `compose(<Foo />, <Bar />, <Baz /
 ## Compose Children Props
 
 Depends on your choices.  
-Will be all children props merged from your passed components.  
+Will be all children props merged from your passed components.
 
 ## Known Issues
 

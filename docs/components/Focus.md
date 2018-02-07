@@ -5,7 +5,7 @@ It's the same as `:focus` pseudo selector from css.
 
 ```js
 import { Focus } from 'react-powerplug'
-``` 
+```
 
 ```jsx
 <Focus>
@@ -16,11 +16,11 @@ import { Focus } from 'react-powerplug'
     </div>
   )}
 </Focus>
-``` 
+```
 
 ## Focus Props
 
-*Don't have props*
+_Don't have props_
 
 ## Focus Children Props
 

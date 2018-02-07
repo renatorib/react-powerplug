@@ -5,7 +5,7 @@ It's the same as `:hover` pseudo selector from css.
 
 ```js
 import { Hover } from 'react-powerplug'
-``` 
+```
 
 ```jsx
 <Hover>
@@ -15,11 +15,11 @@ import { Hover } from 'react-powerplug'
     </div>
   )}
 </Hover>
-``` 
+```
 
 ## Hover Props
 
-*Don't have props*
+_Don't have props_
 
 ## Hover Children Props
 
