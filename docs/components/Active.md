@@ -5,7 +5,7 @@ It's the same as `:active` pseudo selector from css.
 
 ```js
 import { Active } from 'react-powerplug'
-``` 
+```
 
 ```jsx
 <Active>
@@ -15,11 +15,11 @@ import { Active } from 'react-powerplug'
     </div>
   )}
 </Active>
-``` 
+```
 
 ## Active Props
 
-*Don't have props*
+_Don't have props_
 
 ## Active Children Props
 

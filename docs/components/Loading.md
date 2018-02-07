@@ -5,7 +5,7 @@ In practice, this does the same as `Toggle` but with contextualized names.
 
 ```js
 import { Loading } from 'react-powerplug'
-``` 
+```
 
 ```jsx
 <Loading initial={false}>
@@ -15,11 +15,11 @@ import { Loading } from 'react-powerplug'
     </Button>
   )}
 </Loading>
-``` 
+```
 
 ## Loading Props
 
-**initial = false** *(optional)*  
+**initial = false** _(optional)_  
 Specifies the initial isLoading state, must be a boolean.
 By default, the initial isLoading state is false.
 
