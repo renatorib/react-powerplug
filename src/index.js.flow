@@ -12,7 +12,7 @@ type ActiveChange = ({| isActive: boolean |}) => void
 
 type ActiveRender = ({|
   isActive: boolean,
-  bindActive: {| onMouseDown: () => void, onMouseUp: () => void |},
+  bind: {| onMouseDown: () => void, onMouseUp: () => void |},
 |}) => React.Node
 
 declare export var Active: React.ComponentType<
@@ -43,11 +43,11 @@ declare export var Counter: React.ComponentType<
 
 /* Focus */
 
-type FocusChange = ({| isFocus: boolean |}) => void
+type FocusChange = ({| isFocused: boolean |}) => void
 
 type FocusRender = ({|
-  isFocus: boolean,
-  bindFocus: {| onFocusIn: () => void, onFocusOut: () => void |},
+  isFocused: boolean,
+  bind: {| onFocus: () => void, onBlur: () => void |},
 |}) => React.Node
 
 declare export var Focus: React.ComponentType<
@@ -84,11 +84,11 @@ declare export class Form<T: { [string]: string }> extends React.Component<
 
 /* Hover */
 
-type HoverChange = ({| isHover: boolean |}) => void
+type HoverChange = ({| isHovered: boolean |}) => void
 
 type HoverRender = ({|
-  isHover: boolean,
-  bindHover: {| onMouseEnter: () => void, onMouseLeave: () => void |},
+  isHovered: boolean,
+  bind: {| onMouseEnter: () => void, onMouseLeave: () => void |},
 |}) => React.Node
 
 declare export var Hover: React.ComponentType<
@@ -119,7 +119,7 @@ type ListRender<T> = ({|
   list: $ReadOnlyArray<T>,
   first: () => T | void,
   last: () => T | void,
-  setList: ($ReadOnlyArray<T>) => void,
+  set: Updater<T>,
   push: (value: T) => void,
   pull: (predicate: (T) => boolean) => void,
   sort: (compare: (a: T, b: T) => -1 | 0 | 1) => void,
@@ -232,7 +232,7 @@ type ValueChange<T> = ({| value: T |}) => void
 
 type ValueRender<T> = ({|
   value: T,
-  setValue: T => void,
+  set: Updater<T>,
 |}) => React.Node
 
 type ValueProps<T> =
