@@ -1,6 +1,7 @@
 import * as React from 'react'
 import State from './State'
 import renderProps from '../utils/renderProps'
+import set from '../utils/set'
 
 const complement = fn => (...args) => !fn(...args)
 
@@ -11,14 +12,12 @@ const List = ({ initial = [], onChange, ...props }) => (
         list: state.list,
         first: () => state.list[0],
         last: () => state.list[Math.max(0, state.list.length - 1)],
-        setList: list => setState({ list }),
-        push: value => setState(({ list }) => ({ list: [...list, value] })),
+        set: list => setState(s => ({ list: set(list, s.list) })),
+        push: value => setState(s => ({ list: [...s.list, value] })),
         pull: predicate =>
-          setState(({ list }) => ({
-            list: list.filter(complement(predicate)),
-          })),
+          setState(s => ({ list: s.list.filter(complement(predicate)) })),
         sort: compareFn =>
-          setState(({ list }) => ({ list: [...list].sort(compareFn) })),
+          setState(s => ({ list: [...s.list].sort(compareFn) })),
       })
     }
   </State>

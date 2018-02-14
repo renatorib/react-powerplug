@@ -18,7 +18,7 @@ import { Toggle } from 'react-powerplug'
 Specifies the initial on state, must be an boolean.
 By default, the initial on state is false.
 
-**onChange** _(optional)_
+**onChange** _(optional)_  
 Callback that fires when state changes.
 
 ## Toggle Children Props

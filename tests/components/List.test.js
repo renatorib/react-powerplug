@@ -14,20 +14,24 @@ test('<List />', () => {
   lastCalled().push(8)
   expect(lastCalled().list).toEqual([1, 8])
 
-  lastCalled().setList([5, 4, 1, 6, 9])
-  expect(lastCalled().list).toEqual([5, 4, 1, 6, 9])
+  lastCalled().set([9, 2, 3, 4])
+  expect(lastCalled().list).toEqual([9, 2, 3, 4])
+
+  lastCalled().set(list => [...list, 5])
+  expect(lastCalled().list).toEqual([9, 2, 3, 4, 5])
 
   const listBeforeSort = lastCalled().list
   lastCalled().sort()
-  expect(lastCalled().list).toEqual([1, 4, 5, 6, 9])
-  expect(listBeforeSort).toEqual([5, 4, 1, 6, 9])
+  expect(lastCalled().list).toEqual([2, 3, 4, 5, 9])
+  expect(listBeforeSort).toEqual([9, 2, 3, 4, 5])
 
   lastCalled().pull(d => d % 2)
-  expect(lastCalled().list).toEqual([4, 6])
+  expect(lastCalled().list).toEqual([2, 4])
 
-  expect(lastCalled().first()).toEqual(4)
-  expect(lastCalled().last()).toEqual(6)
-  lastCalled().setList([])
+  expect(lastCalled().first()).toEqual(2)
+  expect(lastCalled().last()).toEqual(4)
+
+  lastCalled().set([])
   expect(lastCalled().first()).toEqual(undefined)
   expect(lastCalled().last()).toEqual(undefined)
 })

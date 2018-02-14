@@ -7,7 +7,7 @@
         "@babel/stage-3"
       ],
       "plugins": [
-        ["@babel/transform-runtime", { "polyfill": false, "useBuiltIns": true, "useESModules": true }]
+        ["@babel/plugin-transform-runtime", { "polyfill": false, "useBuiltIns": true, "useESModules": true }]
       ]
     },
     "commonjs": {
@@ -17,7 +17,7 @@
         "@babel/stage-3"
       ],
       "plugins": [
-        ["@babel/transform-runtime", { "polyfill": false, "useBuiltIns": true }]
+        ["@babel/plugin-transform-runtime", { "polyfill": false, "useBuiltIns": true }]
       ]
     },
     "test": {
@@ -26,8 +26,8 @@
         "@babel/stage-3"
       ],
       "plugins": [
-        ["@babel/transform-runtime", { "polyfill": false, "useBuiltIns": true }],
-        "@babel/transform-modules-commonjs"
+        ["@babel/plugin-transform-runtime", { "polyfill": false, "useBuiltIns": true }],
+        "@babel/plugin-transform-modules-commonjs"
       ]
     }
   }
