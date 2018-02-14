@@ -119,7 +119,7 @@ type ListRender<T> = ({|
   list: $ReadOnlyArray<T>,
   first: () => T | void,
   last: () => T | void,
-  set: Updater<T>,
+  set: Updater<$ReadOnlyArray<T>>,
   push: (value: T) => void,
   pull: (predicate: (T) => boolean) => void,
   sort: (compare: (a: T, b: T) => -1 | 0 | 1) => void,
