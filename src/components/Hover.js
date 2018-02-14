@@ -3,13 +3,13 @@ import State from './State'
 import renderProps from '../utils/renderProps'
 
 const Hover = ({ onChange, ...props }) => (
-  <State initial={{ isHover: false }} onChange={onChange}>
+  <State initial={{ isHovered: false }} onChange={onChange}>
     {({ state, setState }) =>
       renderProps(props, {
-        isHover: state.isHover,
-        bindHover: {
-          onMouseEnter: () => setState({ isHover: true }),
-          onMouseLeave: () => setState({ isHover: false }),
+        isHovered: state.isHovered,
+        bind: {
+          onMouseEnter: () => setState({ isHovered: true }),
+          onMouseLeave: () => setState({ isHovered: false }),
         },
       })
     }

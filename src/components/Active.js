@@ -7,7 +7,7 @@ const Active = ({ onChange, ...props }) => (
     {({ state, setState }) =>
       renderProps(props, {
         isActive: state.isActive,
-        bindActive: {
+        bind: {
           onMouseDown: () => setState({ isActive: true }),
           onMouseUp: () => setState({ isActive: false }),
         },

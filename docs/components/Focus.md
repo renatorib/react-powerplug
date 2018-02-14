@@ -9,10 +9,10 @@ import { Focus } from 'react-powerplug'
 
 ```jsx
 <Focus>
-  {({ isFocus, bindFocus }) => (
+  {({ isFocused, bind }) => (
     <div>
-      <input {...bindFocus} placeholder="Focus me" />
-      <div>You are {isFocus ? 'focusing' : 'not focusing'} the input.</div>
+      <input {...bind} placeholder="Focus me" />
+      <div>You are {isFocused ? 'focusing' : 'not focusing'} the input.</div>
     </div>
   )}
 </Focus>
@@ -24,18 +24,18 @@ _Don't have props_
 
 ## Focus Children Props
 
-TL;DR: `{ isFocus, bindFocus }`
+TL;DR: `{ isFocused, bind }`
 
-**isFocus**  
+**isFocused**  
 `boolean`  
 True if is focusing the binded element
 
-**bindFocus**  
+**bind**  
 `{ onFocusIn: () => void, onFocusOut: () => void }`  
 There are the bind event functions that make `Focus` works.  
 You **must** bind some element to track their events.  
 You can use spread operator to bind effectively an element.
 
 ```jsx
-<button {...bindFocus}>Binded!</button>
+<button {...bind}>Binded!</button>
 ```

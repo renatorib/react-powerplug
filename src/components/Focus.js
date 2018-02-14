@@ -3,13 +3,13 @@ import State from './State'
 import renderProps from '../utils/renderProps'
 
 const Focus = ({ onChange, ...props }) => (
-  <State initial={{ isFocus: false }} onChange={onChange}>
+  <State initial={{ isFocused: false }} onChange={onChange}>
     {({ state, setState }) =>
       renderProps(props, {
-        isFocus: state.isFocus,
-        bindFocus: {
-          onFocusIn: () => setState({ isFocus: true }),
-          onFocusOut: () => setState({ isFocus: false }),
+        isFocused: state.isFocused,
+        bind: {
+          onFocus: () => setState({ isFocused: true }),
+          onBlur: () => setState({ isFocused: false }),
         },
       })
     }

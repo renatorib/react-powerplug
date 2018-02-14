@@ -9,9 +9,9 @@ import { Hover } from 'react-powerplug'
 
 ```jsx
 <Hover>
-  {({ isHover, bindHover }) => (
-    <div {...bindHover}>
-      You are {isHover ? 'hovering' : 'not hovering'} this div.
+  {({ isHovered, bind }) => (
+    <div {...bind}>
+      You are {isHovered ? 'hovering' : 'not hovering'} this div.
     </div>
   )}
 </Hover>
@@ -23,18 +23,18 @@ _Don't have props_
 
 ## Hover Children Props
 
-TL;DR: `{ isHover, bindHover }`
+TL;DR: `{ isHovered, bind }`
 
-**isHover**  
+**isHovered**  
 `boolean`  
 True if is hovering the binded element
 
-**bindHover**  
+**bind**  
 `{ onMouseEnter: () => void, onMouseLeave: () => void }`  
 There are the bind event functions that make `Hover` works.  
 You **must** bind some element to track their events.  
 You can use spread operator to bind effectively an element.
 
 ```jsx
-<span {...bindHover}>Binded!</span>
+<span {...bind}>Binded!</span>
 ```

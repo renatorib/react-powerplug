@@ -9,8 +9,8 @@ import { Active } from 'react-powerplug'
 
 ```jsx
 <Active>
-  {({ isActive, bindActive }) => (
-    <div {...bindActive}>
+  {({ isActive, bind }) => (
+    <div {...bind}>
       You are {isActive ? 'clicking' : 'not clicking'} this div.
     </div>
   )}
@@ -23,18 +23,18 @@ _Don't have props_
 
 ## Active Children Props
 
-TL;DR: `{ isActive, bindActive }`
+TL;DR: `{ isActive, bind }`
 
 **isActive**  
 `boolean`  
 True if is activated (being clicked) the binded element
 
-**bindActive**  
+**bind**  
 `{ onMouseUp: () => void, onMouseDown: () => void }`  
 There are the bind event functions that make `Active` works.  
 You **must** bind some element to track their events.  
 You can use spread operator to bind effectively an element.
 
 ```jsx
-<span {...bindActive}>Binded!</span>
+<span {...bind}>Binded!</span>
 ```
