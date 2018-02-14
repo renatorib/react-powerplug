@@ -22,10 +22,10 @@
     "test:only": "jest",
     "test:bundle": "jest --setupTestFrameworkScriptFile ./tests/jestBundleSetup.js",
     "test:lib": "jest --setupTestFrameworkScriptFile ./tests/jestLibSetup.js",
-    "test:all": "npm run build && npm run test:only && npm run test:bundle && npm run test:lib && npm run clean",
+    "test:all": "npm run lint && npm run test:only && npm run build && npm run test:bundle && npm run test:lib && npm run clean",
     "test": "npm run test:all",
     "precommit": "lint-staged",
-    "prepublishOnly": "npm run lint && npm run clean && npm run build"
+    "prepublishOnly": "npm run clean && npm run build"
   },
   "lint-staged": {
     "*.{js,md}": [
