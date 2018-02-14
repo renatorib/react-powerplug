@@ -4,7 +4,7 @@ The State component is the most generic component possible, exposing to the chil
 
 ```js
 import { State } from 'react-powerplug'
-``` 
+```
 
 ```jsx
 <State initial={{ isLoading: false, data: null }}>
@@ -13,19 +13,15 @@ import { State } from 'react-powerplug'
     const onFinish = data => setState({ data, isLoading: false })
 
     return (
-      <DataReceiver
-        data={state.data}
-        onStart={onStart}
-        onFinish={onFinish}
-      />
+      <DataReceiver data={state.data} onStart={onStart} onFinish={onFinish} />
     )
   }}
 </State>
-``` 
+```
 
 ## State Props
 
-**initial = {}** *(optional)*  
+**initial = {}** _(optional)_  
 Specifies the initial state, must be an object.
 By default, the initial state is an empty object.
 

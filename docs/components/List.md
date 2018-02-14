@@ -4,7 +4,7 @@ The List component is used to save and handle a list (array). For example a tag 
 
 ```js
 import { List } from 'react-powerplug'
-``` 
+```
 
 ```jsx
 <List initial={['#react', '#babel']}>
@@ -19,11 +19,11 @@ import { List } from 'react-powerplug'
     </div>
   )}
 </List>
-``` 
+```
 
 ## List Props
 
-**initial = []** *(optional)*  
+**initial = []** _(optional)_  
 Specifies the initial list state, must be an array.
 By default, the initial list state is an empty array.
 
@@ -43,6 +43,7 @@ Add an item to your list array
 `(predicate: (item: any) => boolean) => void`  
 Remove an item based on a predicate function  
 Note: All matched items are removed
+
 ```js
 // list = [{ name: 'Renato' }, { name: 'John' }]
 pull(item => item.name === 'Renato')
@@ -51,13 +52,13 @@ pull(item => item.name === 'Renato')
 
 **sort**  
 `(comparator: (a: item, b: item) => number)) => void`  
-Use [Array.prototype.sort](https://www.w3schools.com/jsref/jsref_sort.asp) to sort your list state.  
-
+Use [Array.prototype.sort](https://www.w3schools.com/jsref/jsref_sort.asp) to sort your list state.
 
 **setList**  
 `(list: array) => void`  
 Set a new full list to your state  
 Note: use it to handle array in the way you prefer
+
 ```js
 import R from 'ramda'
 

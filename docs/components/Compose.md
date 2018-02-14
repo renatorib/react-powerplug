@@ -40,8 +40,8 @@ const ToggleCounter = compose(
 
 ## Compose Props
 
-**states** _(required)_ . 
-Set an array of React PowerPlug components (instance elements, not types) to compose.  
+**states** _(required)_  
+Set an array of React PowerPlug components (instance elements, not types) to compose.
 
 Note: if you use `compose` utility to create Composed components, you don't
 need to pass an array, just pass by arguments: `compose(<Foo />, <Bar />, <Baz />)`
@@ -50,3 +50,6 @@ need to pass an array, just pass by arguments: `compose(<Foo />, <Bar />, <Baz /
 
 The render props function provided will receive n arguments, each of them being
 the arguments provided by the corresponding component in the list.
+
+
+

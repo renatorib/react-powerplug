@@ -4,7 +4,7 @@ The Value component is a generic component to store a some raw data value.
 
 ```js
 import { Value } from 'react-powerplug'
-``` 
+```
 
 ```jsx
 <Value initial="React">
@@ -17,7 +17,7 @@ import { Value } from 'react-powerplug'
     />
   )}
 </Value>
-``` 
+```
 
 ```jsx
 <Value initial="first">
@@ -36,23 +36,21 @@ import { Value } from 'react-powerplug'
     )
   }}
 </Value>
-``` 
+```
 
 ## Value Props
 
-**initial** *(required)*  
+**initial** _(required)_  
 Specifies the initial value state.
 
 ## Value Children Props
 
 TL;DR: `{ value, setValue }`
 
-**value**   
+**value**  
 `T`  
 Your value state
 
 **setValue**  
 `(value: T) => void`  
 Set the value state
-
-
