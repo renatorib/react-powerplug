@@ -11,11 +11,13 @@ test('<Value />', () => {
   expect(renderFn).toHaveBeenCalledTimes(1)
 
   expect(lastCalled().value).toEqual({ a: 1 })
-  lastCalled().setValue({ b: 2 })
 
+  lastCalled().set({ b: 2 })
   expect(lastCalled().value).toEqual({ b: 2 })
 
-  lastCalled().setValue(0)
+  lastCalled().set(value => ({ ...value, a: 1 }))
+  expect(lastCalled().value).toEqual({ a: 1, b: 2 })
 
+  lastCalled().set(0)
   expect(lastCalled().value).toEqual(0)
 })

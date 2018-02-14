@@ -8,12 +8,12 @@ import { Value } from 'react-powerplug'
 
 ```jsx
 <Value initial="React">
-  {({ value, setValue }) => (
+  {({ value, set }) => (
     <Select
       label="Choose one"
       options={['React', 'Preact', 'Vue']}
       value={value}
-      onChange={setValue}
+      onChange={set}
     />
   )}
 </Value>
@@ -21,10 +21,10 @@ import { Value } from 'react-powerplug'
 
 ```jsx
 <Value initial="first">
-  {({ value, setValue }) => {
+  {({ value, set }) => {
     const bindRadio = radioValue => ({
       selected: value === radioValue,
-      onClick: () => setValue(radioValue),
+      onClick: () => set(radioValue),
     })
 
     return (
@@ -43,14 +43,17 @@ import { Value } from 'react-powerplug'
 **initial** _(required)_  
 Specifies the initial value state.
 
+**onChange** _(optional)_  
+Callback that fires when state changes.
+
 ## Value Children Props
 
-TL;DR: `{ value, setValue }`
+TL;DR: `{ value, set }`
 
 **value**  
 `T`  
 Your value state
 
-**setValue**  
-`(value: T) => void`  
-Set the value state
+**set**  
+`(value: T | (value: T) => T) => void`  
+Set or over the value state
