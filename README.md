@@ -308,7 +308,7 @@ import { compose } from 'react-powerplug'
 const ToggleCounter = compose(Toggle, Counter)
 
 <ToggleCounter>
-  {({ toggle: { toggle, on }, counter: { count, inc, dec } }) => (
+  {({ toggle, on }, { count, inc, dec }) => (
     <ProductCard
       {...productInfo}
       isFavorited={on}
@@ -339,7 +339,7 @@ Also, you can use a built-in Compose component and pass components on `states` p
 import { Compose } from 'react-powerplug'
 
 <Compose states={[Toggle, Counter]}>
-  {({ toggle, counter }) => (
+  {(toggle, counter) => (
     <ProductCard {...} />
   )}
 </Compose>

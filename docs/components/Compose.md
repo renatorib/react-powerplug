@@ -8,14 +8,14 @@ import { Compose, Toggle, Counter } from 'react-powerplug'
 
 ```jsx
 <Compose states={[<Counter />, <Toggle initial={false} />]}>
-  {({ count, inc, dec, on, toggle }) => (
+  {(counter, toggle) => (
     <ProductCard
       {...productInfo}
-      isFavorited={on}
-      onFavorite={toggle}
-      count={count}
-      onAdd={inc}
-      onRemove={dec}
+      isFavorited={toggle.on}
+      onFavorite={toggle.toggle}
+      count={counter.count}
+      onAdd={counter.inc}
+      onRemove={counter.dec}
     />
   )}
 </Compose>
@@ -34,7 +34,7 @@ const ToggleCounter = compose(
 
 ```jsx
 <ToggleCounter>
-  {({ count, inc, dec, on, toggle }) => (...)}
+  {(counter, toggle) => (...)}
 </ToggleCounter>
 ```
 
@@ -48,10 +48,8 @@ need to pass an array, just pass by arguments: `compose(<Foo />, <Bar />, <Baz /
 
 ## Compose Children Props
 
-Depends on your choices.  
-Will be all children props merged from your passed components.
+The render props function provided will receive n arguments, each of them being
+the arguments provided by the corresponding component in the list.
 
-## Known Issues
 
-React PowerPlug still does not deal with name conflicts.  
-Sorry fot that, but PRs are welcome!
+

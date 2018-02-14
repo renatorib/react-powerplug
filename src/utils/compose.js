@@ -10,7 +10,7 @@ const compose = (...elements) => {
     // Stack children arguments recursively and pass
     // it down until the last component that render children
     // with these stacked arguments
-    function stackProps(i, elements, stacked = {}) {
+    function stackProps(i, elements, propsList = []) {
       const element = elements[i]
       const isTheLast = i === 0
 
@@ -19,8 +19,8 @@ const compose = (...elements) => {
       // Otherwise continue stacking arguments
       const renderFn = props =>
         isTheLast
-          ? renderProps(composedProps, { [name(element)]: props, ...stacked })
-          : stackProps(i - 1, elements, { [name(element)]: props, ...stacked })
+          ? renderProps(composedProps, ...propsList.concat(props))
+          : stackProps(i - 1, elements, propsList.concat(props))
 
       // Clone a element if it's passed created as <Element initial={} />
       // Or create it if passed as just Element
