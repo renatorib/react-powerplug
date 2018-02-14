@@ -2,8 +2,6 @@ import * as React from 'react'
 import renderProps from './renderProps'
 
 const isElement = element => typeof element.type === 'function'
-const name = element =>
-  (isElement(element) ? element.type.name : element.name).toLowerCase()
 
 const compose = (...elements) => {
   return composedProps => {
@@ -31,7 +29,7 @@ const compose = (...elements) => {
       return elementFn(element, {}, renderFn)
     }
 
-    return stackProps(elements.length - 1, elements)
+    return stackProps(elements.length - 1, elements.reverse())
   }
 }
 
