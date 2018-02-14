@@ -28,17 +28,35 @@
     "prepublishOnly": "npm run lint && npm run clean && npm run build"
   },
   "lint-staged": {
-    "*.{js,md}": ["prettier --write", "git add"]
+    "*.{js,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "jest": {
-    "transformIgnorePatterns": ["/node_modules/", "/lib/", "/dist/"]
+    "transformIgnorePatterns": [
+      "/node_modules/",
+      "/lib/",
+      "/dist/"
+    ]
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/renatorib/react-powerplug.git"
   },
-  "files": ["dist", "lib", "src", "es"],
-  "keywords": ["react", "reactjs", "components", "dumb", "state"],
+  "files": [
+    "dist",
+    "lib",
+    "src",
+    "es"
+  ],
+  "keywords": [
+    "react",
+    "reactjs",
+    "components",
+    "dumb",
+    "state"
+  ],
   "bugs": {
     "url": "https://github.com/renatorib/react-powerplug/issues"
   },
