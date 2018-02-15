@@ -22,16 +22,16 @@ const noop = () => null
 
 /* Active */
 {
-  const render = ({ isActive, bindActive }) => {
+  const render = ({ isActive, bind }) => {
     ;(isActive: boolean)
-    ;(bindActive.onMouseDown: Function)
-    ;(bindActive.onMouseUp: Function)
+    ;(bind.onMouseDown: Function)
+    ;(bind.onMouseUp: Function)
     // $FlowFixMe
     ;(isActive: number)
     // $FlowFixMe
-    ;(bindActive.onMouseDown: number)
+    ;(bind.onMouseDown: number)
     // $FlowFixMe
-    ;(bindActive.onMouseUp: number)
+    ;(bind.onMouseUp: number)
     return null
   }
   const onChange = ({ isActive }) => {
@@ -124,22 +124,22 @@ const noop = () => null
 
 /* Focus */
 {
-  const render = ({ isFocus, bindFocus }) => {
-    ;(isFocus: boolean)
-    ;(bindFocus.onFocusIn: Function)
-    ;(bindFocus.onFocusOut: Function)
+  const render = ({ isFocused, bind }) => {
+    ;(isFocused: boolean)
+    ;(bind.onFocus: Function)
+    ;(bind.onBlur: Function)
     // $FlowFixMe
-    ;(isFocus: number)
+    ;(isFocused: number)
     // $FlowFixMe
-    ;(bindFocus.onFocusIn: number)
+    ;(bind.onFocus: number)
     // $FlowFixMe
-    ;(bindFocus.onFocusOut: number)
+    ;(bind.onBlur: number)
     return null
   }
-  const onChange = ({ isFocus }) => {
-    ;(isFocus: boolean)
+  const onChange = ({ isFocused }) => {
+    ;(isFocused: boolean)
     // $FlowFixMe
-    ;(isFocus: number)
+    ;(isFocused: number)
   }
   ;[
     <Focus render={render} />,
@@ -197,22 +197,22 @@ const noop = () => null
 
 /* Hover */
 {
-  const render = ({ isHover, bindHover }) => {
-    ;(isHover: boolean)
-    ;(bindHover.onMouseEnter: Function)
-    ;(bindHover.onMouseLeave: Function)
+  const render = ({ isHovered, bind }) => {
+    ;(isHovered: boolean)
+    ;(bind.onMouseEnter: Function)
+    ;(bind.onMouseLeave: Function)
     // $FlowFixMe
-    ;(isHover: number)
+    ;(isHovered: number)
     // $FlowFixMe
-    ;(bindHover.onMouseEnter: number)
+    ;(bind.onMouseEnter: number)
     // $FlowFixMe
-    ;(bindHover.onMouseLeave: number)
+    ;(bind.onMouseLeave: number)
     return null
   }
-  const onChange = ({ isHover }) => {
-    ;(isHover: boolean)
+  const onChange = ({ isHovered }) => {
+    ;(isHovered: boolean)
     // $FlowFixMe
-    ;(isHover: number)
+    ;(isHovered: number)
   }
   ;[
     <Hover render={render} />,
@@ -226,19 +226,19 @@ const noop = () => null
 
 /* List */
 {
-  const render = ({ list, first, last, setList, push, pull, sort }) => {
+  const render = ({ list, first, last, set, push, pull, sort }) => {
     ;(list: $ReadOnlyArray<number>)
     ;(first(): string | number | void)
     ;(last(): string | number | void)
-    setList([])
-    setList([0])
+    set([])
+    set([0])
     push(0)
     pull((d: number) => true)
     sort((a: number, b: number) => -1)
     // $FlowFixMe
     ;(list: $ReadOnlyArray<string>)
     //$FlowFixMe
-    setList([''])
+    set([''])
     //$FlowFixMe
     push('')
     //$FlowFixMe
@@ -468,7 +468,7 @@ const noop = () => null
 
 /* Value with inferred generic */
 {
-  const render = ({ value, setValue }) => {
+  const render = ({ value, set }) => {
     ;(value: number | string | boolean)
     // $FlowFixMe
     ;(value: number)
@@ -476,7 +476,7 @@ const noop = () => null
     ;(value: string)
     // $FlowFixMe
     ;(value: boolean)
-    setValue(true)
+    set(true)
   }
   const onChange = ({ value }) => {
     ;(value: number | string)
@@ -501,9 +501,9 @@ const noop = () => null
 
 /* Value with specified generic */
 {
-  const render1 = ({ value, setValue }) => {
+  const render1 = ({ value, set }) => {
     ;(value: number | string)
-    setValue('')
+    set('')
     // $FlowFixMe
     ;(value: number)
   }
