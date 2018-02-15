@@ -55,6 +55,21 @@ declare export var Focus: React.ComponentType<
   | {| onChange?: FocusChange, children: FocusRender |}
 >
 
+/* FocusManager */
+
+type FocusManagerChange = ({| isFocused: boolean |}) => void
+
+type FocusManagerRender = ({|
+  isFocused: boolean,
+  blur: () => void,
+  bind: {| tabIndex: number, onFocus: () => void, onBlur: () => void |},
+|}) => React.Node
+
+declare export var FocusManager: React.ComponentType<
+  | {| onChange?: FocusManagerChange, render: FocusManagerRender |}
+  | {| onChange?: FocusManagerChange, children: FocusManagerRender |}
+>
+
 /* Form */
 
 type FormChange<T> = T => void

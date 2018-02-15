@@ -7,6 +7,7 @@ import {
   Input,
   Counter,
   Focus,
+  FocusManager,
   Form,
   Hover,
   List,
@@ -148,6 +149,36 @@ const noop = () => null
     <Focus onChange={onChange}>{noop}</Focus>,
     // $FlowFixMe
     <Focus />,
+  ]
+}
+
+/* FocusManager */
+{
+  const render = ({ isFocused, blur, bind }) => {
+    ;(isFocused: boolean)
+    ;(blur: Function)
+    ;(bind.onFocus: Function)
+    ;(bind.onBlur: Function)
+    // $FlowFixMe
+    ;(isFocused: number)
+    // $FlowFixMe
+    ;(bind.onFocus: number)
+    // $FlowFixMe
+    ;(bind.onBlur: number)
+    return null
+  }
+  const onChange = ({ isFocused }) => {
+    ;(isFocused: boolean)
+    // $FlowFixMe
+    ;(isFocused: number)
+  }
+  ;[
+    <FocusManager render={render} />,
+    <FocusManager>{render}</FocusManager>,
+    <FocusManager onChange={onChange} render={noop} />,
+    <FocusManager onChange={onChange}>{noop}</FocusManager>,
+    // $FlowFixMe
+    <FocusManager />,
   ]
 }
 
