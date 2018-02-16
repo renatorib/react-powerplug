@@ -11,6 +11,7 @@ import {
   Hover,
   List,
   Map,
+  Mounting,
   Set,
   State,
   Toggle,
@@ -348,6 +349,53 @@ const noop = () => null
     <Map initial={{ a: 0 }} onChange={onChange}>
       {noop}
     </Map>,
+  ]
+}
+
+{
+  const render = ({ setRef }) => {
+    return null
+  }
+  const onChange = values => {
+    ;(values.a: number)
+    // $FlowFixMe
+    ;(values.a: string)
+  }
+  ;[
+    <Map initial={{ a: 0 }} render={render} />,
+    <Map initial={{ a: 0 }}>{render}</Map>,
+    <Map initial={{ a: 0 }} onChange={onChange} render={noop} />,
+    <Map initial={{ a: 0 }} onChange={onChange}>
+      {noop}
+    </Map>,
+  ]
+  ;[
+    <Mounting>{() => null}</Mounting>,
+    <Mounting
+      onMount={({ ref }) => {
+        ;(ref: ?number)
+        // $FlowFixMe
+        ;(ref: ?string)
+      }}
+    >
+      {({ setRef }) => {
+        setRef(0)
+        return null
+      }}
+    </Mounting>,
+    <Mounting onMount={() => {}}>{() => null}</Mounting>,
+    <Mounting
+      onMount={() => 1}
+      onUnmount={param => {
+        ;(param: number)
+        // $FlowFixMe
+        ;(param: string)
+      }}
+    >
+      {() => null}
+    </Mounting>,
+    // $FlowFixMe
+    <Mounting />,
   ]
 }
 

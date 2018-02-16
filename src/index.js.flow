@@ -180,7 +180,17 @@ type MapProps<T> =
   | {| initial: T, onChange?: MapChange<T>, render: MapRender<T> |}
   | {| initial: T, onChange?: MapChange<T>, children: MapRender<T> |}
 
-declare export class Map<T: Object> extends React.Component<MapProps<T>, *> {}
+declare export class Map<T: Object> extends React.Component<MapProps<T>> {}
+
+/* Mounting */
+
+type MountingRender<T> = ({| setRef: T => void |}) => React.Node
+
+type MountingProps<P, R> =
+  | {| onMount?: ({| ref: ?R |}) => P, onUnmount?: P => void, render: MountingRender<R> |}
+  | {| onMount?: ({| ref: ?R |}) => P, onUnmount?: P => void, children: MountingRender<R> |}
+
+declare export class Mounting<P, R> extends React.Component<MountingProps<P, R>> {}
 
 /* State */
 
