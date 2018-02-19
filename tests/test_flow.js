@@ -117,14 +117,14 @@ const noop = () => null
 {
   const render = ({ isFocus, bindFocus }) => {
     ;(isFocus: boolean)
-    ;(bindFocus.onFocusIn: Function)
-    ;(bindFocus.onFocusOut: Function)
+    ;(bindFocus.onFocus: Function)
+    ;(bindFocus.onBlur: Function)
     // $FlowFixMe
     ;(isFocus: number)
     // $FlowFixMe
-    ;(bindFocus.onFocusIn: number)
+    ;(bindFocus.onFocus: number)
     // $FlowFixMe
-    ;(bindFocus.onFocusOut: number)
+    ;(bindFocus.onBlur: number)
     return null
   }
   const onChange = ({ isFocus }) => {

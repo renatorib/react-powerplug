@@ -5,7 +5,7 @@ It's the same as `:focus` pseudo selector from css.
 
 ```js
 import { Focus } from 'react-powerplug'
-``` 
+```
 
 ```jsx
 <Focus>
@@ -16,11 +16,11 @@ import { Focus } from 'react-powerplug'
     </div>
   )}
 </Focus>
-``` 
+```
 
 ## Focus Props
 
-*Don't have props*
+_Don't have props_
 
 ## Focus Children Props
 
@@ -31,7 +31,7 @@ TL;DR: `{ isFocus, bindFocus }`
 True if is focusing the binded element
 
 **bindFocus**  
-`{ onFocusIn: () => void, onFocusOut: () => void }`  
+`{ onFocus: () => void, onBlur: () => void }`  
 There are the bind event functions that make `Focus` works.  
 You **must** bind some element to track their events.  
 You can use spread operator to bind effectively an element.
