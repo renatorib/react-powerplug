@@ -2,7 +2,7 @@
   "env": {
     "es": {
       "presets": [
-        ["@babel/env", { "modules": false }],
+        ["@babel/env", { "modules": false, "loose": true }],
         "@babel/react",
         "@babel/stage-3"
       ],
@@ -12,12 +12,13 @@
     },
     "commonjs": {
       "presets": [
-        "@babel/env",
+        ["@babel/env", { "modules": false, "loose": true }],
         "@babel/react",
         "@babel/stage-3"
       ],
       "plugins": [
-        ["@babel/plugin-transform-runtime", { "polyfill": false, "useBuiltIns": true }]
+        ["@babel/plugin-transform-runtime", { "polyfill": false, "useBuiltIns": true }],
+        "@babel/plugin-transform-modules-commonjs"
       ]
     },
     "test": {
