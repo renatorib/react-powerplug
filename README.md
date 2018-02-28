@@ -7,7 +7,7 @@
 <br />
 
 > This branch is **unstable** and is in **active development**.  
-> To the latest stable version go to [0.1-stable branch](/tree/0.1-stable)
+> To the latest stable version go to [0.1-stable branch](https://github.com/renatorib/react-powerplug/tree/0.1-stable)
 
 [![npm](https://img.shields.io/npm/v/react-powerplug.svg?style=flat-square)](https://www.npmjs.com/package/react-powerplug)
 [![npm](https://img.shields.io/npm/dt/react-powerplug.svg?style=flat-square)](https://www.npmjs.com/package/react-powerplug)
