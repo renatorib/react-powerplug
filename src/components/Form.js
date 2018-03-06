@@ -1,9 +1,9 @@
 import * as React from 'react'
-import State from './State'
-import renderProps from '../utils/renderProps'
-import set from '../utils/set'
+import { State } from './State'
+import { renderProps } from '../utils/renderProps'
+import { set } from '../utils/set'
 
-const Form = ({ initial = {}, onChange, ...props }) => (
+export const Form = ({ initial = {}, onChange, ...props }) => (
   <State initial={{ ...initial }} onChange={onChange}>
     {({ state, setState }) =>
       renderProps(props, {
@@ -25,5 +25,3 @@ const Form = ({ initial = {}, onChange, ...props }) => (
     }
   </State>
 )
-
-export default Form

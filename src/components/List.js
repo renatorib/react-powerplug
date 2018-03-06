@@ -1,11 +1,11 @@
 import * as React from 'react'
-import State from './State'
-import renderProps from '../utils/renderProps'
-import set from '../utils/set'
+import { State } from './State'
+import { renderProps } from '../utils/renderProps'
+import { set } from '../utils/set'
 
 const complement = fn => (...args) => !fn(...args)
 
-const List = ({ initial = [], onChange, ...props }) => (
+export const List = ({ initial = [], onChange, ...props }) => (
   <State initial={{ list: initial }} onChange={onChange}>
     {({ state, setState }) =>
       renderProps(props, {
@@ -22,5 +22,3 @@ const List = ({ initial = [], onChange, ...props }) => (
     }
   </State>
 )
-
-export default List

@@ -1,8 +1,8 @@
 import * as React from 'react'
-import State from './State'
-import renderProps from '../utils/renderProps'
+import { State } from './State'
+import { renderProps } from '../utils/renderProps'
 
-const Focus = ({ onChange, ...props }) => (
+export const Focus = ({ onChange, ...props }) => (
   <State initial={{ isFocused: false }} onChange={onChange}>
     {({ state, setState }) =>
       renderProps(props, {
@@ -15,5 +15,3 @@ const Focus = ({ onChange, ...props }) => (
     }
   </State>
 )
-
-export default Focus

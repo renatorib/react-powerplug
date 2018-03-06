@@ -1,9 +1,9 @@
 import * as React from 'react'
-import renderProps from './renderProps'
+import { renderProps } from './renderProps'
 
 const isElement = element => typeof element.type === 'function'
 
-const compose = (...elements) => {
+export const compose = (...elements) => {
   return composedProps => {
     // Stack children arguments recursively and pass
     // it down until the last component that render children
@@ -32,5 +32,3 @@ const compose = (...elements) => {
     return stackProps(elements.length - 1, elements.reverse())
   }
 }
-
-export default compose

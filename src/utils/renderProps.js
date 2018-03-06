@@ -1,4 +1,4 @@
-import warn from './warn'
+import { warn } from './warn'
 
 const isFn = prop => typeof prop === 'function'
 
@@ -9,7 +9,7 @@ const isFn = prop => typeof prop === 'function'
  * or children if both are used
  */
 
-const renderProps = ({ children, render }, ...props) => {
+export const renderProps = ({ children, render }, ...props) => {
   if (process.env.NODE_ENV !== 'production') {
     warn(
       isFn(children) && isFn(render),
@@ -22,5 +22,3 @@ const renderProps = ({ children, render }, ...props) => {
 
   return fn ? fn(...props) : null
 }
-
-export default renderProps

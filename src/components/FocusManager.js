@@ -1,9 +1,8 @@
 import * as React from 'react'
-import State from './State'
-import renderProps from '../utils/renderProps'
-import noop from '../utils/noop'
+import { State } from './State'
+import { renderProps } from '../utils/renderProps'
 
-const FocusManager = ({ onChange, ...props }) => (
+export const FocusManager = ({ onChange, ...props }) => (
   <State initial={{ isFocused: false, timeoutId: null }} onChange={onChange}>
     {({ state, setState }) =>
       renderProps(props, {
@@ -30,5 +29,3 @@ const FocusManager = ({ onChange, ...props }) => (
     }
   </State>
 )
-
-export default FocusManager

@@ -1,8 +1,8 @@
 import * as React from 'react'
-import State from './State'
-import renderProps from '../utils/renderProps'
+import { State } from './State'
+import { renderProps } from '../utils/renderProps'
 
-const Hover = ({ onChange, ...props }) => (
+export const Hover = ({ onChange, ...props }) => (
   <State initial={{ isHovered: false }} onChange={onChange}>
     {({ state, setState }) =>
       renderProps(props, {
@@ -15,5 +15,3 @@ const Hover = ({ onChange, ...props }) => (
     }
   </State>
 )
-
-export default Hover
