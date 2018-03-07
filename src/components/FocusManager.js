@@ -1,7 +1,6 @@
 import * as React from 'react'
 import State from './State'
 import renderProps from '../utils/renderProps'
-import noop from '../utils/noop'
 
 const FocusManager = ({ onChange, ...props }) => (
   <State initial={{ isFocused: false, timeoutId: null }} onChange={onChange}>
