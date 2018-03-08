@@ -1,6 +1,6 @@
 {
   "env": {
-    "es": {
+    "esm": {
       "presets": [
         ["@babel/env", { "modules": false, "loose": true }],
         "@babel/react",
@@ -10,7 +10,7 @@
         ["@babel/plugin-transform-runtime", { "polyfill": false, "useBuiltIns": true, "useESModules": true }]
       ]
     },
-    "commonjs": {
+    "cjs": {
       "presets": [
         ["@babel/env", { "modules": false, "loose": true }],
         "@babel/react",
