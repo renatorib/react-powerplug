@@ -89,7 +89,7 @@ _If you want a more detailed **API Reference** and examples for each component s
 ### Toggle
 
 **Component Props:** `{ initial, onChange }`  
-**Render Props:** `{ on, off, toggle, setOn }`  
+**Render Props:** `{ on, toggle, set }`  
 [see docs](docs/components/Toggle.md)
 
 ```jsx
