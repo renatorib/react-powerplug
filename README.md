@@ -46,7 +46,7 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 <Toggle
   initial={false}
   render={({ on, toggle }) => (
-    <Checkbox checked={on} onChange={toggle}>
+    <Checkbox checked={on} onChange={toggle} />
   )}
 />
 ```
