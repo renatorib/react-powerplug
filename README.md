@@ -1,7 +1,5 @@
 <h1 align="center">
-  <p align="center">
-    <img src="/logo.png" alt="React PowerPlug" />
-  </p>
+  <img src="/logo.png" alt="React PowerPlug" />
 </h1>
 
 <p align="center">
@@ -276,70 +274,27 @@ If you want to avoid 'render props hell' you can compose two or more components 
 **[:books: For complete guide, see docs](docs/components/Compose.md)**
 
 ```jsx
-import { compose } from 'react-powerplug'
-
-const ToggleCounter = compose(Toggle, Counter)
-
-<ToggleCounter>
-  {({ toggle, on }, { count, inc, dec }) => (
-    <ProductCard
-      {...productInfo}
-      isFavorited={on}
-      onFavorite={toggle}
-      count={count}
-      onAdd={inc}
-      onRemove={dec}
-    />
-  )}
-</ToggleCounter>
-```
-
-If you need to pass props, especially for `initial`, just pass a created element. Internals this will be cloned.
-
-```jsx
-const ToggleCounter = compose(
-  <Toggle initial={false} />,
-  <Counter initial={2} />
-)
-
-// or just mix it
-const ToggleCounter = compose(Toggle, <Counter initial={3} />)
-```
-
-Also, you can use a built-in Compose component and pass components on `components` prop
-
-```jsx
 import { Compose } from 'react-powerplug'
 
 <Compose components={[Toggle, Counter]}>
-  {(toggle, counter) => (
-    <ProductCard {...} />
-  )}
+  {(toggle, counter) => (/* ... */)}
 </Compose>
 ```
 
-Behind the scenes, that's what happens:
-
 ```jsx
-<Counter /* passed props */>
-  {counter => (
-    <Toggle /* passed props */>
-      {toggle => (
-        <ProductCard
-          {...productInfo}
-          isFavorited={toggle.on}
-          onFavorite={toggle.toggle}
-          count={counter.count}
-          onAdd={counter.inc}
-          onRemove={counter.dec}
-        />
-      )}
-    </Toggle>
-  )}
-</Counter>
-```
+import { compose } from 'react-powerplug'
 
-Because of that, when you use `toggle` function, only `<Toggle>` will be rerendered, but if you use `inc` or `dec` functions, both `<Counter>` and `<Toggle>` will be rerendered. **Even** using `compose()` utility.
+const ToggleCounter = compose(
+  <Counter initial={5} />,
+  <Toggle initial={false} />
+)
+
+<ToggleCounter>
+  {(toggle, counter) => (
+    <ProductCard {...} />
+  )}
+</ToggleCounter>
+```
 
 ---
 

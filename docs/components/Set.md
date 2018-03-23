@@ -1,11 +1,5 @@
 # Set
 
-TODO
+// TODO: :disappointed_relieved:
 
-```js
-import { Set } from 'react-powerplug'
-```
-
-## Set Props
-
-TODO
+Send us a PR if you want to collaborate! :green_heart:
