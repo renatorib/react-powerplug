@@ -71,15 +71,17 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 | <h6>STATE CONTAINERS</h6>    |
 | **\<State>**                 | `{ initial, onChange }` | `{ state, setState }`                          | [:point_down:](#state) [:books:](docs/components/State.md)                  |
 | **\<Toggle>**                | `{ initial, onChange }` | `{ on, toggle, set }`                          | [:point_down:](#toggle) [:books:](docs/components/Toggle.md)                |
+| **\<Counter>**               | `{ initial, onChange }` | `{count, inc, dec, incBy, decBy, set }`        | [:point_down:](#counter) [:books:](docs/components/Counter.md)              |
 | **\<Value>**                 | `{ initial, onChange }` | `{ value, setValue, set }`                     | [:point_down:](#value) [:books:](docs/components/Value.md)                  |
 | **\<Map>**                   | `{ initial, onChange }` | `{ set, get, over, values }`                   | [:point_down:](#map) [:books:](docs/components/Map.md)                      |
 | **\<Set>**                   | `{ initial, onChange }` | `{ values, add, clear, remove, has }`          | [:point_down:](#set) [:books:](docs/components/Set.md)                      |
 | **\<List>**                  | `{ initial, onChange }` | `{ list, first, last, push, pull, sort, set }` | [:point_down:](#list) [:books:](docs/components/List.md)                    |
 | <h6>FEEDBACK CONTAINERS</h6> |
-| **\<Hover>**                 | `{ initial, onChange }` | `{ isHovered, bind }`                          | [:point_down:](#hover) [:books:](docs/components/Hover.md)                  |
-| **\<Active>**                | `{ initial, onChange }` | `{ isActive, bind }`                           | [:point_down:](#active) [:books:](docs/components/Active.md)                |
-| **\<Focus>**                 | `{ initial, onChange }` | `{ isFocused, bind }`                          | [:point_down:](#focus) [:books:](docs/components/Focus.md)                  |
-| **\<Touch>**                 | `{ initial, onChange }` | `{ isTouched, bind }`                          | [:point_down:](#touch) [:books:](docs/components/Touch.md)                  |
+| **\<Hover>**                 | `{ onChange }`          | `{ isHovered, bind }`                          | [:point_down:](#hover) [:books:](docs/components/Hover.md)                  |
+| **\<Active>**                | `{ onChange }`          | `{ isActive, bind }`                           | [:point_down:](#active) [:books:](docs/components/Active.md)                |
+| **\<Focus>**                 | `{ onChange }`          | `{ isFocused, bind }`                          | [:point_down:](#focus) [:books:](docs/components/Focus.md)                  |
+| **\<Touch>**                 | `{ onChange }`          | `{ isTouched, bind }`                          | [:point_down:](#touch) [:books:](docs/components/Touch.md)                  |
+| **\<FocusManager>**          | `{ onChange }`          | `{ isFocused, blur, bind }`                    | [:point_down:](#focusmanager) [:books:](docs/components/FocusManager.md)    |
 | <h6>FORM CONTAINERS</h6>     |
 | **\<Input>**                 | `{ initial, onChange }` | `{ set, value, bind }`                         | [:point_down:](#input) [:books:](docs/components/Input.md)                  |
 | **\<Form>**                  | `{ initial, onChange }` | `{ input, values }`                            | [:point_down:](#form) [:books:](docs/components/Form.md)                    |
@@ -108,6 +110,22 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 <Toggle initial={true}>
   {({ on, toggle }) => <Checkbox checked={on} onChange={toggle} />}
 </Toggle>
+```
+
+#### Counter
+
+```jsx
+<Counter initial={0}>
+  {({ count, inc, dec }) => (
+    <CartItem
+      productName="Lorem ipsum"
+      unitPrice={19.9}
+      count={count}
+      onAdd={inc}
+      onRemove={dec}
+    />
+  )}
+</Counter>
 ```
 
 #### Value
@@ -163,7 +181,7 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 #### List
 
 ```jsx
-<List initial={[]}>
+<List initial={['Buy new shoes']}>
   {({ list, pull, push }) => (
     <Todo>
       <TodoFormInput onSubmit={push} />

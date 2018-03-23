@@ -1,9 +1,10 @@
 import * as React from 'react'
 import State from './State'
 import renderProps from '../utils/renderProps'
+import set from '../utils/set'
 
-const add = value => prev => ({
-  count: prev.count + value,
+const add = value => state => ({
+  count: state.count + value,
 })
 
 const Counter = ({ initial = 0, onChange, ...props }) => (
@@ -15,6 +16,7 @@ const Counter = ({ initial = 0, onChange, ...props }) => (
         dec: () => setState(add(-1)),
         incBy: value => setState(add(value)),
         decBy: value => setState(add(-value)),
+        set: value => setState(s => ({ on: set(value, s.on) })),
       })
     }
   </State>
