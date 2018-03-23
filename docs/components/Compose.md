@@ -32,8 +32,6 @@ If you need to pass props, especially for `initial`, just pass a created element
 Also, you can use a built-in Compose component and pass components on `components` prop
 
 ```jsx
-import { Compose } from 'react-powerplug'
-
 <Compose components={[Toggle, Counter]}>
   {(toggle, counter) => (
     <ProductCard {...} />
@@ -45,7 +43,9 @@ In addition you can use a utility to create a Composed component
 
 ```js
 import { compose } from 'react-powerplug' // note lowercased (c)ompose
+```
 
+```jsx
 const ToggleCounter = compose(
   <Counter initial={5} />,
   <Toggle initial={false} />

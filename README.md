@@ -33,9 +33,7 @@
 ```jsx
 import { State, Toggle } from 'react-powerplug'
 import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
-```
 
-```jsx
 <State initial={{ offset: 0, limit: 10, totalCount: 200 }}>
   {({ state, setState }) => (
     <Pagination {...state} onChange={(offset) => setState({ offset })} />
