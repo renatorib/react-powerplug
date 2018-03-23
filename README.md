@@ -1,29 +1,34 @@
+<h1 align="center">
+  <img src="/logo.png" alt="React PowerPlug" />
+</h1>
+
 <p align="center">
-  <img src="./logo.png" alt="react-powerplug" />
+  <a href="https://www.npmjs.com/package/react-powerplug" target="_blank">
+    <img src="https://img.shields.io/npm/dt/react-powerplug.svg?style=flat-square" alt="npm" />
+  </a>
+  <a href="https://github.com/renatorib/react-powerplug/stargazers" target="_blank">
+    <img src="https://img.shields.io/github/stars/renatorib/react-powerplug.svg?style=flat-square" alt="stars" />
+  </a>
+  <a href="https://twitter.com/intent/tweet?url=https://github.com/renatorib/react-powerplug" target="_blank">
+    <img src="https://img.shields.io/twitter/url/https/github.com/renatorib/react-powerplug.svg?style=flat-square" alt="tweet" />
+  </a>
 </p>
 
-<h1 align="center"></h1>
-
 <br />
+ 
+ > **React PowerPlug is a set of pluggable renderless components and helpers** that provides different types of state and logics so you can use with your dumb components. It creates a state and pass down the logic to the children, so you can handle your data. Read about [Render Props](https://reactjs.org/docs/render-props.html) pattern.
+ 
+ 
+## Highlights
+- :ok_hand: Dependency free
+- :electric_plug: Plug and play
+- :crystal_ball: Tree shaking friendly (ESM, no side effects)
+- :package: Super tiny (~4kb)
+- :books: Well documented
+- :beers: Bunch of awesome utilities
 
-> This branch is **unstable** and is in **active development**.  
-> To the latest stable version go to [0.1-stable branch](https://github.com/renatorib/react-powerplug/tree/0.1-stable)
-
-[![npm](https://img.shields.io/npm/v/react-powerplug.svg?style=flat-square)](https://www.npmjs.com/package/react-powerplug)
-[![npm](https://img.shields.io/npm/dt/react-powerplug.svg?style=flat-square)](https://www.npmjs.com/package/react-powerplug)
-[![GitHub issues](https://img.shields.io/github/issues/renatorib/react-powerplug.svg?style=flat-square)](https://github.com/renatorib/react-powerplug/issues)
-[![GitHub stars](https://img.shields.io/github/stars/renatorib/react-powerplug.svg?style=flat-square)](https://github.com/renatorib/react-powerplug/stargazers)
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/renatorib/react-powerplug.svg?style=social&style=flat-square)](https://twitter.com/intent/tweet?url=https://github.com/renatorib/react-powerplug)
-
-:electric_plug: Renderless Pluggable State Containers
-
----
-
-**React PowerPlug is a set of pluggable renderless components** that provides different types of state and logics so you can use with your dumb components. It creates a state and pass down the logic to the children, so you can handle your data/callbacks.
-
-It's has been created to (but not limited to) use with **storybook, react styleguidist, documentations, prototypes**. You can also use to create a bunch of uncontrolled components where the outside app don't care about your state, for example a menu dropdown.
-
-### Quick examples:
+<details>
+  <summary>See quick examples</summary>
 
 ```jsx
 import { State, Toggle } from 'react-powerplug'
@@ -51,28 +56,39 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 />
 ```
 
-# Renderless Components
+</details>
 
-Note: Also known as `render props` or `children as function`.  
-For most people, this may look pretty weird. **But it's extremely powerful**. Usually you render some element whitin your component, but if you are creating an 'agnostic' component or a kind of abstraction component you can not simply render elements, you don't know what the user wants to render. So you render values, actions, states, data... props. You pick these props passing a function to children (or render prop) and now with this data you have total control of what you want to do. Now render what you want to render and do what you want to do. **Renderless components are about abstracting some logic without any UI.**
+## Components
 
-React PowerPlug brings to you a bunch of components that act as state and logic containers, so you can get this powerful abstraction and use it any way you want.
+> **_Note 1:_** This branch is **unstable** and is in **active development**.  
+> To the latest stable version go to [0.1-stable branch](https://github.com/renatorib/react-powerplug/tree/0.1-stable)
 
-**Note:** with PowerPlug you can use `children` or `render` prop.  
-You decide which one is best for you.
+> **_Note 2:_** _This is a kind of a cheat sheet for fast search._  
+> _If you want a more detailed **API Reference** and examples for each component see [full docs](/docs)_
 
-# Components
+| Component                    | Component Props         | Render Props                                   |                                                                             |
+| ---------------------------- | ----------------------- | ---------------------------------------------- | --------------------------------------------------------------------------- |
+| <h6>STATE CONTAINERS</h6>    |
+| **\<State>**                 | `{ initial, onChange }` | `{ state, setState }`                          | [:point_down:](#state) [:books:](docs/components/State.md)                  |
+| **\<Toggle>**                | `{ initial, onChange }` | `{ on, toggle, set }`                          | [:point_down:](#toggle) [:books:](docs/components/Toggle.md)                |
+| **\<Value>**                 | `{ initial, onChange }` | `{ value, setValue, set }`                     | [:point_down:](#value) [:books:](docs/components/Value.md)                  |
+| **\<Map>**                   | `{ initial, onChange }` | `{ set, get, over, values }`                   | [:point_down:](#map) [:books:](docs/components/Map.md)                      |
+| **\<Set>**                   | `{ initial, onChange }` | `{ values, add, clear, remove, has }`          | [:point_down:](#set) [:books:](docs/components/Set.md)                      |
+| **\<List>**                  | `{ initial, onChange }` | `{ list, first, last, push, pull, sort, set }` | [:point_down:](#list) [:books:](docs/components/List.md)                    |
+| <h6>FEEDBACK CONTAINERS</h6> |
+| **\<Hover>**                 | `{ initial, onChange }` | `{ isHovered, bind }`                          | [:point_down:](#hover) [:books:](docs/components/Hover.md)                  |
+| **\<Active>**                | `{ initial, onChange }` | `{ isActive, bind }`                           | [:point_down:](#active) [:books:](docs/components/Active.md)                |
+| **\<Focus>**                 | `{ initial, onChange }` | `{ isFocused, bind }`                          | [:point_down:](#focus) [:books:](docs/components/Focus.md)                  |
+| **\<Touch>**                 | `{ initial, onChange }` | `{ isTouched, bind }`                          | [:point_down:](#touch) [:books:](docs/components/Touch.md)                  |
+| <h6>FORM CONTAINERS</h6>     |
+| **\<Input>**                 | `{ initial, onChange }` | `{ set, value, bind }`                         | [:point_down:](#input) [:books:](docs/components/Input.md)                  |
+| **\<Form>**                  | `{ initial, onChange }` | `{ input, values }`                            | [:point_down:](#form) [:books:](docs/components/Form.md)                    |
+| <h6>OTHER</h6>               |
+| **\<Compose>**               | `{ components }`        | _depends on components prop_                   | [:point_down:](#composing-components) [:books:](docs/components/Compose.md) |
 
-**_Note:_** _This is a kind of a cheat sheet for fast search._  
-_If you want a more detailed **API Reference** and examples for each component see the [Docs](/docs)_
+## Examples
 
-## State Containers
-
-### State
-
-**Component Props:** `{ initial, onChange }`  
-**Render Props:** `{ state, setState }`  
-[see docs](docs/components/State.md)
+#### State
 
 ```jsx
 <State initial={{ isLoading: false, data: null }}>
@@ -86,11 +102,7 @@ _If you want a more detailed **API Reference** and examples for each component s
 </State>
 ```
 
-### Toggle
-
-**Component Props:** `{ initial, onChange }`  
-**Render Props:** `{ on, toggle, set }`  
-[see docs](docs/components/Toggle.md)
+#### Toggle
 
 ```jsx
 <Toggle initial={true}>
@@ -98,34 +110,14 @@ _If you want a more detailed **API Reference** and examples for each component s
 </Toggle>
 ```
 
-### Loading
-
-**Component Props:** `{ initial, onChange }`  
-**Render Props:** `{ isLoading, toggle, setLoading }`  
-[see docs](docs/components/Loading.md)
-
-```jsx
-<Loading initial={false}>
-  {({ isLoading, toggleLoading }) => (
-    <Button onClick={toggleLoading}>
-      {isLoading ? 'Loading...' : 'Click me'}
-    </Button>
-  )}
-</Loading>
-```
-
-### Value
-
-**Component Props:** `{ initial, onChange }`  
-**Render Props:** `{ value, setValue }`  
-[see docs](docs/components/Value.md)
+#### Value
 
 ```jsx
 <Value initial="React">
   {({ value, setValue }) => (
     <Select
       label="Choose one"
-      options={['React', 'Preact', 'Vue']}
+      options={['React', 'Angular', 'Vue']}
       value={value}
       onChange={setValue}
     />
@@ -133,16 +125,12 @@ _If you want a more detailed **API Reference** and examples for each component s
 </Value>
 ```
 
-### Map
-
-**Component Props:** `{ initial, onChange }`  
-**Render Props:** `{ set, get, values }`  
-[see docs](docs/components/Map.md)
+#### Map
 
 ```jsx
 <Map initial={{ sounds: true, graphics: 'medium' }}>
   {({ set, get }) => (
-    <Maptings>
+    <Settings>
       <ToggleCheck checked={get('sounds')} onChange={c => set('sounds', c)}>
         Game Sounds
       </ToggleCheck>
@@ -152,88 +140,68 @@ _If you want a more detailed **API Reference** and examples for each component s
         selected={get('graphics')}
         onSelect={value => set('graphics', value)}
       />
-    </Maptings>
+    </Settings>
   )}
 </Map>
 ```
 
-### List
-
-**Component Props:** `{ initial, onChange }`  
-**Render Props:** `{ list, push, pull, sort, setList }`  
-[see docs](docs/components/List.md)
+#### Set
 
 ```jsx
-<List initial={['react', 'babel']}>
-  {({ list, pull, push }) => (
-    <div>
-      <FormInput onSubmit={push} />
-      {list.map(tag => (
-        <Tag onRemove={() => pull(value => value === tag)}>
-          {tag}
-        </Tag>
+<Set initial={['react', 'babel']}>
+  {({ values, remove, add }) => (
+    <TagManager>
+      <FormInput onSubmit={add} />
+      {values.map(tag => (
+        <Tag onRemove={() => remove(tag)}>{tag}</Tag>
       )}
-    </div>
+    </TagManager>
+  )}
+</Set>
+```
+
+#### List
+
+```jsx
+<List initial={[]}>
+  {({ list, pull, push }) => (
+    <Todo>
+      <TodoFormInput onSubmit={push} />
+      {list.map(todo => (
+        <TodoItem onDelete={() => pull(i => i === todo)}>
+          {todo}
+        </TodoItem>
+      )}
+    </Todo>
   )}
 </List>
 ```
 
-## Feedback Containers
-
-### Hover
-
-**Component Props:** `{ onChange }`  
-**Render Props:** `{ isHover, bindHover }`  
-[see docs](docs/components/Hover.md)
+#### Hover
 
 ```jsx
 <Hover>
-  {({ isHover, bindHover }) => (
-    <div {...bindHover}>
-      You are {isHover ? 'hovering' : 'not hovering'} this div.
+  {({ isHovered, bind }) => (
+    <div {...bind}>
+      You are {isHovered ? 'hovering' : 'not hovering'} this div.
     </div>
   )}
 </Hover>
 ```
 
-### Active
-
-**Component Props:** `{ onChange }`  
-**Render Props:** `{ isActive, bindActive }`  
-[see docs](docs/components/Active.md)
+#### Active
 
 ```jsx
 <Active>
-  {({ isActive, bindActive }) => (
-    <div {...bindActive}>
+  {({ isActive, bind }) => (
+    <div {...bind}>
       You are {isActive ? 'clicking' : 'not clicking'} this div.
     </div>
   )}
 </Active>
 ```
 
-### Focus
-
-**Component Props:** `{ onChange }`  
-**Render Props:** `{ isFocus, bindFocus }`  
-[see docs](docs/components/Focus.md)
-
-```jsx
-<Focus>
-  {({ isFocus, bindFocus }) => (
-    <div>
-      <input {...bindFocus} placeholder="Focus me" />
-      <div>You are {isFocus ? 'focusing' : 'not focusing'} the input.</div>
-    </div>
-  )}
-</Focus>
-```
-
-### Touch
-
-**Component Props:** `{ onChange }`  
-**Render Props:** `{ isTouched, bind }`  
-[see docs](docs/components/Touch.md)
+#### Touch
 
 ```jsx
 <Touch>
@@ -245,13 +213,20 @@ _If you want a more detailed **API Reference** and examples for each component s
 </Touch>
 ```
 
-## Form Containers
+#### Focus
 
-### Input
+```jsx
+<Focus>
+  {({ isFocused, bind }) => (
+    <div>
+      <input {...bind} placeholder="Focus me" />
+      <div>You are {isFocused ? 'focusing' : 'not focusing'} input.</div>
+    </div>
+  )}
+</Focus>
+```
 
-**Component Props:** `{ initial, onChange, getValue }`  
-**Render Props:** `{ value, set, bind }`  
-[see docs](docs/components/Input.md)
+#### Input
 
 ```jsx
 <Input initial="hello world">
@@ -264,114 +239,70 @@ _If you want a more detailed **API Reference** and examples for each component s
 </Input>
 ```
 
-### Form
-
-**Component Props:** `{ initial, onChange, getValue }`  
-**Render Props:** `{ input }`  
-[see docs](docs/components/Form.md)
+#### Form
 
 ```jsx
 <Form initial={{ subject: '', message: '' }}>
-  {({ input }) => {
-    const subject = input('subject')
-    const message = input('message')
+  {({ input, values }) => (
+    <form onSubmit={(e) => {
+      e.preventDefault()
+      console.log(values)
+    }>
+      <ControlledInput
+        placeholder="Subject"
+        {...input('subject').bind}
+      />
+      <ControlledTextArea
+        placeholder="Message"
+        {...input('message').bind}
+      />
+      <Submit>Send</Submit>
 
-    return (
-      <div>
-        <ControlledInput
-          placeholder="Subject"
-          {...subject.bind}
-        />
-        <ControlledTextArea
-          placeholder="Message"
-          {...message.bind}
-        />
-        <Submit>Send</Submit>
-
-        {/*
-          input(id) => { bind, set, value }
-        */}
-      </div>
-    )
-  }
+      {/*
+        input(id) => { bind, set, value }
+      */}
+    </form>
+  )
 </Form>
 ```
 
 # Composing Components
 
-If you want to merge two of more components functionalities, you can compose they in a single one.  
-For complete guide [see Compose docs](docs/components/Compose.md)
-
-```jsx
-import { compose } from 'react-powerplug'
-
-const ToggleCounter = compose(Toggle, Counter)
-
-<ToggleCounter>
-  {({ toggle, on }, { count, inc, dec }) => (
-    <ProductCard
-      {...productInfo}
-      isFavorited={on}
-      onFavorite={toggle}
-      count={count}
-      onAdd={inc}
-      onRemove={dec}
-    />
-  )}
-</ToggleCounter>
-```
-
-If you need to pass props, especially for `initial`, just pass a created element. Internals this will be cloned.
-
-```jsx
-const ToggleCounter = compose(
-  <Toggle initial={false} />,
-  <Counter initial={2} />
-)
-
-// or just mix it
-const ToggleCounter = compose(Toggle, <Counter initial={3} />)
-```
-
-Also, you can use a built-in Compose component and pass components on `states` prop
+If you want to avoid 'render props hell' you can compose two or more components in a single one.  
+**[:books: For complete guide, see docs](docs/components/Compose.md)**
 
 ```jsx
 import { Compose } from 'react-powerplug'
 
-<Compose states={[Toggle, Counter]}>
-  {(toggle, counter) => (
-    <ProductCard {...} />
-  )}
+<Compose components={[Toggle, Counter]}>
+  {(toggle, counter) => (/* ... */)}
 </Compose>
 ```
 
-Behind the scenes, that's what happens:
-
 ```jsx
-<Counter /* passed props */>
-  {counter => (
-    <Toggle /* passed props */>
-      {toggle => (
-        <ProductCard
-          {...productInfo}
-          isFavorited={toggle.on}
-          onFavorite={toggle.toggle}
-          count={counter.count}
-          onAdd={counter.inc}
-          onRemove={counter.dec}
-        />
-      )}
-    </Toggle>
+import { compose } from 'react-powerplug'
+
+const ToggleCounter = compose(
+  <Counter initial={5} />,
+  <Toggle initial={false} />
+)
+
+<ToggleCounter>
+  {(toggle, counter) => (
+    <ProductCard {...} />
   )}
-</Counter>
+</ToggleCounter>
 ```
 
-Because of that, when you use `toggle` function, only `<Toggle>` will be rerendered, but if you use `inc` or `dec` functions, both `<Counter>` and `<Toggle>` will be rerendered. **Even** using `compose()` utility.
+---
 
-# CodeSandbox examples
+<p align="center">
+  <a href="https://egghead.io/lessons/react-rapid-prototyping-with-react-powerplug" target="_blank">
+    <img src="https://user-images.githubusercontent.com/3277185/37249517-cde30352-24c7-11e8-8f3a-614e2162784d.png" alt="Watch 'Rapid Prototyping with React PowerPlug' by Andrew Del Prete on egghead.io" />
+  </a>
+</p>
 
-[Using Toggle in a Checkbox](https://codesandbox.io/s/jp890p2x7w)  
-[Using State in a Pagination](https://codesandbox.io/s/8x9m4893l2)
+---
 
 # Install
 
@@ -385,7 +316,7 @@ yarn add react-powerplug
 npm i react-powerplug
 ```
 
-### UMD library
+### UMD
 
 ```html
 <script src="https://unpkg.com/react-powerplug/dist/react-powerplug.min.js"></script>
