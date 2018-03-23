@@ -3,43 +3,47 @@ import babel from 'rollup-plugin-babel'
 import replace from 'rollup-plugin-replace'
 import uglify from 'rollup-plugin-uglify'
 
-const env = process.env.NODE_ENV
+const getUMDConfig = ({ env, file }) => {
+  const config = {
+    input: 'src/index.js',
+    output: {
+      file,
+      format: 'umd',
+      name: 'ReactPowerPlug',
+      globals: {
+        react: 'React',
+      },
+    },
+    external: ['react'],
+    plugins: [
+      nodeResolve(),
+      babel({
+        runtimeHelpers: true,
+        exclude: '**/node_modules/**',
+      }),
+      replace({
+        'process.env.NODE_ENV': JSON.stringify(env),
+      }),
+    ],
+  }
 
-const config = {
-  input: 'src/index.js',
-  output: {
-    format: 'umd',
-    name: 'ReactPowerPlug',
-    globals: {
-      'react': 'React',
-    }
-  },
-  external: [
-    'react',
-  ],
-  plugins: [
-    nodeResolve(),
-    babel({
-      runtimeHelpers: true,
-      exclude: '**/node_modules/**'
-    }),
-    replace({
-      'process.env.NODE_ENV': JSON.stringify(env)
-    })
-  ]
+  if (env === 'production') {
+    config.plugins.push(
+      uglify({
+        compress: {
+          pure_getters: true,
+          unsafe: true,
+          unsafe_comps: true,
+          warnings: false,
+        },
+      })
+    )
+  }
+
+  return config
 }
 
-if (env === 'production') {
-  config.plugins.push(
-    uglify({
-      compress: {
-        pure_getters: true,
-        unsafe: true,
-        unsafe_comps: true,
-        warnings: false
-      }
-    })
-  )
-}
-
-export default config
+export default [
+  getUMDConfig({ env: 'development', file: 'dist/react-powerplug.js' }),
+  getUMDConfig({ env: 'production', file: 'dist/react-powerplug.min.js' }),
+]
