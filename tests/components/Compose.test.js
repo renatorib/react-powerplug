@@ -9,7 +9,9 @@ test('<Compose />', () => {
     return null
   }
 
-  TestRenderer.create(<Compose states={[Counter, Toggle]} render={renderFn} />)
+  TestRenderer.create(
+    <Compose components={[Counter, Toggle]} render={renderFn} />
+  )
 
   expect(lastCallProps[0].count).toBe(0)
   expect(lastCallProps[1].on).toBe(false)
