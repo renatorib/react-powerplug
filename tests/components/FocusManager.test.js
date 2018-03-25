@@ -8,7 +8,7 @@ const bootstrap = async () => {
   const scripts = [
     './node_modules/react/umd/react.development.js',
     './node_modules/react-dom/umd/react-dom.development.js',
-    './dist/react-powerplug.js',
+    './dist/react-powerplug.umd.js',
   ]
 
   await page.setViewport({ width: 1000, height: 1000 })
