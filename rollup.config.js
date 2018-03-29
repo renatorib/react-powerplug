@@ -6,7 +6,7 @@ import uglify from 'rollup-plugin-uglify'
 
 const getUMDConfig = ({ env, file }) => {
   const config = {
-    input: 'src/index.js',
+    input: './src/index.js',
     output: {
       file,
       format: 'umd',
@@ -49,6 +49,6 @@ const getUMDConfig = ({ env, file }) => {
 }
 
 export default [
-  getUMDConfig({ env: 'development', file: 'dist/react-powerplug.js' }),
+  getUMDConfig({ env: 'development', file: 'dist/react-powerplug.umd.js' }),
   getUMDConfig({ env: 'production', file: 'dist/react-powerplug.min.js' }),
 ]

@@ -1,5 +1,5 @@
 {
-  "dist/react-powerplug.js": {
+  "dist/react-powerplug.umd.js": {
     "bundled": 18322,
     "minified": 7831,
     "gzipped": 2125

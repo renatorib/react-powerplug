@@ -18,7 +18,7 @@
     "typecheck:flow": "flow check --max-warnings=0",
     "lint": "eslint src",
     "test:only": "npm run build:umd && jest",
-    "test:bundle": "jest --setupTestFrameworkScriptFile ./tests/jestBundleSetup.js",
+    "test:bundle": "jest --setupTestFrameworkScriptFile ./tests/jestUMDSetup.js",
     "test:lib": "jest --setupTestFrameworkScriptFile ./tests/jestLibSetup.js",
     "test:all": "npm run clean && npm run lint && npm run test:only && npm run build && npm run test:bundle && npm run test:lib",
     "test": "npm run test:all",
