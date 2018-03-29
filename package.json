@@ -6,7 +6,6 @@
   "license": "MIT",
   "main": "lib/index.js",
   "module": "esm/index.js",
-  "jsnext:main": "esm/index.js",
   "sideEffects": false,
   "scripts": {
     "build:flow": "cpy src/index.js.flow lib & cpy src/index.js.flow esm",
