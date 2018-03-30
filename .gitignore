@@ -1,5 +1,3 @@
 *.log
 node_modules
-lib
-esm
 dist
