@@ -4,24 +4,20 @@
   "description": "Give life to your dumb components",
   "author": "Renato Ribeiro (http://github.com/renatorib)",
   "license": "MIT",
-  "main": "lib/index.js",
-  "module": "esm/index.js",
+  "main": "dist/react-powerplug.cjs.js",
+  "module": "dist/react-powerplug.esm.js",
   "sideEffects": false,
   "scripts": {
-    "build:flow": "cpy src/index.js.flow lib & cpy src/index.js.flow esm",
-    "build:cjs": "cross-env BABEL_ENV=cjs babel src --out-dir lib",
-    "build:esm": "cross-env BABEL_ENV=esm babel src --out-dir esm",
-    "build:umd": "cross-env BABEL_ENV=esm rollup -c",
-    "build:all": "npm run build:cjs && npm run build:esm && npm run build:umd && npm run build:flow",
-    "build": "npm run clean && npm run build:all",
-    "clean": "rimraf lib dist esm",
+    "build:flow": "cpy src/index.js.flow dist --rename react-powerplug.cjs.js.flow",
+    "build:code": "cross-env NODE_ENV=code rollup -c",
+    "build": "npm run clean && npm run build:code && npm run build:flow",
+    "clean": "rimraf dist",
     "typecheck:flow": "flow check --max-warnings=0",
     "lint": "eslint src",
-    "test:only": "npm run build:umd && jest",
-    "test:bundle": "jest --setupTestFrameworkScriptFile ./tests/jestUMDSetup.js",
-    "test:lib": "jest --setupTestFrameworkScriptFile ./tests/jestLibSetup.js",
-    "test:all": "npm run clean && npm run lint && npm run test:only && npm run build && npm run test:bundle && npm run test:lib",
-    "test": "npm run test:all",
+    "test:only": "npm run build:code && jest",
+    "test:umd": "jest --setupTestFrameworkScriptFile ./tests/jestUMDSetup.js",
+    "test:cjs": "jest --setupTestFrameworkScriptFile ./tests/jestCJSSetup.js",
+    "test": "npm run build && npm run lint && jest && npm run test:umd && npm run test:cjs",
     "precommit": "lint-staged",
     "prepublishOnly": "npm run clean && npm run build"
   },
@@ -36,7 +32,6 @@
     "globalTeardown": "jest-environment-puppeteer/teardown",
     "transformIgnorePatterns": [
       "/node_modules/",
-      "/lib/",
       "/dist/"
     ]
   },
@@ -46,9 +41,7 @@
   },
   "files": [
     "dist",
-    "lib",
-    "src",
-    "esm"
+    "src"
   ],
   "keywords": [
     "react",
@@ -62,18 +55,18 @@
   },
   "homepage": "https://github.com/renatorib/react-powerplug",
   "dependencies": {
-    "@babel/runtime": "^7.0.0-beta.37"
+    "@babel/runtime": "^7.0.0-beta.42"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.37",
-    "@babel/core": "^7.0.0-beta.37",
-    "@babel/plugin-transform-modules-commonjs": "^7.0.0-beta.37",
-    "@babel/plugin-transform-runtime": "^7.0.0-beta.37",
-    "@babel/preset-env": "^7.0.0-beta.37",
-    "@babel/preset-react": "^7.0.0-beta.37",
-    "@babel/preset-stage-3": "^7.0.0-beta.37",
+    "@babel/cli": "^7.0.0-beta.42",
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/plugin-transform-modules-commonjs": "^7.0.0-beta.42",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
+    "@babel/preset-react": "^7.0.0-beta.42",
+    "@babel/preset-stage-3": "^7.0.0-beta.42",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^7.2.3",
+    "babel-eslint": "^8.2.2",
     "babel-jest": "^22.1.0",
     "cpy-cli": "^1.0.1",
     "cross-env": "^5.0.5",
@@ -92,12 +85,12 @@
     "react-dom": "^16.2.0",
     "react-test-renderer": "^16.2.0",
     "rimraf": "^2.6.1",
-    "rollup": "^0.53.4",
-    "rollup-plugin-babel": "^4.0.0-beta.0",
-    "rollup-plugin-node-resolve": "^3.0.2",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^4.0.0-beta.3",
+    "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-replace": "^2.0.0",
-    "rollup-plugin-size-snapshot": "^0.2.0",
-    "rollup-plugin-uglify": "^2.0.1"
+    "rollup-plugin-size-snapshot": "^0.2.1",
+    "rollup-plugin-uglify": "^3.0.0"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0-0 || ^16.0.0-0"

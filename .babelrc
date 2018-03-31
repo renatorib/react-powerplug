@@ -1,24 +1,10 @@
 {
   "env": {
-    "esm": {
+    "code": {
       "presets": [
         ["@babel/env", { "modules": false, "loose": true }],
         "@babel/react",
         "@babel/stage-3"
-      ],
-      "plugins": [
-        ["@babel/plugin-transform-runtime", { "polyfill": false, "useBuiltIns": true, "useESModules": true }]
-      ]
-    },
-    "cjs": {
-      "presets": [
-        ["@babel/env", { "modules": false, "loose": true }],
-        "@babel/react",
-        "@babel/stage-3"
-      ],
-      "plugins": [
-        ["@babel/plugin-transform-runtime", { "polyfill": false, "useBuiltIns": true }],
-        "@babel/plugin-transform-modules-commonjs"
       ]
     },
     "test": {
