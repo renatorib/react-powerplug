@@ -6,9 +6,13 @@
   "license": "MIT",
   "main": "dist/react-powerplug.cjs.js",
   "module": "dist/react-powerplug.esm.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "sideEffects": false,
   "scripts": {
-    "build:flow": "cpy src/index.js.flow dist --rename react-powerplug.cjs.js.flow",
+    "build:flow": "echo \"// @flow\n\nexport * from '../src'\" > dist/react-powerplug.cjs.js.flow",
     "build:code": "cross-env NODE_ENV=code rollup -c",
     "build": "npm run clean && npm run build:code && npm run build:flow",
     "clean": "rimraf dist",
@@ -39,10 +43,6 @@
     "type": "git",
     "url": "https://github.com/renatorib/react-powerplug.git"
   },
-  "files": [
-    "dist",
-    "src"
-  ],
   "keywords": [
     "react",
     "reactjs",
@@ -68,7 +68,6 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^8.2.2",
     "babel-jest": "^22.1.0",
-    "cpy-cli": "^1.0.1",
     "cross-env": "^5.0.5",
     "eslint": "^4.6.1",
     "eslint-plugin-import": "^2.7.0",
