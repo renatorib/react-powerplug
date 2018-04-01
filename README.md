@@ -87,6 +87,7 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 | **\<Form>**                  | `{ initial, onChange }` | `{ input, values }`                            | [:point_down:](#form) [:books:](docs/components/Form.md)                    |
 | <h6>OTHER</h6>               |
 | **\<Compose>**               | `{ components }`        | _depends on components prop_                   | [:point_down:](#composing-components) [:books:](docs/components/Compose.md) |
+| **\<Timer>**                 | `{ delay }`             | `{ time }`                                     | [:point_down:](#timer) [:books:](docs/components/Timer.md)              |
 
 ## Examples
 
@@ -280,8 +281,20 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
         input(id) => { bind, set, value }
       */}
     </form>
-  )
+  )}
 </Form>
+```
+
+### Timer
+
+```jsx
+<Timer delay={1000}>
+  {({ time }) => (
+    <div>
+      The time is now {new Date(time).toLocaleTimeString()}
+    </div>
+  )}
+</Timer>
 ```
 
 # Composing Components

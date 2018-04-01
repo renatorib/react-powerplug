@@ -212,6 +212,18 @@ type StateProps<T> =
 
 declare export class State<T: Object> extends React.Component<StateProps<T>> {}
 
+/* Timer */
+
+type TimerRender = ({|
+  time: number,
+|}) => React.Node
+
+type TimerProps =
+  | {| delay?: ?number, render: TimerRender |}
+  | {| delay?: ?number, children: TimerRender |}
+
+declare export class Timer extends React.Component<TimerProps> {}
+
 /* Toggle */
 
 type ToggleChange = ({| on: boolean |}) => void
