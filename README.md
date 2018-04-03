@@ -275,7 +275,7 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
         {...input('message').bind}
       />
       <Submit>Send</Submit>
-      
+
       {/*
         input(id) => { bind, set, value }
       */}
