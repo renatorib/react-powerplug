@@ -260,27 +260,28 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 #### Form
 
 ```jsx
-  <Form initial={{ subject: '', message: '' }}>
-    {({ input, values }) => (
-      <form onSubmit={(e) => {
-        e.preventDefault()
-        console.log(values)
-      }}>
-        <ControlledInput
-          placeholder="Subject"
-          {...input('subject').bind}
-        />
-        <ControlledTextArea
-          placeholder="Message"
-          {...input('message').bind}
-        />
-        <Submit>Send</Submit>
-        {/*
-          input(id) => { bind, set, value }
-        */}
-      </form>
-    )}
-  </Form>
+<Form initial={{ subject: '', message: '' }}>
+  {({ input, values }) => (
+    <form onSubmit={(e) => {
+      e.preventDefault()
+      console.log(values)
+    }}>
+      <ControlledInput
+        placeholder="Subject"
+        {...input('subject').bind}
+      />
+      <ControlledTextArea
+        placeholder="Message"
+        {...input('message').bind}
+      />
+      <Submit>Send</Submit>
+      
+      {/*
+        input(id) => { bind, set, value }
+      */}
+    </form>
+  )}
+</Form>
 ```
 
 # Composing Components
