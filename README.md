@@ -265,7 +265,7 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
     <form onSubmit={(e) => {
       e.preventDefault()
       console.log(values)
-    }>
+    }}>
       <ControlledInput
         placeholder="Subject"
         {...input('subject').bind}
@@ -280,7 +280,7 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
         input(id) => { bind, set, value }
       */}
     </form>
-  )
+  )}
 </Form>
 ```
 
