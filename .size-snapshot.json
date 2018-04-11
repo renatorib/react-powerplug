@@ -13,6 +13,9 @@
     "bundled": 16589,
     "minified": 8186,
     "gzipped": 1936,
-    "treeshaked": 1489
+    "treeshaked": {
+      "rollup": 1489,
+      "webpack": 1927
+    }
   }
 }

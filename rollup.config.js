@@ -78,9 +78,6 @@ export default [
     input,
     output: { file: pkg.module, format: 'es' },
     external: isExternal,
-    plugins: [
-      babel(getBabelOptions({ useESModules: true })),
-      sizeSnapshot({ treeshake: true }),
-    ],
+    plugins: [babel(getBabelOptions({ useESModules: true })), sizeSnapshot()],
   },
 ]
