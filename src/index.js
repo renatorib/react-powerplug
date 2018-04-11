@@ -15,4 +15,5 @@ export { default as Touch } from './components/Touch'
 export { default as Value } from './components/Value'
 
 export { default as compose } from './utils/compose'
+export { default as composeEvents } from './utils/composeEvents'
 export { default as renderProps } from './utils/renderProps'
