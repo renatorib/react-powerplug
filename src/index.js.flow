@@ -255,3 +255,9 @@ type ValueProps<T> =
   | {| initial: T, onChange?: ValueChange<T>, children: ValueRender<T> |}
 
 declare export class Value<T> extends React.Component<ValueProps<T>> {}
+
+/* composeEvents */
+
+type Events = { [name: string]: Function }
+
+declare export function composeEvents(...Array<Events>): Events
