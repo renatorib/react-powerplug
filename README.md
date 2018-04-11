@@ -88,6 +88,13 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 | <h6>OTHER</h6>               |
 | **\<Compose>**               | `{ components }`        | _depends on components prop_                   | [:point_down:](#composing-components) [:books:](docs/components/Compose.md) |
 
+## Utilities
+
+| Name                          |                                        |
+| ----------------------------- | -------------------------------------- |
+| compose(...components)        | [:books:](docs/utils/compose.md)       |
+| composeEvents(...objOfEvents) | [:books:](docs/utils/composeEvents.md) |
+
 ## Examples
 
 #### State
@@ -262,23 +269,19 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 ```jsx
 <Form initial={{ subject: '', message: '' }}>
   {({ input, values }) => (
-    <form onSubmit={(e) => {
-      e.preventDefault()
-      console.log(values)
-    }}>
-      <ControlledInput
-        placeholder="Subject"
-        {...input('subject').bind}
-      />
-      <ControlledTextArea
-        placeholder="Message"
-        {...input('message').bind}
-      />
+    <form
+      onSubmit={e => {
+        e.preventDefault()
+        console.log(values)
+      }}
+    >
+      <ControlledInput placeholder="Subject" {...input('subject').bind} />
+      <ControlledTextArea placeholder="Message" {...input('message').bind} />
       <Submit>Send</Submit>
 
       {/*
-        input(id) => { bind, set, value }
-      */}
+                                                              input(id) => { bind, set, value }
+                                                            */}
     </form>
   )}
 </Form>
