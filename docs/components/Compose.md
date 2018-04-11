@@ -39,22 +39,10 @@ Also, you can use a built-in Compose component and pass components on `component
 </Compose>
 ```
 
-In addition you can use a utility to create a Composed component
+In addition you can use `compose()` utility to create a Composed component.  
+[See docs](/docs/utils/compose.md)
 
-```js
-import { compose } from 'react-powerplug' // note lowercased (c)ompose
-```
-
-```jsx
-const ToggleCounter = compose(
-  <Counter initial={5} />,
-  <Toggle initial={false} />
-)
-
-<ToggleCounter>
-  {(counter, toggle) => (...)}
-</ToggleCounter>
-```
+---
 
 Behind the scenes, that's what happens:
 
@@ -77,15 +65,10 @@ Behind the scenes, that's what happens:
 </Counter>
 ```
 
-Because of that, when you use `toggle` function, only `<Toggle>` will be rerendered, but if you use `inc` or `dec` functions, both `<Counter>` and `<Toggle>` will be rerendered. **Even** using `compose()` utility.
-
 ## Compose Props
 
 **components** _(required)_  
 Set an array of React PowerPlug components (instance elements, not types) to compose.
-
-Note: if you use `compose` utility to create Composed components, you don't
-need to pass an array, just pass by arguments: `compose(<Foo />, <Bar />, <Baz />)`
 
 ## Compose Children Props
 
