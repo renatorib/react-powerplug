@@ -77,7 +77,7 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 | **\<Set>**                   | `{ initial, onChange }` | `{ values, add, clear, remove, has }`          | [:point_down:](#set) [:books:](docs/components/Set.md)                      |
 | **\<List>**                  | `{ initial, onChange }` | `{ list, first, last, push, pull, sort, set }` | [:point_down:](#list) [:books:](docs/components/List.md)                    |
 | <h6>FEEDBACK CONTAINERS</h6> |
-| **\<Hover>**                 | `{ onChange }`          | `{ isHovered, bind }`                          | [:point_down:](#hover) [:books:](docs/components/Hover.md)                  |
+| **\<Hover>**                 | `{ onChange }`          | `{ isHovered, bindHover }`                          | [:point_down:](#hover) [:books:](docs/components/Hover.md)                  |
 | **\<Active>**                | `{ onChange }`          | `{ isActive, bind }`                           | [:point_down:](#active) [:books:](docs/components/Active.md)                |
 | **\<Focus>**                 | `{ onChange }`          | `{ isFocused, bind }`                          | [:point_down:](#focus) [:books:](docs/components/Focus.md)                  |
 | **\<Touch>**                 | `{ onChange }`          | `{ isTouched, bind }`                          | [:point_down:](#touch) [:books:](docs/components/Touch.md)                  |
@@ -206,8 +206,8 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 
 ```jsx
 <Hover>
-  {({ isHovered, bind }) => (
-    <div {...bind}>
+  {({ isHovered, bindHover }) => (
+    <div {...bindHover}>
       You are {isHovered ? 'hovering' : 'not hovering'} this div.
     </div>
   )}
