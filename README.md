@@ -27,10 +27,6 @@
 - :books: Well documented
 - :beers: Bunch of awesome utilities
 
-## ⚠️ Master is unstable
-> This branch is **unstable** and is in **active development**.  
-> For the latest stable version go to [0.1-stable branch](https://github.com/renatorib/react-powerplug/tree/0.1-stable)
-
 <details>
   <summary>See quick examples</summary>
 
@@ -61,6 +57,10 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 ```
 
 </details>
+
+## ⚠️ Master is unstable
+> This branch is **unstable** and is in **active development**.  
+> For the latest stable version go to [0.1-stable branch](https://github.com/renatorib/react-powerplug/tree/0.1-stable)
 
 ## Components
 
