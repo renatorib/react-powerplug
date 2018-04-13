@@ -58,12 +58,13 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 
 </details>
 
+## ⚠️ Master is unstable
+> This branch is **unstable** and is in **active development**.  
+> For the latest stable version go to [0.1-stable branch](https://github.com/renatorib/react-powerplug/tree/0.1-stable)
+
 ## Components
 
-> **_Note 1:_** This branch is **unstable** and is in **active development**.  
-> To the latest stable version go to [0.1-stable branch](https://github.com/renatorib/react-powerplug/tree/0.1-stable)
-
-> **_Note 2:_** _This is a kind of a cheat sheet for fast search._  
+> **_Note_** _This is a kind of a cheat sheet for fast search._  
 > _If you want a more detailed **API Reference** and examples for each component see [full docs](/docs)_
 
 | Component                    | Component Props         | Render Props                                   |                                                                             |
