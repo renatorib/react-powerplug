@@ -23,7 +23,7 @@ Callback that fires when state changes.
 
 ## Toggle Children Props
 
-TL;DR: `{ on, toggle, set }`
+TL;DR: `{ on, toggle, setOn }`
 
 **on**  
 `boolean`  
@@ -33,6 +33,6 @@ Your `on` state value
 `() => void`  
 Toggle your `on` state value
 
-**set**  
+**setOn**  
 `(value: boolean) => void`  
 Arbitrary set a value to `on` state
