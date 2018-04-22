@@ -6,6 +6,10 @@ class Interval extends Component {
     delay: 1000,
   }
 
+  state = {
+    times: 0,
+  }
+
   intervalId = undefined
 
   _clearIntervalIfNecessary = () => {
@@ -16,7 +20,10 @@ class Interval extends Component {
 
   _setIntervalIfNecessary = delay => {
     if (Number.isFinite(delay)) {
-      this.intervalId = setInterval(() => this.forceUpdate(), delay)
+      this.intervalId = setInterval(
+        () => this.setState(s => ({ times: s.times + 1 })),
+        delay
+      )
     }
   }
 
@@ -25,9 +32,8 @@ class Interval extends Component {
   }
 
   start = delay => {
-    this._setIntervalIfNecessary(
-      Number.isFinite(delay) ? delay : this.props.delay
-    )
+    const _delay = typeof delay === 'number' ? delay : this.props.delay
+    this._setIntervalIfNecessary(_delay)
   }
 
   toggle = () => {
