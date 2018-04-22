@@ -54,7 +54,6 @@ class Interval extends Component {
       start: this.start,
       stop: this.stop,
       toggle: this.toggle,
-      delay: this.props.delay,
     })
   }
 }
