@@ -1,0 +1,8 @@
+{
+  "extends": "dtslint/dtslint.json",
+  "semicolon": [true, "never"],
+  "indent": [
+    true,
+    "tabs"
+  ]
+}

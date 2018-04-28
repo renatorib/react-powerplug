@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "dist/react-powerplug.cjs.js",
   "module": "dist/react-powerplug.esm.js",
-  "types": "react-powerplug.d.ts",
+  "types": "types/index.d.ts",
   "files": [
     "dist",
     "src"
@@ -18,6 +18,7 @@
     "build": "npm run clean && npm run build:code && npm run build:flow",
     "clean": "rimraf dist",
     "typecheck:flow": "flow check --max-warnings=0",
+    "typecheck:ts": "dtslint types",
     "lint": "eslint src",
     "test:only": "npm run build:code && jest",
     "test:umd": "jest --setupTestFrameworkScriptFile ./tests/jestUMDSetup.js",
@@ -71,6 +72,7 @@
     "babel-eslint": "^8.2.2",
     "babel-jest": "^22.1.0",
     "cross-env": "^5.0.5",
+    "dtslint": "^0.3.0",
     "eslint": "^4.6.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-react": "^7.3.0",
