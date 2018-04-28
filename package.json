@@ -6,6 +6,7 @@
   "license": "MIT",
   "main": "dist/react-powerplug.cjs.js",
   "module": "dist/react-powerplug.esm.js",
+  "types": "react-powerplug.d.ts",
   "files": [
     "dist",
     "src"
@@ -26,7 +27,7 @@
     "prepublishOnly": "npm run clean && npm run build"
   },
   "lint-staged": {
-    "*.{js,md}": [
+    "*.{js,md,ts}": [
       "prettier --write",
       "git add"
     ]
@@ -65,6 +66,7 @@
     "@babel/preset-env": "^7.0.0-beta.42",
     "@babel/preset-react": "^7.0.0-beta.42",
     "@babel/preset-stage-3": "^7.0.0-beta.42",
+    "@types/react": "^16.3.13",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^8.2.2",
     "babel-jest": "^22.1.0",
