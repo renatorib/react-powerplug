@@ -2,6 +2,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "lib": ["es5"],
+    "jsx": "react",
     "noImplicitAny": true,
     "noImplicitThis": true,
     "strictNullChecks": true,
