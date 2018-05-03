@@ -4,7 +4,7 @@ import * as React from 'react'
 
 /* Utils */
 
-type Updater<T> = (value: T | ((updater: T) => T)) => void
+type Updater<T> = (value: ((updater: T) => T) | T) => void
 
 /* Active */
 
