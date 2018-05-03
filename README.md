@@ -68,29 +68,28 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 > **_Note_** _This is a kind of a cheat sheet for fast search._  
 > _If you want a more detailed **API Reference** and examples for each component see [full docs](/docs)_
 
-| Component                    | Component Props         | Render Props                                   |                                                                          |
-| ---------------------------- | ----------------------- | ---------------------------------------------- | ------------------------------------------------------------------------ |
+| Component                    | Component Props         | Render Props                                   |                                                                             |
+| ---------------------------- | ----------------------- | ---------------------------------------------- | --------------------------------------------------------------------------- |
 | <h6>STATE CONTAINERS</h6>    |
-| **\<State>**                 | `{ initial, onChange }` | `{ state, setState }`                          | [:point_down:](#state) [:books:](docs/components/State.md)               |
-| **\<Toggle>**                | `{ initial, onChange }` | `{ on, toggle, set }`                          | [:point_down:](#toggle) [:books:](docs/components/Toggle.md)             |
-| **\<Counter>**               | `{ initial, onChange }` | `{count, inc, dec, incBy, decBy, set }`        | [:point_down:](#counter) [:books:](docs/components/Counter.md)           |
-| **\<Value>**                 | `{ initial, onChange }` | `{ value, setValue, set }`                     | [:point_down:](#value) [:books:](docs/components/Value.md)               |
-| **\<Map>**                   | `{ initial, onChange }` | `{ set, get, over, values }`                   | [:point_down:](#map) [:books:](docs/components/Map.md)                   |
-| **\<Set>**                   | `{ initial, onChange }` | `{ values, add, clear, remove, has }`          | [:point_down:](#set) [:books:](docs/components/Set.md)                   |
-| **\<List>**                  | `{ initial, onChange }` | `{ list, first, last, push, pull, sort, set }` | [:point_down:](#list) [:books:](docs/components/List.md)                 |
+| **\<State>**                 | `{ initial, onChange }` | `{ state, setState }`                          | [:point_down:](#state) [:books:](docs/components/State.md)                  |
+| **\<Toggle>**                | `{ initial, onChange }` | `{ on, toggle, set }`                          | [:point_down:](#toggle) [:books:](docs/components/Toggle.md)                |
+| **\<Counter>**               | `{ initial, onChange }` | `{ count, inc, dec, incBy, decBy, set }`       | [:point_down:](#counter) [:books:](docs/components/Counter.md)              |
+| **\<Value>**                 | `{ initial, onChange }` | `{ value, setValue, set }`                     | [:point_down:](#value) [:books:](docs/components/Value.md)                  |
+| **\<Map>**                   | `{ initial, onChange }` | `{ set, get, over, values }`                   | [:point_down:](#map) [:books:](docs/components/Map.md)                      |
+| **\<Set>**                   | `{ initial, onChange }` | `{ values, add, clear, remove, has }`          | [:point_down:](#set) [:books:](docs/components/Set.md)                      |
+| **\<List>**                  | `{ initial, onChange }` | `{ list, first, last, push, pull, sort, set }` | [:point_down:](#list) [:books:](docs/components/List.md)                    |
 | <h6>FEEDBACK CONTAINERS</h6> |
-| **\<Hover>**                 | `{ onChange }`          | `{ isHovered, bind }`                          | [:point_down:](#hover) [:books:](docs/components/Hover.md)               |
-| **\<Active>**                | `{ onChange }`          | `{ isActive, bind }`                           | [:point_down:](#active) [:books:](docs/components/Active.md)             |
-| **\<Focus>**                 | `{ onChange }`          | `{ isFocused, bind }`                          | [:point_down:](#focus) [:books:](docs/components/Focus.md)               |
-| **\<Touch>**                 | `{ onChange }`          | `{ isTouched, bind }`                          | [:point_down:](#touch) [:books:](docs/components/Touch.md)               |
-| **\<FocusManager>**          | `{ onChange }`          | `{ isFocused, blur, bind }`                    | [:point_down:](#focusmanager) [:books:](docs/components/FocusManager.md) |
+| **\<Hover>**                 | `{ onChange }`          | `{ isHovered, bind }`                          | [:point_down:](#hover) [:books:](docs/components/Hover.md)                  |
+| **\<Active>**                | `{ onChange }`          | `{ isActive, bind }`                           | [:point_down:](#active) [:books:](docs/components/Active.md)                |
+| **\<Focus>**                 | `{ onChange }`          | `{ isFocused, bind }`                          | [:point_down:](#focus) [:books:](docs/components/Focus.md)                  |
+| **\<Touch>**                 | `{ onChange }`          | `{ isTouched, bind }`                          | [:point_down:](#touch) [:books:](docs/components/Touch.md)                  |
+| **\<FocusManager>**          | `{ onChange }`          | `{ isFocused, blur, bind }`                    | [:point_down:](#focusmanager) [:books:](docs/components/FocusManager.md)    |
 | <h6>FORM CONTAINERS</h6>     |
-| **\<Input>**                 | `{ initial, onChange }` | `{ set, value, bind }`                         | [:point_down:](#input) [:books:](docs/components/Input.md)               |
-| **\<Form>**                  | `{ initial, onChange }` | `{ input, values }`                            | [:point_down:](#form) [:books:](docs/components/Form.md)                 |
+| **\<Input>**                 | `{ initial, onChange }` | `{ set, value, bind }`                         | [:point_down:](#input) [:books:](docs/components/Input.md)                  |
+| **\<Form>**                  | `{ initial, onChange }` | `{ input, values }`                            | [:point_down:](#form) [:books:](docs/components/Form.md)                    |
 | <h6>OTHER</h6>               |
-| (docs/components/Compose.md) |
-| **\<Interval>**              | `{ delay }`             | `{ stop, start, toggle }`                      | [:point_down:](#interval) [:books:](docs/components/Interval.md)         |
-| **\<Compose>**               | `{ components }`        | _depends on components prop_                   | [:point_down:](#composing-components) [:books:]                          |
+| **\<Interval>**              | `{ delay }`             | `{ stop, start, toggle }`                      | [:point_down:](#interval) [:books:](docs/components/Interval.md)            |
+| **\<Compose>**               | `{ components }`        | _depends on components prop_                   | [:point_down:](#composing-components) [:books:](docs/components/Compose.md) |
 
 ## Utilities
 
@@ -284,8 +283,8 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
       <Submit>Send</Submit>
 
       {/*
-                                                                    input(id) => { bind, set, value }
-                                                                  */}
+                                                                                                              input(id) => { bind, set, value }
+                                                                                                            */}
     </form>
   )}
 </Form>
