@@ -2,10 +2,6 @@ import { Component } from 'react'
 import renderProps from '../utils/renderProps'
 
 class Interval extends Component {
-  static defaultProps = {
-    delay: 1000,
-  }
-
   state = {
     times: 0,
   }
@@ -32,7 +28,10 @@ class Interval extends Component {
   }
 
   start = delay => {
-    const _delay = typeof delay === 'number' ? delay : this.props.delay
+    const _delay =
+      typeof delay === 'number'
+        ? delay
+        : this.props.delay != null ? this.props.delay : 1000
     this._setIntervalIfNecessary(_delay)
   }
 
@@ -44,10 +43,10 @@ class Interval extends Component {
     this.start()
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.delay !== nextProps.delay) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.delay !== this.props.delay) {
       this.stop()
-      this.start(nextProps.delay)
+      this.start()
     }
   }
 
