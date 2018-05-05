@@ -5,8 +5,8 @@ import { last } from './utils'
 
 test('<List />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
-  TestRenderer.create(<List initial={[1]} render={renderFn} />)
   const lastCalled = () => last(renderFn.mock.calls)[0]
+  TestRenderer.create(<List initial={[1]} render={renderFn} />)
 
   expect(renderFn).toHaveBeenCalledTimes(1)
   expect(lastCalled().list).toEqual([1])
@@ -38,4 +38,17 @@ test('<List />', () => {
   // support pushing many array
   lastCalled().push(1, 2, 3)
   expect(lastCalled().list).toEqual([1, 2, 3])
+})
+
+test('<List onChange />', () => {
+  const renderFn = jest.fn().mockReturnValue(null)
+  const onChangeFn = jest.fn()
+  const lastCalled = () => last(renderFn.mock.calls)[0]
+  TestRenderer.create(<List onChange={onChangeFn} render={renderFn} />)
+
+  expect(onChangeFn).toHaveBeenCalledTimes(0)
+
+  lastCalled().set([1])
+  expect(onChangeFn).toHaveBeenCalledTimes(1)
+  expect(onChangeFn).lastCalledWith({ list: [1] })
 })
