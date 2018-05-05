@@ -18,7 +18,7 @@
     "clean": "rimraf dist",
     "typecheck:flow": "flow check --max-warnings=0",
     "lint": "eslint src",
-    "test:only": "npm run build:code && jest",
+    "test:only": "jest",
     "test:umd": "jest --setupTestFrameworkScriptFile ./tests/jestUMDSetup.js",
     "test:cjs": "jest --setupTestFrameworkScriptFile ./tests/jestCJSSetup.js",
     "test": "npm run build && npm run lint && jest && npm run test:umd && npm run test:cjs",
