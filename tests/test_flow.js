@@ -4,12 +4,13 @@
 import * as React from 'react'
 import {
   Active,
-  Input,
   Counter,
   Focus,
   FocusManager,
   Form,
   Hover,
+  Input,
+  Interval,
   List,
   Map,
   Set,
@@ -82,6 +83,33 @@ const noop = () => null
     <Input />,
     // $FlowFixMe
     <Input initial={0} render={noop} />,
+  ]
+}
+
+{
+  const render = ({ start, stop, toggle }) => {
+    start()
+    start(500)
+    stop()
+    toggle()
+    // $FlowFixMe
+    start('')
+    // $FlowFixMe
+    stop(500)
+    // $FlowFixMe
+    toggle(500)
+    return null
+  }
+  ;[
+    <Interval render={render} />,
+    <Interval>{render}</Interval>,
+    <Interval render={noop} />,
+    <Interval>{noop}</Interval>,
+    <Interval delay={0} render={noop} />,
+    // $FlowFixMe
+    <Interval />,
+    // $FlowFixMe
+    <Interval delay={''} render={noop} />,
   ]
 }
 
