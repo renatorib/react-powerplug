@@ -81,14 +81,16 @@ test('keep focus when click on menu', async () => {
 test('restore focus after calling blur on inner component', async () => {
   const page = await bootstrap()
   const renderFn = jest.fn()
+  const onChangeFn = jest.fn()
   await page.exposeFunction('renderFn', renderFn)
+  await page.exposeFunction('onChangeFn', onChangeFn)
 
   await page.evaluate(() => {
     const React = window.React
     const FocusManager = window.ReactPowerPlug.FocusManager
 
     const App = () => (
-      <FocusManager>
+      <FocusManager onChange={window.onChangeFn}>
         {({ isFocused, blur, bind }) => {
           window.renderFn({ isFocused })
           const stopPropagation = e => e.stopPropagation()
@@ -115,8 +117,11 @@ test('restore focus after calling blur on inner component', async () => {
   expect(renderFn).lastCalledWith({ isFocused: false })
   await page.click('#outer')
   expect(renderFn).lastCalledWith({ isFocused: true })
+  expect(onChangeFn).lastCalledWith({ isFocused: true })
   await page.click('#inner')
   expect(renderFn).lastCalledWith({ isFocused: false })
+  expect(onChangeFn).lastCalledWith({ isFocused: false })
   await page.click('#outer')
   expect(renderFn).lastCalledWith({ isFocused: true })
+  expect(onChangeFn).lastCalledWith({ isFocused: true })
 })

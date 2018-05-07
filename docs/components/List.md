@@ -47,8 +47,8 @@ Get first element of your list array
 Get last element of your list array
 
 **push**  
-`(item: any) => void`  
-Add an item to your list array
+`(item1: any, item2: any, ...) => void`  
+Add an items to your list array
 
 **pull**  
 `(predicate: (item: any) => boolean) => void`  

@@ -5,8 +5,8 @@ import { last } from './utils'
 
 test('<Counter />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
-  TestRenderer.create(<Counter render={renderFn} />)
   const lastCalled = () => last(renderFn.mock.calls)[0]
+  TestRenderer.create(<Counter render={renderFn} />)
 
   expect(renderFn).toHaveBeenCalledTimes(1)
   expect(lastCalled().count).toBe(0)
@@ -22,4 +22,17 @@ test('<Counter />', () => {
 
   lastCalled().decBy(3)
   expect(lastCalled().count).toBe(2)
+})
+
+test('<Counter onChange />', () => {
+  const renderFn = jest.fn().mockReturnValue(null)
+  const onChangeFn = jest.fn()
+  const lastCalled = () => last(renderFn.mock.calls)[0]
+  TestRenderer.create(<Counter onChange={onChangeFn} render={renderFn} />)
+
+  expect(onChangeFn).toHaveBeenCalledTimes(0)
+
+  lastCalled().inc()
+  expect(onChangeFn).toHaveBeenCalledTimes(1)
+  expect(onChangeFn).lastCalledWith({ count: 1 })
 })
