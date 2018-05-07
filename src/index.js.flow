@@ -135,7 +135,7 @@ type ListRender<T> = ({|
   first: () => T | void,
   last: () => T | void,
   set: Updater<$ReadOnlyArray<T>>,
-  push: (value: T) => void,
+  push: (...values: $ReadOnlyArray<T>) => void,
   pull: (predicate: (T) => boolean) => void,
   sort: (compare: (a: T, b: T) => -1 | 0 | 1) => void,
 |}) => React.Node

@@ -292,6 +292,7 @@ const noop = () => null
     set([])
     set([0])
     push(0)
+    push(0, 1, 2)
     pull((d: number) => true)
     sort((a: number, b: number) => -1)
     // $FlowFixMe

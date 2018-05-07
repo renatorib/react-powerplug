@@ -34,4 +34,8 @@ test('<List />', () => {
   lastCalled().set([])
   expect(lastCalled().first()).toEqual(undefined)
   expect(lastCalled().last()).toEqual(undefined)
+
+  // support pushing many array
+  lastCalled().push(1, 2, 3)
+  expect(lastCalled().list).toEqual([1, 2, 3])
 })
