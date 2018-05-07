@@ -3,7 +3,10 @@ import State from './State'
 import renderProps from '../utils/renderProps'
 
 const FocusManager = ({ onChange, ...props }) => (
-  <State initial={{ isFocused: false, timeoutId: null }} onChange={onChange}>
+  <State
+    initial={{ isFocused: false, timeoutId: null }}
+    onChange={({ isFocused }) => onChange && onChange({ isFocused })}
+  >
     {({ state, setState }) =>
       renderProps(props, {
         isFocused: state.isFocused,
