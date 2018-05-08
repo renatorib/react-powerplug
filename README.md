@@ -72,7 +72,8 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 | ---------------------------- | ----------------------- | ---------------------------------------------- | --------------------------------------------------------------------------- |
 | <h6>STATE CONTAINERS</h6>    |
 | **\<State>**                 | `{ initial, onChange }` | `{ state, setState }`                          | [:point_down:](#state) [:books:](docs/components/State.md)                  |
-| **\<Toggle>**                | `{ initial, onChange }` | `{ on, toggle, set }`                          | [:point_down:](#toggle) [:books:](docs/components/Toggle.md)                |
+| **\<Reducer>**               | `{ initial, actions }`  | `{ state, dispatch }`                          | [:point_down:](#state) [:books:](docs/components/State.md)                  |
+| **\<Toggle>**                | `{ initial, onChange }` | `{ on, toggle, set }`                          | [:point_down:](#reducer) [:books:](docs/components/Reducer.md)              |
 | **\<Counter>**               | `{ initial, onChange }` | `{ count, inc, dec, incBy, decBy, set }`       | [:point_down:](#counter) [:books:](docs/components/Counter.md)              |
 | **\<Value>**                 | `{ initial, onChange }` | `{ value, setValue, set }`                     | [:point_down:](#value) [:books:](docs/components/Value.md)                  |
 | **\<Map>**                   | `{ initial, onChange }` | `{ set, get, over, values }`                   | [:point_down:](#map) [:books:](docs/components/Map.md)                      |
@@ -112,6 +113,26 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
     />
   )}
 </State>
+```
+
+#### Reducer
+
+```jsx
+<Reducer
+  initial={{ count: 0 }}
+  actions={{
+    inc: (state, amount = 1) => ({ count: state.count + amount }),
+    dec: (state, amount = 1) => ({ count: state.count - amount }),
+  }}
+>
+  {({ state, dispatch }) => (
+    <div>
+      Count: {state.count}
+      <button onClick={() => dispatch('inc', 2)}>+</button>
+      <button onClick={() => dispatch('dec', 1)}>-</button>
+    </div>
+  )}
+</Reducer>
 ```
 
 #### Toggle
@@ -283,8 +304,8 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
       <Submit>Send</Submit>
 
       {/*
-                                                                                                              input(id) => { bind, set, value }
-                                                                                                            */}
+                                                                                                                                                                                                  input(id) => { bind, set, value }
+                                                                                                                                                                                                */}
     </form>
   )}
 </Form>
