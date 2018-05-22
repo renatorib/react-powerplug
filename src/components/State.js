@@ -3,18 +3,15 @@ import renderProps from '../utils/renderProps'
 import noop from '../utils/noop'
 
 class State extends Component {
-  static defaultProps = {
-    initial: {},
-    onChange: noop,
-  }
-
   state = {
-    ...this.props.initial
+    ...this.props.initial,
   }
 
   _setState = (updater, cb = noop) => {
     this.setState(updater, () => {
-      this.props.onChange(this.state)
+      if (this.props.onChange) {
+        this.props.onChange(this.state)
+      }
       cb()
     })
   }

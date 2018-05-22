@@ -1,14 +1,17 @@
 import nodeResolve from 'rollup-plugin-node-resolve'
 import babel from 'rollup-plugin-babel'
 import replace from 'rollup-plugin-replace'
-import uglify from 'rollup-plugin-uglify'
+import { uglify } from 'rollup-plugin-uglify'
 import { sizeSnapshot } from 'rollup-plugin-size-snapshot'
-
-const pkg = require('./package.json')
+import pkg from './package.json'
 
 const input = './src/index.js'
 
-const isExternal = id => !id.startsWith('.') && !id.startsWith('/')
+const external = id => !id.startsWith('.') && !id.startsWith('/')
+
+const globals = { react: 'React' }
+
+const name = 'ReactPowerPlug'
 
 const getBabelOptions = ({ useESModules }) => ({
   exclude: '**/node_modules/**',
@@ -27,12 +30,10 @@ export default [
     output: {
       file: 'dist/react-powerplug.umd.js',
       format: 'umd',
-      name: 'ReactPowerPlug',
-      globals: {
-        react: 'React',
-      },
+      name,
+      globals,
     },
-    external: ['react'],
+    external: Object.keys(globals),
     plugins: [
       nodeResolve(),
       babel(getBabelOptions({ useESModules: true })),
@@ -46,12 +47,10 @@ export default [
     output: {
       file: 'dist/react-powerplug.min.js',
       format: 'umd',
-      name: 'ReactPowerPlug',
-      globals: {
-        react: 'React',
-      },
+      name,
+      globals,
     },
-    external: ['react'],
+    external: Object.keys(globals),
     plugins: [
       nodeResolve(),
       babel(getBabelOptions({ useESModules: true })),
@@ -70,14 +69,14 @@ export default [
   {
     input,
     output: { file: pkg.main, format: 'cjs' },
-    external: isExternal,
+    external,
     plugins: [babel(getBabelOptions({ useESModules: false })), sizeSnapshot()],
   },
 
   {
     input,
     output: { file: pkg.module, format: 'es' },
-    external: isExternal,
+    external,
     plugins: [babel(getBabelOptions({ useESModules: true })), sizeSnapshot()],
   },
 ]
