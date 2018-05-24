@@ -1,33 +1,31 @@
 import * as React from 'react'
 import TestRenderer from 'react-test-renderer'
 import { Hover } from '../../src'
-import { last } from './utils'
+import { lastCallArg } from './utils'
 
 test('<Hover />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
   TestRenderer.create(<Hover render={renderFn} />)
-  const lastCalled = () => last(renderFn.mock.calls)[0]
 
-  expect(renderFn).toHaveBeenCalledTimes(1)
-  expect(lastCalled().isHovered).toEqual(false)
+  expect(renderFn).toBeCalledTimes(1)
+  expect(renderFn).lastCalledWith(expect.objectContaining({ isHovered: false }))
 
-  lastCalled().bind.onMouseEnter()
-  expect(renderFn).toHaveBeenCalledTimes(2)
-  expect(lastCalled().isHovered).toEqual(true)
+  lastCallArg(renderFn).bind.onMouseEnter()
+  expect(renderFn).toBeCalledTimes(2)
+  expect(renderFn).lastCalledWith(expect.objectContaining({ isHovered: true }))
 
-  lastCalled().bind.onMouseLeave()
-  expect(lastCalled().isHovered).toEqual(false)
+  lastCallArg(renderFn).bind.onMouseLeave()
+  expect(renderFn).lastCalledWith(expect.objectContaining({ isHovered: false }))
 })
 
 test('<Hover onChange />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
   const onChangeFn = jest.fn()
-  const lastCalled = () => last(renderFn.mock.calls)[0]
   TestRenderer.create(<Hover onChange={onChangeFn} render={renderFn} />)
 
-  expect(onChangeFn).toHaveBeenCalledTimes(0)
+  expect(onChangeFn).toBeCalledTimes(0)
 
-  lastCalled().bind.onMouseEnter()
-  expect(onChangeFn).toHaveBeenCalledTimes(1)
+  lastCallArg(renderFn).bind.onMouseEnter()
+  expect(onChangeFn).toBeCalledTimes(1)
   expect(onChangeFn).lastCalledWith({ isHovered: true })
 })
