@@ -14,8 +14,13 @@
     "minified": 9676,
     "gzipped": 2267,
     "treeshaked": {
-      "rollup": 365,
-      "webpack": 1356
+      "rollup": {
+        "code": 365,
+        "import_statements": 365
+      },
+      "webpack": {
+        "code": 1356
+      }
     }
   }
 }
