@@ -1,33 +1,31 @@
 import * as React from 'react'
 import TestRenderer from 'react-test-renderer'
 import { Focus } from '../../src'
-import { last } from './utils'
+import { lastCallArg } from './utils'
 
 test('<Focus />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
   TestRenderer.create(<Focus render={renderFn} />)
-  const lastCalled = () => last(renderFn.mock.calls)[0]
 
-  expect(renderFn).toHaveBeenCalledTimes(1)
-  expect(lastCalled().isFocused).toEqual(false)
+  expect(renderFn).toBeCalledTimes(1)
+  expect(renderFn).lastCalledWith(expect.objectContaining({ isFocused: false }))
 
-  lastCalled().bind.onFocus()
-  expect(renderFn).toHaveBeenCalledTimes(2)
-  expect(lastCalled().isFocused).toEqual(true)
+  lastCallArg(renderFn).bind.onFocus()
+  expect(renderFn).toBeCalledTimes(2)
+  expect(renderFn).lastCalledWith(expect.objectContaining({ isFocused: true }))
 
-  lastCalled().bind.onBlur()
-  expect(lastCalled().isFocused).toEqual(false)
+  lastCallArg(renderFn).bind.onBlur()
+  expect(renderFn).lastCalledWith(expect.objectContaining({ isFocused: false }))
 })
 
 test('<Focus onChange />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
   const onChangeFn = jest.fn()
-  const lastCalled = () => last(renderFn.mock.calls)[0]
   TestRenderer.create(<Focus onChange={onChangeFn} render={renderFn} />)
 
-  expect(onChangeFn).toHaveBeenCalledTimes(0)
+  expect(onChangeFn).toBeCalledTimes(0)
 
-  lastCalled().bind.onFocus()
-  expect(onChangeFn).toHaveBeenCalledTimes(1)
+  lastCallArg(renderFn).bind.onFocus()
+  expect(onChangeFn).toBeCalledTimes(1)
   expect(onChangeFn).lastCalledWith({ isFocused: true })
 })
