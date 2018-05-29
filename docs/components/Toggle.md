@@ -19,7 +19,7 @@ Specifies the initial on state, must be an boolean.
 By default, the initial on state is false.
 
 **onChange** _(optional)_  
-Callback that fires when state changes.
+The onChange event of the Toggle is called whenever the on state changes.
 
 ## Toggle Children Props
 

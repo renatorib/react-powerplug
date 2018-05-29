@@ -28,7 +28,7 @@ Specifies the initial list state, must be an array.
 By default, the initial list state is an empty array.
 
 **onChange** _(optional)_  
-Callback that fires when state changes.
+The onChange event of the List is called whenever the list state changes.
 
 ## List Children Props
 

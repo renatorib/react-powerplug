@@ -20,7 +20,8 @@ import { Focus } from 'react-powerplug'
 
 ## Focus Props
 
-_Don't have props_
+**onChange** _(optional)_  
+The onChange event of the Focus is called whenever the isFocused state changes.
 
 ## Focus Children Props
 
