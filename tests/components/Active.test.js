@@ -1,33 +1,31 @@
 import * as React from 'react'
 import TestRenderer from 'react-test-renderer'
 import { Active } from '../../src'
-import { last } from './utils'
+import { lastCallArg } from './utils'
 
 test('<Active />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
-  const lastCalled = () => last(renderFn.mock.calls)[0]
   TestRenderer.create(<Active render={renderFn} />)
 
-  expect(renderFn).toHaveBeenCalledTimes(1)
-  expect(lastCalled().isActive).toEqual(false)
+  expect(renderFn).toBeCalledTimes(1)
+  expect(renderFn).lastCalledWith(expect.objectContaining({ isActive: false }))
 
-  lastCalled().bind.onMouseDown()
-  expect(renderFn).toHaveBeenCalledTimes(2)
-  expect(lastCalled().isActive).toEqual(true)
+  lastCallArg(renderFn).bind.onMouseDown()
+  expect(renderFn).toBeCalledTimes(2)
+  expect(renderFn).lastCalledWith(expect.objectContaining({ isActive: true }))
 
-  lastCalled().bind.onMouseUp()
-  expect(lastCalled().isActive).toEqual(false)
+  lastCallArg(renderFn).bind.onMouseUp()
+  expect(renderFn).lastCalledWith(expect.objectContaining({ isActive: false }))
 })
 
 test('<Active onChange />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
   const onChangeFn = jest.fn()
-  const lastCalled = () => last(renderFn.mock.calls)[0]
   TestRenderer.create(<Active onChange={onChangeFn} render={renderFn} />)
 
-  expect(onChangeFn).toHaveBeenCalledTimes(0)
+  expect(onChangeFn).toBeCalledTimes(0)
 
-  lastCalled().bind.onMouseDown()
-  expect(onChangeFn).toHaveBeenCalledTimes(1)
+  lastCallArg(renderFn).bind.onMouseDown()
+  expect(onChangeFn).toBeCalledTimes(1)
   expect(onChangeFn).lastCalledWith({ isActive: true })
 })

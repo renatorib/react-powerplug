@@ -1,37 +1,35 @@
 import * as React from 'react'
 import TestRenderer from 'react-test-renderer'
 import { Toggle } from '../../src'
-import { last } from './utils'
+import { lastCallArg } from './utils'
 
 test('<Toggle />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
-  const lastCalled = () => last(renderFn.mock.calls)[0]
   TestRenderer.create(<Toggle render={renderFn} />)
 
-  expect(renderFn).toHaveBeenCalledTimes(1)
-  expect(lastCalled().on).toBe(false)
+  expect(renderFn).toBeCalledTimes(1)
+  expect(renderFn).lastCalledWith(expect.objectContaining({ on: false }))
 
-  lastCalled().toggle()
-  expect(lastCalled().on).toBe(true)
+  lastCallArg(renderFn).toggle()
+  expect(renderFn).lastCalledWith(expect.objectContaining({ on: true }))
 
-  lastCalled().set(false)
-  expect(lastCalled().on).toBe(false)
+  lastCallArg(renderFn).set(false)
+  expect(renderFn).lastCalledWith(expect.objectContaining({ on: false }))
 
-  lastCalled().set(on => !on)
-  expect(lastCalled().on).toBe(true)
+  lastCallArg(renderFn).set(on => !on)
+  expect(renderFn).lastCalledWith(expect.objectContaining({ on: true }))
 })
 
 test('<Toggle onChange />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
   const onChangeFn = jest.fn()
-  const lastCalled = () => last(renderFn.mock.calls)[0]
   TestRenderer.create(
     <Toggle initial={false} onChange={onChangeFn} render={renderFn} />
   )
 
-  expect(onChangeFn).toHaveBeenCalledTimes(0)
+  expect(onChangeFn).toBeCalledTimes(0)
 
-  lastCalled().set(true)
-  expect(onChangeFn).toHaveBeenCalledTimes(1)
+  lastCallArg(renderFn).set(true)
+  expect(onChangeFn).toBeCalledTimes(1)
   expect(onChangeFn).lastCalledWith({ on: true })
 })
