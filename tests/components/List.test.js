@@ -54,5 +54,5 @@ test('<List onChange />', () => {
 
   lastCallArg(renderFn).set([1])
   expect(onChangeFn).toBeCalledTimes(1)
-  expect(onChangeFn).lastCalledWith({ list: [1] })
+  expect(onChangeFn).lastCalledWith([1])
 })

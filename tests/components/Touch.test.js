@@ -26,5 +26,5 @@ test('<Touch onChange />', () => {
 
   lastCallArg(renderFn).bind.onTouchStart()
   expect(onChangeFn).toBeCalledTimes(1)
-  expect(onChangeFn).lastCalledWith({ isTouched: true })
+  expect(onChangeFn).lastCalledWith(true)
 })
