@@ -13,7 +13,7 @@ const List = ({ initial = [], onChange, ...props }) => (
         first: () => state.list[0],
         last: () => state.list[Math.max(0, state.list.length - 1)],
         set: list => setState(s => ({ list: set(list, s.list) })),
-        push: value => setState(s => ({ list: [...s.list, value] })),
+        push: (...values) => setState(s => ({ list: [...s.list, ...values] })),
         pull: predicate =>
           setState(s => ({ list: s.list.filter(complement(predicate)) })),
         sort: compareFn =>

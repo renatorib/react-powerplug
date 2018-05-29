@@ -135,7 +135,7 @@ type ListRender<T> = ({|
   first: () => T | void,
   last: () => T | void,
   set: Updater<$ReadOnlyArray<T>>,
-  push: (value: T) => void,
+  push: (...values: $ReadOnlyArray<T>) => void,
   pull: (predicate: (T) => boolean) => void,
   sort: (compare: (a: T, b: T) => -1 | 0 | 1) => void,
 |}) => React.Node
@@ -212,17 +212,19 @@ type StateProps<T> =
 
 declare export class State<T: Object> extends React.Component<StateProps<T>> {}
 
-/* Timer */
+/* Interval */
 
-type TimerRender = ({|
-  time: number,
+type IntervalRender = ({|
+  start: (delay?: number) => void,
+  stop: () => void,
+  toggle: () => void,
 |}) => React.Node
 
-type TimerProps =
-  | {| delay?: ?number, render: TimerRender |}
-  | {| delay?: ?number, children: TimerRender |}
+type IntervalProps =
+  | {| delay?: ?number, render: IntervalRender |}
+  | {| delay?: ?number, children: IntervalRender |}
 
-declare export class Timer extends React.Component<TimerProps> {}
+declare export class Interval extends React.Component<IntervalProps> {}
 
 /* Toggle */
 

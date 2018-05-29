@@ -23,7 +23,7 @@
 - :ok_hand: Dependency free
 - :electric_plug: Plug and play
 - :crystal_ball: Tree shaking friendly (ESM, no side effects)
-- :package: Super tiny (~4kb)
+- :package: Super tiny (~3kb)
 - :books: Well documented
 - :beers: Bunch of awesome utilities
 
@@ -283,8 +283,8 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
       <Submit>Send</Submit>
 
       {/*
-                                                                                                              input(id) => { bind, set, value }
-                                                                                                            */}
+                                                                                                                    input(id) => { bind, set, value }
+                                                                                                                  */}
     </form>
   )}
 </Form>
