@@ -9,7 +9,7 @@ class State extends Component {
   }
 
   state = {
-    ...this.props.initial
+    ...this.props.initial,
   }
 
   _setState = (updater, cb = noop) => {
