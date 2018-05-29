@@ -1,13 +1,14 @@
 import * as React from 'react'
 import State from './State'
 import renderProps from '../utils/renderProps'
+import onChangeProp from '../utils/onChangeProp'
 
 const FocusManager = ({ onChange, ...props }) => {
   let canBlur = true
   return (
     <State
       initial={{ isFocused: false }}
-      onChange={({ isFocused }) => onChange && onChange({ isFocused })}
+      onChange={onChangeProp(onChange, 'isFocused')}
     >
       {({ state, setState }) =>
         renderProps(props, {

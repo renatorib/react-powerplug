@@ -27,5 +27,5 @@ test('<Map onChange />', () => {
 
   lastCallArg(renderFn).set('a', 1)
   expect(onChangeFn).toBeCalledTimes(1)
-  expect(onChangeFn).lastCalledWith(1)
+  expect(onChangeFn).lastCalledWith({ a: 1 })
 })

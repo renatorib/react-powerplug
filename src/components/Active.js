@@ -6,7 +6,7 @@ import onChangeProp from '../utils/onChangeProp'
 const Active = ({ onChange, ...props }) => (
   <State
     initial={{ isActive: false }}
-    onChange={onChangeProp('isActive', onChange)}
+    onChange={onChangeProp(onChange, 'isActive')}
   >
     {({ state, setState }) =>
       renderProps(props, {
