@@ -4,13 +4,16 @@ import renderProps from '../utils/renderProps'
 import onChangeProp from '../utils/onChangeProp'
 
 const Active = ({ onChange, ...props }) => (
-  <State initial={{ value: false }} onChange={onChangeProp('value', onChange)}>
+  <State
+    initial={{ isActive: false }}
+    onChange={onChangeProp('isActive', onChange)}
+  >
     {({ state, setState }) =>
       renderProps(props, {
-        value: state.value,
+        isActive: state.isActive,
         bind: {
-          onMouseDown: () => setState({ value: true }),
-          onMouseUp: () => setState({ value: false }),
+          onMouseDown: () => setState({ isActive: true }),
+          onMouseUp: () => setState({ isActive: false }),
         },
       })
     }

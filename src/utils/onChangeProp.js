@@ -1,7 +1,7 @@
-import prop from './prop'
+import noop from './noop'
 
-const onChangeProp = (propName, originalOnChange) => state => {
-  originalOnChange(prop(propName)(state))
+const onChangeProp = (propName, originalOnChange = noop) => state => {
+  originalOnChange(state[propName])
 }
 
 export default onChangeProp
