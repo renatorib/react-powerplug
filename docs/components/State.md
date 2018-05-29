@@ -25,6 +25,9 @@ import { State } from 'react-powerplug'
 Specifies the initial state, must be an object.
 By default, the initial state is an empty object.
 
+**onChange = (fn: (state) => void)** _(optional)_  
+State onChange callback
+
 ## State Children Props
 
 TL;DR: `{ state, setState }`
