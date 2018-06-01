@@ -8,7 +8,7 @@ type Updater<T> = (value: ((updater: T) => T) | T) => void
 
 /* Active */
 
-type ActiveChange = ({| isActive: boolean |}) => void
+type ActiveChange = (isActive: boolean) => void
 
 type ActiveRender = ({|
   isActive: boolean,
@@ -26,7 +26,7 @@ declare export var Compose: React.ComponentType<Object>
 
 /* Counter */
 
-type CounterChange = ({| count: number |}) => void
+type CounterChange = (count: number) => void
 
 type CounterRender = ({|
   count: number,
@@ -43,7 +43,7 @@ declare export var Counter: React.ComponentType<
 
 /* Focus */
 
-type FocusChange = ({| isFocused: boolean |}) => void
+type FocusChange = (isFocused: boolean) => void
 
 type FocusRender = ({|
   isFocused: boolean,
@@ -57,7 +57,7 @@ declare export var Focus: React.ComponentType<
 
 /* FocusManager */
 
-type FocusManagerChange = ({| isFocused: boolean |}) => void
+type FocusManagerChange = (isFocused: boolean) => void
 
 type FocusManagerRender = ({|
   isFocused: boolean,
@@ -99,7 +99,7 @@ declare export class Form<T: { [string]: string }> extends React.Component<
 
 /* Hover */
 
-type HoverChange = ({| isHovered: boolean |}) => void
+type HoverChange = (isHovered: boolean) => void
 
 type HoverRender = ({|
   isHovered: boolean,
@@ -113,7 +113,7 @@ declare export var Hover: React.ComponentType<
 
 /* Input */
 
-type InputChange = ({| value: string |}) => void
+type InputChange = (value: string) => void
 
 type InputRender = ({|
   value: string,
@@ -128,7 +128,7 @@ declare export var Input: React.ComponentType<
 
 /* List */
 
-type ListChange<T> = ({| list: $ReadOnlyArray<T> |}) => void
+type ListChange<T> = (list: $ReadOnlyArray<T>) => void
 
 type ListRender<T> = ({|
   list: $ReadOnlyArray<T>,
@@ -156,7 +156,7 @@ declare export class List<T> extends React.Component<ListProps<T>, *> {}
 
 /* Set */
 
-type SetChange<T> = ({| values: $ReadOnlyArray<T> |}) => void
+type SetChange<T> = (values: $ReadOnlyArray<T>) => void
 
 type SetRender<T> = ({|
   values: $ReadOnlyArray<T>,
@@ -228,7 +228,7 @@ declare export class Interval extends React.Component<IntervalProps> {}
 
 /* Toggle */
 
-type ToggleChange = ({| on: boolean |}) => void
+type ToggleChange = (on: boolean) => void
 
 type ToggleRender = ({|
   on: boolean,
@@ -243,7 +243,7 @@ declare export var Toggle: React.ComponentType<
 
 /* Touch */
 
-type TouchChange = ({| isTouched: boolean |}) => void
+type TouchChange = (isTouched: boolean) => void
 
 type TouchRender = ({|
   isTouched: boolean,
@@ -257,7 +257,7 @@ declare export var Touch: React.ComponentType<
 
 /* Value */
 
-type ValueChange<T> = ({| value: T |}) => void
+type ValueChange<T> = (value: T) => void
 
 type ValueRender<T> = ({|
   value: T,
