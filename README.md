@@ -281,10 +281,6 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
       <ControlledInput placeholder="Subject" {...input('subject').bind} />
       <ControlledTextArea placeholder="Message" {...input('message').bind} />
       <Submit>Send</Submit>
-
-      {/*
-                                                                                                                    input(id) => { bind, set, value }
-                                                                                                                  */}
     </form>
   )}
 </Form>
@@ -361,6 +357,21 @@ npm i react-powerplug
 ```
 
 exposed as `ReactPowerPlug`
+
+# Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
+<!-- prettier-ignore -->
+| [<img src="https://avatars2.githubusercontent.com/u/3277185?v=4" width="100px;"/><br /><sub><b>Renato Ribeiro</b></sub>](http://twitter.com/renatorib_)<br />[💻](https://github.com/renatorib/react-powerplug/commits?author=renatorib "Code") [🎨](#design-renatorib "Design") [📖](https://github.com/renatorib/react-powerplug/commits?author=renatorib "Documentation") [⚠️](https://github.com/renatorib/react-powerplug/commits?author=renatorib "Tests") | [<img src="https://avatars0.githubusercontent.com/u/5635476?v=4" width="100px;"/><br /><sub><b>Bogdan Chadkin</b></sub>](https://github.com/TrySound)<br />[💻](https://github.com/renatorib/react-powerplug/commits?author=TrySound "Code") [📖](https://github.com/renatorib/react-powerplug/commits?author=TrySound "Documentation") [⚠️](https://github.com/renatorib/react-powerplug/commits?author=TrySound "Tests") [🚇](#infra-TrySound "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars1.githubusercontent.com/u/2762082?v=4" width="100px;"/><br /><sub><b>Travis Arnold</b></sub>](http://travisrayarnold.com)<br />[💻](https://github.com/renatorib/react-powerplug/commits?author=souporserious "Code") [📖](https://github.com/renatorib/react-powerplug/commits?author=souporserious "Documentation") [🐛](https://github.com/renatorib/react-powerplug/issues?q=author%3Asouporserious "Bug reports") | [<img src="https://avatars3.githubusercontent.com/u/1301959?v=4" width="100px;"/><br /><sub><b>Max Graey</b></sub>](https://github.com/MaxGraey)<br />[💻](https://github.com/renatorib/react-powerplug/commits?author=MaxGraey "Code") | [<img src="https://avatars2.githubusercontent.com/u/9800850?v=4" width="100px;"/><br /><sub><b>Mateusz Burzyński</b></sub>](https://github.com/Andarist)<br />[🐛](https://github.com/renatorib/react-powerplug/issues?q=author%3AAndarist "Bug reports") | [<img src="https://avatars0.githubusercontent.com/u/1448194?v=4" width="100px;"/><br /><sub><b>Andy Edwards</b></sub>](http://helloandy.xyz)<br />[💻](https://github.com/renatorib/react-powerplug/commits?author=jedwards1211 "Code") | [<img src="https://avatars2.githubusercontent.com/u/1159781?v=4" width="100px;"/><br /><sub><b>Andrea Vanini</b></sub>](http://uidu.org)<br />[🐛](https://github.com/renatorib/react-powerplug/issues?q=author%3Aapuntovanini "Bug reports") |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| [<img src="https://avatars3.githubusercontent.com/u/5077042?v=4" width="100px;"/><br /><sub><b>Ivan Starkov</b></sub>](https://twitter.com/icelabaratory)<br />[🐛](https://github.com/renatorib/react-powerplug/issues?q=author%3Aistarkov "Bug reports") | [<img src="https://avatars1.githubusercontent.com/u/25376?v=4" width="100px;"/><br /><sub><b>Sean Roberts</b></sub>](http://factore.ca)<br />[📖](https://github.com/renatorib/react-powerplug/commits?author=SeanRoberts "Documentation") |
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
 
 # Contribute
 

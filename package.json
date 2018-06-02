@@ -22,7 +22,9 @@
     "test:cjs": "jest --setupTestFrameworkScriptFile ./tests/jestCJSSetup.js",
     "test": "npm run build && npm run lint && jest && npm run test:umd && npm run test:cjs",
     "precommit": "lint-staged",
-    "prepublishOnly": "npm run clean && npm run build"
+    "prepublishOnly": "npm run clean && npm run build",
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate"
   },
   "lint-staged": {
     "*.{js,md}": [
@@ -64,6 +66,7 @@
     "@babel/preset-env": "^7.0.0-beta.49",
     "@babel/preset-react": "^7.0.0-beta.49",
     "@babel/preset-stage-3": "^7.0.0-beta.49",
+    "all-contributors-cli": "^4.11.2",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^8.2.2",
     "babel-jest": "^23.0.0",

@@ -1,0 +1,102 @@
+{
+  "projectName": "react-powerplug",
+  "projectOwner": "renatorib",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "renatorib",
+      "name": "Renato Ribeiro",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/3277185?v=4",
+      "profile": "http://twitter.com/renatorib_",
+      "contributions": [
+        "code",
+        "design",
+        "doc",
+        "test"
+      ]
+    },
+    {
+      "login": "TrySound",
+      "name": "Bogdan Chadkin",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/5635476?v=4",
+      "profile": "https://github.com/TrySound",
+      "contributions": [
+        "code",
+        "doc",
+        "test",
+        "infra"
+      ]
+    },
+    {
+      "login": "souporserious",
+      "name": "Travis Arnold",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2762082?v=4",
+      "profile": "http://travisrayarnold.com",
+      "contributions": [
+        "code",
+        "doc",
+        "bug"
+      ]
+    },
+    {
+      "login": "MaxGraey",
+      "name": "Max Graey",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1301959?v=4",
+      "profile": "https://github.com/MaxGraey",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Andarist",
+      "name": "Mateusz Burzyński",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/9800850?v=4",
+      "profile": "https://github.com/Andarist",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "jedwards1211",
+      "name": "Andy Edwards",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1448194?v=4",
+      "profile": "http://helloandy.xyz",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "apuntovanini",
+      "name": "Andrea Vanini",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1159781?v=4",
+      "profile": "http://uidu.org",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "istarkov",
+      "name": "Ivan Starkov",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5077042?v=4",
+      "profile": "https://twitter.com/icelabaratory",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "SeanRoberts",
+      "name": "Sean Roberts",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/25376?v=4",
+      "profile": "http://factore.ca",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ]
+}
