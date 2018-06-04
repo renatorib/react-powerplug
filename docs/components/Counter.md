@@ -26,6 +26,9 @@ import { Counter } from 'react-powerplug'
 Specifies the initial count state, must be an number.
 By default, the initial count state is 0.
 
+**onChange** _(optional)_  
+The onChange event of the Counter is called whenever the count state changes.
+
 ## Counter Children Props
 
 TL;DR: `{ count, inc, dec }`

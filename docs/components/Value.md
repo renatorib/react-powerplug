@@ -44,7 +44,7 @@ import { Value } from 'react-powerplug'
 Specifies the initial value state.
 
 **onChange** _(optional)_  
-Callback that fires when state changes.
+The onChange event of the Value is called whenever the value state changes.
 
 ## Value Children Props
 

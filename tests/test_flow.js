@@ -36,7 +36,7 @@ const noop = () => null
     ;(bind.onMouseUp: number)
     return null
   }
-  const onChange = ({ isActive }) => {
+  const onChange = isActive => {
     ;(isActive: boolean)
     // $FlowFixMe
     ;(isActive: number)
@@ -68,7 +68,7 @@ const noop = () => null
     ;(bind.onChange: number)
     return null
   }
-  const onChange = ({ value }) => {
+  const onChange = value => {
     ;(value: string)
     // $FlowFixMe
     ;(value: number)
@@ -133,7 +133,7 @@ const noop = () => null
     decBy('')
     return null
   }
-  const onChange = ({ count }) => {
+  const onChange = count => {
     ;(count: number)
     // $FlowFixMe
     ;(count: string)
@@ -165,7 +165,7 @@ const noop = () => null
     ;(bind.onBlur: number)
     return null
   }
-  const onChange = ({ isFocused }) => {
+  const onChange = isFocused => {
     ;(isFocused: boolean)
     // $FlowFixMe
     ;(isFocused: number)
@@ -195,7 +195,7 @@ const noop = () => null
     ;(bind.onBlur: number)
     return null
   }
-  const onChange = ({ isFocused }) => {
+  const onChange = isFocused => {
     ;(isFocused: boolean)
     // $FlowFixMe
     ;(isFocused: number)
@@ -268,7 +268,7 @@ const noop = () => null
     ;(bind.onMouseLeave: number)
     return null
   }
-  const onChange = ({ isHovered }) => {
+  const onChange = isHovered => {
     ;(isHovered: boolean)
     // $FlowFixMe
     ;(isHovered: number)
@@ -306,7 +306,7 @@ const noop = () => null
     //$FlowFixMe
     sort((a: string, b: string) => -1)
   }
-  const onChange = ({ list }) => {
+  const onChange = list => {
     ;(list: $ReadOnlyArray<number>)
     // $FlowFixMe
     ;(list: $ReadOnlyArray<string>)
@@ -356,7 +356,7 @@ const noop = () => null
     ;(has(true): boolean)
     return null
   }
-  const onChange = ({ values }) => {
+  const onChange = values => {
     ;(values: $ReadOnlyArray<number | string>)
     // $FlowFixMe
     ;(values: $ReadOnlyArray<number>)
@@ -479,7 +479,7 @@ const noop = () => null
     set(0)
     return null
   }
-  const onChange = ({ on }) => {
+  const onChange = on => {
     ;(on: boolean)
     // $FlowFixMe
     ;(on: number)
@@ -511,7 +511,7 @@ const noop = () => null
     ;(bind.onTouchEnd: number)
     return null
   }
-  const onChange = ({ isTouched }) => {
+  const onChange = isTouched => {
     ;(isTouched: boolean)
     // $FlowFixMe
     ;(isTouched: number)
@@ -538,7 +538,7 @@ const noop = () => null
     ;(value: boolean)
     set(true)
   }
-  const onChange = ({ value }) => {
+  const onChange = value => {
     ;(value: number | string)
     // $FlowFixMe
     ;(value: number)

@@ -19,7 +19,8 @@ import { Hover } from 'react-powerplug'
 
 ## Hover Props
 
-_Don't have props_
+**onChange** _(optional)_  
+The onChange event of the Hover is called whenever the isHovered state changes.
 
 ## Hover Children Props
 

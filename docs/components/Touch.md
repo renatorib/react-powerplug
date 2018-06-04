@@ -18,8 +18,8 @@ import { Touch } from 'react-powerplug'
 
 ## Touch Props
 
-**onChange** _(optional)_
-Callback that fires when state changes.
+**onChange** _(optional)_  
+The onChange event of the Touch is called whenever the isTouched state changes.
 
 ## Touch Children Props
 

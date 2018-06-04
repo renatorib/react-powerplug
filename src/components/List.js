@@ -2,11 +2,12 @@ import * as React from 'react'
 import State from './State'
 import renderProps from '../utils/renderProps'
 import set from '../utils/set'
+import onChangeProp from '../utils/onChangeProp'
 
 const complement = fn => (...args) => !fn(...args)
 
 const List = ({ initial = [], onChange, ...props }) => (
-  <State initial={{ list: initial }} onChange={onChange}>
+  <State initial={{ list: initial }} onChange={onChangeProp(onChange, 'list')}>
     {({ state, setState }) =>
       renderProps(props, {
         list: state.list,

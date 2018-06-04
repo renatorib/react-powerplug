@@ -27,5 +27,5 @@ test('<Hover onChange />', () => {
 
   lastCallArg(renderFn).bind.onMouseEnter()
   expect(onChangeFn).toBeCalledTimes(1)
-  expect(onChangeFn).lastCalledWith({ isHovered: true })
+  expect(onChangeFn).lastCalledWith(true)
 })

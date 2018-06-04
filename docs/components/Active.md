@@ -19,7 +19,8 @@ import { Active } from 'react-powerplug'
 
 ## Active Props
 
-_Don't have props_
+**onChange** _(optional)_  
+The onChange event of the Active is called whenever the isActive state changes.
 
 ## Active Children Props
 

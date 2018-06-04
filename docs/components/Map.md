@@ -33,6 +33,9 @@ import { Map } from 'react-powerplug'
 Specifies the initial state, must be an object.  
 By default, the initial count state is an empty object
 
+**onChange** _(optional)_  
+The onChange event of the Map is called whenever the state changes.
+
 ## Map Children Props
 
 TL;DR: `{ values, set, get }`
