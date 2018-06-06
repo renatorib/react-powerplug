@@ -21,6 +21,12 @@ test('<Counter />', () => {
 
   lastCallArg(renderFn).decBy(3)
   expect(renderFn).lastCalledWith(expect.objectContaining({ count: 2 }))
+
+  lastCallArg(renderFn).set(10)
+  expect(renderFn).lastCalledWith(expect.objectContaining({ count: 10 }))
+
+  lastCallArg(renderFn).set(count => count + 10)
+  expect(renderFn).lastCalledWith(expect.objectContaining({ count: 20 }))
 })
 
 test('<Counter onChange />', () => {

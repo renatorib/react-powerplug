@@ -20,7 +20,7 @@ const Counter = ({ initial = 0, onChange, ...props }) => (
         dec: () => setState(add(-1)),
         incBy: value => setState(add(value)),
         decBy: value => setState(add(-value)),
-        set: value => setState(s => ({ on: set(value, s.on) })),
+        set: value => setState(s => ({ count: set(value, s.count) })),
       })
     }
   </State>
