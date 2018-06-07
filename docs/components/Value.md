@@ -8,12 +8,12 @@ import { Value } from 'react-powerplug'
 
 ```jsx
 <Value initial="React">
-  {({ value, set }) => (
+  {({ value, setValue }) => (
     <Select
       label="Choose one"
       options={['React', 'Preact', 'Vue']}
       value={value}
-      onChange={set}
+      onChange={setValue}
     />
   )}
 </Value>
@@ -21,10 +21,10 @@ import { Value } from 'react-powerplug'
 
 ```jsx
 <Value initial="first">
-  {({ value, set }) => {
+  {({ value, setValue }) => {
     const bindRadio = radioValue => ({
       selected: value === radioValue,
-      onClick: () => set(radioValue),
+      onClick: () => setValue(radioValue),
     })
 
     return (
@@ -54,6 +54,6 @@ TL;DR: `{ value, set }`
 `T`  
 Your value state
 
-**set**  
+**setValue**  
 `(value: T | (value: T) => T) => void`  
 Set or over the value state
