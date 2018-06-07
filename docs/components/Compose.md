@@ -11,7 +11,7 @@ import { Compose, Toggle, Counter } from 'react-powerplug'
   {(counter, toggle) => (
     <ProductCard
       {...productInfo}
-      isFavorited={toggle.on}
+      favorite={toggle.on}
       onFavorite={toggle.toggle}
       count={counter.count}
       onAdd={counter.inc}
@@ -53,7 +53,7 @@ Behind the scenes, that's what happens:
       {toggle => (
         <ProductCard
           {...productInfo}
-          isFavorited={toggle.on}
+          favorite={toggle.on}
           onFavorite={toggle.toggle}
           count={counter.count}
           onAdd={counter.inc}
