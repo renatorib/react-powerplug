@@ -8,14 +8,14 @@ test('<Hover />', () => {
   TestRenderer.create(<Hover render={renderFn} />)
 
   expect(renderFn).toBeCalledTimes(1)
-  expect(renderFn).lastCalledWith(expect.objectContaining({ isHovered: false }))
+  expect(renderFn).lastCalledWith(expect.objectContaining({ hovered: false }))
 
   lastCallArg(renderFn).bind.onMouseEnter()
   expect(renderFn).toBeCalledTimes(2)
-  expect(renderFn).lastCalledWith(expect.objectContaining({ isHovered: true }))
+  expect(renderFn).lastCalledWith(expect.objectContaining({ hovered: true }))
 
   lastCallArg(renderFn).bind.onMouseLeave()
-  expect(renderFn).lastCalledWith(expect.objectContaining({ isHovered: false }))
+  expect(renderFn).lastCalledWith(expect.objectContaining({ hovered: false }))
 })
 
 test('<Hover onChange />', () => {

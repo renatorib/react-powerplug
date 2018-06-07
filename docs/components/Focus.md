@@ -9,10 +9,10 @@ import { Focus } from 'react-powerplug'
 
 ```jsx
 <Focus>
-  {({ isFocused, bind }) => (
+  {({ focused, bind }) => (
     <div>
       <input {...bind} placeholder="Focus me" />
-      <div>You are {isFocused ? 'focusing' : 'not focusing'} the input.</div>
+      <div>You are {focused ? 'focusing' : 'not focusing'} the input.</div>
     </div>
   )}
 </Focus>
@@ -21,13 +21,13 @@ import { Focus } from 'react-powerplug'
 ## Focus Props
 
 **onChange** _(optional)_  
-The onChange event of the Focus is called whenever the isFocused state changes.
+The onChange event of the Focus is called whenever the focused state changes.
 
 ## Focus Children Props
 
-TL;DR: `{ isFocused, bind }`
+TL;DR: `{ focused, bind }`
 
-**isFocused**  
+**focused**  
 `boolean`  
 True if is focusing the binded element
 

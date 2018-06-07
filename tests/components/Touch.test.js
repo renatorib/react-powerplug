@@ -8,13 +8,13 @@ test('<Touch />', () => {
   TestRenderer.create(<Touch render={renderFn} />)
 
   expect(renderFn).toBeCalledTimes(1)
-  expect(renderFn).lastCalledWith(expect.objectContaining({ isTouched: false }))
+  expect(renderFn).lastCalledWith(expect.objectContaining({ touched: false }))
 
   lastCallArg(renderFn).bind.onTouchStart()
-  expect(renderFn).lastCalledWith(expect.objectContaining({ isTouched: true }))
+  expect(renderFn).lastCalledWith(expect.objectContaining({ touched: true }))
 
   lastCallArg(renderFn).bind.onTouchEnd()
-  expect(renderFn).lastCalledWith(expect.objectContaining({ isTouched: false }))
+  expect(renderFn).lastCalledWith(expect.objectContaining({ touched: false }))
 })
 
 test('<Touch onChange />', () => {

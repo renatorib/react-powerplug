@@ -5,15 +5,15 @@ import onChangeProp from '../utils/onChangeProp'
 
 const Touch = ({ onChange, ...props }) => (
   <State
-    initial={{ isTouched: false }}
-    onChange={onChangeProp(onChange, 'isTouched')}
+    initial={{ touched: false }}
+    onChange={onChangeProp(onChange, 'touched')}
   >
     {({ state, setState }) =>
       renderProps(props, {
-        isTouched: state.isTouched,
+        touched: state.touched,
         bind: {
-          onTouchStart: () => setState({ isTouched: true }),
-          onTouchEnd: () => setState({ isTouched: false }),
+          onTouchStart: () => setState({ touched: true }),
+          onTouchEnd: () => setState({ touched: false }),
         },
       })
     }

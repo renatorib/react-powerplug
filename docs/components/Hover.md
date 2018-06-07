@@ -9,9 +9,9 @@ import { Hover } from 'react-powerplug'
 
 ```jsx
 <Hover>
-  {({ isHovered, bind }) => (
+  {({ hovered, bind }) => (
     <div {...bind}>
-      You are {isHovered ? 'hovering' : 'not hovering'} this div.
+      You are {hovered ? 'hovering' : 'not hovering'} this div.
     </div>
   )}
 </Hover>
@@ -20,13 +20,13 @@ import { Hover } from 'react-powerplug'
 ## Hover Props
 
 **onChange** _(optional)_  
-The onChange event of the Hover is called whenever the isHovered state changes.
+The onChange event of the Hover is called whenever the hovered state changes.
 
 ## Hover Children Props
 
-TL;DR: `{ isHovered, bind }`
+TL;DR: `{ hovered, bind }`
 
-**isHovered**  
+**hovered**  
 `boolean`  
 True if is hovering the binded element
 

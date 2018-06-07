@@ -8,9 +8,9 @@ import { Touch } from 'react-powerplug'
 
 ```jsx
 <Touch>
-  {({ isTouched, bind }) => (
+  {({ touched, bind }) => (
     <div {...bind}>
-      You are {isTouched ? 'touching' : 'not touching'} this div.
+      You are {touched ? 'touching' : 'not touching'} this div.
     </div>
   )}
 </Touch>
@@ -19,13 +19,13 @@ import { Touch } from 'react-powerplug'
 ## Touch Props
 
 **onChange** _(optional)_  
-The onChange event of the Touch is called whenever the isTouched state changes.
+The onChange event of the Touch is called whenever the touched state changes.
 
 ## Touch Children Props
 
-TL;DR: `{ isTouched, bind }`
+TL;DR: `{ touched, bind }`
 
-**isTouched**  
+**touched**  
 `boolean`  
 True if is touching the binded element
 
