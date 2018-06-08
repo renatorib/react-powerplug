@@ -8,10 +8,10 @@ type Updater<T> = (value: ((updater: T) => T) | T) => void
 
 /* Active */
 
-type ActiveChange = (isActive: boolean) => void
+type ActiveChange = (active: boolean) => void
 
 type ActiveRender = ({|
-  isActive: boolean,
+  active: boolean,
   bind: {| onMouseDown: () => void, onMouseUp: () => void |},
 |}) => React.Node
 
@@ -43,10 +43,10 @@ declare export var Counter: React.ComponentType<
 
 /* Focus */
 
-type FocusChange = (isFocused: boolean) => void
+type FocusChange = (focused: boolean) => void
 
 type FocusRender = ({|
-  isFocused: boolean,
+  focused: boolean,
   bind: {| onFocus: () => void, onBlur: () => void |},
 |}) => React.Node
 
@@ -57,10 +57,10 @@ declare export var Focus: React.ComponentType<
 
 /* FocusManager */
 
-type FocusManagerChange = (isFocused: boolean) => void
+type FocusManagerChange = (focused: boolean) => void
 
 type FocusManagerRender = ({|
-  isFocused: boolean,
+  focused: boolean,
   blur: () => void,
   bind: {| tabIndex: number, onFocus: () => void, onBlur: () => void |},
 |}) => React.Node
@@ -99,10 +99,10 @@ declare export class Form<T: { [string]: string }> extends React.Component<
 
 /* Hover */
 
-type HoverChange = (isHovered: boolean) => void
+type HoverChange = (hovered: boolean) => void
 
 type HoverRender = ({|
-  isHovered: boolean,
+  hovered: boolean,
   bind: {| onMouseEnter: () => void, onMouseLeave: () => void |},
 |}) => React.Node
 
@@ -243,10 +243,10 @@ declare export var Toggle: React.ComponentType<
 
 /* Touch */
 
-type TouchChange = (isTouched: boolean) => void
+type TouchChange = (touched: boolean) => void
 
 type TouchRender = ({|
-  isTouched: boolean,
+  touched: boolean,
   bind: {| onTouchStart: () => void, onTouchEnd: () => void |},
 |}) => React.Node
 

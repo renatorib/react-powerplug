@@ -79,11 +79,11 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 | **\<Set>**                   | `{ initial, onChange }` | `{ values, add, clear, remove, has }`          | [:point_down:](#set) [:books:](docs/components/Set.md)                      |
 | **\<List>**                  | `{ initial, onChange }` | `{ list, first, last, push, pull, sort, set }` | [:point_down:](#list) [:books:](docs/components/List.md)                    |
 | <h6>FEEDBACK CONTAINERS</h6> |
-| **\<Hover>**                 | `{ onChange }`          | `{ isHovered, bind }`                          | [:point_down:](#hover) [:books:](docs/components/Hover.md)                  |
-| **\<Active>**                | `{ onChange }`          | `{ isActive, bind }`                           | [:point_down:](#active) [:books:](docs/components/Active.md)                |
-| **\<Focus>**                 | `{ onChange }`          | `{ isFocused, bind }`                          | [:point_down:](#focus) [:books:](docs/components/Focus.md)                  |
-| **\<Touch>**                 | `{ onChange }`          | `{ isTouched, bind }`                          | [:point_down:](#touch) [:books:](docs/components/Touch.md)                  |
-| **\<FocusManager>**          | `{ onChange }`          | `{ isFocused, blur, bind }`                    | [:point_down:](#focusmanager) [:books:](docs/components/FocusManager.md)    |
+| **\<Hover>**                 | `{ onChange }`          | `{ hovered, bind }`                            | [:point_down:](#hover) [:books:](docs/components/Hover.md)                  |
+| **\<Active>**                | `{ onChange }`          | `{ active, bind }`                             | [:point_down:](#active) [:books:](docs/components/Active.md)                |
+| **\<Focus>**                 | `{ onChange }`          | `{ focused, bind }`                            | [:point_down:](#focus) [:books:](docs/components/Focus.md)                  |
+| **\<Touch>**                 | `{ onChange }`          | `{ touched, bind }`                            | [:point_down:](#touch) [:books:](docs/components/Touch.md)                  |
+| **\<FocusManager>**          | `{ onChange }`          | `{ focused, blur, bind }`                      | [:point_down:](#focusmanager) [:books:](docs/components/FocusManager.md)    |
 | <h6>FORM CONTAINERS</h6>     |
 | **\<Input>**                 | `{ initial, onChange }` | `{ set, value, bind }`                         | [:point_down:](#input) [:books:](docs/components/Input.md)                  |
 | **\<Form>**                  | `{ initial, onChange }` | `{ input, values }`                            | [:point_down:](#form) [:books:](docs/components/Form.md)                    |
@@ -209,9 +209,9 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 
 ```jsx
 <Hover>
-  {({ isHovered, bind }) => (
+  {({ hovered, bind }) => (
     <div {...bind}>
-      You are {isHovered ? 'hovering' : 'not hovering'} this div.
+      You are {hovered ? 'hovering' : 'not hovering'} this div.
     </div>
   )}
 </Hover>
@@ -221,9 +221,9 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 
 ```jsx
 <Active>
-  {({ isActive, bind }) => (
+  {({ active, bind }) => (
     <div {...bind}>
-      You are {isActive ? 'clicking' : 'not clicking'} this div.
+      You are {active ? 'clicking' : 'not clicking'} this div.
     </div>
   )}
 </Active>
@@ -233,9 +233,9 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 
 ```jsx
 <Touch>
-  {({ isTouched, bind }) => (
+  {({ touched, bind }) => (
     <div {...bind}>
-      You are {isTouched ? 'touching' : 'not touching'} this div.
+      You are {touched ? 'touching' : 'not touching'} this div.
     </div>
   )}
 </Touch>
@@ -245,10 +245,10 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 
 ```jsx
 <Focus>
-  {({ isFocused, bind }) => (
+  {({ focused, bind }) => (
     <div>
       <input {...bind} placeholder="Focus me" />
-      <div>You are {isFocused ? 'focusing' : 'not focusing'} input.</div>
+      <div>You are {focused ? 'focusing' : 'not focusing'} input.</div>
     </div>
   )}
 </Focus>

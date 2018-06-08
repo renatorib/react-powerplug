@@ -52,12 +52,12 @@ test('keep focus when click on menu', async () => {
     const style = { width: 100, height: 100 }
     const App = () => (
       <FocusManager>
-        {({ isFocused, bind }) => {
-          window.renderFn({ isFocused })
+        {({ focused, bind }) => {
+          window.renderFn({ focused })
           return (
             <>
               <div id="rect-1" style={style} {...bind} />
-              {isFocused && <div id="rect-2" style={style} {...bind} />}
+              {focused && <div id="rect-2" style={style} {...bind} />}
             </>
           )
         }}
@@ -67,15 +67,15 @@ test('keep focus when click on menu', async () => {
     window.render(<App />)
   })
 
-  expect(renderFn).lastCalledWith({ isFocused: false })
+  expect(renderFn).lastCalledWith({ focused: false })
   await page.click('#rect-1')
-  expect(renderFn).lastCalledWith({ isFocused: true })
+  expect(renderFn).lastCalledWith({ focused: true })
   await page.click('#rect-2')
-  expect(renderFn).lastCalledWith({ isFocused: true })
+  expect(renderFn).lastCalledWith({ focused: true })
   // click outside
   await page.mouse.click(200, 50)
   await delay(100)
-  expect(renderFn).lastCalledWith({ isFocused: false })
+  expect(renderFn).lastCalledWith({ focused: false })
 })
 
 test('restore focus after calling blur on inner component', async () => {
@@ -91,8 +91,8 @@ test('restore focus after calling blur on inner component', async () => {
 
     const App = () => (
       <FocusManager onChange={window.onChangeFn}>
-        {({ isFocused, blur, bind }) => {
-          window.renderFn({ isFocused })
+        {({ focused, blur, bind }) => {
+          window.renderFn({ focused })
           const stopPropagation = e => e.stopPropagation()
           return (
             <>
@@ -114,14 +114,14 @@ test('restore focus after calling blur on inner component', async () => {
     window.render(<App />)
   })
 
-  expect(renderFn).lastCalledWith({ isFocused: false })
+  expect(renderFn).lastCalledWith({ focused: false })
   await page.click('#outer')
-  expect(renderFn).lastCalledWith({ isFocused: true })
+  expect(renderFn).lastCalledWith({ focused: true })
   expect(onChangeFn).lastCalledWith(true)
   await page.click('#inner')
-  expect(renderFn).lastCalledWith({ isFocused: false })
+  expect(renderFn).lastCalledWith({ focused: false })
   expect(onChangeFn).lastCalledWith(false)
   await page.click('#outer')
-  expect(renderFn).lastCalledWith({ isFocused: true })
+  expect(renderFn).lastCalledWith({ focused: true })
   expect(onChangeFn).lastCalledWith(true)
 })

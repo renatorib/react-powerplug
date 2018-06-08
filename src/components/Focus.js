@@ -5,15 +5,15 @@ import onChangeProp from '../utils/onChangeProp'
 
 const Focus = ({ onChange, ...props }) => (
   <State
-    initial={{ isFocused: false }}
-    onChange={onChangeProp(onChange, 'isFocused')}
+    initial={{ focused: false }}
+    onChange={onChangeProp(onChange, 'focused')}
   >
     {({ state, setState }) =>
       renderProps(props, {
-        isFocused: state.isFocused,
+        focused: state.focused,
         bind: {
-          onFocus: () => setState({ isFocused: true }),
-          onBlur: () => setState({ isFocused: false }),
+          onFocus: () => setState({ focused: true }),
+          onBlur: () => setState({ focused: false }),
         },
       })
     }

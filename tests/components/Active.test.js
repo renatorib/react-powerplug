@@ -8,14 +8,14 @@ test('<Active />', () => {
   TestRenderer.create(<Active render={renderFn} />)
 
   expect(renderFn).toBeCalledTimes(1)
-  expect(renderFn).lastCalledWith(expect.objectContaining({ isActive: false }))
+  expect(renderFn).lastCalledWith(expect.objectContaining({ active: false }))
 
   lastCallArg(renderFn).bind.onMouseDown()
   expect(renderFn).toBeCalledTimes(2)
-  expect(renderFn).lastCalledWith(expect.objectContaining({ isActive: true }))
+  expect(renderFn).lastCalledWith(expect.objectContaining({ active: true }))
 
   lastCallArg(renderFn).bind.onMouseUp()
-  expect(renderFn).lastCalledWith(expect.objectContaining({ isActive: false }))
+  expect(renderFn).lastCalledWith(expect.objectContaining({ active: false }))
 })
 
 test('<Active onChange />', () => {

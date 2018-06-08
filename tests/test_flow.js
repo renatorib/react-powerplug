@@ -24,22 +24,22 @@ const noop = () => null
 
 /* Active */
 {
-  const render = ({ isActive, bind }) => {
-    ;(isActive: boolean)
+  const render = ({ active, bind }) => {
+    ;(active: boolean)
     ;(bind.onMouseDown: Function)
     ;(bind.onMouseUp: Function)
     // $FlowFixMe
-    ;(isActive: number)
+    ;(active: number)
     // $FlowFixMe
     ;(bind.onMouseDown: number)
     // $FlowFixMe
     ;(bind.onMouseUp: number)
     return null
   }
-  const onChange = isActive => {
-    ;(isActive: boolean)
+  const onChange = active => {
+    ;(active: boolean)
     // $FlowFixMe
-    ;(isActive: number)
+    ;(active: number)
   }
   ;[
     <Active render={render} />,
@@ -153,22 +153,22 @@ const noop = () => null
 
 /* Focus */
 {
-  const render = ({ isFocused, bind }) => {
-    ;(isFocused: boolean)
+  const render = ({ focused, bind }) => {
+    ;(focused: boolean)
     ;(bind.onFocus: Function)
     ;(bind.onBlur: Function)
     // $FlowFixMe
-    ;(isFocused: number)
+    ;(focused: number)
     // $FlowFixMe
     ;(bind.onFocus: number)
     // $FlowFixMe
     ;(bind.onBlur: number)
     return null
   }
-  const onChange = isFocused => {
-    ;(isFocused: boolean)
+  const onChange = focused => {
+    ;(focused: boolean)
     // $FlowFixMe
-    ;(isFocused: number)
+    ;(focused: number)
   }
   ;[
     <Focus render={render} />,
@@ -182,23 +182,23 @@ const noop = () => null
 
 /* FocusManager */
 {
-  const render = ({ isFocused, blur, bind }) => {
-    ;(isFocused: boolean)
+  const render = ({ focused, blur, bind }) => {
+    ;(focused: boolean)
     ;(blur: Function)
     ;(bind.onFocus: Function)
     ;(bind.onBlur: Function)
     // $FlowFixMe
-    ;(isFocused: number)
+    ;(focused: number)
     // $FlowFixMe
     ;(bind.onFocus: number)
     // $FlowFixMe
     ;(bind.onBlur: number)
     return null
   }
-  const onChange = isFocused => {
-    ;(isFocused: boolean)
+  const onChange = focused => {
+    ;(focused: boolean)
     // $FlowFixMe
-    ;(isFocused: number)
+    ;(focused: number)
   }
   ;[
     <FocusManager render={render} />,
@@ -256,22 +256,22 @@ const noop = () => null
 
 /* Hover */
 {
-  const render = ({ isHovered, bind }) => {
-    ;(isHovered: boolean)
+  const render = ({ hovered, bind }) => {
+    ;(hovered: boolean)
     ;(bind.onMouseEnter: Function)
     ;(bind.onMouseLeave: Function)
     // $FlowFixMe
-    ;(isHovered: number)
+    ;(hovered: number)
     // $FlowFixMe
     ;(bind.onMouseEnter: number)
     // $FlowFixMe
     ;(bind.onMouseLeave: number)
     return null
   }
-  const onChange = isHovered => {
-    ;(isHovered: boolean)
+  const onChange = hovered => {
+    ;(hovered: boolean)
     // $FlowFixMe
-    ;(isHovered: number)
+    ;(hovered: number)
   }
   ;[
     <Hover render={render} />,
@@ -499,22 +499,22 @@ const noop = () => null
 
 /* Touch */
 {
-  const render = ({ isTouched, bind }) => {
-    ;(isTouched: boolean)
+  const render = ({ touched, bind }) => {
+    ;(touched: boolean)
     ;(bind.onTouchStart: Function)
     ;(bind.onTouchEnd: Function)
     // $FlowFixMe
-    ;(isTouched: number)
+    ;(touched: number)
     // $FlowFixMe
     ;(bind.onTouchStart: number)
     // $FlowFixMe
     ;(bind.onTouchEnd: number)
     return null
   }
-  const onChange = isTouched => {
-    ;(isTouched: boolean)
+  const onChange = touched => {
+    ;(touched: boolean)
     // $FlowFixMe
-    ;(isTouched: number)
+    ;(touched: number)
   }
   ;[
     <Touch render={render} />,

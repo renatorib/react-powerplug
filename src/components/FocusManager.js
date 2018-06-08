@@ -7,24 +7,24 @@ const FocusManager = ({ onChange, ...props }) => {
   let canBlur = true
   return (
     <State
-      initial={{ isFocused: false }}
-      onChange={onChangeProp(onChange, 'isFocused')}
+      initial={{ focused: false }}
+      onChange={onChangeProp(onChange, 'focused')}
     >
       {({ state, setState }) =>
         renderProps(props, {
-          isFocused: state.isFocused,
+          focused: state.focused,
           blur: () => {
-            setState({ isFocused: false })
+            setState({ focused: false })
           },
           bind: {
             tabIndex: -1,
             onBlur: () => {
               if (canBlur) {
-                setState({ isFocused: false })
+                setState({ focused: false })
               }
             },
             onFocus: () => {
-              setState({ isFocused: true })
+              setState({ focused: true })
             },
             onMouseDown: () => {
               canBlur = false

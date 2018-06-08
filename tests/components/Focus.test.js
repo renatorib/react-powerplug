@@ -8,14 +8,14 @@ test('<Focus />', () => {
   TestRenderer.create(<Focus render={renderFn} />)
 
   expect(renderFn).toBeCalledTimes(1)
-  expect(renderFn).lastCalledWith(expect.objectContaining({ isFocused: false }))
+  expect(renderFn).lastCalledWith(expect.objectContaining({ focused: false }))
 
   lastCallArg(renderFn).bind.onFocus()
   expect(renderFn).toBeCalledTimes(2)
-  expect(renderFn).lastCalledWith(expect.objectContaining({ isFocused: true }))
+  expect(renderFn).lastCalledWith(expect.objectContaining({ focused: true }))
 
   lastCallArg(renderFn).bind.onBlur()
-  expect(renderFn).lastCalledWith(expect.objectContaining({ isFocused: false }))
+  expect(renderFn).lastCalledWith(expect.objectContaining({ focused: false }))
 })
 
 test('<Focus onChange />', () => {
