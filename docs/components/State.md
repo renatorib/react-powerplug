@@ -7,10 +7,10 @@ import { State } from 'react-powerplug'
 ```
 
 ```jsx
-<State initial={{ isLoading: false, data: null }}>
+<State initial={{ loading: false, data: null }}>
   {({ state, setState }) => {
-    const onStart = data => setState({ isLoading: true })
-    const onFinish = data => setState({ data, isLoading: false })
+    const onStart = data => setState({ loading: true })
+    const onFinish = data => setState({ data, loading: false })
 
     return (
       <DataReceiver data={state.data} onStart={onStart} onFinish={onFinish} />

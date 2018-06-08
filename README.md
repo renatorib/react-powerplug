@@ -103,12 +103,12 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 #### State
 
 ```jsx
-<State initial={{ isLoading: false, data: null }}>
+<State initial={{ loading: false, data: null }}>
   {({ state, setState }) => (
     <DataReceiver
       data={state.data}
-      onStart={() => setState({ isLoading: true })}
-      onFinish={data => setState({ data, isLoading: false })}
+      onStart={() => setState({ loading: true })}
+      onFinish={data => setState({ data, loading: false })}
     />
   )}
 </State>
