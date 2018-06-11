@@ -1,18 +1,14 @@
 {
   "parser": "babel-eslint",
+  "plugins": [
+    "import",
+    "react"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:import/recommended",
     "plugin:react/recommended"
   ],
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true,
-      "experimentalObjectRestSpread": true
-    }
-  },
   "env": {
     "browser": true,
     "node": true,
@@ -26,9 +22,5 @@
     "import/no-unresolved": ["error", { "ignore": ["^react$"] }],
     "import/unambiguous": 0,
     "react/jsx-key": 0
-  },
-  "plugins": [
-    "import",
-    "react"
-  ]
+  }
 }
