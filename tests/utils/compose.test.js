@@ -4,13 +4,8 @@ import { compose, Counter, Toggle } from '../../src'
 
 test('rerender composed component', () => {
   const CounterToggle = compose(Counter, Toggle)
-
-  let lastCallProps = null
+  const renderFn = jest.fn().mockReturnValue(null)
   let rerender = null
-  const renderFn = (...props) => {
-    lastCallProps = props
-    return null
-  }
 
   TestRenderer.create(
     <Toggle>
@@ -25,11 +20,17 @@ test('rerender composed component', () => {
     </Toggle>
   )
 
-  expect(lastCallProps[0].count).toBe(0)
-  expect(lastCallProps[1].on).toBe(false)
+  expect(renderFn).toBeCalledTimes(1)
+  expect(renderFn).lastCalledWith(
+    expect.objectContaining({ count: 0 }),
+    expect.objectContaining({ on: false })
+  )
 
   rerender()
 
-  expect(lastCallProps[0].count).toBe(0)
-  expect(lastCallProps[1].on).toBe(false)
+  expect(renderFn).toBeCalledTimes(2)
+  expect(renderFn).lastCalledWith(
+    expect.objectContaining({ count: 0 }),
+    expect.objectContaining({ on: false })
+  )
 })
