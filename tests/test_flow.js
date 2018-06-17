@@ -4,12 +4,13 @@
 import * as React from 'react'
 import {
   Active,
-  Input,
   Counter,
   Focus,
   FocusManager,
   Form,
   Hover,
+  Input,
+  Interval,
   List,
   Map,
   Set,
@@ -23,22 +24,22 @@ const noop = () => null
 
 /* Active */
 {
-  const render = ({ isActive, bind }) => {
-    ;(isActive: boolean)
+  const render = ({ active, bind }) => {
+    ;(active: boolean)
     ;(bind.onMouseDown: Function)
     ;(bind.onMouseUp: Function)
     // $FlowFixMe
-    ;(isActive: number)
+    ;(active: number)
     // $FlowFixMe
     ;(bind.onMouseDown: number)
     // $FlowFixMe
     ;(bind.onMouseUp: number)
     return null
   }
-  const onChange = ({ isActive }) => {
-    ;(isActive: boolean)
+  const onChange = active => {
+    ;(active: boolean)
     // $FlowFixMe
-    ;(isActive: number)
+    ;(active: number)
   }
   ;[
     <Active render={render} />,
@@ -67,7 +68,7 @@ const noop = () => null
     ;(bind.onChange: number)
     return null
   }
-  const onChange = ({ value }) => {
+  const onChange = value => {
     ;(value: string)
     // $FlowFixMe
     ;(value: number)
@@ -82,6 +83,33 @@ const noop = () => null
     <Input />,
     // $FlowFixMe
     <Input initial={0} render={noop} />,
+  ]
+}
+
+{
+  const render = ({ start, stop, toggle }) => {
+    start()
+    start(500)
+    stop()
+    toggle()
+    // $FlowFixMe
+    start('')
+    // $FlowFixMe
+    stop(500)
+    // $FlowFixMe
+    toggle(500)
+    return null
+  }
+  ;[
+    <Interval render={render} />,
+    <Interval>{render}</Interval>,
+    <Interval render={noop} />,
+    <Interval>{noop}</Interval>,
+    <Interval delay={0} render={noop} />,
+    // $FlowFixMe
+    <Interval />,
+    // $FlowFixMe
+    <Interval delay={''} render={noop} />,
   ]
 }
 
@@ -105,7 +133,7 @@ const noop = () => null
     decBy('')
     return null
   }
-  const onChange = ({ count }) => {
+  const onChange = count => {
     ;(count: number)
     // $FlowFixMe
     ;(count: string)
@@ -125,22 +153,22 @@ const noop = () => null
 
 /* Focus */
 {
-  const render = ({ isFocused, bind }) => {
-    ;(isFocused: boolean)
+  const render = ({ focused, bind }) => {
+    ;(focused: boolean)
     ;(bind.onFocus: Function)
     ;(bind.onBlur: Function)
     // $FlowFixMe
-    ;(isFocused: number)
+    ;(focused: number)
     // $FlowFixMe
     ;(bind.onFocus: number)
     // $FlowFixMe
     ;(bind.onBlur: number)
     return null
   }
-  const onChange = ({ isFocused }) => {
-    ;(isFocused: boolean)
+  const onChange = focused => {
+    ;(focused: boolean)
     // $FlowFixMe
-    ;(isFocused: number)
+    ;(focused: number)
   }
   ;[
     <Focus render={render} />,
@@ -154,23 +182,23 @@ const noop = () => null
 
 /* FocusManager */
 {
-  const render = ({ isFocused, blur, bind }) => {
-    ;(isFocused: boolean)
+  const render = ({ focused, blur, bind }) => {
+    ;(focused: boolean)
     ;(blur: Function)
     ;(bind.onFocus: Function)
     ;(bind.onBlur: Function)
     // $FlowFixMe
-    ;(isFocused: number)
+    ;(focused: number)
     // $FlowFixMe
     ;(bind.onFocus: number)
     // $FlowFixMe
     ;(bind.onBlur: number)
     return null
   }
-  const onChange = ({ isFocused }) => {
-    ;(isFocused: boolean)
+  const onChange = focused => {
+    ;(focused: boolean)
     // $FlowFixMe
-    ;(isFocused: number)
+    ;(focused: number)
   }
   ;[
     <FocusManager render={render} />,
@@ -228,22 +256,22 @@ const noop = () => null
 
 /* Hover */
 {
-  const render = ({ isHovered, bind }) => {
-    ;(isHovered: boolean)
+  const render = ({ hovered, bind }) => {
+    ;(hovered: boolean)
     ;(bind.onMouseEnter: Function)
     ;(bind.onMouseLeave: Function)
     // $FlowFixMe
-    ;(isHovered: number)
+    ;(hovered: number)
     // $FlowFixMe
     ;(bind.onMouseEnter: number)
     // $FlowFixMe
     ;(bind.onMouseLeave: number)
     return null
   }
-  const onChange = ({ isHovered }) => {
-    ;(isHovered: boolean)
+  const onChange = hovered => {
+    ;(hovered: boolean)
     // $FlowFixMe
-    ;(isHovered: number)
+    ;(hovered: number)
   }
   ;[
     <Hover render={render} />,
@@ -264,6 +292,7 @@ const noop = () => null
     set([])
     set([0])
     push(0)
+    push(0, 1, 2)
     pull((d: number) => true)
     sort((a: number, b: number) => -1)
     // $FlowFixMe
@@ -277,7 +306,7 @@ const noop = () => null
     //$FlowFixMe
     sort((a: string, b: string) => -1)
   }
-  const onChange = ({ list }) => {
+  const onChange = list => {
     ;(list: $ReadOnlyArray<number>)
     // $FlowFixMe
     ;(list: $ReadOnlyArray<string>)
@@ -327,7 +356,7 @@ const noop = () => null
     ;(has(true): boolean)
     return null
   }
-  const onChange = ({ values }) => {
+  const onChange = values => {
     ;(values: $ReadOnlyArray<number | string>)
     // $FlowFixMe
     ;(values: $ReadOnlyArray<number>)
@@ -450,7 +479,7 @@ const noop = () => null
     set(0)
     return null
   }
-  const onChange = ({ on }) => {
+  const onChange = on => {
     ;(on: boolean)
     // $FlowFixMe
     ;(on: number)
@@ -470,22 +499,22 @@ const noop = () => null
 
 /* Touch */
 {
-  const render = ({ isTouched, bind }) => {
-    ;(isTouched: boolean)
+  const render = ({ touched, bind }) => {
+    ;(touched: boolean)
     ;(bind.onTouchStart: Function)
     ;(bind.onTouchEnd: Function)
     // $FlowFixMe
-    ;(isTouched: number)
+    ;(touched: number)
     // $FlowFixMe
     ;(bind.onTouchStart: number)
     // $FlowFixMe
     ;(bind.onTouchEnd: number)
     return null
   }
-  const onChange = ({ isTouched }) => {
-    ;(isTouched: boolean)
+  const onChange = touched => {
+    ;(touched: boolean)
     // $FlowFixMe
-    ;(isTouched: number)
+    ;(touched: number)
   }
   ;[
     <Touch render={render} />,
@@ -509,7 +538,7 @@ const noop = () => null
     ;(value: boolean)
     set(true)
   }
-  const onChange = ({ value }) => {
+  const onChange = value => {
     ;(value: number | string)
     // $FlowFixMe
     ;(value: number)

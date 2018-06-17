@@ -23,7 +23,7 @@
 - :ok_hand: Dependency free
 - :electric_plug: Plug and play
 - :crystal_ball: Tree shaking friendly (ESM, no side effects)
-- :package: Super tiny (~4kb)
+- :package: Super tiny (~3kb)
 - :books: Well documented
 - :beers: Bunch of awesome utilities
 
@@ -59,6 +59,7 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 </details>
 
 ## ⚠️ Master is unstable
+
 > This branch is **unstable** and is in **active development**.  
 > For the latest stable version go to [0.1-stable branch](https://github.com/renatorib/react-powerplug/tree/0.1-stable)
 
@@ -72,21 +73,22 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 | <h6>STATE CONTAINERS</h6>    |
 | **\<State>**                 | `{ initial, onChange }` | `{ state, setState }`                          | [:point_down:](#state) [:books:](docs/components/State.md)                  |
 | **\<Toggle>**                | `{ initial, onChange }` | `{ on, toggle, set }`                          | [:point_down:](#toggle) [:books:](docs/components/Toggle.md)                |
-| **\<Counter>**               | `{ initial, onChange }` | `{count, inc, dec, incBy, decBy, set }`        | [:point_down:](#counter) [:books:](docs/components/Counter.md)              |
-| **\<Value>**                 | `{ initial, onChange }` | `{ value, setValue, set }`                     | [:point_down:](#value) [:books:](docs/components/Value.md)                  |
+| **\<Counter>**               | `{ initial, onChange }` | `{ count, inc, dec, incBy, decBy, set }`       | [:point_down:](#counter) [:books:](docs/components/Counter.md)              |
+| **\<Value>**                 | `{ initial, onChange }` | `{ value, set }`                               | [:point_down:](#value) [:books:](docs/components/Value.md)                  |
 | **\<Map>**                   | `{ initial, onChange }` | `{ set, get, over, values }`                   | [:point_down:](#map) [:books:](docs/components/Map.md)                      |
 | **\<Set>**                   | `{ initial, onChange }` | `{ values, add, clear, remove, has }`          | [:point_down:](#set) [:books:](docs/components/Set.md)                      |
 | **\<List>**                  | `{ initial, onChange }` | `{ list, first, last, push, pull, sort, set }` | [:point_down:](#list) [:books:](docs/components/List.md)                    |
 | <h6>FEEDBACK CONTAINERS</h6> |
-| **\<Hover>**                 | `{ onChange }`          | `{ isHovered, bind }`                          | [:point_down:](#hover) [:books:](docs/components/Hover.md)                  |
-| **\<Active>**                | `{ onChange }`          | `{ isActive, bind }`                           | [:point_down:](#active) [:books:](docs/components/Active.md)                |
-| **\<Focus>**                 | `{ onChange }`          | `{ isFocused, bind }`                          | [:point_down:](#focus) [:books:](docs/components/Focus.md)                  |
-| **\<Touch>**                 | `{ onChange }`          | `{ isTouched, bind }`                          | [:point_down:](#touch) [:books:](docs/components/Touch.md)                  |
-| **\<FocusManager>**          | `{ onChange }`          | `{ isFocused, blur, bind }`                    | [:point_down:](#focusmanager) [:books:](docs/components/FocusManager.md)    |
+| **\<Hover>**                 | `{ onChange }`          | `{ hovered, bind }`                            | [:point_down:](#hover) [:books:](docs/components/Hover.md)                  |
+| **\<Active>**                | `{ onChange }`          | `{ active, bind }`                             | [:point_down:](#active) [:books:](docs/components/Active.md)                |
+| **\<Focus>**                 | `{ onChange }`          | `{ focused, bind }`                            | [:point_down:](#focus) [:books:](docs/components/Focus.md)                  |
+| **\<Touch>**                 | `{ onChange }`          | `{ touched, bind }`                            | [:point_down:](#touch) [:books:](docs/components/Touch.md)                  |
+| **\<FocusManager>**          | `{ onChange }`          | `{ focused, blur, bind }`                      | [:point_down:](#focusmanager) [:books:](docs/components/FocusManager.md)    |
 | <h6>FORM CONTAINERS</h6>     |
 | **\<Input>**                 | `{ initial, onChange }` | `{ set, value, bind }`                         | [:point_down:](#input) [:books:](docs/components/Input.md)                  |
 | **\<Form>**                  | `{ initial, onChange }` | `{ input, values }`                            | [:point_down:](#form) [:books:](docs/components/Form.md)                    |
 | <h6>OTHER</h6>               |
+| **\<Interval>**              | `{ delay }`             | `{ stop, start, toggle }`                      | [:point_down:](#interval) [:books:](docs/components/Interval.md)            |
 | **\<Compose>**               | `{ components }`        | _depends on components prop_                   | [:point_down:](#composing-components) [:books:](docs/components/Compose.md) |
 
 ## Utilities
@@ -101,12 +103,12 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 #### State
 
 ```jsx
-<State initial={{ isLoading: false, data: null }}>
+<State initial={{ loading: false, data: null }}>
   {({ state, setState }) => (
     <DataReceiver
       data={state.data}
-      onStart={() => setState({ isLoading: true })}
-      onFinish={data => setState({ data, isLoading: false })}
+      onStart={() => setState({ loading: true })}
+      onFinish={data => setState({ data, loading: false })}
     />
   )}
 </State>
@@ -140,12 +142,12 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 
 ```jsx
 <Value initial="React">
-  {({ value, setValue }) => (
+  {({ value, set }) => (
     <Select
       label="Choose one"
       options={['React', 'Angular', 'Vue']}
       value={value}
-      onChange={setValue}
+      onChange={set}
     />
   )}
 </Value>
@@ -207,9 +209,9 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 
 ```jsx
 <Hover>
-  {({ isHovered, bind }) => (
+  {({ hovered, bind }) => (
     <div {...bind}>
-      You are {isHovered ? 'hovering' : 'not hovering'} this div.
+      You are {hovered ? 'hovering' : 'not hovering'} this div.
     </div>
   )}
 </Hover>
@@ -219,9 +221,9 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 
 ```jsx
 <Active>
-  {({ isActive, bind }) => (
+  {({ active, bind }) => (
     <div {...bind}>
-      You are {isActive ? 'clicking' : 'not clicking'} this div.
+      You are {active ? 'clicking' : 'not clicking'} this div.
     </div>
   )}
 </Active>
@@ -231,9 +233,9 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 
 ```jsx
 <Touch>
-  {({ isTouched, bind }) => (
+  {({ touched, bind }) => (
     <div {...bind}>
-      You are {isTouched ? 'touching' : 'not touching'} this div.
+      You are {touched ? 'touching' : 'not touching'} this div.
     </div>
   )}
 </Touch>
@@ -243,10 +245,10 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 
 ```jsx
 <Focus>
-  {({ isFocused, bind }) => (
+  {({ focused, bind }) => (
     <div>
       <input {...bind} placeholder="Focus me" />
-      <div>You are {isFocused ? 'focusing' : 'not focusing'} input.</div>
+      <div>You are {focused ? 'focusing' : 'not focusing'} input.</div>
     </div>
   )}
 </Focus>
@@ -279,13 +281,23 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
       <ControlledInput placeholder="Subject" {...input('subject').bind} />
       <ControlledTextArea placeholder="Message" {...input('message').bind} />
       <Submit>Send</Submit>
-
-      {/*
-                                                              input(id) => { bind, set, value }
-                                                            */}
     </form>
   )}
 </Form>
+```
+
+### Interval
+
+```jsx
+<Interval delay={1000}>
+  {({ stop, start }) => (
+    <>
+      <div>The time is now {new Date().toLocaleTimeString()}</div>
+      <button onClick={() => stop()}>Stop interval</button>
+      <button onClick={() => start()}>Start interval</button>
+    </>
+  )}
+</Interval>
 ```
 
 # Composing Components
@@ -345,6 +357,21 @@ npm i react-powerplug
 ```
 
 exposed as `ReactPowerPlug`
+
+# Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
+<!-- prettier-ignore -->
+| [<img src="https://avatars2.githubusercontent.com/u/3277185?v=4" width="100px;"/><br /><sub><b>Renato Ribeiro</b></sub>](http://twitter.com/renatorib_)<br />[💻](https://github.com/renatorib/react-powerplug/commits?author=renatorib "Code") [🎨](#design-renatorib "Design") [📖](https://github.com/renatorib/react-powerplug/commits?author=renatorib "Documentation") [⚠️](https://github.com/renatorib/react-powerplug/commits?author=renatorib "Tests") | [<img src="https://avatars0.githubusercontent.com/u/5635476?v=4" width="100px;"/><br /><sub><b>Bogdan Chadkin</b></sub>](https://github.com/TrySound)<br />[💻](https://github.com/renatorib/react-powerplug/commits?author=TrySound "Code") [📖](https://github.com/renatorib/react-powerplug/commits?author=TrySound "Documentation") [⚠️](https://github.com/renatorib/react-powerplug/commits?author=TrySound "Tests") [🚇](#infra-TrySound "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars1.githubusercontent.com/u/2762082?v=4" width="100px;"/><br /><sub><b>Travis Arnold</b></sub>](http://travisrayarnold.com)<br />[💻](https://github.com/renatorib/react-powerplug/commits?author=souporserious "Code") [📖](https://github.com/renatorib/react-powerplug/commits?author=souporserious "Documentation") [🐛](https://github.com/renatorib/react-powerplug/issues?q=author%3Asouporserious "Bug reports") | [<img src="https://avatars3.githubusercontent.com/u/1301959?v=4" width="100px;"/><br /><sub><b>Max Graey</b></sub>](https://github.com/MaxGraey)<br />[💻](https://github.com/renatorib/react-powerplug/commits?author=MaxGraey "Code") | [<img src="https://avatars2.githubusercontent.com/u/9800850?v=4" width="100px;"/><br /><sub><b>Mateusz Burzyński</b></sub>](https://github.com/Andarist)<br />[🐛](https://github.com/renatorib/react-powerplug/issues?q=author%3AAndarist "Bug reports") | [<img src="https://avatars0.githubusercontent.com/u/1448194?v=4" width="100px;"/><br /><sub><b>Andy Edwards</b></sub>](http://helloandy.xyz)<br />[💻](https://github.com/renatorib/react-powerplug/commits?author=jedwards1211 "Code") | [<img src="https://avatars2.githubusercontent.com/u/1159781?v=4" width="100px;"/><br /><sub><b>Andrea Vanini</b></sub>](http://uidu.org)<br />[🐛](https://github.com/renatorib/react-powerplug/issues?q=author%3Aapuntovanini "Bug reports") |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| [<img src="https://avatars3.githubusercontent.com/u/5077042?v=4" width="100px;"/><br /><sub><b>Ivan Starkov</b></sub>](https://twitter.com/icelabaratory)<br />[🐛](https://github.com/renatorib/react-powerplug/issues?q=author%3Aistarkov "Bug reports") | [<img src="https://avatars1.githubusercontent.com/u/25376?v=4" width="100px;"/><br /><sub><b>Sean Roberts</b></sub>](http://factore.ca)<br />[📖](https://github.com/renatorib/react-powerplug/commits?author=SeanRoberts "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/83964?v=4" width="100px;"/><br /><sub><b>Braden Kelley</b></sub>](https://github.com/redbmk)<br />[🐛](https://github.com/renatorib/react-powerplug/issues?q=author%3Aredbmk "Bug reports") |
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
 
 # Contribute
 

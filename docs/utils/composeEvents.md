@@ -7,11 +7,11 @@ import { Hover, composeEvents } from 'react-powerplug'
 
 const HoveredDiv = ({ children, onMouseEnter, onMouseLeave, ...restProps }) => (
   <Hover>
-    {({ isHover, bindHover }) => (
+    {({ hovered, bindHover }) => (
       <div
         {...composeEvents({ onMouseEnter, onMouseLeave }, bindHover)}
         {...restProps}
-        children={children(isHover)}
+        children={children(hovered)}
       />
     )}
   </Hover>

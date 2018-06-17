@@ -9,9 +9,9 @@ import { Active } from 'react-powerplug'
 
 ```jsx
 <Active>
-  {({ isActive, bind }) => (
+  {({ active, bind }) => (
     <div {...bind}>
-      You are {isActive ? 'clicking' : 'not clicking'} this div.
+      You are {active ? 'clicking' : 'not clicking'} this div.
     </div>
   )}
 </Active>
@@ -19,13 +19,14 @@ import { Active } from 'react-powerplug'
 
 ## Active Props
 
-_Don't have props_
+**onChange** _(optional)_  
+The onChange event of the Active is called whenever the active state changes.
 
 ## Active Children Props
 
-TL;DR: `{ isActive, bind }`
+TL;DR: `{ active, bind }`
 
-**isActive**  
+**active**  
 `boolean`  
 True if is activated (being clicked) the binded element
 

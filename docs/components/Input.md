@@ -24,6 +24,9 @@ import { Input } from 'react-powerplug'
 Specifies the initial value state.  
 By default, the initial count state is an empty string.
 
+**onChange** _(optional)_  
+The onChange event of the Input is called whenever the value state changes.
+
 ## Input Children Props
 
 TL;DR: `{ value, set, bind }`

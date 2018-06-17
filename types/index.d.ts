@@ -10,11 +10,11 @@ export type RenderFn<T> = (value: T) => React.ReactNode
 
 /* Active */
 
-export type ActiveChange = (argument: { isActive: boolean }) => void
+export type ActiveChange = (active: boolean) => void
 
 export type ActiveRender = (
   argument: {
-    isActive: boolean
+    active: boolean
     bind: { onMouseDown: () => void; onMouseUp: () => void }
   }
 ) => React.ReactNode
@@ -30,7 +30,7 @@ export const Compose: React.ComponentType
 
 /* Counter */
 
-export type CounterChange = Callback<{ count: number }>
+export type CounterChange = Callback<number>
 
 export type CounterRender = RenderFn<{
   count: number
@@ -47,10 +47,10 @@ export const Counter: React.ComponentType<
 
 /* Focus */
 
-export type FocusChange = Callback<{ isFocused: boolean }>
+export type FocusChange = Callback<boolean>
 
 export type FocusRender = RenderFn<{
-  isFocused: boolean
+  focused: boolean
   bind: { onFocus: () => void; onBlur: () => void }
 }>
 
@@ -61,10 +61,10 @@ export const Focus: React.ComponentType<
 
 /* FocusManager */
 
-export type FocusManagerChange = Callback<{ isFocused: boolean }>
+export type FocusManagerChange = Callback<boolean>
 
 export type FocusManagerRender = RenderFn<{
-  isFocused: boolean
+  focused: boolean
   blur: () => void
   bind: { tabIndex: number; onFocus: () => void; onBlur: () => void }
 }>
@@ -107,10 +107,10 @@ export class Form<T extends Hash, K extends keyof T> extends React.Component<
 
 /* Hover */
 
-export type HoverChange = Callback<{ isHovered: boolean }>
+export type HoverChange = Callback<boolean>
 
 export type HoverRender = RenderFn<{
-  isHovered: boolean
+  hovered: boolean
   bind: { onMouseEnter: () => void; onMouseLeave: () => void }
 }>
 
@@ -121,7 +121,7 @@ export const Hover: React.ComponentType<
 
 /* Input */
 
-export type InputChange = Callback<{ value: string }>
+export type InputChange = Callback<string>
 
 export type InputRender = RenderFn<{
   value: string
@@ -136,7 +136,7 @@ export const Input: React.ComponentType<
 
 /* List */
 
-export type ListChange<T> = Callback<{ list: ReadonlyArray<T> }>
+export type ListChange<T> = Callback<ReadonlyArray<T>>
 
 export type ListRender<T> = RenderFn<{
   list: ReadonlyArray<T>
@@ -164,7 +164,7 @@ export class List<T> extends React.Component<ListProps<T>, any> {}
 
 /* Set */
 
-export type SetChange<T> = Callback<{ values: ReadonlyArray<T> }>
+export type SetChange<T> = Callback<ReadonlyArray<T>>
 
 export type SetRender<T> = RenderFn<{
   values: ReadonlyArray<T>
@@ -228,7 +228,7 @@ export class State<T extends {}> extends React.Component<StateProps<T>> {}
 
 /* Toggle */
 
-export type ToggleChange = Callback<{ on: boolean }>
+export type ToggleChange = Callback<boolean>
 
 export type ToggleRender = RenderFn<{
   on: boolean
@@ -243,10 +243,10 @@ export const Toggle: React.ComponentType<
 
 /* Touch */
 
-export type TouchChange = Callback<{ isTouched: boolean }>
+export type TouchChange = Callback<boolean>
 
 export type TouchRender = RenderFn<{
-  isTouched: boolean
+  touched: boolean
   bind: { onTouchStart: () => void; onTouchEnd: () => void }
 }>
 
@@ -257,7 +257,7 @@ export const Touch: React.ComponentType<
 
 /* Value */
 
-export type ValueChange<T> = Callback<{ value: T }>
+export type ValueChange<T> = Callback<T>
 
 export type ValueRender<T> = RenderFn<{
   value: T

@@ -1,15 +1,19 @@
 import * as React from 'react'
 import State from './State'
 import renderProps from '../utils/renderProps'
+import onChangeProp from '../utils/onChangeProp'
 
 const Focus = ({ onChange, ...props }) => (
-  <State initial={{ isFocused: false }} onChange={onChange}>
+  <State
+    initial={{ focused: false }}
+    onChange={onChangeProp(onChange, 'focused')}
+  >
     {({ state, setState }) =>
       renderProps(props, {
-        isFocused: state.isFocused,
+        focused: state.focused,
         bind: {
-          onFocus: () => setState({ isFocused: true }),
-          onBlur: () => setState({ isFocused: false }),
+          onFocus: () => setState({ focused: true }),
+          onBlur: () => setState({ focused: false }),
         },
       })
     }

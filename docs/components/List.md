@@ -28,7 +28,7 @@ Specifies the initial list state, must be an array.
 By default, the initial list state is an empty array.
 
 **onChange** _(optional)_  
-Callback that fires when state changes.
+The onChange event of the List is called whenever the list state changes.
 
 ## List Children Props
 
@@ -47,8 +47,8 @@ Get first element of your list array
 Get last element of your list array
 
 **push**  
-`(item: any) => void`  
-Add an item to your list array
+`(item1: any, item2: any, ...) => void`  
+Add an items to your list array
 
 **pull**  
 `(predicate: (item: any) => boolean) => void`  

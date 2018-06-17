@@ -1,21 +1,26 @@
 {
   "dist/react-powerplug.umd.js": {
-    "bundled": 20866,
-    "minified": 8346,
-    "gzipped": 2268
+    "bundled": 23752,
+    "minified": 9415,
+    "gzipped": 2597
   },
   "dist/react-powerplug.cjs.js": {
-    "bundled": 17939,
-    "minified": 9014,
-    "gzipped": 2136
+    "bundled": 20814,
+    "minified": 10827,
+    "gzipped": 2486
   },
   "dist/react-powerplug.esm.js": {
-    "bundled": 17318,
-    "minified": 8488,
-    "gzipped": 2011,
+    "bundled": 20152,
+    "minified": 10267,
+    "gzipped": 2349,
     "treeshaked": {
-      "rollup": 1489,
-      "webpack": 1927
+      "rollup": {
+        "code": 365,
+        "import_statements": 365
+      },
+      "webpack": {
+        "code": 1356
+      }
     }
   }
 }

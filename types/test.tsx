@@ -32,10 +32,10 @@ const noop = () => null;
 
 /* Active */
 {
-  const render: ActiveRender = ({isActive, bind}) => {
+  const render: ActiveRender = ({active, bind}) => {
     return null;
   };
-  const onChange = ({isActive}: { isActive: boolean }) => {
+  const onChange = (active: boolean) => {
   };
   [
     <Active render={render}/>,
@@ -52,9 +52,9 @@ const noop = () => null;
   const render: InputRender = ({value, set, bind}) => {
     return null;
   };
-  const onChange = ({value}: { value: string }) => {
+  const onChange = (value: string) => {
     }
-  ; [
+  ;[
   <Input render={render}/>,
   <Input>{render}</Input>,
   <Input onChange={onChange} render={noop}/>,
@@ -72,7 +72,7 @@ const noop = () => null;
   const render: CounterRender = ({count, inc, dec, incBy, decBy}) => {
     return null;
   };
-  const onChange = ({count}: {count: number}) => {
+  const onChange = (count: number) => {
   };
   [
     <Counter render={render}/>,
@@ -89,12 +89,12 @@ const noop = () => null;
 
 /* Focus */
 {
-  const render: FocusRender = ({isFocused, bind}) => {
+  const render: FocusRender = ({focused, bind}) => {
     return null;
   };
-  const onChange = ({isFocused}: { isFocused: boolean }) => {
+  const onChange = (focused: boolean) => {
     }
-  ; [
+  ;[
   <Focus render={render}/>,
   <Focus>{render}</Focus>,
   <Focus onChange={onChange} render={noop}/>,
@@ -106,12 +106,12 @@ const noop = () => null;
 
 /* FocusManager */
 {
-  const render: FocusManagerRender = ({isFocused, blur, bind}) => {
+  const render: FocusManagerRender = ({focused, blur, bind}) => {
     return null;
   };
-  const onChange = ({isFocused}: { isFocused: boolean }) => {
+  const onChange = (focused: boolean) => {
     }
-  ; [
+  ;[
   <FocusManager render={render}/>,
   <FocusManager>{render}</FocusManager>,
   <FocusManager onChange={onChange} render={noop}/>,
@@ -123,10 +123,10 @@ const noop = () => null;
 
 /* Form */
 {
-  const render: FormRender<{a: string}, 'a'> = ({input}) => <div />;
+  const render: FormRender<{ a: string }, 'a'> = ({input}) => <div/>;
   const onChange = (data: {}) => {
     }
-  ; [
+  ;[
   <Form initial={{a: ''}} render={render}/>,
   <Form initial={{a: ''}}>{render}</Form>,
   <Form initial={{a: ''}} onChange={onChange} render={noop}/>,
@@ -148,12 +148,12 @@ const noop = () => null;
 
 /* Hover */
 {
-  const render: HoverRender = ({isHovered, bind}) => {
+  const render: HoverRender = ({hovered, bind}) => {
     return null;
   };
-  const onChange = ({isHovered}: { isHovered: boolean }) => {
+  const onChange = (hovered: boolean) => {
     }
-  ; [
+  ;[
   <Hover render={render}/>,
   <Hover>{render}</Hover>,
   <Hover onChange={onChange} render={noop}/>,
@@ -167,9 +167,9 @@ const noop = () => null;
 {
   const render: ListRender<number> = ({list, first, last, set, push, pull, sort}) => <div/>;
 
-  const onChange = ({list}: { list: number[] }) => {
+  const onChange = (list: number[]) => {
     }
-  ; [
+  ;[
   <List initial={[1, 2, 3]} render={render}/>,
   <List initial={([])}>{render}</List>,
   <List
@@ -198,19 +198,20 @@ const noop = () => null;
   const render: SetRender<number> = ({values, add, clear, remove, has}) => {
     return null;
   };
-  const onChange = ({values}: { values: number[] }) => {};
+  const onChange = (values: number[]) => {
+  };
   [
-  <Set initial={[1, 2, 3]} render={render}/>,
-  <Set initial={[1, 2, 3]}>{render}</Set>,
-  <Set
-    initial={[1, 2, 3]}
-    onChange={onChange}
-    render={noop}
-  />,
-  <Set initial={[1, 2, 3]} onChange={onChange}>
-    {noop}
-  </Set>,
-];
+    <Set initial={[1, 2, 3]} render={render}/>,
+    <Set initial={[1, 2, 3]}>{render}</Set>,
+    <Set
+      initial={[1, 2, 3]}
+      onChange={onChange}
+      render={noop}
+    />,
+    <Set initial={[1, 2, 3]} onChange={onChange}>
+      {noop}
+    </Set>,
+  ];
 }
 
 /* Map */
@@ -218,36 +219,38 @@ const noop = () => null;
   const render: MapRender<{ a: number }, 'a'> = ({values, set, over, get}) => {
     return null;
   };
-  const onChange = (values: { a: number }) => {};
+  const onChange = (values: { a: number }) => {
+  };
   [
-  <Map initial={{a: 0}} render={render}/>,
-  <Map initial={{a: 0}}>{render}</Map>,
-  <Map initial={{a: 0}} onChange={onChange} render={noop}/>,
-  <Map initial={{a: 0}} onChange={onChange}>
-    {noop}
-  </Map>,
-  // $ExpectError
-  <Map initial={{b: 0}} onChange={onChange} render={render}/>,
-];
+    <Map initial={{a: 0}} render={render}/>,
+    <Map initial={{a: 0}}>{render}</Map>,
+    <Map initial={{a: 0}} onChange={onChange} render={noop}/>,
+    <Map initial={{a: 0}} onChange={onChange}>
+      {noop}
+    </Map>,
+    // $ExpectError
+    <Map initial={{b: 0}} onChange={onChange} render={render}/>,
+  ];
 }
 
 /* State with inferred generic */
 {
   const render: StateRender<{ v: number, n?: null }> = ({state, setState}) => <div/>;
-  const onChange = (state: { v: number, n?: null }) => {};
+  const onChange = (state: { v: number, n?: null }) => {
+  };
   [
-  <State initial={{v: 0, n: null}} render={render}/>,
-  <State initial={{v: 0, n: null}}>{render}</State>,
-  <State initial={{v: 0, n: null}} onChange={onChange} render={noop}/>,
-  <State initial={{v: 0, n: null}} onChange={onChange}>
-    {noop}
-  </State>,
-  <State initial={0} render={noop}/>,
-  // $ExpectError
-  <State/>,
-  // $ExpectError
-  <State render={noop}/>,
-];
+    <State initial={{v: 0, n: null}} render={render}/>,
+    <State initial={{v: 0, n: null}}>{render}</State>,
+    <State initial={{v: 0, n: null}} onChange={onChange} render={noop}/>,
+    <State initial={{v: 0, n: null}} onChange={onChange}>
+      {noop}
+    </State>,
+    <State initial={0} render={noop}/>,
+    // $ExpectError
+    <State/>,
+    // $ExpectError
+    <State render={noop}/>,
+  ];
 }
 
 /* Toggle */
@@ -255,7 +258,7 @@ const noop = () => null;
   const render: ToggleRender = ({on, toggle, set}) => {
     return null;
   };
-  const onChange = ({on}: { on: boolean }) => {
+  const onChange = (on: boolean) => {
   };
   [
     <Toggle render={render}/>,
@@ -272,10 +275,10 @@ const noop = () => null;
 
 /* Touch */
 {
-  const render: TouchRender = ({isTouched, bind}) => {
+  const render: TouchRender = ({touched, bind}) => {
     return null;
   };
-  const onChange = ({isTouched}: { isTouched: boolean }) => {
+  const onChange = (touched: boolean) => {
   };
   [
     <Touch render={render}/>,
@@ -289,26 +292,26 @@ const noop = () => null;
 
 /* Value with inferred generic */
 {
-  const renderN: ValueRender<number> = ({value, set}) => <div />;
-  const renderS: ValueRender<string> = ({value, set}) => <div />;
-  const onChangeN = ({value}: { value: number }) => {
+  const renderN: ValueRender<number> = ({value, set}) => <div/>;
+  const renderS: ValueRender<string> = ({value, set}) => <div/>;
+  const onChangeN = (value: number) => {
   };
-  const onChangeS = ({value}: { value: string }) => {
-    };
+  const onChangeS = (value: string) => {
+  };
   [
-  <Value initial={0} render={renderN}/>,
-  <Value initial={''}>{renderS}</Value>,
-  <Value initial={1} onChange={onChangeN} render={noop}/>,
-  <Value initial={''} onChange={onChangeS}>
-    {noop}
-  </Value>,
-  // $ExpectError
-  <Value/>,
-  // $ExpectError
-  <Value render={noop}/>,
-  // $ExpectError
-  <Value initial={0} render={renderS}/>,
-  // $ExpectError
-  <Value initial={''}>{renderN}</Value>,
-];
+    <Value initial={0} render={renderN}/>,
+    <Value initial={''}>{renderS}</Value>,
+    <Value initial={1} onChange={onChangeN} render={noop}/>,
+    <Value initial={''} onChange={onChangeS}>
+      {noop}
+    </Value>,
+    // $ExpectError
+    <Value/>,
+    // $ExpectError
+    <Value render={noop}/>,
+    // $ExpectError
+    <Value initial={0} render={renderS}/>,
+    // $ExpectError
+    <Value initial={''}>{renderN}</Value>,
+  ];
 }

@@ -4,14 +4,14 @@ import * as React from 'react'
 
 /* Utils */
 
-type Updater<T> = (value: T | ((updater: T) => T)) => void
+type Updater<T> = (value: ((updater: T) => T) | T) => void
 
 /* Active */
 
-type ActiveChange = ({| isActive: boolean |}) => void
+type ActiveChange = (active: boolean) => void
 
 type ActiveRender = ({|
-  isActive: boolean,
+  active: boolean,
   bind: {| onMouseDown: () => void, onMouseUp: () => void |},
 |}) => React.Node
 
@@ -26,7 +26,7 @@ declare export var Compose: React.ComponentType<Object>
 
 /* Counter */
 
-type CounterChange = ({| count: number |}) => void
+type CounterChange = (count: number) => void
 
 type CounterRender = ({|
   count: number,
@@ -43,10 +43,10 @@ declare export var Counter: React.ComponentType<
 
 /* Focus */
 
-type FocusChange = ({| isFocused: boolean |}) => void
+type FocusChange = (focused: boolean) => void
 
 type FocusRender = ({|
-  isFocused: boolean,
+  focused: boolean,
   bind: {| onFocus: () => void, onBlur: () => void |},
 |}) => React.Node
 
@@ -57,10 +57,10 @@ declare export var Focus: React.ComponentType<
 
 /* FocusManager */
 
-type FocusManagerChange = ({| isFocused: boolean |}) => void
+type FocusManagerChange = (focused: boolean) => void
 
 type FocusManagerRender = ({|
-  isFocused: boolean,
+  focused: boolean,
   blur: () => void,
   bind: {| tabIndex: number, onFocus: () => void, onBlur: () => void |},
 |}) => React.Node
@@ -99,10 +99,10 @@ declare export class Form<T: { [string]: string }> extends React.Component<
 
 /* Hover */
 
-type HoverChange = ({| isHovered: boolean |}) => void
+type HoverChange = (hovered: boolean) => void
 
 type HoverRender = ({|
-  isHovered: boolean,
+  hovered: boolean,
   bind: {| onMouseEnter: () => void, onMouseLeave: () => void |},
 |}) => React.Node
 
@@ -113,7 +113,7 @@ declare export var Hover: React.ComponentType<
 
 /* Input */
 
-type InputChange = ({| value: string |}) => void
+type InputChange = (value: string) => void
 
 type InputRender = ({|
   value: string,
@@ -128,14 +128,14 @@ declare export var Input: React.ComponentType<
 
 /* List */
 
-type ListChange<T> = ({| list: $ReadOnlyArray<T> |}) => void
+type ListChange<T> = (list: $ReadOnlyArray<T>) => void
 
 type ListRender<T> = ({|
   list: $ReadOnlyArray<T>,
   first: () => T | void,
   last: () => T | void,
   set: Updater<$ReadOnlyArray<T>>,
-  push: (value: T) => void,
+  push: (...values: $ReadOnlyArray<T>) => void,
   pull: (predicate: (T) => boolean) => void,
   sort: (compare: (a: T, b: T) => -1 | 0 | 1) => void,
 |}) => React.Node
@@ -156,7 +156,7 @@ declare export class List<T> extends React.Component<ListProps<T>, *> {}
 
 /* Set */
 
-type SetChange<T> = ({| values: $ReadOnlyArray<T> |}) => void
+type SetChange<T> = (values: $ReadOnlyArray<T>) => void
 
 type SetRender<T> = ({|
   values: $ReadOnlyArray<T>,
@@ -212,9 +212,23 @@ type StateProps<T> =
 
 declare export class State<T: Object> extends React.Component<StateProps<T>> {}
 
+/* Interval */
+
+type IntervalRender = ({|
+  start: (delay?: number) => void,
+  stop: () => void,
+  toggle: () => void,
+|}) => React.Node
+
+type IntervalProps =
+  | {| delay?: ?number, render: IntervalRender |}
+  | {| delay?: ?number, children: IntervalRender |}
+
+declare export class Interval extends React.Component<IntervalProps> {}
+
 /* Toggle */
 
-type ToggleChange = ({| on: boolean |}) => void
+type ToggleChange = (on: boolean) => void
 
 type ToggleRender = ({|
   on: boolean,
@@ -229,10 +243,10 @@ declare export var Toggle: React.ComponentType<
 
 /* Touch */
 
-type TouchChange = ({| isTouched: boolean |}) => void
+type TouchChange = (touched: boolean) => void
 
 type TouchRender = ({|
-  isTouched: boolean,
+  touched: boolean,
   bind: {| onTouchStart: () => void, onTouchEnd: () => void |},
 |}) => React.Node
 
@@ -243,7 +257,7 @@ declare export var Touch: React.ComponentType<
 
 /* Value */
 
-type ValueChange<T> = ({| value: T |}) => void
+type ValueChange<T> = (value: T) => void
 
 type ValueRender<T> = ({|
   value: T,
