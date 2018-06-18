@@ -9,7 +9,8 @@
   "types": "types/index.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "types"
   ],
   "scripts": {
     "build:flow": "echo \"// @flow\n\nexport * from '../src'\" > dist/react-powerplug.cjs.js.flow",
