@@ -182,7 +182,7 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
       <FormInput onSubmit={add} />
       {values.map(tag => (
         <Tag onRemove={() => remove(tag)}>{tag}</Tag>
-      )}
+      ))}
     </TagManager>
   )}
 </Set>
@@ -199,7 +199,7 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
         <TodoItem onDelete={() => pull(i => i === todo)}>
           {todo}
         </TodoItem>
-      )}
+      ))}
     </Todo>
   )}
 </List>
