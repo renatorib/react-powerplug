@@ -19,7 +19,6 @@
     "typecheck:flow": "flow check --max-warnings=0",
     "typecheck:ts": "dtslint types",
     "lint": "eslint src test",
-    "lint:ts": "tslint types",
     "test:only": "jest",
     "test:umd": "jest --setupTestFrameworkScriptFile ./tests/jestUMDSetup.js",
     "test:cjs": "jest --setupTestFrameworkScriptFile ./tests/jestCJSSetup.js",
@@ -30,7 +29,7 @@
     "contributors:generate": "all-contributors generate"
   },
   "lint-staged": {
-    "*.{js,md,ts}": [
+    "*.{js,md,ts,tsx}": [
       "prettier --write",
       "git add"
     ]
@@ -96,8 +95,7 @@
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-size-snapshot": "^0.5.1",
-    "rollup-plugin-uglify": "^4.0.0",
-    "tslint": "^5.9.1"
+    "rollup-plugin-uglify": "^4.0.0"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0-0 || ^16.0.0-0"
