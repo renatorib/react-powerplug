@@ -153,7 +153,7 @@ const noop = () => null
   const onChange = (hovered: boolean) => {}
   ;[
     <Hover render={render} />,
-    <Hover>{render} </Hover>,
+    <Hover>{render}</Hover>,
     <Hover onChange={onChange} render={noop} />,
     <Hover onChange={onChange}>{noop}</Hover>,
     // $ExpectError
@@ -302,6 +302,17 @@ const noop = () => null
     <Value initial={1} onChange={onChangeN} render={noop} />,
     <Value initial={''} onChange={onChangeS}>
       {noop}
+    </Value>,
+    <Value initial={1}>
+      {({ set }) => <div>+{set(42) && set(x => x + 1) && '1'}</div>}
+    </Value>,
+    // $ExpectError
+    <Value initial={1}>
+      {({ set }) => <div>+{set('42') && set(x => x + 1) && '1'}</div>}
+    </Value>,
+    // $ExpectError
+    <Value initial={1}>
+      {({ set }) => <div>+{set(42) && set(x => x + '1') && '1'}</div>}
     </Value>,
     // $ExpectError
     <Value />,
