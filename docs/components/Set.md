@@ -1,6 +1,6 @@
 # Set
 
-The Set component is.
+The Set component.
 
 ```js
 import { Set } from 'react-powerplug'
