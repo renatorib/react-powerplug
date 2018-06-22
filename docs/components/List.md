@@ -35,7 +35,7 @@ The onChange event of the List is called whenever the list state changes.
 TL;DR: `{ list, first, last, push, pull, sort, set }`
 
 **list**  
-`boolean`  
+`array`  
 Your list state
 
 **first**
