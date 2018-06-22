@@ -5,7 +5,7 @@ const isElement = element => typeof element.type === 'function'
 
 const compose = (...elements) => {
   const reversedElements = elements.reverse()
-  
+
   return composedProps => {
     // Stack children arguments recursively and pass
     // it down until the last component that render children
