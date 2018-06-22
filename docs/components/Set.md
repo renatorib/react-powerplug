@@ -1,6 +1,6 @@
 # Set
 
-The Set component.
+The Set component is used to work with an array of unique values.
 
 ```js
 import { Set } from 'react-powerplug'
