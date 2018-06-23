@@ -41,7 +41,7 @@ Your values state, contains only unique items
 Add a unique `value` to your values array. Does nothing if values array already includes a `value`.
 
 **clear**
-`() => any`  
+`() => void`  
 Reset values state to an empty array
 
 **remove**  
