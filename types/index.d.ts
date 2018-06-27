@@ -66,7 +66,13 @@ export type FocusManagerChange = Callback<boolean>
 export type FocusManagerRender = RenderFn<{
   focused: boolean
   blur: () => void
-  bind: { tabIndex: number; onFocus: () => void; onBlur: () => void }
+  bind: {
+    tabIndex: number
+    onFocus: () => void
+    onBlur: () => void
+    onMouseDown: () => void
+    onMouseUp: () => void
+  }
 }>
 
 export const FocusManager: React.ComponentType<

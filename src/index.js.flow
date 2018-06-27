@@ -62,7 +62,13 @@ type FocusManagerChange = (focused: boolean) => void
 type FocusManagerRender = ({|
   focused: boolean,
   blur: () => void,
-  bind: {| tabIndex: number, onFocus: () => void, onBlur: () => void |},
+  bind: {|
+    tabIndex: number,
+    onFocus: () => void,
+    onBlur: () => void,
+    onMouseDown: () => void,
+    onMouseUp: () => void,
+  |},
 |}) => React.Node
 
 declare export var FocusManager: React.ComponentType<
