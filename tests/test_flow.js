@@ -187,12 +187,18 @@ const noop = () => null
     ;(blur: Function)
     ;(bind.onFocus: Function)
     ;(bind.onBlur: Function)
+    ;(bind.onMouseDown: Function)
+    ;(bind.onMouseUp: Function)
     // $FlowFixMe
     ;(focused: number)
     // $FlowFixMe
     ;(bind.onFocus: number)
     // $FlowFixMe
     ;(bind.onBlur: number)
+    // $FlowFixMe
+    ;(bind.onMouseDown: number)
+    // $FlowFixMe
+    ;(bind.onMouseUp: number)
     return null
   }
   const onChange = focused => {
