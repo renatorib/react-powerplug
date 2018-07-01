@@ -78,33 +78,24 @@ test('keep focus when click on menu', async () => {
   expect(renderFn).lastCalledWith({ focused: false })
 })
 
-test('restore focus after calling blur on inner component', async () => {
+test('remove focus and state after calling blur', async () => {
   const page = await bootstrap()
-  const renderFn = jest.fn()
-  const onChangeFn = jest.fn()
-  await page.exposeFunction('renderFn', renderFn)
-  await page.exposeFunction('onChangeFn', onChangeFn)
 
   await page.evaluate(() => {
     const React = window.React
-    const FocusManager = window.ReactPowerPlug.FocusManager
+    const { FocusManager } = window.ReactPowerPlug
 
     const App = () => (
-      <FocusManager onChange={window.onChangeFn}>
+      <FocusManager>
         {({ focused, blur, bind }) => {
-          window.renderFn({ focused })
-          const stopPropagation = e => e.stopPropagation()
+          window.blurFocusManager = blur
+          const style = { width: 100, height: 100 }
           return (
             <>
-              <div id="outer" style={{ width: 100, height: 100 }} {...bind}>
-                <div
-                  id="inner"
-                  style={{ width: 50, height: 50 }}
-                  onClick={blur}
-                  tabIndex={-1}
-                  onFocus={stopPropagation}
-                />
-              </div>
+              <div id="result">{focused ? 'focused' : 'blured'}</div>
+              <div id="item1" style={style} {...bind} />
+              <div id="item2" style={style} {...bind} onClick={blur} />
+              <div id="item3" style={style} tabIndex={-1} />
             </>
           )
         }}
@@ -114,14 +105,32 @@ test('restore focus after calling blur on inner component', async () => {
     window.render(<App />)
   })
 
-  expect(renderFn).lastCalledWith({ focused: false })
-  await page.click('#outer')
-  expect(renderFn).lastCalledWith({ focused: true })
-  expect(onChangeFn).lastCalledWith(true)
-  await page.click('#inner')
-  expect(renderFn).lastCalledWith({ focused: false })
-  expect(onChangeFn).lastCalledWith(false)
-  await page.click('#outer')
-  expect(renderFn).lastCalledWith({ focused: true })
-  expect(onChangeFn).lastCalledWith(true)
+  const getTextContent = node => node.textContent
+  const isActiveElement = node => node === document.activeElement
+
+  expect(await page.$eval('#result', getTextContent)).toEqual('blured')
+
+  // focused on click
+  await page.click('#item1')
+  expect(await page.$eval('#result', getTextContent)).toEqual('focused')
+  expect(await page.$eval('#item1', isActiveElement)).toEqual(true)
+  expect(await page.$eval('#item2', isActiveElement)).toEqual(false)
+
+  // blured on blur()
+  await page.evaluate(() => window.blurFocusManager())
+  expect(await page.$eval('#result', getTextContent)).toEqual('blured')
+  expect(await page.$eval('#item1', isActiveElement)).toEqual(false)
+  expect(await page.$eval('#item2', isActiveElement)).toEqual(false)
+
+  // focused and immediately blured on click with blur() in it
+  await page.click('#item2')
+  expect(await page.$eval('#result', getTextContent)).toEqual('blured')
+  expect(await page.$eval('#item1', isActiveElement)).toEqual(false)
+  expect(await page.$eval('#item2', isActiveElement)).toEqual(false)
+
+  // keep focus not registered in manager after blur()
+  await page.click('#item3')
+  expect(await page.$eval('#item3', isActiveElement)).toEqual(true)
+  await page.evaluate(() => window.blurFocusManager())
+  expect(await page.$eval('#item3', isActiveElement)).toEqual(true)
 })
