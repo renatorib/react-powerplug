@@ -14,7 +14,9 @@ const FocusManager = ({ onChange, ...props }) => {
         renderProps(props, {
           focused: state.focused,
           blur: () => {
-            setState({ focused: false })
+            if (state.focused) {
+              document.activeElement.blur()
+            }
           },
           bind: {
             tabIndex: -1,
