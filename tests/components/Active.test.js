@@ -27,5 +27,5 @@ test('<Active onChange />', () => {
 
   lastCallArg(renderFn).bind.onMouseDown()
   expect(onChangeFn).toBeCalledTimes(1)
-  expect(onChangeFn).lastCalledWith(true)
+  expect(onChangeFn).lastCalledWith(true, false)
 })

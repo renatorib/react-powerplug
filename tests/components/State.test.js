@@ -33,5 +33,5 @@ test('<State onChange />', () => {
 
   lastCallArg(renderFn).setState({ myValue: 2 })
   expect(onChangeFn).toBeCalledTimes(1)
-  expect(onChangeFn).toBeCalledWith({ myValue: 2 })
+  expect(onChangeFn).toBeCalledWith({ myValue: 2 }, { myValue: 1 })
 })

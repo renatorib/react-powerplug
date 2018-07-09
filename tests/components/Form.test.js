@@ -61,11 +61,11 @@ test('<Form onChange />', () => {
     .input('prop')
     .set('10')
   expect(onChangeFn).toBeCalledTimes(1)
-  expect(onChangeFn).lastCalledWith({ prop: '10' })
+  expect(onChangeFn).lastCalledWith({ prop: '10' }, { prop: '1' })
 
   lastCallArg(renderFn)
     .input('prop')
     .bind.onChange({ target: { value: '100' } })
   expect(onChangeFn).toBeCalledTimes(2)
-  expect(onChangeFn).lastCalledWith({ prop: '100' })
+  expect(onChangeFn).lastCalledWith({ prop: '100' }, { prop: '10' })
 })

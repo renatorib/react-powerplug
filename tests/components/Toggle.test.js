@@ -31,5 +31,5 @@ test('<Toggle onChange />', () => {
 
   lastCallArg(renderFn).set(true)
   expect(onChangeFn).toBeCalledTimes(1)
-  expect(onChangeFn).lastCalledWith(true)
+  expect(onChangeFn).lastCalledWith(true, false)
 })

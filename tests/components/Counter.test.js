@@ -38,5 +38,5 @@ test('<Counter onChange />', () => {
 
   lastCallArg(renderFn).inc()
   expect(onChangeFn).toBeCalledTimes(1)
-  expect(onChangeFn).lastCalledWith(1)
+  expect(onChangeFn).lastCalledWith(1, 0)
 })
