@@ -9,9 +9,10 @@ class State extends Component {
 
   _setState = (updater, cb = noop) => {
     const { onChange = noop } = this.props
+    const oldState = this.state
 
     this.setState(updater, () => {
-      onChange(this.state)
+      onChange(this.state, oldState)
       cb()
     })
   }
