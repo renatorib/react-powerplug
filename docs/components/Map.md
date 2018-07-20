@@ -38,7 +38,7 @@ The onChange event of the Map is called whenever the state changes.
 
 ## Map Children Props
 
-TL;DR: `{ values, set, get }`
+TL;DR: `{ values, set, get, over }`
 
 **values**  
 `object`  
@@ -48,6 +48,11 @@ Behind the scenes it's just you raw state.
 **set**  
 `(key: string, value: any) => void`  
 Assigns `value` to `key`.
+
+**over**  
+`(key: string, fn: (key: string) => string) => void`  
+Takes a `key` and `function`, map a function over key's `value`.  
+After applying function, the shape of your state stays the same.
 
 **get**  
 `(key: string) => value: any`  
