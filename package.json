@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "build:flow": "echo \"// @flow\n\nexport * from '../src'\" > dist/react-powerplug.cjs.js.flow",
-    "build:code": "cross-env NODE_ENV=code rollup -c",
+    "build:code": "rollup -c",
     "build": "npm run clean && npm run build:code && npm run build:flow",
     "clean": "rimraf dist",
     "typecheck:flow": "flow check --max-warnings=0",
@@ -59,16 +59,15 @@
   },
   "homepage": "https://github.com/renatorib/react-powerplug",
   "dependencies": {
-    "@babel/runtime": "7.0.0-beta.49"
+    "@babel/runtime": "7.0.0-beta.54"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.49",
-    "@babel/core": "^7.0.0-beta.49",
-    "@babel/plugin-transform-modules-commonjs": "^7.0.0-beta.49",
-    "@babel/plugin-transform-runtime": "^7.0.0-beta.49",
-    "@babel/preset-env": "^7.0.0-beta.49",
-    "@babel/preset-react": "^7.0.0-beta.49",
-    "@babel/preset-stage-3": "^7.0.0-beta.49",
+    "@babel/core": "^7.0.0-beta.54",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.54",
+    "@babel/plugin-transform-modules-commonjs": "^7.0.0-beta.54",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.54",
+    "@babel/preset-env": "^7.0.0-beta.54",
+    "@babel/preset-react": "^7.0.0-beta.54",
     "@types/react": "^16.3.13",
     "all-contributors-cli": "^4.11.2",
     "babel-core": "^7.0.0-bridge.0",
@@ -91,11 +90,11 @@
     "react-dom": "^16.2.0",
     "react-test-renderer": "^16.2.0",
     "rimraf": "^2.6.1",
-    "rollup": "^0.59.3",
-    "rollup-plugin-babel": "^4.0.0-beta.4",
+    "rollup": "^0.63.4",
+    "rollup-plugin-babel": "^4.0.0-beta.7",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-replace": "^2.0.0",
-    "rollup-plugin-size-snapshot": "^0.5.1",
+    "rollup-plugin-size-snapshot": "^0.6.1",
     "rollup-plugin-uglify": "^4.0.0"
   },
   "peerDependencies": {

@@ -1,19 +1,14 @@
 {
+  "presets": [
+    ["@babel/env", { "modules": false, "loose": true }],
+    "@babel/react"
+  ],
+  "plugins": [
+    ["@babel/proposal-class-properties", { "loose": true }]
+  ],
   "env": {
-    "code": {
-      "presets": [
-        ["@babel/env", { "modules": false, "loose": true }],
-        "@babel/react",
-        "@babel/stage-3"
-      ]
-    },
     "test": {
-      "presets": [
-        ["@babel/react", { "useBuiltIns": true }],
-        "@babel/stage-3"
-      ],
       "plugins": [
-        ["@babel/plugin-transform-runtime", { "polyfill": false, "useBuiltIns": true }],
         "@babel/plugin-transform-modules-commonjs"
       ]
     }
