@@ -54,10 +54,12 @@ test('keep focus when click on menu', async () => {
       <FocusManager>
         {({ focused, bind }) => {
           window.renderFn({ focused })
+          const props1 = Object.assign({ id: 'rect-1', style }, bind)
+          const props2 = Object.assign({ id: 'rect-2', style }, bind)
           return (
             <>
-              <div id="rect-1" style={style} {...bind} />
-              {focused && <div id="rect-2" style={style} {...bind} />}
+              <div {...props1} />
+              {focused && <div {...props2} />}
             </>
           )
         }}
@@ -90,11 +92,16 @@ test('remove focus and state after calling blur', async () => {
         {({ focused, blur, bind }) => {
           window.blurFocusManager = blur
           const style = { width: 100, height: 100 }
+          const props1 = Object.assign({ id: 'item1', style }, bind)
+          const props2 = Object.assign(
+            { id: 'item2', style, onClick: blur },
+            bind
+          )
           return (
             <>
               <div id="result">{focused ? 'focused' : 'blured'}</div>
-              <div id="item1" style={style} {...bind} />
-              <div id="item2" style={style} {...bind} onClick={blur} />
+              <div {...props1} />
+              <div {...props2} />
               <div id="item3" style={style} tabIndex={-1} />
             </>
           )
