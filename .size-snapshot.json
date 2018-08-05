@@ -5,21 +5,21 @@
     "gzipped": 2415
   },
   "dist/react-powerplug.cjs.js": {
-    "bundled": 20024,
-    "minified": 10036,
-    "gzipped": 2413
+    "bundled": 20000,
+    "minified": 10012,
+    "gzipped": 2407
   },
   "dist/react-powerplug.esm.js": {
-    "bundled": 19394,
-    "minified": 9498,
-    "gzipped": 2276,
+    "bundled": 19370,
+    "minified": 9474,
+    "gzipped": 2267,
     "treeshaked": {
       "rollup": {
-        "code": 228,
-        "import_statements": 228
+        "code": 204,
+        "import_statements": 204
       },
       "webpack": {
-        "code": 1530
+        "code": 1506
       }
     }
   }
