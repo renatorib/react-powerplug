@@ -27,7 +27,8 @@
     "precommit": "lint-staged",
     "prepublishOnly": "npm run clean && npm run build",
     "contributors:add": "all-contributors add",
-    "contributors:generate": "all-contributors generate"
+    "contributors:generate": "all-contributors generate",
+    "docz:dev": "docz dev"
   },
   "lint-staged": {
     "*.{js,md,ts,tsx}": [
@@ -74,6 +75,9 @@
     "babel-eslint": "^8.2.3",
     "babel-jest": "^23.0.0",
     "cross-env": "^5.0.5",
+    "docz": "^0.9.3",
+    "docz-core": "^0.9.4",
+    "docz-theme-default": "^0.9.5",
     "dtslint": "^0.3.0",
     "eslint": "^4.19.1",
     "eslint-plugin-import": "^2.12.0",

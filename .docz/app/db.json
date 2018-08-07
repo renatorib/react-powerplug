@@ -1,0 +1,29 @@
+{
+  "config": {
+    "title": "React PowerPlug",
+    "description": "-",
+    "themeConfig": {},
+    "ordering": "descending",
+    "version": "1.0.0-rc.1",
+    "propsParser": false
+  },
+  "entries": {
+    "docs/components/Form.mdx": {
+      "id": "01CMB88G0JQ5KKNMFJCSAM69PK",
+      "filepath": "docs/components/Form.mdx",
+      "link": "https://github.com/renatorib/react-powerplug/tree/master/docs/components/Form.mdx",
+      "slug": "docs-components-form",
+      "route": "/docs-components-form",
+      "name": "Form",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "form",
+          "value": "Form"
+        }
+      ]
+    }
+  }
+}
