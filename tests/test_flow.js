@@ -470,6 +470,25 @@ const noop = () => null
   ]
 }
 
+{
+  const render2 = ({ state, setState }) => {
+    setState({ n: 1 })
+    setState(() => {
+      n: 1
+    })
+    setState((_, x) => {
+      n: x.n
+    })
+    ;(state.n: number)
+    // $FlowFixMe
+    ;(state.n: string)
+  }
+  ;[
+    <State initial={{ n: 1 }} render={render2} />,
+    <State initial={{ n: 1 }}>{render2}</State>,
+  ]
+}
+
 /* Toggle */
 {
   const render = ({ on, toggle, set }) => {
@@ -577,4 +596,18 @@ const noop = () => null
     <Value initial={(0: number)} render={render1} />,
     <Value initial={(0: number)}>{render1}</Value>,
   ]
+}
+
+/* Value with specified generic */
+{
+  const render2 = ({ value, set }) => {
+    set(1)
+    set(x => x + 1)
+    set((_, x) => x + 1)
+    ;(value: number)
+
+    // $FlowFixMe
+    ;(value: string)
+  }
+  ;[<Value initial={0}>{render2}</Value>]
 }
