@@ -47,9 +47,7 @@ test('<Form />', () => {
     })
   )
 
-  testRenderer.update(
-    <Form initial={{ prop1: '11', prop2: '21' }} render={renderFn} />
-  )
+  testRenderer.update(<Form initial={{ hello: 'world' }} render={renderFn} />)
 
   expect(lastCallArg(renderFn).input('prop2')).toEqual(
     expect.objectContaining({
@@ -57,10 +55,11 @@ test('<Form />', () => {
       bind: expect.objectContaining({ value: '20' }),
     })
   )
+
   lastCallArg(renderFn).reset()
 
   expect(renderFn).lastCalledWith(
-    expect.objectContaining({ values: { prop1: '11', prop2: '21' } })
+    expect.objectContaining({ values: { hello: 'world' } })
   )
 })
 
