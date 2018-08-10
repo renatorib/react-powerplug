@@ -30,12 +30,16 @@ The onChange event of the State is called whenever the state changes.
 
 ## State Children Props
 
-TL;DR: `{ state, setState }`
+TL;DR: `{ state, setState, resetState }`
 
 **state**  
 `object`  
 Your state
 
 **setState**  
-`(object | (state: object) => object) => void`  
+`(object | (state: object) => object, cb?: () => void) => void`  
 State setter. Is the [setState](https://facebook.github.io/react/docs/react-component.html#setstate) from React.Component.
+
+**resetState**  
+`(cb?: () => void) => void`  
+Resets state to initial value (_the value equal to current! initial prop_).

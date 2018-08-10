@@ -419,7 +419,7 @@ const noop = () => null
 
 /* State with inferred generic */
 {
-  const render = ({ state, setState }) => {
+  const render = ({ state, setState, resetState }) => {
     ;(state.v: number)
     setState({})
     setState({ v: 1 })
@@ -431,6 +431,12 @@ const noop = () => null
     setState({ t: 1 })
     // $FlowFixMe
     setState({ n: 2 })
+
+    resetState()
+    resetState(() => {})
+
+    // $FlowFixMe
+    resetState(1)
   }
   const onChange = state => {
     ;(state.v: number)

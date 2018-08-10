@@ -16,10 +16,15 @@ class State extends Component {
     })
   }
 
+  _resetState = (cb = noop) => {
+    this._setState({ ...this.props.initial }, cb)
+  }
+
   render() {
     return renderProps(this.props, {
       state: this.state,
       setState: this._setState,
+      resetState: this._resetState,
     })
   }
 }
