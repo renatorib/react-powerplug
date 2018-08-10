@@ -83,3 +83,7 @@ set(R.drop(2)) // remove two first items
 set(R.dropLast(2)) // remove two last items
 // list = [3, 4]
 ```
+
+**reset**  
+`() => void`  
+Reset value to initial

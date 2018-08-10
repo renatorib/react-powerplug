@@ -8,7 +8,7 @@ const complement = fn => (...args) => !fn(...args)
 
 const List = ({ initial = [], onChange, ...props }) => (
   <State initial={{ list: initial }} onChange={onChangeProp(onChange, 'list')}>
-    {({ state, setState }) =>
+    {({ state, setState, resetState }) =>
       renderProps(props, {
         list: state.list,
         first: () => state.list[0],
@@ -19,6 +19,7 @@ const List = ({ initial = [], onChange, ...props }) => (
           setState(s => ({ list: s.list.filter(complement(predicate)) })),
         sort: compareFn =>
           setState(s => ({ list: [...s.list].sort(compareFn) })),
+        reset: () => resetState(),
       })
     }
   </State>
