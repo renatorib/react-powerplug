@@ -1,20 +1,16 @@
 import * as React from 'react'
-import State from './State'
+import Value from './Value'
 import renderProps from '../utils/renderProps'
-import onChangeProp from '../utils/onChangeProp'
 
 const FocusManager = ({ onChange, ...props }) => {
   let canBlur = true
   return (
-    <State
-      initial={{ focused: false }}
-      onChange={onChangeProp(onChange, 'focused')}
-    >
-      {({ state, setState }) =>
+    <Value initial={false} onChange={onChange}>
+      {({ value, set }) =>
         renderProps(props, {
-          focused: state.focused,
+          focused: value,
           blur: () => {
-            if (state.focused) {
+            if (value) {
               document.activeElement.blur()
             }
           },
@@ -22,11 +18,11 @@ const FocusManager = ({ onChange, ...props }) => {
             tabIndex: -1,
             onBlur: () => {
               if (canBlur) {
-                setState({ focused: false })
+                set(false)
               }
             },
             onFocus: () => {
-              setState({ focused: true })
+              set(true)
             },
             onMouseDown: () => {
               canBlur = false
@@ -37,7 +33,7 @@ const FocusManager = ({ onChange, ...props }) => {
           },
         })
       }
-    </State>
+    </Value>
   )
 }
 

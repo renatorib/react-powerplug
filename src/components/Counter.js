@@ -1,29 +1,22 @@
 import * as React from 'react'
-import State from './State'
+import Value from './Value'
 import renderProps from '../utils/renderProps'
-import set from '../utils/set'
-import onChangeProp from '../utils/onChangeProp'
 
-const add = value => state => ({
-  count: state.count + value,
-})
+const add = diff => value => value + diff
 
 const Counter = ({ initial = 0, onChange, ...props }) => (
-  <State
-    initial={{ count: initial }}
-    onChange={onChangeProp(onChange, 'count')}
-  >
-    {({ state, setState }) =>
+  <Value initial={initial} onChange={onChange}>
+    {({ value, set }) =>
       renderProps(props, {
-        count: state.count,
-        inc: () => setState(add(1)),
-        dec: () => setState(add(-1)),
-        incBy: value => setState(add(value)),
-        decBy: value => setState(add(-value)),
-        set: value => setState(s => ({ count: set(value, s.count) })),
+        count: value,
+        inc: () => set(add(1)),
+        dec: () => set(add(-1)),
+        incBy: value => set(add(value)),
+        decBy: value => set(add(-value)),
+        set: value => set(value),
       })
     }
-  </State>
+  </Value>
 )
 
 export default Counter

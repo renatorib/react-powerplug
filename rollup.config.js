@@ -9,19 +9,14 @@ const input = './src/index.js'
 
 const external = id => !id.startsWith('.') && !id.startsWith('/')
 
-const globals = { react: 'React' }
-
 const name = 'ReactPowerPlug'
+
+const globals = { react: 'React' }
 
 const getBabelOptions = ({ useESModules }) => ({
   exclude: '**/node_modules/**',
   runtimeHelpers: true,
-  plugins: [
-    [
-      '@babel/plugin-transform-runtime',
-      { polyfill: false, useBuiltIns: true, useESModules },
-    ],
-  ],
+  plugins: [['@babel/plugin-transform-runtime', { useESModules }]],
 })
 
 export default [

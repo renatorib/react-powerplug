@@ -1,23 +1,19 @@
 import * as React from 'react'
-import State from './State'
+import Value from './Value'
 import renderProps from '../utils/renderProps'
-import onChangeProp from '../utils/onChangeProp'
 
 const Hover = ({ onChange, ...props }) => (
-  <State
-    initial={{ hovered: false }}
-    onChange={onChangeProp(onChange, 'hovered')}
-  >
-    {({ state, setState }) =>
+  <Value initial={false} onChange={onChange}>
+    {({ value, set }) =>
       renderProps(props, {
-        hovered: state.hovered,
+        hovered: value,
         bind: {
-          onMouseEnter: () => setState({ hovered: true }),
-          onMouseLeave: () => setState({ hovered: false }),
+          onMouseEnter: () => set(true),
+          onMouseLeave: () => set(false),
         },
       })
     }
-  </State>
+  </Value>
 )
 
 export default Hover

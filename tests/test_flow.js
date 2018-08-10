@@ -421,7 +421,7 @@ const noop = () => null
 {
   const render = ({ state, setState }) => {
     ;(state.v: number)
-    setState({})
+    setState({}, () => {})
     setState({ v: 1 })
     // $FlowFixMe
     ;(state.v: string)

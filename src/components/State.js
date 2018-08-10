@@ -1,27 +1,19 @@
-import { Component } from 'react'
+import * as React from 'react'
+import Value from './Value'
 import renderProps from '../utils/renderProps'
-import noop from '../utils/noop'
 
-class State extends Component {
-  state = {
-    ...this.props.initial,
-  }
-
-  _setState = (updater, cb = noop) => {
-    const { onChange = noop } = this.props
-
-    this.setState(updater, () => {
-      onChange(this.state)
-      cb()
-    })
-  }
-
-  render() {
-    return renderProps(this.props, {
-      state: this.state,
-      setState: this._setState,
-    })
-  }
-}
+const State = ({ initial = {}, onChange, ...props }) => (
+  <Value initial={initial} onChange={onChange}>
+    {({ value, set }) =>
+      renderProps(props, {
+        state: value,
+        setState: (updater, cb) =>
+          typeof updater === 'function'
+            ? set(prev => ({ ...prev, ...updater(prev) }), cb)
+            : set({ ...value, ...updater }, cb),
+      })
+    }
+  </Value>
+)
 
 export default State

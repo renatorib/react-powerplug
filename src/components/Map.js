@@ -1,18 +1,18 @@
 import * as React from 'react'
-import State from './State'
+import Value from './Value'
 import renderProps from '../utils/renderProps'
 
 const Map = ({ initial = {}, onChange, ...props }) => (
-  <State initial={{ ...initial }} onChange={onChange}>
-    {({ state, setState }) =>
+  <Value initial={{ ...initial }} onChange={onChange}>
+    {({ value, set }) =>
       renderProps(props, {
-        values: state,
-        set: (key, value) => setState({ [key]: value }),
-        over: (key, fn) => setState(s => ({ [key]: fn(s[key]) })),
-        get: key => state[key],
+        values: value,
+        set: (key, value) => set(prev => ({ ...prev, [key]: value })),
+        over: (key, fn) => set(prev => ({ ...prev, [key]: fn(prev[key]) })),
+        get: key => value[key],
       })
     }
-  </State>
+  </Value>
 )
 
 export default Map
