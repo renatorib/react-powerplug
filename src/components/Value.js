@@ -13,7 +13,7 @@ class Value extends Component {
 
     this.setState(
       typeof updater === 'function'
-        ? state => ({ value: updater(state.value) })
+        ? (state, props) => ({ value: updater(state.value, props.initial) })
         : { value: updater },
       () => {
         onChange(this.state.value)

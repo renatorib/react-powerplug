@@ -209,7 +209,10 @@ type StateChange<T> = T => void
 
 type StateRender<T> = ({|
   state: T,
-  setState: (updater: (T => $Shape<T>) | $Shape<T>, cb?: () => void) => void,
+  setState: (
+    updater: ((T, T) => $Shape<T>) | $Shape<T>,
+    cb?: () => void
+  ) => void,
 |}) => React.Node
 
 type StateProps<T> =
@@ -267,7 +270,7 @@ type ValueChange<T> = (value: T) => void
 
 type ValueRender<T> = ({|
   value: T,
-  set: Updater<T>,
+  set: (updater: ((T, T) => T) | T) => void,
 |}) => React.Node
 
 type ValueProps<T> =

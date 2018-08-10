@@ -1,18 +1,18 @@
 {
   "dist/react-powerplug.umd.js": {
-    "bundled": 20373,
-    "minified": 8144,
-    "gzipped": 2218
+    "bundled": 20409,
+    "minified": 8160,
+    "gzipped": 2224
   },
   "dist/react-powerplug.cjs.js": {
-    "bundled": 18338,
-    "minified": 9263,
-    "gzipped": 2228
+    "bundled": 18374,
+    "minified": 9279,
+    "gzipped": 2234
   },
   "dist/react-powerplug.esm.js": {
-    "bundled": 17708,
-    "minified": 8725,
-    "gzipped": 2092,
+    "bundled": 17744,
+    "minified": 8741,
+    "gzipped": 2098,
     "treeshaked": {
       "rollup": {
         "code": 197,

@@ -9,7 +9,7 @@ const State = ({ initial = {}, onChange, ...props }) => (
         state: value,
         setState: (updater, cb) =>
           typeof updater === 'function'
-            ? set(prev => ({ ...prev, ...updater(prev) }), cb)
+            ? set((prev, props) => ({ ...prev, ...updater(prev, props) }), cb)
             : set({ ...value, ...updater }, cb),
       })
     }
