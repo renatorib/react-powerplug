@@ -93,6 +93,7 @@ type FormRender<T> = ({|
       onChange: (SyntheticInputEvent<*>) => void,
     |},
   |},
+  reset: () => void,
 |}) => React.Node
 
 type FormProps<T> =

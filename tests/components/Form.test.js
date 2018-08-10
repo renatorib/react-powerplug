@@ -5,7 +5,7 @@ import { lastCallArg } from './utils'
 
 test('<Form />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
-  TestRenderer.create(
+  const testRenderer = TestRenderer.create(
     <Form initial={{ prop1: '1', prop2: '2' }} render={renderFn} />
   )
 
@@ -45,6 +45,22 @@ test('<Form />', () => {
       value: '20',
       bind: expect.objectContaining({ value: '20' }),
     })
+  )
+
+  testRenderer.update(
+    <Form initial={{ prop1: '11', prop2: '21' }} render={renderFn} />
+  )
+
+  expect(lastCallArg(renderFn).input('prop2')).toEqual(
+    expect.objectContaining({
+      value: '20',
+      bind: expect.objectContaining({ value: '20' }),
+    })
+  )
+  lastCallArg(renderFn).reset()
+
+  expect(renderFn).lastCalledWith(
+    expect.objectContaining({ values: { prop1: '11', prop2: '21' } })
   )
 })
 

@@ -5,9 +5,10 @@ import set from '../utils/set'
 
 const Form = ({ initial = {}, onChange, ...props }) => (
   <State initial={{ ...initial }} onChange={onChange}>
-    {({ state, setState }) =>
+    {({ state, setState, resetState }) =>
       renderProps(props, {
         values: { ...state },
+        reset: () => resetState(),
         input: id => {
           const value = state[id] || ''
           const setValue = value => setState({ [id]: value })

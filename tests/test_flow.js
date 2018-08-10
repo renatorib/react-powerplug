@@ -221,7 +221,8 @@ const noop = () => null
 
 /* Form */
 {
-  const render = ({ input }) => {
+  const render = ({ input, reset }) => {
+    reset()
     const name = input('a')
     ;(name.value: string)
     name.set('')
@@ -237,6 +238,8 @@ const noop = () => null
     ;(name.bind.value: number)
     // $FlowFixMe
     ;(name.bind.onChange: number)
+    // $FlowFixMe
+    reset(1)
   }
   const onChange = data => {
     ;(data.a: string)
