@@ -1,23 +1,19 @@
 import * as React from 'react'
-import State from './State'
+import Value from './Value'
 import renderProps from '../utils/renderProps'
-import onChangeProp from '../utils/onChangeProp'
 
 const Focus = ({ onChange, ...props }) => (
-  <State
-    initial={{ focused: false }}
-    onChange={onChangeProp(onChange, 'focused')}
-  >
-    {({ state, setState }) =>
+  <Value initial={false} onChange={onChange}>
+    {({ value, set }) =>
       renderProps(props, {
-        focused: state.focused,
+        focused: value,
         bind: {
-          onFocus: () => setState({ focused: true }),
-          onBlur: () => setState({ focused: false }),
+          onFocus: () => set(true),
+          onBlur: () => set(false),
         },
       })
     }
-  </State>
+  </Value>
 )
 
 export default Focus

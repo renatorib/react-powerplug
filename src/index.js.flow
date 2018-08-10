@@ -4,7 +4,7 @@ import * as React from 'react'
 
 /* Utils */
 
-type Updater<T> = (value: ((updater: T) => T) | T) => void
+type Updater<T> = (updater: (T => T) | T) => void
 
 /* Active */
 
@@ -209,7 +209,7 @@ type StateChange<T> = T => void
 
 type StateRender<T> = ({|
   state: T,
-  setState: (updated: $Shape<T> | (T => $Shape<T>), cb?: () => void) => void,
+  setState: (updater: (T => $Shape<T>) | $Shape<T>, cb?: () => void) => void,
 |}) => React.Node
 
 type StateProps<T> =

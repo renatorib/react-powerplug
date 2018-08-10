@@ -1,27 +1,23 @@
 import * as React from 'react'
-import State from './State'
+import Value from './Value'
 import renderProps from '../utils/renderProps'
-import set from '../utils/set'
-import onChangeProp from '../utils/onChangeProp'
 
 const complement = fn => (...args) => !fn(...args)
 
 const List = ({ initial = [], onChange, ...props }) => (
-  <State initial={{ list: initial }} onChange={onChangeProp(onChange, 'list')}>
-    {({ state, setState }) =>
+  <Value initial={initial} onChange={onChange}>
+    {({ value, set }) =>
       renderProps(props, {
-        list: state.list,
-        first: () => state.list[0],
-        last: () => state.list[Math.max(0, state.list.length - 1)],
-        set: list => setState(s => ({ list: set(list, s.list) })),
-        push: (...values) => setState(s => ({ list: [...s.list, ...values] })),
-        pull: predicate =>
-          setState(s => ({ list: s.list.filter(complement(predicate)) })),
-        sort: compareFn =>
-          setState(s => ({ list: [...s.list].sort(compareFn) })),
+        list: value,
+        first: () => value[0],
+        last: () => value[Math.max(0, value.length - 1)],
+        set: list => set(list),
+        push: (...values) => set(list => [...list, ...values]),
+        pull: predicate => set(list => list.filter(complement(predicate))),
+        sort: compareFn => set(list => [...list].sort(compareFn)),
       })
     }
-  </State>
+  </Value>
 )
 
 export default List
