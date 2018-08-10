@@ -34,6 +34,7 @@ type CounterRender = ({|
   dec: () => void,
   incBy: (step: number) => void,
   decBy: (step: number) => void,
+  reset: () => void,
 |}) => React.Node
 
 declare export var Counter: React.ComponentType<
@@ -92,6 +93,7 @@ type FormRender<T> = ({|
       onChange: (SyntheticInputEvent<*>) => void,
     |},
   |},
+  reset: () => void,
 |}) => React.Node
 
 type FormProps<T> =
@@ -144,6 +146,7 @@ type ListRender<T> = ({|
   push: (...values: $ReadOnlyArray<T>) => void,
   pull: (predicate: (T) => boolean) => void,
   sort: (compare: (a: T, b: T) => -1 | 0 | 1) => void,
+  reset: () => void,
 |}) => React.Node
 
 type ListProps<T> =
@@ -170,6 +173,7 @@ type SetRender<T> = ({|
   clear: () => void,
   remove: (key: T) => void,
   has: (key: T) => boolean,
+  reset: () => void,
 |}) => React.Node
 
 type SetProps<T> =
@@ -195,6 +199,7 @@ type MapRender<T, K = $Keys<T>> = ({|
   set: (key: K, value: $ElementType<T, K>) => void,
   over: (key: K, fn: ($ElementType<T, K>) => $ElementType<T, K>) => void,
   get: (key: K) => $ElementType<T, K>,
+  reset: () => void,
 |}) => React.Node
 
 type MapProps<T> =
@@ -210,6 +215,7 @@ type StateChange<T> = T => void
 type StateRender<T> = ({|
   state: T,
   setState: (updated: $Shape<T> | (T => $Shape<T>), cb?: () => void) => void,
+  resetState: (cb?: () => void) => void,
 |}) => React.Node
 
 type StateProps<T> =
@@ -240,6 +246,7 @@ type ToggleRender = ({|
   on: boolean,
   toggle: () => void,
   set: Updater<boolean>,
+  reset: () => void,
 |}) => React.Node
 
 declare export var Toggle: React.ComponentType<
@@ -268,6 +275,7 @@ type ValueChange<T> = (value: T) => void
 type ValueRender<T> = ({|
   value: T,
   set: Updater<T>,
+  reset: () => void,
 |}) => React.Node
 
 type ValueProps<T> =

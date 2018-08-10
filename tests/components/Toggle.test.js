@@ -5,7 +5,7 @@ import { lastCallArg } from './utils'
 
 test('<Toggle />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
-  TestRenderer.create(<Toggle render={renderFn} />)
+  const testRenderer = TestRenderer.create(<Toggle render={renderFn} />)
 
   expect(renderFn).toBeCalledTimes(1)
   expect(renderFn).lastCalledWith(expect.objectContaining({ on: false }))
@@ -18,6 +18,12 @@ test('<Toggle />', () => {
 
   lastCallArg(renderFn).set(on => !on)
   expect(renderFn).lastCalledWith(expect.objectContaining({ on: true }))
+
+  testRenderer.update(<Toggle initial={false} render={renderFn} />)
+  expect(renderFn).lastCalledWith(expect.objectContaining({ on: true }))
+
+  lastCallArg(renderFn).reset()
+  expect(renderFn).lastCalledWith(expect.objectContaining({ on: false }))
 })
 
 test('<Toggle onChange />', () => {

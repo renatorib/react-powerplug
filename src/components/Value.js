@@ -9,10 +9,11 @@ const Value = ({ initial, onChange, ...props }) => (
     initial={{ value: initial }}
     onChange={onChangeProp(onChange, 'value')}
   >
-    {({ state, setState }) =>
+    {({ state, setState, resetState }) =>
       renderProps(props, {
         value: state.value,
         set: value => setState(s => ({ value: set(value, s.value) })),
+        reset: () => resetState(),
       })
     }
   </State>

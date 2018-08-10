@@ -5,12 +5,16 @@ import { lastCallArg } from './utils'
 
 test('<State />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
-  TestRenderer.create(<State initial={{ myValue: 1 }} render={renderFn} />)
+
+  const testRenderer = TestRenderer.create(
+    <State initial={{ myValue: 1 }} render={renderFn} />
+  )
 
   // Initial values
   expect(renderFn).lastCalledWith({
     state: { myValue: 1 },
     setState: expect.any(Function),
+    resetState: expect.any(Function),
   })
 
   lastCallArg(renderFn).setState({ myValue: 2 })
@@ -19,6 +23,27 @@ test('<State />', () => {
   expect(renderFn).lastCalledWith({
     state: { myValue: 2 },
     setState: expect.any(Function),
+    resetState: expect.any(Function),
+  })
+
+  // Change initial, and update the whole tree
+  testRenderer.update(<State initial={{ myValue: 3 }} render={renderFn} />)
+
+  // Value hasn't been changed
+  expect(renderFn).lastCalledWith({
+    state: { myValue: 2 },
+    setState: expect.any(Function),
+    resetState: expect.any(Function),
+  })
+
+  // Reset state
+  lastCallArg(renderFn).resetState()
+
+  // Now state value is equal to initial
+  expect(renderFn).lastCalledWith({
+    state: { myValue: 3 },
+    setState: expect.any(Function),
+    resetState: expect.any(Function),
   })
 })
 

@@ -4,12 +4,13 @@ import renderProps from '../utils/renderProps'
 
 const Map = ({ initial = {}, onChange, ...props }) => (
   <State initial={{ ...initial }} onChange={onChange}>
-    {({ state, setState }) =>
+    {({ state, setState, resetState }) =>
       renderProps(props, {
         values: state,
         set: (key, value) => setState({ [key]: value }),
         over: (key, fn) => setState(s => ({ [key]: fn(s[key]) })),
         get: key => state[key],
+        reset: () => resetState(),
       })
     }
   </State>

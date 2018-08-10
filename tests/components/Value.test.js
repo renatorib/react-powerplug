@@ -5,7 +5,9 @@ import { lastCallArg } from './utils'
 
 test('<Value />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
-  TestRenderer.create(<Value initial={{ a: 1 }} render={renderFn} />)
+  const testRenderer = TestRenderer.create(
+    <Value initial={{ a: 1 }} render={renderFn} />
+  )
 
   expect(renderFn).toBeCalledTimes(1)
 
@@ -21,6 +23,13 @@ test('<Value />', () => {
 
   lastCallArg(renderFn).set(0)
   expect(renderFn).lastCalledWith(expect.objectContaining({ value: 0 }))
+
+  // test reset
+  testRenderer.update(<Value initial={3} render={renderFn} />)
+  expect(renderFn).lastCalledWith(expect.objectContaining({ value: 0 }))
+
+  lastCallArg(renderFn).reset()
+  expect(renderFn).lastCalledWith(expect.objectContaining({ value: 3 }))
 })
 
 test('<Value onChange />', () => {

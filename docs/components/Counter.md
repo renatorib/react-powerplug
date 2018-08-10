@@ -58,3 +58,7 @@ dec(2) // will decrease count by 2
 dec(1) // will decrease count by 1
 dec() // will decrease count by 1
 ```
+
+**reset**  
+`() => void`  
+Reset value to initial

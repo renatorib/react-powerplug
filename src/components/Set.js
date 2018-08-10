@@ -14,13 +14,14 @@ const Set = ({ initial = [], onChange, ...props }) => (
     initial={{ values: unique(initial) }}
     onChange={onChangeProp(onChange, 'values')}
   >
-    {({ state, setState }) =>
+    {({ state, setState, resetState }) =>
       renderProps(props, {
         values: state.values,
         add: key => setState({ values: addUnique(state.values, key) }),
         clear: () => setState({ values: [] }),
         remove: key => setState({ values: removeItem(state.values, key) }),
         has: key => hasItem(state.values, key),
+        reset: () => resetState(),
       })
     }
   </State>
