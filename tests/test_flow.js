@@ -222,8 +222,37 @@ const noop = () => null
 
   const render = ({ field }) => {
     const a = field('a')
-    // ;(a.value: string)
-    // isNumber(a.value)
+    ;(a.value: string)
+    ;(a.bind.value: string)
+    a.set('')
+    a.bind.onChange('')
+    a.bind.onChange({ target: { value: '' } })
+    // $FlowFixMe
+    ;(a.value: boolean)
+    // $FlowFixMe
+    ;(a.bind.value: boolean)
+    a.set((value: string) => value)
+    // $FlowFixMe
+    a.set((value: boolean) => value)
+    // $FlowFixMe
+    a.set(true)
+    // TODO should fail
+    a.bind.onChange(true)
+    // TODO should fail
+    a.bind.onChange({ target: { value: true } })
+
+    const b = field('b')
+    ;(b.value: number)
+    // $FlowFixMe
+    ;(b.value: boolean)
+
+    const c = field('c')
+    ;(c.value: { value: string })
+    // $FlowFixMe
+    ;(c.value: { value: boolean })
+
+    // $FlowFixMe
+    const d = field('d')
   }
   const onChange = data => {
     ;(data.a: string)
