@@ -540,7 +540,7 @@ const noop = () => null
 
 /* Value with inferred generic */
 {
-  const render = ({ value, set }) => {
+  const render = ({ value, set, reset }) => {
     ;(value: number | string | boolean)
     // $FlowFixMe
     ;(value: number)
@@ -549,6 +549,10 @@ const noop = () => null
     // $FlowFixMe
     ;(value: boolean)
     set(true)
+
+    reset()
+    // $FlowFixMe
+    reset(1)
   }
   const onChange = value => {
     ;(value: number | string)

@@ -57,3 +57,7 @@ Your value state
 **set**  
 `(value: T | (value: T) => T) => void`  
 Set or over the value state
+
+**reset**  
+`() => void`  
+Reset value to initial
