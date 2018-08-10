@@ -171,6 +171,7 @@ type SetRender<T> = ({|
   clear: () => void,
   remove: (key: T) => void,
   has: (key: T) => boolean,
+  reset: () => void,
 |}) => React.Node
 
 type SetProps<T> =
