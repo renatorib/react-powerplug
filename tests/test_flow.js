@@ -218,33 +218,35 @@ const noop = () => null
 
 /* Form */
 {
-  const render = ({ input }) => {
-    const name = input('a')
-    ;(name.value: string)
-    name.set('')
-    ;(name.bind.value: string)
-    ;(name.bind.onChange: Function)
-    // $FlowFixMe
-    input('b')
-    // $FlowFixMe
-    ;(name.value: number)
-    // $FlowFixMe
-    name.setValue(0)
-    // $FlowFixMe
-    ;(name.bind.value: number)
-    // $FlowFixMe
-    ;(name.bind.onChange: number)
+  const isNumber = (value: number): number => value
+
+  const render = ({ field }) => {
+    const a = field('a')
+    // ;(a.value: string)
+    // isNumber(a.value)
   }
   const onChange = data => {
     ;(data.a: string)
-    // $FlowFixMe
-    ;(data.a: number)
+    ;(data.b: number)
+    ;(data.c: { value: string })
+    // $FlowFixMe value is string
+    ;(data.a: boolean)
+    // $FlowFixMe value is number
+    ;(data.b: boolean)
+    // $FlowFixMe value is object
+    ;(data.c: boolean)
+    // $FlowFixMe field does not exist
+    ;(data.d: boolean)
   }
   ;[
-    <Form initial={{ a: '' }} render={render} />,
-    <Form initial={{ a: '' }}>{render}</Form>,
-    <Form initial={{ a: '' }} onChange={onChange} render={noop} />,
-    <Form initial={{ a: '' }} onChange={onChange}>
+    <Form initial={{ a: '', b: 0, c: { value: '' } }} render={render} />,
+    <Form initial={{ a: '', b: 0, c: { value: '' } }}>{render}</Form>,
+    <Form
+      initial={{ a: '', b: 0, c: { value: '' } }}
+      onChange={onChange}
+      render={noop}
+    />,
+    <Form initial={{ a: '', b: 0, c: { value: '' } }} onChange={onChange}>
       {noop}
     </Form>,
     // $FlowFixMe
@@ -253,10 +255,6 @@ const noop = () => null
     <Form render={noop} />,
     // $FlowFixMe
     <Form>{noop}</Form>,
-    // $FlowFixMe
-    <Form initial={{ a: 0 }} render={noop} />,
-    // $FlowFixMe
-    <Form initial={{ a: 0 }}>{noop}</Form>,
   ]
 }
 

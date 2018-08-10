@@ -82,14 +82,14 @@ type FormChange<T> = T => void
 
 type FormRender<T> = ({|
   values: T,
-  input: <K: $Keys<T>>(
+  field: <K: $Keys<T>, V: $ElementType<T, K>>(
     key: K
   ) => {|
-    value: string,
-    set: Updater<string>,
+    value: V,
+    set: Updater<V>,
     bind: {|
-      value: string,
-      onChange: (SyntheticInputEvent<*>) => void,
+      value: V,
+      onChange: (event: { target: { value: V } } | V) => void,
     |},
   |},
 |}) => React.Node
@@ -98,9 +98,8 @@ type FormProps<T> =
   | {| initial: T, onChange?: FormChange<T>, render: FormRender<T> |}
   | {| initial: T, onChange?: FormChange<T>, children: FormRender<T> |}
 
-declare export class Form<T: { [string]: string }> extends React.Component<
-  FormProps<T>,
-  *
+declare export class Form<T: { [string]: mixed }> extends React.Component<
+  FormProps<T>
 > {}
 
 /* Hover */
