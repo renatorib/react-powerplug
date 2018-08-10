@@ -13,7 +13,7 @@ const Counter = ({ initial = 0, onChange, ...props }) => (
     initial={{ count: initial }}
     onChange={onChangeProp(onChange, 'count')}
   >
-    {({ state, setState }) =>
+    {({ state, setState, resetState }) =>
       renderProps(props, {
         count: state.count,
         inc: () => setState(add(1)),
@@ -21,6 +21,7 @@ const Counter = ({ initial = 0, onChange, ...props }) => (
         incBy: value => setState(add(value)),
         decBy: value => setState(add(-value)),
         set: value => setState(s => ({ count: set(value, s.count) })),
+        reset: () => resetState(),
       })
     }
   </State>

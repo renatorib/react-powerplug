@@ -34,6 +34,7 @@ type CounterRender = ({|
   dec: () => void,
   incBy: (step: number) => void,
   decBy: (step: number) => void,
+  reset: () => void,
 |}) => React.Node
 
 declare export var Counter: React.ComponentType<

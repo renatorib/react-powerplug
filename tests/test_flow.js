@@ -115,12 +115,13 @@ const noop = () => null
 
 /* Counter */
 {
-  const render = ({ count, inc, dec, incBy, decBy }) => {
+  const render = ({ count, inc, dec, incBy, decBy, reset }) => {
     ;(count: number)
     inc()
     dec()
     incBy(0)
     decBy(0)
+    reset()
     // $FlowFixMe
     ;(count: string)
     // $FlowFixMe
@@ -131,6 +132,8 @@ const noop = () => null
     incBy('')
     // $FlowFixMe
     decBy('')
+    // $FlowFixMe
+    reset(1)
     return null
   }
   const onChange = count => {
