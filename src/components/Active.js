@@ -1,23 +1,19 @@
 import * as React from 'react'
-import State from './State'
+import Value from './Value'
 import renderProps from '../utils/renderProps'
-import onChangeProp from '../utils/onChangeProp'
 
 const Active = ({ onChange, ...props }) => (
-  <State
-    initial={{ active: false }}
-    onChange={onChangeProp(onChange, 'active')}
-  >
-    {({ state, setState }) =>
+  <Value initial={false} onChange={onChange}>
+    {({ value, set }) =>
       renderProps(props, {
-        active: state.active,
+        active: value,
         bind: {
-          onMouseDown: () => setState({ active: true }),
-          onMouseUp: () => setState({ active: false }),
+          onMouseDown: () => set(true),
+          onMouseUp: () => set(false),
         },
       })
     }
-  </State>
+  </Value>
 )
 
 export default Active

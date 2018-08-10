@@ -1,19 +1,17 @@
 import * as React from 'react'
-import State from './State'
+import Value from './Value'
 import renderProps from '../utils/renderProps'
-import set from '../utils/set'
-import onChangeProp from '../utils/onChangeProp'
 
 const Toggle = ({ initial = false, onChange, ...props }) => (
-  <State initial={{ on: initial }} onChange={onChangeProp(onChange, 'on')}>
-    {({ state, setState }) =>
+  <Value initial={initial} onChange={onChange}>
+    {({ value, set }) =>
       renderProps(props, {
-        on: state.on,
-        toggle: () => setState(s => ({ on: !s.on })),
-        set: value => setState(s => ({ on: set(value, s.on) })),
+        on: value,
+        toggle: () => set(on => !on),
+        set: value => set(value),
       })
     }
-  </State>
+  </Value>
 )
 
 export default Toggle

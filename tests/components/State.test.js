@@ -5,6 +5,7 @@ import { lastCallArg } from './utils'
 
 test('<State />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
+  const callbackFn = jest.fn()
   TestRenderer.create(<State initial={{ myValue: 1 }} render={renderFn} />)
 
   // Initial values
@@ -20,6 +21,12 @@ test('<State />', () => {
     state: { myValue: 2 },
     setState: expect.any(Function),
   })
+
+  // call callback only once
+  lastCallArg(renderFn).setState({ myValue: 3 }, callbackFn)
+  expect(callbackFn).toBeCalledTimes(1)
+  lastCallArg(renderFn).setState({ myValue: 4 })
+  expect(callbackFn).toBeCalledTimes(1)
 })
 
 test('<State onChange />', () => {

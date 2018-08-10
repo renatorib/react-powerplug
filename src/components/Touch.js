@@ -1,23 +1,19 @@
 import * as React from 'react'
-import State from './State'
+import Value from './Value'
 import renderProps from '../utils/renderProps'
-import onChangeProp from '../utils/onChangeProp'
 
 const Touch = ({ onChange, ...props }) => (
-  <State
-    initial={{ touched: false }}
-    onChange={onChangeProp(onChange, 'touched')}
-  >
-    {({ state, setState }) =>
+  <Value initial={false} onChange={onChange}>
+    {({ value, set }) =>
       renderProps(props, {
-        touched: state.touched,
+        touched: value,
         bind: {
-          onTouchStart: () => setState({ touched: true }),
-          onTouchEnd: () => setState({ touched: false }),
+          onTouchStart: () => set(true),
+          onTouchEnd: () => set(false),
         },
       })
     }
-  </State>
+  </Value>
 )
 
 export default Touch

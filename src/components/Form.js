@@ -1,29 +1,31 @@
 import * as React from 'react'
-import State from './State'
+import Value from './Value'
 import renderProps from '../utils/renderProps'
-import set from '../utils/set'
 
 const Form = ({ initial = {}, onChange, ...props }) => (
-  <State initial={{ ...initial }} onChange={onChange}>
-    {({ state, setState }) =>
+  <Value initial={{ ...initial }} onChange={onChange}>
+    {({ value: values, set }) =>
       renderProps(props, {
-        values: { ...state },
+        values,
         input: id => {
-          const value = state[id] || ''
-          const setValue = value => setState({ [id]: value })
+          const value = values[id] || ''
+          const setValue = updater =>
+            typeof updater === 'function'
+              ? set(prev => ({ ...prev, [id]: updater(prev[id]) }))
+              : set({ ...values, [id]: updater })
 
           return {
-            bind: {
-              onChange: event => setValue(event.target.value),
-              value,
-            },
-            set: value => setState(s => ({ [id]: set(value, s.value) })),
             value,
+            set: setValue,
+            bind: {
+              value,
+              onChange: event => setValue(event.target.value),
+            },
           }
         },
       })
     }
-  </State>
+  </Value>
 )
 
 export default Form
