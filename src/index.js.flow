@@ -241,6 +241,7 @@ type ToggleRender = ({|
   on: boolean,
   toggle: () => void,
   set: Updater<boolean>,
+  reset: () => void,
 |}) => React.Node
 
 declare export var Toggle: React.ComponentType<
