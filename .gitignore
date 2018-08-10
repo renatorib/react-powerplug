@@ -1,3 +1,4 @@
 *.log
+.docz
 node_modules
 dist
