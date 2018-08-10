@@ -3727,86 +3727,9 @@ doctrine@^2.0.0, doctrine@^2.1.0:
   dependencies:
     esutils "^2.0.2"
 
-docz-core@^0.9.3:
-  version "0.9.3"
-  resolved "https://registry.npmjs.org/docz-core/-/docz-core-0.9.3.tgz#5c26cc47d29ef7c57fa6a6dd91c551e4dabc81a6"
-  dependencies:
-    "@babel/core" "7.0.0-beta.55"
-    "@babel/plugin-syntax-dynamic-import" "^7.0.0-beta.55"
-    "@babel/preset-typescript" "^7.0.0-beta.55"
-    "@babel/runtime" "^7.0.0-beta.55"
-    "@mdx-js/loader" "^0.15.0-2"
-    "@mdx-js/mdx" "^0.15.0-2"
-    "@mdx-js/mdxast" "^0.15.0-2"
-    "@sindresorhus/slugify" "^0.3.0"
-    art-template "^4.12.2"
-    babel-loader "^8.0.0-beta.4"
-    babel-plugin-react-docgen "^2.0.0-rc.1"
-    babel-polyfill "^7.0.0-beta.3"
-    babel-preset-react-app "^4.0.0-next.b2fd8db8"
-    babylon "^6.18.0"
-    chalk "^2.4.1"
-    chokidar "^2.0.4"
-    connect-history-api-fallback "^1.5.0"
-    cpy "^7.0.1"
-    deepmerge "^2.1.1"
-    detect-port "^1.2.3"
-    dotenv "^6.0.0"
-    env-dot-prop "^1.0.2"
-    express "^4.16.3"
-    fast-glob "^2.2.2"
-    file-loader "^1.1.11"
-    find-up "^3.0.0"
-    friendly-errors-webpack-plugin "^1.7.0"
-    fs-extra "^7.0.0"
-    get-pkg-repo "^2.0.0"
-    happypack "^5.0.0"
-    html-webpack-plugin "^3.2.0"
-    humanize-string "^1.0.2"
-    koa "^2.5.2"
-    koa-connect "^2.0.1"
-    koa-mount "^3.0.0"
-    koa-range "^0.3.0"
-    koa-static "^5.0.0"
-    load-cfg "^0.9.0"
-    lodash.get "^4.4.2"
-    prettier "^1.14.0"
-    react-dev-utils "^5.0.1"
-    react-docgen-typescript-loader "^2.1.1"
-    react-hot-loader "4.3.4"
-    rehype-autolink-headings "^2.0.3"
-    rehype-docz "^0.9.0"
-    rehype-slug "^2.0.1"
-    remark-docz "^0.9.0"
-    remark-frontmatter "^1.2.0"
-    remark-parse "^5.0.0"
-    remark-parse-yaml "^0.0.1"
-    remark-slug "^5.0.0"
-    resolve "^1.8.1"
-    signale "^1.2.1"
-    titleize "^1.0.1"
-    to-vfile "^5.0.0"
-    uglifyjs-webpack-plugin "^1.2.7"
-    ulid "^2.3.0"
-    unified "^7.0.0"
-    unist-util-find "^1.0.1"
-    unist-util-is "^2.1.2"
-    unist-util-visit "^1.4.0"
-    url-loader "^1.0.1"
-    webpack "^4.16.3"
-    webpack-chain "^4.8.0"
-    webpack-hot-client "^4.1.1"
-    webpack-manifest-plugin "^2.0.3"
-    webpack-serve "^2.0.2"
-    webpack-serve-overlay "^0.3.0"
-    webpack-serve-waitpage "^1.0.1"
-    webpackbar "^2.6.1"
-    ws "^6.0.0"
-    yargs "^12.0.1"
-
-docz-core@^0.9.4:
-  version "0.9.4"
-  resolved "https://registry.npmjs.org/docz-core/-/docz-core-0.9.4.tgz#d528cee57846b925a026a8bb3bec3db03fefaa99"
+docz-core@^0.9.6:
+  version "0.9.6"
+  resolved "https://registry.npmjs.org/docz-core/-/docz-core-0.9.6.tgz#4b5b6914f500c00f72a03cb8d078e45e31bea304"
   dependencies:
     "@babel/core" "7.0.0-beta.55"
     "@babel/plugin-syntax-dynamic-import" "^7.0.0-beta.55"
@@ -3881,12 +3804,12 @@ docz-core@^0.9.4:
     ws "^6.0.0"
     yargs "^12.0.1"
 
-docz-theme-default@^0.9.3:
-  version "0.9.3"
-  resolved "https://registry.npmjs.org/docz-theme-default/-/docz-theme-default-0.9.3.tgz#5fe4490182ec080d8643ff1ef6b6f7ad206453ed"
+docz-theme-default@^0.9.6:
+  version "0.9.6"
+  resolved "https://registry.npmjs.org/docz-theme-default/-/docz-theme-default-0.9.6.tgz#83138b79c1ffacb07beaca60f92637d5a5c62ca6"
   dependencies:
     copy-text-to-clipboard "^1.0.4"
-    docz "^0.9.3"
+    docz "^0.9.6"
     emotion "^9.2.6"
     emotion-theming "^9.2.6"
     facepaint "^1.2.1"
@@ -3908,36 +3831,9 @@ docz-theme-default@^0.9.3:
     react-syntax-highlighter "^8.0.1"
     webfontloader "^1.6.28"
 
-docz-theme-default@^0.9.5:
-  version "0.9.5"
-  resolved "https://registry.npmjs.org/docz-theme-default/-/docz-theme-default-0.9.5.tgz#59d9009be11aca886c429158be319ad9a63b0abe"
-  dependencies:
-    copy-text-to-clipboard "^1.0.4"
-    docz "^0.9.5"
-    emotion "^9.2.6"
-    emotion-theming "^9.2.6"
-    facepaint "^1.2.1"
-    hotkeys-js "^3.3.5"
-    lodash.get "^4.4.2"
-    match-sorter "^2.2.3"
-    polished "^1.9.3"
-    pretty "^2.0.0"
-    prop-types "15.6.2"
-    re-resizable "^4.7.1"
-    react "^16.4.2"
-    react-adopt "^0.6.0"
-    react-breakpoints "^3.0.0"
-    react-dom "^16.4.2"
-    react-emotion "^9.2.6"
-    react-feather "^1.1.1"
-    react-lightweight-tooltip "^1.0.0"
-    react-powerplug "^1.0.0-rc.1"
-    react-syntax-highlighter "^8.0.1"
-    webfontloader "^1.6.28"
-
-docz@^0.9.3:
-  version "0.9.3"
-  resolved "https://registry.npmjs.org/docz/-/docz-0.9.3.tgz#7024168a636dee39aff31e2fc2bfab10dcabb2a8"
+docz@^0.9.6:
+  version "0.9.6"
+  resolved "https://registry.npmjs.org/docz/-/docz-0.9.6.tgz#3ecaa58858e310315aa0151324ba6915a2f482ae"
   dependencies:
     "@mdx-js/tag" "^0.15.0-2"
     "@sindresorhus/slugify" "^0.3.0"
@@ -3945,30 +3841,8 @@ docz@^0.9.3:
     capitalize "^1.0.0"
     create-react-context "^0.2.2"
     deepmerge "^2.1.1"
-    docz-core "^0.9.3"
-    docz-theme-default "^0.9.3"
-    prop-types "^15.6.2"
-    react "^16.4.2"
-    react-copy-write "^0.7.0"
-    react-dom "^16.4.2"
-    react-imported-component "^4.6.2"
-    react-router "^4.3.1"
-    react-router-dom "^4.3.1"
-    react-router-hash-link "^1.2.0"
-    yargs "^12.0.1"
-
-docz@^0.9.5:
-  version "0.9.5"
-  resolved "https://registry.npmjs.org/docz/-/docz-0.9.5.tgz#dca81e234871f0fbb4c5dbcbcc7afd822b1e62e2"
-  dependencies:
-    "@mdx-js/tag" "^0.15.0-2"
-    "@sindresorhus/slugify" "^0.3.0"
-    array-sort "^1.0.0"
-    capitalize "^1.0.0"
-    create-react-context "^0.2.2"
-    deepmerge "^2.1.1"
-    docz-core "^0.9.4"
-    docz-theme-default "^0.9.5"
+    docz-core "^0.9.6"
+    docz-theme-default "^0.9.6"
     prop-types "^15.6.2"
     react "^16.4.2"
     react-copy-write "^0.7.0"
@@ -6928,14 +6802,6 @@ listr@^0.13.0:
     stream-to-observable "^0.2.0"
     strip-ansi "^3.0.1"
 
-load-cfg@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.npmjs.org/load-cfg/-/load-cfg-0.9.0.tgz#09b11e03a4303b931342ac3d30026ab269eff5be"
-  dependencies:
-    deepmerge "^2.1.1"
-    esm "^3.0.72"
-    find-up "^3.0.0"
-
 load-cfg@^0.9.4:
   version "0.9.4"
   resolved "https://registry.npmjs.org/load-cfg/-/load-cfg-0.9.4.tgz#f3b481074a6b80a1a8a3aef9de2edf327579449a"
@@ -8630,15 +8496,6 @@ react-docgen@^3.0.0-beta12:
     node-dir "^0.1.10"
     recast "^0.15.0"
 
-react-dom@^16.2.0:
-  version "16.2.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.2.0.tgz#69003178601c0ca19b709b33a83369fe6124c044"
-  dependencies:
-    fbjs "^0.8.16"
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.0"
-
 react-dom@^16.4.2:
   version "16.4.2"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-16.4.2.tgz#4afed569689f2c561d2b8da0b819669c38a0bda4"
@@ -8746,7 +8603,7 @@ react-test-renderer@^16.2.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react@^16.2.0, react@^16.3.2, react@^16.4.2:
+react@^16.3.2, react@^16.4.2:
   version "16.4.2"
   resolved "https://registry.npmjs.org/react/-/react-16.4.2.tgz#2cd90154e3a9d9dd8da2991149fdca3c260e129f"
   dependencies:
@@ -9014,18 +8871,6 @@ rehype-autolink-headings@^2.0.3:
     hast-util-is-element "^1.0.0"
     unist-util-visit "^1.1.0"
 
-rehype-docz@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.npmjs.org/rehype-docz/-/rehype-docz-0.9.0.tgz#5834efd46146b4a99631f813598f482c7a3c2e08"
-  dependencies:
-    babel-traverse "^6.26.0"
-    babylon "^6.18.0"
-    hast-util-to-string "^1.0.1"
-    prettier "^1.14.0"
-    signale "^1.2.1"
-    strip-indent "^2.0.0"
-    unist-util-is "^2.1.2"
-
 rehype-docz@^0.9.4:
   version "0.9.4"
   resolved "https://registry.npmjs.org/rehype-docz/-/rehype-docz-0.9.4.tgz#a66421d98da91d6244f086a1be13dd991b1e3d92"
@@ -9051,13 +8896,6 @@ rehype-slug@^2.0.1:
 relateurl@0.2.x:
   version "0.2.7"
   resolved "https://registry.npmjs.org/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
-
-remark-docz@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.npmjs.org/remark-docz/-/remark-docz-0.9.0.tgz#8a4b89e92cce24c897b9e0065d02e86f767deeeb"
-  dependencies:
-    unist-util-remove "^1.0.1"
-    unist-util-visit "^1.4.0"
 
 remark-docz@^0.9.4:
   version "0.9.4"
