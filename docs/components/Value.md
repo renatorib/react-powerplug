@@ -55,5 +55,5 @@ TL;DR: `{ value, set }`
 Your value state
 
 **set**  
-`(value: T | (value: T) => T) => void`  
+`(value: T | (value: T, initialProp: T) => T) => void`  
 Set or over the value state
