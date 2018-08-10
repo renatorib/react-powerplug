@@ -196,6 +196,7 @@ type MapRender<T, K = $Keys<T>> = ({|
   set: (key: K, value: $ElementType<T, K>) => void,
   over: (key: K, fn: ($ElementType<T, K>) => $ElementType<T, K>) => void,
   get: (key: K) => $ElementType<T, K>,
+  reset: () => void,
 |}) => React.Node
 
 type MapProps<T> =
