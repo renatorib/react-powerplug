@@ -2,7 +2,8 @@
   "parser": "babel-eslint",
   "plugins": [
     "import",
-    "react"
+    "react",
+    "flowtype"
   ],
   "extends": [
     "eslint:recommended",
@@ -11,16 +12,19 @@
   ],
   "env": {
     "browser": true,
+    "es6": true,
     "node": true,
     "jest": true
   },
   "rules": {
-    "valid-jsdoc": 2,
-    "react/prop-types": 0,
-    "react/jsx-uses-react": 1,
-    "react/jsx-no-undef": 2,
+    "valid-jsdoc": "error",
+    "react/prop-types": "off",
+    "react/jsx-uses-react": "warn",
+    "react/jsx-no-undef": "error",
     "import/no-unresolved": ["error", { "ignore": ["^react$"] }],
-    "import/unambiguous": 0,
-    "react/jsx-key": 0
+    "import/unambiguous": "off",
+    "react/jsx-key": "off",
+    "flowtype/define-flow-type": "error",
+    "flowtype/use-flow-type": "error"
   }
 }

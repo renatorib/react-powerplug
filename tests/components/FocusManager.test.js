@@ -30,10 +30,6 @@ const bootstrap = async () => {
     }
   })
 
-  page.on('console', msg =>
-    msg.args().forEach(arg => console.log(arg.toString()))
-  )
-
   return page
 }
 
