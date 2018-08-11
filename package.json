@@ -19,7 +19,7 @@
     "clean": "rimraf dist",
     "typecheck:flow": "flow check --max-warnings=0",
     "typecheck:ts": "dtslint types",
-    "lint": "eslint src test",
+    "lint": "eslint src tests",
     "test:only": "jest",
     "test:umd": "jest --setupTestFrameworkScriptFile ./tests/jestUMDSetup.js",
     "test:cjs": "jest --setupTestFrameworkScriptFile ./tests/jestCJSSetup.js",
