@@ -83,6 +83,7 @@ type FormChange<T> = T => void
 
 type FormRender<T> = ({|
   values: T,
+  reset: (cb?: () => void) => void,
   field: <K: $Keys<T>>(
     key: K
   ) => {|

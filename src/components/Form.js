@@ -6,9 +6,10 @@ const isObject = value => typeof value === 'object' && value
 
 const Form = ({ initial = {}, onChange, ...props }) => (
   <Value initial={{ ...initial }} onChange={onChange}>
-    {({ value: values, set }) =>
+    {({ value: values, set, reset }) =>
       renderProps(props, {
         values,
+        reset,
         field: id => {
           const value = values[id]
           const setValue = updater =>
