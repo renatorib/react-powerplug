@@ -436,21 +436,26 @@ const noop = () => null
 
 /* Map */
 {
-  const render = ({ values, set, over, get, reset }) => {
+  const render = ({ values, clear, reset, set, get, has, delete: deleteItem }) => {
+    // unsafe access do not consider keys
     ;(values.a: number)
-    set('a', 0)
-    over('a', (d: number) => d)
+    ;(values.b: number)
     ;(get('a'): number)
+    ;(get('b'): number)
     // $FlowFixMe
     ;(values.a: string)
-    // TODO should fail
+    // $FlowFixMe
+    ;(get('a'): string)
+    set('a', 0)
+    set('a', (value: number) => 0)
+    // $FlowFixMe
     set('a', '')
     // $FlowFixMe
-    set('b', 0)
+    set('a', (value: string) => 0)
     // $FlowFixMe
-    over('a', (d: string) => d)
-    // TODO should fail
-    over('a', () => '')
+    set('a', (value: number) => '')
+    ;(has('a'): boolean)
+    ;(has('b'): boolean)
     // $FlowFixMe
     ;(get('a'): string)
 
@@ -458,12 +463,17 @@ const noop = () => null
     reset(() => {})
     // $FlowFixMe
     reset(1)
+    // $FlowFixMe
+    ;(has('a'): number)
+    deleteItem('a')
+    // $FlowFixMe
+    deleteItem(0)
     return null
   }
+
   const onChange = values => {
     ;(values.a: number)
-    // $FlowFixMe
-    ;(values.a: string)
+    ;(values.b: number)
   }
   ;[
     <Map initial={{ a: 0 }} render={render} />,
