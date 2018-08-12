@@ -85,6 +85,7 @@ type FormChange<T> = T => void
 
 type FormRender<T> = ({|
   values: T,
+  setValues: ((T => $Shape<T>) | $Shape<T>) => void,
   reset: Reset,
   field: <K: $Keys<T>>(
     key: K

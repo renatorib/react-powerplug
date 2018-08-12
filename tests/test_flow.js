@@ -231,7 +231,8 @@ const noop = () => null
 {
   const isNumber = (value: number): number => value
 
-  const render = ({ field, reset }) => {
+  const render = ({ values, setValues, reset, field }) => {
+    ;(values.a: string)
     const a = field('a')
     ;(a.value: string)
     ;(a.bind.value: string)
@@ -269,6 +270,16 @@ const noop = () => null
     reset(() => {})
     // $FlowFixMe
     reset(1)
+
+    setValues({ a: 'new' })
+    setValues({ a: 'new', c: { value: 'new' } })
+    setValues(({ a }) => ({ a }))
+    // $FlowFixMe
+    setValues({ wrong: 'value' })
+    // $FlowFixMe
+    setValues(({ a }) => ({ d: a }))
+    // $FlowFixMe
+    setValues(({ d }) => ({ a: d }))
   }
   const onChange = data => {
     ;(data.a: string)
@@ -436,7 +447,15 @@ const noop = () => null
 
 /* Map */
 {
-  const render = ({ values, clear, reset, set, get, has, delete: deleteItem }) => {
+  const render = ({
+    values,
+    clear,
+    reset,
+    set,
+    get,
+    has,
+    delete: deleteItem,
+  }) => {
     // unsafe access do not consider keys
     ;(values.a: number)
     ;(values.b: number)
