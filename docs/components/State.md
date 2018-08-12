@@ -39,3 +39,7 @@ Your state
 **setState**  
 `(object | (state: object) => object) => void`  
 State setter. Is the [setState](https://facebook.github.io/react/docs/react-component.html#setstate) from React.Component.
+
+**resetState**  
+`() => void`  
+Reset value to initial
