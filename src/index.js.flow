@@ -5,7 +5,9 @@ import * as React from 'react'
 /* Utils */
 
 type Updater<T> = (updater: (T => T) | T) => void
+
 type Reset = (cb?: () => void) => void
+
 /* Active */
 
 type ActiveChange = (active: boolean) => void
