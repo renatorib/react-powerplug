@@ -376,7 +376,7 @@ const noop = () => null
 
 /* Set */
 {
-  const render = ({ values, add, clear, remove, has }) => {
+  const render = ({ values, add, clear, remove, has, reset }) => {
     ;(values: $ReadOnlyArray<number | string>)
     add(0)
     add('')
@@ -393,6 +393,11 @@ const noop = () => null
     remove(true)
     // $FlowFixMe
     ;(has(true): boolean)
+
+    reset()
+    reset(() => {})
+    // $FlowFixMe
+    reset(1)
     return null
   }
   const onChange = values => {

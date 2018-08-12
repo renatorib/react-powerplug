@@ -5,7 +5,9 @@ import { lastCallArg } from './utils'
 
 test('<Set />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
-  TestRenderer.create(<Set initial={[1, 2, 3, 1, 3]} render={renderFn} />)
+  const testRenderer = TestRenderer.create(
+    <Set initial={[1, 2, 3, 1, 3]} render={renderFn} />
+  )
 
   expect(renderFn).toBeCalledTimes(1)
 
@@ -33,6 +35,12 @@ test('<Set />', () => {
   expect(lastCallArg(renderFn).has(3)).toBe(false)
   expect(lastCallArg(renderFn).has(4)).toBe(false)
   expect(renderFn).lastCalledWith(expect.objectContaining({ values: [] }))
+
+  testRenderer.update(<Set initial={[2]} render={renderFn} />)
+  expect(renderFn).lastCalledWith(expect.objectContaining({ values: [] }))
+
+  lastCallArg(renderFn).reset()
+  expect(renderFn).lastCalledWith(expect.objectContaining({ values: [2] }))
 })
 
 test('<Set onChange />', () => {
