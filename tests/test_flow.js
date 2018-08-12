@@ -324,7 +324,7 @@ const noop = () => null
 
 /* List */
 {
-  const render = ({ list, first, last, set, push, pull, sort }) => {
+  const render = ({ list, first, last, set, push, pull, sort, reset }) => {
     ;(list: $ReadOnlyArray<number>)
     ;(first(): string | number | void)
     ;(last(): string | number | void)
@@ -344,6 +344,11 @@ const noop = () => null
     pull((d: string) => true)
     //$FlowFixMe
     sort((a: string, b: string) => -1)
+
+    reset()
+    reset(() => {})
+    //$FlowFixMe
+    reset(1)
   }
   const onChange = list => {
     ;(list: $ReadOnlyArray<number>)

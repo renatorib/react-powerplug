@@ -146,6 +146,7 @@ type ListRender<T> = ({|
   push: (...values: $ReadOnlyArray<T>) => void,
   pull: (predicate: (T) => boolean) => void,
   sort: (compare: (a: T, b: T) => -1 | 0 | 1) => void,
+  reset: (cb?: () => void) => void,
 |}) => React.Node
 
 type ListProps<T> =
