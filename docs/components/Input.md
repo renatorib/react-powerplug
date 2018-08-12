@@ -46,3 +46,7 @@ Just add water™ object with onChange and value. So you can in a practical way 
 ```jsx
 <input {...bind} />
 ```
+
+**reset**  
+`() => void`  
+Reset value to initial

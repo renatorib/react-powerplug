@@ -53,7 +53,7 @@ const noop = () => null
 
 /* Input */
 {
-  const render = ({ value, set, bind }) => {
+  const render = ({ value, set, bind, reset }) => {
     ;(value: string)
     set('')
     ;(bind.value: string)
@@ -66,6 +66,11 @@ const noop = () => null
     ;(bind.value: number)
     // $FlowFixMe
     ;(bind.onChange: number)
+
+    reset()
+    reset(() => {})
+    // $FlowFixMe
+    reset(1)
     return null
   }
   const onChange = value => {

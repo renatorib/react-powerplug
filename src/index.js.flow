@@ -127,6 +127,7 @@ type InputChange = (value: string) => void
 type InputRender = ({|
   value: string,
   set: Updater<string>,
+  reset: Reset,
   bind: {| value: string, onChange: (SyntheticInputEvent<*>) => void |},
 |}) => React.Node
 
