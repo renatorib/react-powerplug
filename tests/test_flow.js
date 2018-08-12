@@ -416,7 +416,7 @@ const noop = () => null
 
 /* Map */
 {
-  const render = ({ values, set, over, get }) => {
+  const render = ({ values, set, over, get, reset }) => {
     ;(values.a: number)
     set('a', 0)
     over('a', (d: number) => d)
@@ -433,6 +433,11 @@ const noop = () => null
     over('a', () => '')
     // $FlowFixMe
     ;(get('a'): string)
+
+    reset()
+    reset(() => {})
+    // $FlowFixMe
+    reset(1)
     return null
   }
   const onChange = values => {

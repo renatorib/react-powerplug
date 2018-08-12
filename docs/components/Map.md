@@ -57,3 +57,7 @@ After applying function, the shape of your state stays the same.
 **get**  
 `(key: string) => value: any`  
 Get assigned `value` from `key`
+
+**reset**  
+`() => void`  
+Reset value to initial
