@@ -505,7 +505,7 @@ const noop = () => null
 
 /* Toggle */
 {
-  const render = ({ on, toggle, set }) => {
+  const render = ({ on, toggle, set, reset }) => {
     ;(on: boolean)
     toggle()
     set(true)
@@ -516,6 +516,11 @@ const noop = () => null
     toggle(true)
     // $FlowFixMe
     set(0)
+
+    reset()
+    reset(() => {})
+    // $FlowFixMe
+    reset(1)
     return null
   }
   const onChange = on => {

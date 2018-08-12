@@ -4,11 +4,12 @@ import renderProps from '../utils/renderProps'
 
 const Toggle = ({ initial = false, onChange, ...props }) => (
   <Value initial={initial} onChange={onChange}>
-    {({ value, set }) =>
+    {({ value, set, reset }) =>
       renderProps(props, {
         on: value,
         toggle: () => set(on => !on),
         set: value => set(value),
+        reset,
       })
     }
   </Value>
