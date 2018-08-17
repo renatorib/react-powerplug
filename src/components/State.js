@@ -8,9 +8,13 @@ const State = ({ initial = {}, onChange, ...props }) => (
       renderProps(props, {
         state: value,
         setState: (updater, cb) =>
-          typeof updater === 'function'
-            ? set(prev => ({ ...prev, ...updater(prev) }), cb)
-            : set({ ...value, ...updater }, cb),
+          set(
+            prev => ({
+              ...prev,
+              ...(typeof updater === 'function' ? updater(prev) : updater),
+            }),
+            cb
+          ),
         resetState: reset,
       })
     }

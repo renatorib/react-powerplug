@@ -83,6 +83,27 @@ test('<Form />', () => {
   )
 })
 
+test('Form setValues', () => {
+  const renderFn = jest.fn().mockReturnValue(null)
+  TestRenderer.create(
+    <Form initial={{ prop1: 1, prop2: 2 }} render={renderFn} />
+  )
+
+  expect(lastCallArg(renderFn).values).toEqual({ prop1: 1, prop2: 2 })
+
+  lastCallArg(renderFn).setValues({ prop1: 10 })
+
+  expect(lastCallArg(renderFn).values).toEqual({ prop1: 10, prop2: 2 })
+
+  lastCallArg(renderFn).setValues({ prop1: 100, prop2: 20, prop3: 3 })
+
+  expect(lastCallArg(renderFn).values).toEqual({
+    prop1: 100,
+    prop2: 20,
+    prop3: 3,
+  })
+})
+
 test('<Form onChange />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
   const onChangeFn = jest.fn()
