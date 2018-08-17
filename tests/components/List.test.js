@@ -5,7 +5,9 @@ import { lastCallArg } from './utils'
 
 test('<List />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
-  TestRenderer.create(<List initial={[1]} render={renderFn} />)
+  const testRenderer = TestRenderer.create(
+    <List initial={[1]} render={renderFn} />
+  )
 
   expect(renderFn).toBeCalledTimes(1)
   expect(renderFn).lastCalledWith(expect.objectContaining({ list: [1] }))
@@ -43,6 +45,12 @@ test('<List />', () => {
   // support pushing many array
   lastCallArg(renderFn).push(1, 2, 3)
   expect(renderFn).lastCalledWith(expect.objectContaining({ list: [1, 2, 3] }))
+
+  testRenderer.update(<List initial={[1]} render={renderFn} />)
+  expect(renderFn).lastCalledWith(expect.objectContaining({ list: [1, 2, 3] }))
+
+  lastCallArg(renderFn).reset()
+  expect(renderFn).lastCalledWith(expect.objectContaining({ list: [1] }))
 })
 
 test('<List onChange />', () => {

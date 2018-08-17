@@ -6,6 +6,8 @@ import * as React from 'react'
 
 type Updater<T> = (updater: (T => T) | T) => void
 
+type Reset = (cb?: () => void) => void
+
 /* Active */
 
 type ActiveChange = (active: boolean) => void
@@ -34,6 +36,7 @@ type CounterRender = ({|
   dec: () => void,
   incBy: (step: number) => void,
   decBy: (step: number) => void,
+  reset: Reset,
 |}) => React.Node
 
 declare export var Counter: React.ComponentType<
@@ -82,6 +85,7 @@ type FormChange<T> = T => void
 
 type FormRender<T> = ({|
   values: T,
+  reset: Reset,
   field: <K: $Keys<T>>(
     key: K
   ) => {|
@@ -125,6 +129,7 @@ type InputChange = (value: string) => void
 type InputRender = ({|
   value: string,
   set: Updater<string>,
+  reset: Reset,
   bind: {| value: string, onChange: (SyntheticInputEvent<*>) => void |},
 |}) => React.Node
 
@@ -145,6 +150,7 @@ type ListRender<T> = ({|
   push: (...values: $ReadOnlyArray<T>) => void,
   pull: (predicate: (T) => boolean) => void,
   sort: (compare: (a: T, b: T) => -1 | 0 | 1) => void,
+  reset: Reset,
 |}) => React.Node
 
 type ListProps<T> =
@@ -171,6 +177,7 @@ type SetRender<T> = ({|
   clear: () => void,
   remove: (key: T) => void,
   has: (key: T) => boolean,
+  reset: Reset,
 |}) => React.Node
 
 type SetProps<T> =
@@ -196,6 +203,7 @@ type MapRender<T, K = $Keys<T>> = ({|
   set: (key: K, value: $ElementType<T, K>) => void,
   over: (key: K, fn: ($ElementType<T, K>) => $ElementType<T, K>) => void,
   get: (key: K) => $ElementType<T, K>,
+  reset: Reset,
 |}) => React.Node
 
 type MapProps<T> =
@@ -211,6 +219,7 @@ type StateChange<T> = T => void
 type StateRender<T> = ({|
   state: T,
   setState: (updater: (T => $Shape<T>) | $Shape<T>, cb?: () => void) => void,
+  resetState: Reset,
 |}) => React.Node
 
 type StateProps<T> =
@@ -241,6 +250,7 @@ type ToggleRender = ({|
   on: boolean,
   toggle: () => void,
   set: Updater<boolean>,
+  reset: Reset,
 |}) => React.Node
 
 declare export var Toggle: React.ComponentType<
@@ -269,6 +279,7 @@ type ValueChange<T> = (value: T) => void
 type ValueRender<T> = ({|
   value: T,
   set: Updater<T>,
+  reset: Reset,
 |}) => React.Node
 
 type ValueProps<T> =

@@ -10,13 +10,14 @@ const addUnique = (arr, item) => (hasItem(arr, item) ? arr : [...arr, item])
 
 const Set = ({ initial = [], onChange, ...props }) => (
   <Value initial={unique(initial)} onChange={onChange}>
-    {({ value, set }) =>
+    {({ value, set, reset }) =>
       renderProps(props, {
         values: value,
         add: key => set(values => addUnique(values, key)),
         clear: () => set([]),
         remove: key => set(values => removeItem(values, key)),
         has: key => hasItem(value, key),
+        reset,
       })
     }
   </Value>

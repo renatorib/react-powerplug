@@ -6,7 +6,7 @@ const add = diff => value => value + diff
 
 const Counter = ({ initial = 0, onChange, ...props }) => (
   <Value initial={initial} onChange={onChange}>
-    {({ value, set }) =>
+    {({ value, set, reset }) =>
       renderProps(props, {
         count: value,
         inc: () => set(add(1)),
@@ -14,6 +14,7 @@ const Counter = ({ initial = 0, onChange, ...props }) => (
         incBy: value => set(add(value)),
         decBy: value => set(add(-value)),
         set: value => set(value),
+        reset,
       })
     }
   </Value>

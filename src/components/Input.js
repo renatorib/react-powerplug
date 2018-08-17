@@ -4,10 +4,11 @@ import renderProps from '../utils/renderProps'
 
 const Input = ({ initial = '', onChange, ...props }) => (
   <Value initial={initial} onChange={onChange}>
-    {({ value, set }) =>
+    {({ value, set, reset }) =>
       renderProps(props, {
         value,
         set: value => set(value),
+        reset,
         bind: {
           value,
           onChange: event => set(event.target.value),

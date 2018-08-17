@@ -53,7 +53,7 @@ const noop = () => null
 
 /* Input */
 {
-  const render = ({ value, set, bind }) => {
+  const render = ({ value, set, bind, reset }) => {
     ;(value: string)
     set('')
     ;(bind.value: string)
@@ -66,6 +66,11 @@ const noop = () => null
     ;(bind.value: number)
     // $FlowFixMe
     ;(bind.onChange: number)
+
+    reset()
+    reset(() => {})
+    // $FlowFixMe
+    reset(1)
     return null
   }
   const onChange = value => {
@@ -115,7 +120,7 @@ const noop = () => null
 
 /* Counter */
 {
-  const render = ({ count, inc, dec, incBy, decBy }) => {
+  const render = ({ count, inc, dec, incBy, decBy, reset }) => {
     ;(count: number)
     inc()
     dec()
@@ -131,6 +136,12 @@ const noop = () => null
     incBy('')
     // $FlowFixMe
     decBy('')
+
+    reset()
+    reset(() => {})
+    // $FlowFixMe
+    reset(1)
+
     return null
   }
   const onChange = count => {
@@ -220,7 +231,7 @@ const noop = () => null
 {
   const isNumber = (value: number): number => value
 
-  const render = ({ field }) => {
+  const render = ({ field, reset }) => {
     const a = field('a')
     ;(a.value: string)
     ;(a.bind.value: string)
@@ -253,6 +264,11 @@ const noop = () => null
 
     // $FlowFixMe
     const d = field('d')
+
+    reset()
+    reset(() => {})
+    // $FlowFixMe
+    reset(1)
   }
   const onChange = data => {
     ;(data.a: string)
@@ -318,7 +334,7 @@ const noop = () => null
 
 /* List */
 {
-  const render = ({ list, first, last, set, push, pull, sort }) => {
+  const render = ({ list, first, last, set, push, pull, sort, reset }) => {
     ;(list: $ReadOnlyArray<number>)
     ;(first(): string | number | void)
     ;(last(): string | number | void)
@@ -338,6 +354,11 @@ const noop = () => null
     pull((d: string) => true)
     //$FlowFixMe
     sort((a: string, b: string) => -1)
+
+    reset()
+    reset(() => {})
+    //$FlowFixMe
+    reset(1)
   }
   const onChange = list => {
     ;(list: $ReadOnlyArray<number>)
@@ -370,7 +391,7 @@ const noop = () => null
 
 /* Set */
 {
-  const render = ({ values, add, clear, remove, has }) => {
+  const render = ({ values, add, clear, remove, has, reset }) => {
     ;(values: $ReadOnlyArray<number | string>)
     add(0)
     add('')
@@ -387,6 +408,11 @@ const noop = () => null
     remove(true)
     // $FlowFixMe
     ;(has(true): boolean)
+
+    reset()
+    reset(() => {})
+    // $FlowFixMe
+    reset(1)
     return null
   }
   const onChange = values => {
@@ -410,7 +436,7 @@ const noop = () => null
 
 /* Map */
 {
-  const render = ({ values, set, over, get }) => {
+  const render = ({ values, set, over, get, reset }) => {
     ;(values.a: number)
     set('a', 0)
     over('a', (d: number) => d)
@@ -427,6 +453,11 @@ const noop = () => null
     over('a', () => '')
     // $FlowFixMe
     ;(get('a'): string)
+
+    reset()
+    reset(() => {})
+    // $FlowFixMe
+    reset(1)
     return null
   }
   const onChange = values => {
@@ -446,7 +477,7 @@ const noop = () => null
 
 /* State with inferred generic */
 {
-  const render = ({ state, setState }) => {
+  const render = ({ state, setState, resetState }) => {
     ;(state.v: number)
     setState({}, () => {})
     setState({ v: 1 })
@@ -458,6 +489,12 @@ const noop = () => null
     setState({ t: 1 })
     // $FlowFixMe
     setState({ n: 2 })
+
+    resetState()
+    resetState(() => {})
+
+    // $FlowFixMe
+    resetState(1)
   }
   const onChange = state => {
     ;(state.v: number)
@@ -499,7 +536,7 @@ const noop = () => null
 
 /* Toggle */
 {
-  const render = ({ on, toggle, set }) => {
+  const render = ({ on, toggle, set, reset }) => {
     ;(on: boolean)
     toggle()
     set(true)
@@ -510,6 +547,11 @@ const noop = () => null
     toggle(true)
     // $FlowFixMe
     set(0)
+
+    reset()
+    reset(() => {})
+    // $FlowFixMe
+    reset(1)
     return null
   }
   const onChange = on => {
@@ -561,7 +603,7 @@ const noop = () => null
 
 /* Value with inferred generic */
 {
-  const render = ({ value, set }) => {
+  const render = ({ value, set, reset }) => {
     ;(value: number | string | boolean)
     // $FlowFixMe
     ;(value: number)
@@ -570,6 +612,12 @@ const noop = () => null
     // $FlowFixMe
     ;(value: boolean)
     set(true)
+
+    reset()
+    reset(() => {})
+
+    // $FlowFixMe
+    reset(1)
   }
   const onChange = value => {
     ;(value: number | string)

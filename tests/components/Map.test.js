@@ -5,7 +5,9 @@ import { lastCallArg } from './utils'
 
 test('<Map />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
-  TestRenderer.create(<Map initial={{ a: 0 }} render={renderFn} />)
+  const testRenderer = TestRenderer.create(
+    <Map initial={{ a: 0 }} render={renderFn} />
+  )
 
   expect(renderFn).toBeCalledTimes(1)
 
@@ -16,6 +18,12 @@ test('<Map />', () => {
 
   lastCallArg(renderFn).over('a', d => d + 10)
   expect(lastCallArg(renderFn).get('a')).toBe(11)
+
+  testRenderer.update(<Map initial={{ a: 100 }} render={renderFn} />)
+  expect(lastCallArg(renderFn).get('a')).toBe(11)
+
+  lastCallArg(renderFn).reset()
+  expect(lastCallArg(renderFn).get('a')).toBe(100)
 })
 
 test('<Map onChange />', () => {

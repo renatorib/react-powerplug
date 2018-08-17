@@ -6,7 +6,7 @@ const complement = fn => (...args) => !fn(...args)
 
 const List = ({ initial = [], onChange, ...props }) => (
   <Value initial={initial} onChange={onChange}>
-    {({ value, set }) =>
+    {({ value, set, reset }) =>
       renderProps(props, {
         list: value,
         first: () => value[0],
@@ -15,6 +15,7 @@ const List = ({ initial = [], onChange, ...props }) => (
         push: (...values) => set(list => [...list, ...values]),
         pull: predicate => set(list => list.filter(complement(predicate))),
         sort: compareFn => set(list => [...list].sort(compareFn)),
+        reset,
       })
     }
   </Value>
