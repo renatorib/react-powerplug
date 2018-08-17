@@ -4,13 +4,19 @@ import renderProps from '../utils/renderProps'
 
 const Map = ({ initial = {}, onChange, ...props }) => (
   <Value initial={{ ...initial }} onChange={onChange}>
-    {({ value, set, reset }) =>
+    {({ value: values, set, reset }) =>
       renderProps(props, {
-        values: value,
-        set: (key, value) => set(prev => ({ ...prev, [key]: value })),
-        over: (key, fn) => set(prev => ({ ...prev, [key]: fn(prev[key]) })),
-        get: key => value[key],
+        values,
+        clear: () => set({}),
         reset,
+        set: (key, updater) =>
+          set(prev => ({
+            ...prev,
+            [key]: typeof updater === 'function' ? updater(prev[key]) : updater,
+          })),
+        get: key => values[key],
+        has: key => values[key] != null,
+        delete: key => set(({ [key]: deleted, ...prev }) => prev),
       })
     }
   </Value>

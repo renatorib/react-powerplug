@@ -140,14 +140,16 @@ declare export var Input: React.ComponentType<
 
 /* List */
 
-type ListChange<T> = (list: $ReadOnlyArray<T>) => void
+type ListValues<T> = $ReadOnlyArray<T>
+
+type ListChange<T> = (list: ListValues<T>) => void
 
 type ListRender<T> = ({|
-  list: $ReadOnlyArray<T>,
+  list: ListValues<T>,
   first: () => T | void,
   last: () => T | void,
-  set: Updater<$ReadOnlyArray<T>>,
-  push: (...values: $ReadOnlyArray<T>) => void,
+  set: Updater<ListValues<T>>,
+  push: (...values: ListValues<T>) => void,
   pull: (predicate: (T) => boolean) => void,
   sort: (compare: (a: T, b: T) => -1 | 0 | 1) => void,
   reset: Reset,
@@ -155,24 +157,26 @@ type ListRender<T> = ({|
 
 type ListProps<T> =
   | {|
-      initial: $ReadOnlyArray<T>,
+      initial: ListValues<T>,
       onChange?: ListChange<T>,
       render: ListRender<T>,
     |}
   | {|
-      initial: $ReadOnlyArray<T>,
+      initial: ListValues<T>,
       onChange?: ListChange<T>,
       children: ListRender<T>,
     |}
 
-declare export class List<T> extends React.Component<ListProps<T>, *> {}
+declare export class List<T> extends React.Component<ListProps<T>> {}
 
 /* Set */
 
-type SetChange<T> = (values: $ReadOnlyArray<T>) => void
+type SetValues<T> = $ReadOnlyArray<T>
+
+type SetChange<T> = (values: SetValues<T>) => void
 
 type SetRender<T> = ({|
-  values: $ReadOnlyArray<T>,
+  values: SetValues<T>,
   add: (key: T) => void,
   clear: () => void,
   remove: (key: T) => void,
@@ -181,36 +185,32 @@ type SetRender<T> = ({|
 |}) => React.Node
 
 type SetProps<T> =
-  | {|
-      initial: $ReadOnlyArray<T>,
-      onChange?: SetChange<T>,
-      render: SetRender<T>,
-    |}
-  | {|
-      initial: $ReadOnlyArray<T>,
-      onChange?: SetChange<T>,
-      children: SetRender<T>,
-    |}
+  | {| initial: SetValues<T>, onChange?: SetChange<T>, render: SetRender<T> |}
+  | {| initial: SetValues<T>, onChange?: SetChange<T>, children: SetRender<T> |}
 
 declare export class Set<T> extends React.Component<SetProps<T>> {}
 
 /* Map */
 
-type MapChange<T> = T => void
+type MapValues<T> = { [key: string]: T }
 
-type MapRender<T, K = $Keys<T>> = ({|
-  values: T,
-  set: (key: K, value: $ElementType<T, K>) => void,
-  over: (key: K, fn: ($ElementType<T, K>) => $ElementType<T, K>) => void,
-  get: (key: K) => $ElementType<T, K>,
+type MapChange<T> = (MapValues<T>) => void
+
+type MapRender<T> = ({|
+  values: MapValues<T>,
+  clear: () => void,
   reset: Reset,
+  set: (key: string, value: (T => T) | T) => void,
+  get: (key: string) => T,
+  has: (key: string) => boolean,
+  delete: (key: string) => void,
 |}) => React.Node
 
 type MapProps<T> =
-  | {| initial: T, onChange?: MapChange<T>, render: MapRender<T> |}
-  | {| initial: T, onChange?: MapChange<T>, children: MapRender<T> |}
+  | {| initial: MapValues<T>, onChange?: MapChange<T>, render: MapRender<T> |}
+  | {| initial: MapValues<T>, onChange?: MapChange<T>, children: MapRender<T> |}
 
-declare export class Map<T: Object> extends React.Component<MapProps<T>, *> {}
+declare export class Map<T> extends React.Component<MapProps<T>> {}
 
 /* State */
 

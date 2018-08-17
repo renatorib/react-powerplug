@@ -17,6 +17,7 @@
     "jest": true
   },
   "rules": {
+    "no-unused-vars": ["error", { "ignoreRestSiblings": true }],
     "valid-jsdoc": "error",
     "react/prop-types": "off",
     "react/jsx-uses-react": "warn",
