@@ -1,4 +1,0 @@
-- add `touched` state with formik rules
-- remove `over` from Map and replace with updater
-`set` to be consistent with another components
-- reuse `setField` helper in `Map` and `Form` components
