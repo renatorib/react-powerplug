@@ -4,9 +4,14 @@ import * as React from 'react'
 
 /* Utils */
 
+export type SharedProps = {
+  reset(cb?: () => void): void
+  resetState(): void
+}
+
 export type Updater<T> = (value: T | ((updater: T) => T)) => void
 export type Callback<T> = (value: T) => void
-export type RenderFn<T> = (value: T) => React.ReactNode
+export type RenderFn<T> = (value: T & SharedProps) => React.ReactNode
 
 /* Active */
 
@@ -86,14 +91,15 @@ export type FormChange<T> = Callback<T>
 
 export type FormRender<T, K extends keyof T> = RenderFn<{
   values: T
-  input: (
+  setValues: (values: T | ((a: T) => T)) => void
+  field: (
     key: K
   ) => {
-    value: string
-    set: Updater<string>
+    value: T[K]
+    set: Updater<T[K]>
     bind: {
-      value: string
-      onChange: (argument: React.ChangeEvent<any>) => void
+      value: T[K]
+      onChange: (argument: React.ChangeEvent<T[K]> | T[K]) => void
     }
   }
 }>
@@ -196,13 +202,16 @@ export class Set<T> extends React.Component<SetProps<T>> {}
 
 /* Map */
 
+export type MapValues<T> = { [key: string]: T }
 export type MapChange<T> = Callback<T>
 
-export type MapRender<T, K extends keyof T> = RenderFn<{
-  values: T
-  set: (key: K, value: T[K]) => void
-  over: (key: K, fn: (value: T[K]) => T[K]) => void
-  get: (key: K) => T[K]
+export type MapRender<T, K = string> = RenderFn<{
+  values: MapValues<T>
+  set: (key: K, fn: T | ((value: T) => T)) => void
+  get: (key: K) => T
+  has: (key: K) => boolean
+  delete: (key: K) => void
+  clear: () => void
 }>
 
 export type MapProps<T, K extends keyof T> =
