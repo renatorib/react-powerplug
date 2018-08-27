@@ -6,28 +6,23 @@ const isObject = value => typeof value === 'object' && value
 
 const Input = ({ initial = '', onChange, ...props }) => (
   <Value initial={initial} onChange={onChange}>
-    {({ value, set, reset }) => {
-      const setValue = updater =>
-        typeof updater === 'function'
-          ? set(prev => updater(prev))
-          : set(updater)
-
-      return renderProps(props, {
+    {({ value, set, reset }) =>
+      renderProps(props, {
         value,
         reset,
-        set: setValue,
+        set,
         bind: {
           value,
           onChange: event => {
             if (isObject(event) && isObject(event.target)) {
-              setValue(event.target.value)
+              set(event.target.value)
             } else {
-              setValue(event)
+              set(event)
             }
           },
         },
       })
-    }}
+    }
   </Value>
 )
 
