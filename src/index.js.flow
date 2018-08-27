@@ -125,19 +125,20 @@ declare export var Hover: React.ComponentType<
 
 /* Field */
 
-type FieldChange = (value: string) => void
+type FieldChange<T> = (value: T) => void
 
-type FieldRender = ({|
-  value: string,
-  set: Updater<string>,
+type FieldRender<T> = ({|
+  value: T,
+  set: Updater<T>,
   reset: Reset,
-  bind: {| value: string, onChange: (SyntheticFieldEvent<*>) => void |},
+  bind: {| value: T, onChange: (SyntheticFieldEvent<*>) => void |},
 |}) => React.Node
 
-declare export var Field: React.ComponentType<
-  | {| initial?: string, onChange?: FieldChange, render: FieldRender |}
-  | {| initial?: string, onChange?: FieldChange, children: FieldRender |}
->
+type FieldProps<T> =
+  | {| initial?: T, onChange?: FieldChange<T>, render: FieldRender<T> |}
+  | {| initial?: T, onChange?: FieldChange<T>, children: FieldRender<T> |}
+
+declare export class Field<T> extends React.Component<FieldProps<T>> {}
 
 /* List */
 
