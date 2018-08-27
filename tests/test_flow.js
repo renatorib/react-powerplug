@@ -53,7 +53,7 @@ const noop = () => null
 
 /* Input */
 {
-  const render = ({ value, set, bind }) => {
+  const render = ({ value, set, bind, reset }) => {
     ;(value: string)
     set('')
     ;(bind.value: string)
@@ -66,6 +66,11 @@ const noop = () => null
     ;(bind.value: number)
     // $FlowFixMe
     ;(bind.onChange: number)
+
+    reset()
+    reset(() => {})
+    // $FlowFixMe
+    reset(1)
     return null
   }
   const onChange = value => {
@@ -115,7 +120,7 @@ const noop = () => null
 
 /* Counter */
 {
-  const render = ({ count, inc, dec, incBy, decBy }) => {
+  const render = ({ count, inc, dec, incBy, decBy, reset }) => {
     ;(count: number)
     inc()
     dec()
@@ -131,6 +136,12 @@ const noop = () => null
     incBy('')
     // $FlowFixMe
     decBy('')
+
+    reset()
+    reset(() => {})
+    // $FlowFixMe
+    reset(1)
+
     return null
   }
   const onChange = count => {
@@ -218,33 +229,80 @@ const noop = () => null
 
 /* Form */
 {
-  const render = ({ input }) => {
-    const name = input('a')
-    ;(name.value: string)
-    name.set('')
-    ;(name.bind.value: string)
-    ;(name.bind.onChange: Function)
+  const isNumber = (value: number): number => value
+
+  const render = ({ values, setValues, reset, field }) => {
+    ;(values.a: string)
+    const a = field('a')
+    ;(a.value: string)
+    ;(a.bind.value: string)
+    a.set('')
+    a.bind.onChange('')
+    a.bind.onChange({ target: { value: '' } })
     // $FlowFixMe
-    input('b')
+    ;(a.value: boolean)
     // $FlowFixMe
-    ;(name.value: number)
+    ;(a.bind.value: boolean)
+    a.set((value: string) => value)
     // $FlowFixMe
-    name.setValue(0)
+    a.set((value: boolean) => value)
     // $FlowFixMe
-    ;(name.bind.value: number)
+    a.set(true)
+    // TODO should fail
+    a.bind.onChange(true)
+    // TODO should fail
+    a.bind.onChange({ target: { value: true } })
+
+    const b = field('b')
+    ;(b.value: number)
     // $FlowFixMe
-    ;(name.bind.onChange: number)
+    ;(b.value: boolean)
+
+    const c = field('c')
+    ;(c.value: { value: string })
+    // $FlowFixMe
+    ;(c.value: { value: boolean })
+
+    // $FlowFixMe
+    const d = field('d')
+
+    reset()
+    reset(() => {})
+    // $FlowFixMe
+    reset(1)
+
+    setValues({ a: 'new' })
+    setValues({ a: 'new', c: { value: 'new' } })
+    setValues(({ a }) => ({ a }))
+    // $FlowFixMe
+    setValues({ wrong: 'value' })
+    // $FlowFixMe
+    setValues(({ a }) => ({ d: a }))
+    // $FlowFixMe
+    setValues(({ d }) => ({ a: d }))
   }
   const onChange = data => {
     ;(data.a: string)
-    // $FlowFixMe
-    ;(data.a: number)
+    ;(data.b: number)
+    ;(data.c: { value: string })
+    // $FlowFixMe value is string
+    ;(data.a: boolean)
+    // $FlowFixMe value is number
+    ;(data.b: boolean)
+    // $FlowFixMe value is object
+    ;(data.c: boolean)
+    // $FlowFixMe field does not exist
+    ;(data.d: boolean)
   }
   ;[
-    <Form initial={{ a: '' }} render={render} />,
-    <Form initial={{ a: '' }}>{render}</Form>,
-    <Form initial={{ a: '' }} onChange={onChange} render={noop} />,
-    <Form initial={{ a: '' }} onChange={onChange}>
+    <Form initial={{ a: '', b: 0, c: { value: '' } }} render={render} />,
+    <Form initial={{ a: '', b: 0, c: { value: '' } }}>{render}</Form>,
+    <Form
+      initial={{ a: '', b: 0, c: { value: '' } }}
+      onChange={onChange}
+      render={noop}
+    />,
+    <Form initial={{ a: '', b: 0, c: { value: '' } }} onChange={onChange}>
       {noop}
     </Form>,
     // $FlowFixMe
@@ -253,10 +311,6 @@ const noop = () => null
     <Form render={noop} />,
     // $FlowFixMe
     <Form>{noop}</Form>,
-    // $FlowFixMe
-    <Form initial={{ a: 0 }} render={noop} />,
-    // $FlowFixMe
-    <Form initial={{ a: 0 }}>{noop}</Form>,
   ]
 }
 
@@ -291,7 +345,7 @@ const noop = () => null
 
 /* List */
 {
-  const render = ({ list, first, last, set, push, pull, sort }) => {
+  const render = ({ list, first, last, set, push, pull, sort, reset }) => {
     ;(list: $ReadOnlyArray<number>)
     ;(first(): string | number | void)
     ;(last(): string | number | void)
@@ -311,6 +365,11 @@ const noop = () => null
     pull((d: string) => true)
     //$FlowFixMe
     sort((a: string, b: string) => -1)
+
+    reset()
+    reset(() => {})
+    //$FlowFixMe
+    reset(1)
   }
   const onChange = list => {
     ;(list: $ReadOnlyArray<number>)
@@ -343,7 +402,7 @@ const noop = () => null
 
 /* Set */
 {
-  const render = ({ values, add, clear, remove, has }) => {
+  const render = ({ values, add, clear, remove, has, reset }) => {
     ;(values: $ReadOnlyArray<number | string>)
     add(0)
     add('')
@@ -360,6 +419,11 @@ const noop = () => null
     remove(true)
     // $FlowFixMe
     ;(has(true): boolean)
+
+    reset()
+    reset(() => {})
+    // $FlowFixMe
+    reset(1)
     return null
   }
   const onChange = values => {
@@ -383,29 +447,52 @@ const noop = () => null
 
 /* Map */
 {
-  const render = ({ values, set, over, get }) => {
+  const render = ({
+    values,
+    clear,
+    reset,
+    set,
+    get,
+    has,
+    delete: deleteItem,
+  }) => {
+    // unsafe access do not consider keys
     ;(values.a: number)
-    set('a', 0)
-    over('a', (d: number) => d)
+    ;(values.b: number)
     ;(get('a'): number)
+    ;(get('b'): number)
     // $FlowFixMe
     ;(values.a: string)
-    // TODO should fail
-    set('a', '')
-    // $FlowFixMe
-    set('b', 0)
-    // $FlowFixMe
-    over('a', (d: string) => d)
-    // TODO should fail
-    over('a', () => '')
     // $FlowFixMe
     ;(get('a'): string)
+    set('a', 0)
+    set('a', (value: number) => 0)
+    // $FlowFixMe
+    set('a', '')
+    // $FlowFixMe
+    set('a', (value: string) => 0)
+    // $FlowFixMe
+    set('a', (value: number) => '')
+    ;(has('a'): boolean)
+    ;(has('b'): boolean)
+    // $FlowFixMe
+    ;(get('a'): string)
+
+    reset()
+    reset(() => {})
+    // $FlowFixMe
+    reset(1)
+    // $FlowFixMe
+    ;(has('a'): number)
+    deleteItem('a')
+    // $FlowFixMe
+    deleteItem(0)
     return null
   }
+
   const onChange = values => {
     ;(values.a: number)
-    // $FlowFixMe
-    ;(values.a: string)
+    ;(values.b: number)
   }
   ;[
     <Map initial={{ a: 0 }} render={render} />,
@@ -419,7 +506,7 @@ const noop = () => null
 
 /* State with inferred generic */
 {
-  const render = ({ state, setState }) => {
+  const render = ({ state, setState, resetState }) => {
     ;(state.v: number)
     setState({}, () => {})
     setState({ v: 1 })
@@ -431,6 +518,12 @@ const noop = () => null
     setState({ t: 1 })
     // $FlowFixMe
     setState({ n: 2 })
+
+    resetState()
+    resetState(() => {})
+
+    // $FlowFixMe
+    resetState(1)
   }
   const onChange = state => {
     ;(state.v: number)
@@ -472,7 +565,7 @@ const noop = () => null
 
 /* Toggle */
 {
-  const render = ({ on, toggle, set }) => {
+  const render = ({ on, toggle, set, reset }) => {
     ;(on: boolean)
     toggle()
     set(true)
@@ -483,6 +576,11 @@ const noop = () => null
     toggle(true)
     // $FlowFixMe
     set(0)
+
+    reset()
+    reset(() => {})
+    // $FlowFixMe
+    reset(1)
     return null
   }
   const onChange = on => {
@@ -534,7 +632,7 @@ const noop = () => null
 
 /* Value with inferred generic */
 {
-  const render = ({ value, set }) => {
+  const render = ({ value, set, reset }) => {
     ;(value: number | string | boolean)
     // $FlowFixMe
     ;(value: number)
@@ -543,6 +641,12 @@ const noop = () => null
     // $FlowFixMe
     ;(value: boolean)
     set(true)
+
+    reset()
+    reset(() => {})
+
+    // $FlowFixMe
+    reset(1)
   }
   const onChange = value => {
     ;(value: number | string)

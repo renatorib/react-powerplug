@@ -21,11 +21,15 @@ class Value extends Component {
       }
     )
   }
+  _reset = (cb = noop) => {
+    this._set(this.props.initial, cb)
+  }
 
   render() {
     return renderProps(this.props, {
       value: this.state.value,
       set: this._set,
+      reset: this._reset,
     })
   }
 }

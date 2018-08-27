@@ -6,6 +6,8 @@ import * as React from 'react'
 
 type Updater<T> = (updater: (T => T) | T) => void
 
+type Reset = (cb?: () => void) => void
+
 /* Active */
 
 type ActiveChange = (active: boolean) => void
@@ -34,6 +36,7 @@ type CounterRender = ({|
   dec: () => void,
   incBy: (step: number) => void,
   decBy: (step: number) => void,
+  reset: Reset,
 |}) => React.Node
 
 declare export var Counter: React.ComponentType<
@@ -82,14 +85,18 @@ type FormChange<T> = T => void
 
 type FormRender<T> = ({|
   values: T,
-  input: <K: $Keys<T>>(
+  setValues: ((T => $Shape<T>) | $Shape<T>) => void,
+  reset: Reset,
+  field: <K: $Keys<T>>(
     key: K
   ) => {|
-    value: string,
-    set: Updater<string>,
+    value: $ElementType<T, K>,
+    set: Updater<$ElementType<T, K>>,
     bind: {|
-      value: string,
-      onChange: (SyntheticInputEvent<*>) => void,
+      value: $ElementType<T, K>,
+      onChange: (
+        event: { target: { value: $ElementType<T, K> } } | $ElementType<T, K>
+      ) => void,
     |},
   |},
 |}) => React.Node
@@ -98,9 +105,8 @@ type FormProps<T> =
   | {| initial: T, onChange?: FormChange<T>, render: FormRender<T> |}
   | {| initial: T, onChange?: FormChange<T>, children: FormRender<T> |}
 
-declare export class Form<T: { [string]: string }> extends React.Component<
-  FormProps<T>,
-  *
+declare export class Form<T: { +[string]: mixed }> extends React.Component<
+  FormProps<T>
 > {}
 
 /* Hover */
@@ -124,6 +130,7 @@ type InputChange = (value: string) => void
 type InputRender = ({|
   value: string,
   set: Updater<string>,
+  reset: Reset,
   bind: {| value: string, onChange: (SyntheticInputEvent<*>) => void |},
 |}) => React.Node
 
@@ -134,74 +141,77 @@ declare export var Input: React.ComponentType<
 
 /* List */
 
-type ListChange<T> = (list: $ReadOnlyArray<T>) => void
+type ListValues<T> = $ReadOnlyArray<T>
+
+type ListChange<T> = (list: ListValues<T>) => void
 
 type ListRender<T> = ({|
-  list: $ReadOnlyArray<T>,
+  list: ListValues<T>,
   first: () => T | void,
   last: () => T | void,
-  set: Updater<$ReadOnlyArray<T>>,
-  push: (...values: $ReadOnlyArray<T>) => void,
+  set: Updater<ListValues<T>>,
+  push: (...values: ListValues<T>) => void,
   pull: (predicate: (T) => boolean) => void,
   sort: (compare: (a: T, b: T) => -1 | 0 | 1) => void,
+  reset: Reset,
 |}) => React.Node
 
 type ListProps<T> =
   | {|
-      initial: $ReadOnlyArray<T>,
+      initial: ListValues<T>,
       onChange?: ListChange<T>,
       render: ListRender<T>,
     |}
   | {|
-      initial: $ReadOnlyArray<T>,
+      initial: ListValues<T>,
       onChange?: ListChange<T>,
       children: ListRender<T>,
     |}
 
-declare export class List<T> extends React.Component<ListProps<T>, *> {}
+declare export class List<T> extends React.Component<ListProps<T>> {}
 
 /* Set */
 
-type SetChange<T> = (values: $ReadOnlyArray<T>) => void
+type SetValues<T> = $ReadOnlyArray<T>
+
+type SetChange<T> = (values: SetValues<T>) => void
 
 type SetRender<T> = ({|
-  values: $ReadOnlyArray<T>,
+  values: SetValues<T>,
   add: (key: T) => void,
   clear: () => void,
   remove: (key: T) => void,
   has: (key: T) => boolean,
+  reset: Reset,
 |}) => React.Node
 
 type SetProps<T> =
-  | {|
-      initial: $ReadOnlyArray<T>,
-      onChange?: SetChange<T>,
-      render: SetRender<T>,
-    |}
-  | {|
-      initial: $ReadOnlyArray<T>,
-      onChange?: SetChange<T>,
-      children: SetRender<T>,
-    |}
+  | {| initial: SetValues<T>, onChange?: SetChange<T>, render: SetRender<T> |}
+  | {| initial: SetValues<T>, onChange?: SetChange<T>, children: SetRender<T> |}
 
 declare export class Set<T> extends React.Component<SetProps<T>> {}
 
 /* Map */
 
-type MapChange<T> = T => void
+type MapValues<T> = { [key: string]: T }
 
-type MapRender<T, K = $Keys<T>> = ({|
-  values: T,
-  set: (key: K, value: $ElementType<T, K>) => void,
-  over: (key: K, fn: ($ElementType<T, K>) => $ElementType<T, K>) => void,
-  get: (key: K) => $ElementType<T, K>,
+type MapChange<T> = (MapValues<T>) => void
+
+type MapRender<T> = ({|
+  values: MapValues<T>,
+  clear: () => void,
+  reset: Reset,
+  set: (key: string, value: (T => T) | T) => void,
+  get: (key: string) => T,
+  has: (key: string) => boolean,
+  delete: (key: string) => void,
 |}) => React.Node
 
 type MapProps<T> =
-  | {| initial: T, onChange?: MapChange<T>, render: MapRender<T> |}
-  | {| initial: T, onChange?: MapChange<T>, children: MapRender<T> |}
+  | {| initial: MapValues<T>, onChange?: MapChange<T>, render: MapRender<T> |}
+  | {| initial: MapValues<T>, onChange?: MapChange<T>, children: MapRender<T> |}
 
-declare export class Map<T: Object> extends React.Component<MapProps<T>, *> {}
+declare export class Map<T> extends React.Component<MapProps<T>> {}
 
 /* State */
 
@@ -210,6 +220,7 @@ type StateChange<T> = T => void
 type StateRender<T> = ({|
   state: T,
   setState: (updater: (T => $Shape<T>) | $Shape<T>, cb?: () => void) => void,
+  resetState: Reset,
 |}) => React.Node
 
 type StateProps<T> =
@@ -240,6 +251,7 @@ type ToggleRender = ({|
   on: boolean,
   toggle: () => void,
   set: Updater<boolean>,
+  reset: Reset,
 |}) => React.Node
 
 declare export var Toggle: React.ComponentType<
@@ -268,6 +280,7 @@ type ValueChange<T> = (value: T) => void
 type ValueRender<T> = ({|
   value: T,
   set: Updater<T>,
+  reset: Reset,
 |}) => React.Node
 
 type ValueProps<T> =

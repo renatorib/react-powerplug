@@ -1,0 +1,31 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "import",
+    "react",
+    "flowtype"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/recommended",
+    "plugin:react/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "rules": {
+    "no-unused-vars": ["error", { "ignoreRestSiblings": true }],
+    "valid-jsdoc": "error",
+    "react/prop-types": "off",
+    "react/jsx-uses-react": "warn",
+    "react/jsx-no-undef": "error",
+    "import/no-unresolved": ["error", { "ignore": ["^react$"] }],
+    "import/unambiguous": "off",
+    "react/jsx-key": "off",
+    "flowtype/define-flow-type": "error",
+    "flowtype/use-flow-type": "error"
+  }
+}

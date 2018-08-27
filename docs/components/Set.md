@@ -22,7 +22,7 @@ import { Set } from 'react-powerplug'
 ## Set Props
 
 **initial = []** _(optional)_  
-Specifies the initial values state, must be an array. Duplicate items will be removed. 
+Specifies the initial values state, must be an array. Duplicate items will be removed.
 By default, the initial values state is an empty array.
 
 **onChange** _(optional)_  
@@ -51,3 +51,7 @@ Remove a `value` from your values array
 **has**  
 `(value: any) => boolean`  
 True if values array includes a `value`
+
+**reset**  
+`() => void`  
+Reset value to initial

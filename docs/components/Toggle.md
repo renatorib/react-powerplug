@@ -36,3 +36,7 @@ Toggle your `on` state value
 **set**  
 `(value: boolean) => void`  
 Arbitrary set a value to `on` state
+
+**reset**  
+`() => void`  
+Reset value to initial
