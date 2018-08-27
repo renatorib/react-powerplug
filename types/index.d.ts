@@ -127,18 +127,19 @@ export const Hover: React.ComponentType<
 
 /* Field */
 
-export type FieldChange = Callback<string>
+export type FieldChange<T> = Callback<T>
 
-export type FieldRender = RenderFn<{
-  value: string
-  set: Updater<string>
-  bind: { value: string; onChange: (event: React.ChangeEvent<any>) => void }
+export type FieldRender<T> = RenderFn<{
+  value: T
+  set: Updater<T>
+  bind: { value: T; onChange: (event: React.ChangeEvent<any>) => void }
 }>
 
-export const Field: React.ComponentType<
-  | { initial?: string; onChange?: FieldChange; render: FieldRender }
-  | { initial?: string; onChange?: FieldChange; children: FieldRender }
->
+export type FieldProps<T> =
+  | { initial?: T; onChange?: FieldChange<T>; render: FieldRender<T> }
+  | { initial?: T; onChange?: FieldChange<T>; children: FieldRender<T> }
+
+export class Field<T> extends React.Component<FieldProps<T>> {}
 
 /* List */
 
