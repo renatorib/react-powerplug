@@ -125,19 +125,19 @@ export const Hover: React.ComponentType<
   | { onChange?: HoverChange; children: HoverRender }
 >
 
-/* Input */
+/* Field */
 
-export type InputChange = Callback<string>
+export type FieldChange = Callback<string>
 
-export type InputRender = RenderFn<{
+export type FieldRender = RenderFn<{
   value: string
   set: Updater<string>
   bind: { value: string; onChange: (event: React.ChangeEvent<any>) => void }
 }>
 
-export const Input: React.ComponentType<
-  | { initial?: string; onChange?: InputChange; render: InputRender }
-  | { initial?: string; onChange?: InputChange; children: InputRender }
+export const Field: React.ComponentType<
+  | { initial?: string; onChange?: FieldChange; render: FieldRender }
+  | { initial?: string; onChange?: FieldChange; children: FieldRender }
 >
 
 /* List */

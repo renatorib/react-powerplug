@@ -123,20 +123,20 @@ declare export var Hover: React.ComponentType<
   | {| onChange?: HoverChange, children: HoverRender |}
 >
 
-/* Input */
+/* Field */
 
-type InputChange = (value: string) => void
+type FieldChange = (value: string) => void
 
-type InputRender = ({|
+type FieldRender = ({|
   value: string,
   set: Updater<string>,
   reset: Reset,
-  bind: {| value: string, onChange: (SyntheticInputEvent<*>) => void |},
+  bind: {| value: string, onChange: (SyntheticFieldEvent<*>) => void |},
 |}) => React.Node
 
-declare export var Input: React.ComponentType<
-  | {| initial?: string, onChange?: InputChange, render: InputRender |}
-  | {| initial?: string, onChange?: InputChange, children: InputRender |}
+declare export var Field: React.ComponentType<
+  | {| initial?: string, onChange?: FieldChange, render: FieldRender |}
+  | {| initial?: string, onChange?: FieldChange, children: FieldRender |}
 >
 
 /* List */

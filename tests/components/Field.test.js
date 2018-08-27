@@ -1,12 +1,12 @@
 import * as React from 'react'
 import TestRenderer from 'react-test-renderer'
-import { Input } from '../../src'
+import { Field } from '../../src'
 import { lastCallArg } from './utils'
 
-test('<Input />', () => {
+test('<Field />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
   const testRenderer = TestRenderer.create(
-    <Input initial="init" render={renderFn} />
+    <Field initial="init" render={renderFn} />
   )
 
   expect(renderFn).toBeCalledTimes(1)
@@ -35,7 +35,7 @@ test('<Input />', () => {
     })
   )
 
-  testRenderer.update(<Input initial="hello" render={renderFn} />)
+  testRenderer.update(<Field initial="hello" render={renderFn} />)
   expect(renderFn).lastCalledWith(
     expect.objectContaining({
       value: 'value3',
@@ -52,10 +52,10 @@ test('<Input />', () => {
   )
 })
 
-test('<Input onChange />', () => {
+test('<Field onChange />', () => {
   const renderFn = jest.fn().mockReturnValue(null)
   const onChangeFn = jest.fn()
-  TestRenderer.create(<Input onChange={onChangeFn} render={renderFn} />)
+  TestRenderer.create(<Field onChange={onChangeFn} render={renderFn} />)
 
   expect(onChangeFn).toBeCalledTimes(0)
 
