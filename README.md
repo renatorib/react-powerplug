@@ -118,7 +118,7 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 
 ```jsx
 <Toggle initial={true}>
-  {({ on, toggle }) => <Checkbox checked={on} onChange={toggle} />}
+  {({ on, toggle, set, reset }) => <Checkbox checked={on} onChange={toggle} />}
 </Toggle>
 ```
 
