@@ -123,21 +123,22 @@ declare export var Hover: React.ComponentType<
   | {| onChange?: HoverChange, children: HoverRender |}
 >
 
-/* Input */
+/* Field */
 
-type InputChange = (value: string) => void
+type FieldChange<T> = (value: T) => void
 
-type InputRender = ({|
-  value: string,
-  set: Updater<string>,
+type FieldRender<T> = ({|
+  value: T,
+  set: Updater<T>,
   reset: Reset,
-  bind: {| value: string, onChange: (SyntheticInputEvent<*>) => void |},
+  bind: {| value: T, onChange: (SyntheticFieldEvent<*>) => void |},
 |}) => React.Node
 
-declare export var Input: React.ComponentType<
-  | {| initial?: string, onChange?: InputChange, render: InputRender |}
-  | {| initial?: string, onChange?: InputChange, children: InputRender |}
->
+type FieldProps<T> =
+  | {| initial?: T, onChange?: FieldChange<T>, render: FieldRender<T> |}
+  | {| initial?: T, onChange?: FieldChange<T>, children: FieldRender<T> |}
+
+declare export class Field<T> extends React.Component<FieldProps<T>> {}
 
 /* List */
 
