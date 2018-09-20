@@ -2,6 +2,8 @@
 
 The Compose component is a special component to you 'merge' two or more components functionalities. You can, for example, combine Toggle and Counter in a single component and use both power together.
 
+The components to compose do not necessarily have to be provided by this library, as long as they are render-props components, it works.
+
 ```js
 import { Compose, Toggle, Counter } from 'react-powerplug'
 ```
