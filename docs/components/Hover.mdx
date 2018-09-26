@@ -1,0 +1,49 @@
+---
+name: Hover
+menu: Feedback Containers
+---
+
+import { Props, Prop, ChildrenProps, ChildrenProp } from '../_ui/PropsTable'
+import { Hover } from '../../dist/react-powerplug.esm'
+
+# Hover
+
+The Hover component is used to known when user is hovering some element.  
+It's the same as `:hover` pseudo selector from css.
+
+```js
+import { Hover } from 'react-powerplug'
+```
+
+```jsx
+<Hover>
+  {({ hovered, bind }) => (
+    <div {...bind}>
+      You are {hovered ? 'hovering' : 'not hovering'} this div.
+    </div>
+  )}
+</Hover>
+```
+
+## Props
+
+<Props>
+  <Prop name="onChange" type="function">
+    The onChange event of the Hover is called whenever the `hovered` state changes.
+  </Prop>
+  <Prop name="children" type="function">
+    Receive state as function. It can also be `render` prop.
+  </Prop>
+</Props>
+
+## Children Props
+
+<ChildrenProps>
+  <ChildrenProp name="hovered" type="boolean">
+    True if is hovering the binded element
+  </ChildrenProp>
+  <ChildrenProp name="bind" type="object">
+    There are the bind event functions.<br />
+    Contains `onMouseEnter` and `onMouseLeave` event listeners.
+  </ChildrenProp>
+</ChildrenProps>
