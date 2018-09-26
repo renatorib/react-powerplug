@@ -1,0 +1,68 @@
+---
+name: Set
+menu: Components
+---
+
+import { Props, Prop, ChildrenProps, ChildrenProp } from '../_ui/PropsTable'
+import { Set } from '../../dist/react-powerplug.esm'
+
+# Set
+
+The Set component is used to work with an array of **unique** values.
+
+## Usage
+
+```js
+import { Set } from 'react-powerplug'
+```
+
+```jsx
+<Set initial={['react', 'babel']}>
+  {({ values, remove, add }) => (
+    <TagManager>
+      <FormInput onSubmit={add} />
+      {values.map(tag => (
+        <Tag onRemove={() => remove(tag)}>{tag}</Tag>
+      ))}
+    </TagManager>
+  )}
+</Set>
+```
+
+## Props
+
+<Props>
+  <Prop name="initial" type="array" default={[]}>
+    Specifies the initial `values` state.
+  </Prop>
+  <Prop name="onChange" type="function">
+    The onChange event of the Set is called whenever the `values` state changes.
+  </Prop>
+  <Prop name="children" type="function">
+    Receive state as function. It can also be `render` prop.
+  </Prop>
+</Props>
+
+## Children Props
+
+<ChildrenProps>
+  <ChildrenProp name="values" type="array">
+    Your `values` state value
+  </ChildrenProp>
+  <ChildrenProp name="add" type="function">
+    Add a unique `value` to your values array.<br />
+    Does nothing if values array already includes a `value`.
+  </ChildrenProp>
+  <ChildrenProp name="remove" type="function">
+    Remove a `value` from your `values` array
+  </ChildrenProp>
+  <ChildrenProp name="has" type="function">
+    True if `values` array includes a `value`
+  </ChildrenProp>
+  <ChildrenProp name="clear" type="function">
+    Set `values` state to an empty array
+  </ChildrenProp>
+  <ChildrenProp name="reset" type="function">
+    Reset `values` to initial state
+  </ChildrenProp>
+</ChildrenProps>
