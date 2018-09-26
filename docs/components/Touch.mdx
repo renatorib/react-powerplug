@@ -1,0 +1,48 @@
+---
+name: Touch
+menu: Feedback Containers
+---
+
+import { Props, Prop, ChildrenProps, ChildrenProp } from '../_ui/PropsTable'
+import { Touch } from '../../dist/react-powerplug.esm'
+
+# Touch
+
+The Touch component is used to known when user is touching some element.
+
+```js
+import { Touch } from 'react-powerplug'
+```
+
+```jsx
+<Touch>
+  {({ touched, bind }) => (
+    <div {...bind}>
+      You are {touched ? 'touching' : 'not touching'} this div.
+    </div>
+  )}
+</Touch>
+```
+
+## Props
+
+<Props>
+  <Prop name="onChange" type="function">
+    The onChange event of the Touch is called whenever the `touched` state changes.
+  </Prop>
+  <Prop name="children" type="function">
+    Receive state as function. It can also be `render` prop.
+  </Prop>
+</Props>
+
+## Children Props
+
+<ChildrenProps>
+  <ChildrenProp name="touched" type="boolean">
+    True if is touching the binded element
+  </ChildrenProp>
+  <ChildrenProp name="bind" type="object">
+    There are the bind event functions that make `Touch` works.<br />
+    Contains `onTouchStart` and `onTouchEnd` event listeners.
+  </ChildrenProp>
+</ChildrenProps>
