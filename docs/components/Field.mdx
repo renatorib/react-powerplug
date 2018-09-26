@@ -1,0 +1,73 @@
+---
+name: Field
+menu: Form Containers
+---
+
+import { Props, Prop, ChildrenProps, ChildrenProp } from '../_ui/PropsTable'
+import { State } from '../../dist/react-powerplug.esm'
+
+# Field
+
+The Field component is used for form fields like inputs, checkboxes, selects, etc.
+
+## Usage
+
+```js
+import { Field } from 'react-powerplug'
+```
+
+```jsx
+<Field>
+  {({ value, set }) => (
+    <ControlledField value={value} onChange={e => set(e.target.value)} />
+  )}
+</Field>
+```
+
+```jsx
+<Field initial="hello world">
+  {({ bind }) => <ControlledField {...bind} />}
+</Field>
+```
+
+```jsx
+<Field initial={true}>
+  {({ bind }) => (
+    <label>
+      You accept the terms? <input type="checkbox" {...bind} />
+    </label>
+  )}
+</Field>
+```
+
+## Props
+
+<Props>
+  <Prop name="initial" type="any">
+    Specifies the initial `value` state.
+  </Prop>
+  <Prop name="onChange" type="function">
+    The onChange event of the Value is called whenever the on state changes.
+  </Prop>
+  <Prop name="children" type="function">
+    Receive state as function. It can also be `render` prop.
+  </Prop>
+</Props>
+
+## Children Props
+
+<ChildrenProps>
+  <ChildrenProp name="value" type="any">
+    Your `value` state value
+  </ChildrenProp>
+  <ChildrenProp name="set" type="function">
+    Arbitrary set a value to `value` state
+  </ChildrenProp>
+  <ChildrenProp name="bind" type="object">
+    There are the bind event functions.<br />
+    Contains `value` prop and `onChange` event listener.
+  </ChildrenProp>
+  <ChildrenProp name="reset" type="function">
+    Reset `value` to initial state
+  </ChildrenProp>
+</ChildrenProps>
