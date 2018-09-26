@@ -24,6 +24,12 @@ test('<Toggle />', () => {
 
   lastCallArg(renderFn).reset()
   expect(renderFn).lastCalledWith(expect.objectContaining({ on: false }))
+
+  lastCallArg(renderFn).setOn()
+  expect(renderFn).lastCalledWith(expect.objectContaining({ on: true }))
+
+  lastCallArg(renderFn).setOff()
+  expect(renderFn).lastCalledWith(expect.objectContaining({ on: false }))
 })
 
 test('<Toggle onChange />', () => {
