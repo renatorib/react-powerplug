@@ -53,7 +53,7 @@ const noop = () => null
 
 /* Input */
 {
-  const render: InputRender = ({ value, set, bind }) => {
+  const render: InputRender = ({ value, set, bind, reset }) => {
     return null
   }
   const onChange = (value: string) => {}
@@ -72,7 +72,14 @@ const noop = () => null
 
 /* Counter */
 {
-  const render: CounterRender = ({ count, inc, dec, incBy, decBy }) => {
+  const render: CounterRender = ({
+    count,
+    inc,
+    dec,
+    incBy,
+    decBy,
+    resetState,
+  }) => {
     return null
   }
   const onChange = (count: number) => {}
@@ -123,7 +130,7 @@ const noop = () => null
 
 /* Form */
 {
-  const render: FormRender<{ a: string }, 'a'> = ({ input }) => <div />
+  const render: FormRender<{ a: string }, 'a'> = ({ field }) => <div />
   const onChange = (data: {}) => {}
   ;[
     <Form initial={{ a: '' }} render={render} />,
@@ -212,12 +219,7 @@ const noop = () => null
 
 /* Map */
 {
-  const render: MapRender<{ a: number }, 'a'> = ({
-    values,
-    set,
-    over,
-    get,
-  }) => {
+  const render: MapRender<{ a: number }, 'a'> = ({ values, set, get }) => {
     return null
   }
   const onChange = (values: { a: number }) => {}

@@ -1,6 +1,6 @@
 # Value
 
-The Value component is a generic component to store a some raw data value.
+A generic component for storing raw data values.
 
 ```js
 import { Value } from 'react-powerplug'
