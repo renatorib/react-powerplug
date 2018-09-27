@@ -1,0 +1,71 @@
+---
+name: Counter
+menu: State Containers
+---
+
+import { Props, Prop, ChildrenProps, ChildrenProp } from '../_ui/PropsTable'
+import { Counter } from '../../dist/react-powerplug.esm'
+
+# Counter
+
+The Counter component is used for when it's necessary to count something.  
+
+## Usage
+
+```js
+import { Counter } from 'react-powerplug'
+```
+
+```jsx
+<Counter initial={0}>
+  {({ count, inc, dec }) => (
+    <CartItem
+      productName="Lorem ipsum"
+      unitPrice={19.9}
+      count={count}
+      onAdd={inc}
+      onRemove={dec}
+    />
+  )}
+</Counter>
+```
+
+## Props
+
+<Props>
+  <Prop name="initial" type="number" default={0}>
+    Specifies the initial `count` state.
+  </Prop>
+  <Prop name="onChange" type="function">
+    The onChange event of the Toggle is called whenever the on state changes.
+  </Prop>
+  <Prop name="children" type="function">
+    Receive state as function. It can also be `render` prop.
+  </Prop>
+</Props>
+
+## Children Props
+
+<ChildrenProps>
+  <ChildrenProp name="count" type="number">
+    Your `count` state value
+  </ChildrenProp>
+  <ChildrenProp name="inc" type="function">
+    Increase your count state by 1.
+  </ChildrenProp>
+  <ChildrenProp name="dec" type="function">
+    Decrease your count state by 1.
+  </ChildrenProp>
+  <ChildrenProp name="incBy" type="function">
+    Arbitrary increase your count state by provided value.
+  </ChildrenProp>
+  <ChildrenProp name="decBy" type="function">
+    Arbitrary decrease your count state by provided value.
+  </ChildrenProp>
+  <ChildrenProp name="set" type="function">
+    Arbitrary set a value to `count` state
+  </ChildrenProp>
+  <ChildrenProp name="reset" type="function">
+    Reset `count` to initial state
+  </ChildrenProp>
+</ChildrenProps>
