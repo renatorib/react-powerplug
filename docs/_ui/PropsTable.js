@@ -21,10 +21,19 @@ export const Props = ({ children }) => (
   </MDXComponents>
 )
 
-export const Prop = ({ name, type, default: _default, children }) => (
+export const Prop = ({
+  name,
+  type,
+  default: _default,
+  children,
+  required = false,
+}) => (
   <tr>
     <td>
-      <Strong>{name}</Strong>
+      <Strong>
+        {name}
+        {required ? ' *' : ''}
+      </Strong>
     </td>
     <td>{type}</td>
     <td>
