@@ -1,7 +1,12 @@
+import pkg from './package.json'
+
 export default {
   title: 'React PowerPlug',
-  description: '-',
+  description: pkg.description,
+  base: `/${pkg.name}/`,
+  version: pkg.version,
   propsParser: false,
+  hashRouter: true,
   themeConfig: {
     logo: {
       src:
