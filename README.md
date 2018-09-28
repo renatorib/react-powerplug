@@ -16,7 +16,7 @@
 
 <br />
  
- > **React PowerPlug is a set of pluggable renderless components and helpers** that provides different types of state and logics so you can use with your dumb components. It creates a state and pass down the logic to the children, so you can handle your data. Read about [Render Props](https://reactjs.org/docs/render-props.html) pattern.
+ > **React PowerPlug is a set of pluggable renderless components and helpers** that provides different types of state and logic utilities that you can use with your dumb components. It creates state and passes down the logic to the children, so you can handle your data. Read about the [Render Props](https://reactjs.org/docs/render-props.html) pattern.
  
  
 ## Highlights
