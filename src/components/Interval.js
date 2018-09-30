@@ -15,7 +15,7 @@ class Interval extends Component {
   }
 
   _setIntervalIfNecessary = delay => {
-    if (Number.isFinite(delay)) {
+    if (Number.isFinite(delay) && !this.intervalId) {
       this.intervalId = setInterval(
         () => this.setState(s => ({ times: s.times + 1 })),
         delay
