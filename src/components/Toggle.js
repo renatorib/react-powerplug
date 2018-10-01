@@ -7,9 +7,11 @@ const Toggle = ({ initial = false, onChange, ...props }) => (
     {({ value, set, reset }) =>
       renderProps(props, {
         on: value,
-        toggle: () => set(on => !on),
         set: value => set(value),
         reset,
+        toggle: () => set(on => !on),
+        setOn: () => set(true),
+        setOff: () => set(false),
       })
     }
   </Value>
