@@ -83,7 +83,6 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 | **\<Active>**                | `{ onChange }`          | `{ active, bind }`                             | [:point_down:](#active) [:books:](docs/components/Active.md)                |
 | **\<Focus>**                 | `{ onChange }`          | `{ focused, bind }`                            | [:point_down:](#focus) [:books:](docs/components/Focus.md)                  |
 | **\<Touch>**                 | `{ onChange }`          | `{ touched, bind }`                            | [:point_down:](#touch) [:books:](docs/components/Touch.md)                  |
-| **\<FocusManager>**          | `{ onChange }`          | `{ focused, blur, bind }`                      | [:point_down:](#focusmanager) [:books:](docs/components/FocusManager.md)    |
 | <h6>FORM CONTAINERS</h6>     |
 | **\<Input>**                 | `{ initial, onChange }` | `{ set, value, bind }`                         | [:point_down:](#input) [:books:](docs/components/Input.md)                  |
 | **\<Form>**                  | `{ initial, onChange }` | `{ input, values }`                            | [:point_down:](#form) [:books:](docs/components/Form.md)                    |
@@ -180,9 +179,7 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
   {({ values, remove, add }) => (
     <TagManager>
       <FormInput onSubmit={add} />
-      {values.map(tag => (
-        <Tag onRemove={() => remove(tag)}>{tag}</Tag>
-      ))}
+      {values.map(tag => <Tag onRemove={() => remove(tag)}>{tag}</Tag>)}
     </TagManager>
   )}
 </Set>
@@ -196,9 +193,7 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
     <Todo>
       <TodoFormInput onSubmit={push} />
       {list.map(todo => (
-        <TodoItem onDelete={() => pull(i => i === todo)}>
-          {todo}
-        </TodoItem>
+        <TodoItem onDelete={() => pull(i => i === todo)}>{todo}</TodoItem>
       ))}
     </Todo>
   )}

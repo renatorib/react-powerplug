@@ -43,7 +43,7 @@ test('keep focus when click on menu', async () => {
 
   await page.evaluate(() => {
     const React = window.React
-    const FocusManager = window.ReactPowerPlug.FocusManager
+    const FocusManager = window.ReactPowerPlug.unstable_FocusManager
 
     const style = { width: 100, height: 100 }
     const App = () => (
@@ -81,7 +81,7 @@ test('remove focus and state after calling blur', async () => {
 
   await page.evaluate(() => {
     const React = window.React
-    const { FocusManager } = window.ReactPowerPlug
+    const FocusManager = window.ReactPowerPlug.unstable_FocusManager
 
     const App = () => (
       <FocusManager>
