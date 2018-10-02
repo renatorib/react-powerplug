@@ -72,7 +72,7 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 | ---------------------------- | ----------------------- | ---------------------------------------------- | --------------------------------------------------------------------------- |
 | <h6>STATE CONTAINERS</h6>    |
 | **\<State>**                 | `{ initial, onChange }` | `{ state, setState }`                          | [:point_down:](#state) [:books:](docs/components/State.md)                  |
-| **\<Toggle>**                | `{ initial, onChange }` | `{ on, toggle, set }`                          | [:point_down:](#toggle) [:books:](docs/components/Toggle.md)                |
+| **\<Toggle>**                | `{ initial, onChange }` | `{ on, toggle, set, setOn, setOff }`           | [:point_down:](#toggle) [:books:](docs/components/Toggle.md)                |
 | **\<Counter>**               | `{ initial, onChange }` | `{ count, inc, dec, incBy, decBy, set }`       | [:point_down:](#counter) [:books:](docs/components/Counter.md)              |
 | **\<Value>**                 | `{ initial, onChange }` | `{ value, set }`                               | [:point_down:](#value) [:books:](docs/components/Value.md)                  |
 | **\<Map>**                   | `{ initial, onChange }` | `{ set, get, over, values }`                   | [:point_down:](#map) [:books:](docs/components/Map.md)                      |
