@@ -252,6 +252,8 @@ type ToggleRender = ({|
   on: boolean,
   toggle: () => void,
   set: Updater<boolean>,
+  setOn: () => void,
+  setOff: () => void,
   reset: Reset,
 |}) => React.Node
 
