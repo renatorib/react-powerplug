@@ -6,10 +6,10 @@ import {
   Active,
   Counter,
   Focus,
-  FocusManager,
+  unstable_FocusManager as FocusManager,
   Form,
   Hover,
-  Input,
+  Field,
   Interval,
   List,
   Map,
@@ -51,7 +51,7 @@ const noop = () => null
   ]
 }
 
-/* Input */
+/* Field */
 {
   const render = ({ value, set, bind, reset }) => {
     ;(value: string)
@@ -79,15 +79,15 @@ const noop = () => null
     ;(value: number)
   }
   ;[
-    <Input render={render} />,
-    <Input>{render}</Input>,
-    <Input onChange={onChange} render={noop} />,
-    <Input onChange={onChange}>{noop}</Input>,
-    <Input initial={''} render={noop} />,
+    <Field render={render} />,
+    <Field>{render}</Field>,
+    <Field onChange={onChange} render={noop} />,
+    <Field onChange={onChange}>{noop}</Field>,
+    <Field initial={''} render={noop} />,
     // $FlowFixMe
-    <Input />,
+    <Field />,
     // $FlowFixMe
-    <Input initial={0} render={noop} />,
+    <Field initial={0} render={noop} />,
   ]
 }
 
@@ -565,11 +565,13 @@ const noop = () => null
 
 /* Toggle */
 {
-  const render = ({ on, toggle, set, reset }) => {
+  const render = ({ on, toggle, set, setOn, setOff, reset }) => {
     ;(on: boolean)
     toggle()
     set(true)
     set(v => !v)
+    setOn()
+    setOff()
     // $FlowFixMe
     ;(on: number)
     // $FlowFixMe
