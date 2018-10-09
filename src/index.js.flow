@@ -74,7 +74,7 @@ type FocusManagerRender = ({|
   |},
 |}) => React.Node
 
-declare export var FocusManager: React.ComponentType<
+declare export var unstable_FocusManager: React.ComponentType<
   | {| onChange?: FocusManagerChange, render: FocusManagerRender |}
   | {| onChange?: FocusManagerChange, children: FocusManagerRender |}
 >
@@ -131,7 +131,7 @@ type FieldRender<T> = ({|
   value: T,
   set: Updater<T>,
   reset: Reset,
-  bind: {| value: T, onChange: (SyntheticFieldEvent<*>) => void |},
+  bind: {| value: T, onChange: (SyntheticInputEvent<*>) => void |},
 |}) => React.Node
 
 type FieldProps<T> =
@@ -252,6 +252,8 @@ type ToggleRender = ({|
   on: boolean,
   toggle: () => void,
   set: Updater<boolean>,
+  setOn: () => void,
+  setOff: () => void,
   reset: Reset,
 |}) => React.Node
 

@@ -16,7 +16,7 @@
 
 <br />
  
- > **React PowerPlug is a set of pluggable renderless components and helpers** that provides different types of state and logics so you can use with your dumb components. It creates a state and pass down the logic to the children, so you can handle your data. Read about [Render Props](https://reactjs.org/docs/render-props.html) pattern.
+ > **React PowerPlug is a set of pluggable renderless components and helpers** that provides different types of state and logic utilities that you can use with your dumb components. It creates state and passes down the logic to the children, so you can handle your data. Read about the [Render Props](https://reactjs.org/docs/render-props.html) pattern.
  
  
 ## Highlights
@@ -72,7 +72,7 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 | ---------------------------- | ----------------------- | ---------------------------------------------- | --------------------------------------------------------------------------- |
 | <h6>STATE CONTAINERS</h6>    |
 | **\<State>**                 | `{ initial, onChange }` | `{ state, setState }`                          | [:point_down:](#state) [:books:](docs/components/State.md)                  |
-| **\<Toggle>**                | `{ initial, onChange }` | `{ on, toggle, set }`                          | [:point_down:](#toggle) [:books:](docs/components/Toggle.md)                |
+| **\<Toggle>**                | `{ initial, onChange }` | `{ on, toggle, set, setOn, setOff }`           | [:point_down:](#toggle) [:books:](docs/components/Toggle.md)                |
 | **\<Counter>**               | `{ initial, onChange }` | `{ count, inc, dec, incBy, decBy, set }`       | [:point_down:](#counter) [:books:](docs/components/Counter.md)              |
 | **\<Value>**                 | `{ initial, onChange }` | `{ value, set }`                               | [:point_down:](#value) [:books:](docs/components/Value.md)                  |
 | **\<Map>**                   | `{ initial, onChange }` | `{ set, get, over, values }`                   | [:point_down:](#map) [:books:](docs/components/Map.md)                      |
@@ -83,7 +83,6 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
 | **\<Active>**                | `{ onChange }`          | `{ active, bind }`                             | [:point_down:](#active) [:books:](docs/components/Active.md)                |
 | **\<Focus>**                 | `{ onChange }`          | `{ focused, bind }`                            | [:point_down:](#focus) [:books:](docs/components/Focus.md)                  |
 | **\<Touch>**                 | `{ onChange }`          | `{ touched, bind }`                            | [:point_down:](#touch) [:books:](docs/components/Touch.md)                  |
-| **\<FocusManager>**          | `{ onChange }`          | `{ focused, blur, bind }`                      | [:point_down:](#focusmanager) [:books:](docs/components/FocusManager.md)    |
 | <h6>FORM CONTAINERS</h6>     |
 | **\<Input>**                 | `{ initial, onChange }` | `{ set, value, bind }`                         | [:point_down:](#input) [:books:](docs/components/Input.md)                  |
 | **\<Form>**                  | `{ initial, onChange }` | `{ input, values }`                            | [:point_down:](#form) [:books:](docs/components/Form.md)                    |
@@ -180,9 +179,7 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
   {({ values, remove, add }) => (
     <TagManager>
       <FormInput onSubmit={add} />
-      {values.map(tag => (
-        <Tag onRemove={() => remove(tag)}>{tag}</Tag>
-      ))}
+      {values.map(tag => <Tag onRemove={() => remove(tag)}>{tag}</Tag>)}
     </TagManager>
   )}
 </Set>
@@ -196,9 +193,7 @@ import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
     <Todo>
       <TodoFormInput onSubmit={push} />
       {list.map(todo => (
-        <TodoItem onDelete={() => pull(i => i === todo)}>
-          {todo}
-        </TodoItem>
+        <TodoItem onDelete={() => pull(i => i === todo)}>{todo}</TodoItem>
       ))}
     </Todo>
   )}

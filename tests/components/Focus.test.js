@@ -28,4 +28,8 @@ test('<Focus onChange />', () => {
   lastCallArg(renderFn).bind.onFocus()
   expect(onChangeFn).toBeCalledTimes(1)
   expect(onChangeFn).lastCalledWith(true)
+
+  lastCallArg(renderFn).bind.onBlur()
+  expect(onChangeFn).toBeCalledTimes(2)
+  expect(onChangeFn).lastCalledWith(false)
 })
