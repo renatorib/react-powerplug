@@ -28,6 +28,7 @@ test('<Interval />', () => {
   expect(renderFn).toBeCalledTimes(6)
 
   lastCallArg(renderFn).start()
+  lastCallArg(renderFn).start()
   jest.advanceTimersByTime(2000)
   expect(renderFn).toBeCalledTimes(8)
 
