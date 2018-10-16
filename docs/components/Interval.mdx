@@ -1,0 +1,59 @@
+---
+name: Interval
+menu: 4. Utils Containers
+---
+
+import { Props, Prop, ChildrenProps, ChildrenProp } from '../_ui/PropsTable'
+import { Interval } from '../../dist/react-powerplug.esm'
+
+# Interval
+
+The Interval component is used for when it's necessary to re-render at regular intervals. Also known as Frame.
+
+## Usage
+
+```js
+import { Interval } from 'react-powerplug'
+```
+
+```jsx
+<Interval delay={1000}>
+  {({ start, stop }) => (
+    <>
+      <div>The time is now {new Date().toLocaleTimeString()}</div>
+      <button onClick={() => stop()}>Stop interval</button>
+      <button onClick={() => resume()}>Start interval</button>
+    </>
+  )}
+</Interval>
+```
+
+## Props
+
+<Props>
+  <Prop name="delay" type="number" default={1000}>
+    Specifies the delay (for `setInterval`) between re-renders in milliseconds.<br />
+    The interval will be reset any time this prop changes.<br />
+    Whenever `delay` is not a finite number, no interval will be set and `Interval` will
+    not automatically re-render.
+  </Prop>
+    <Prop name="children" type="function">
+    Receive state as function. It can also be `render` prop.
+  </Prop>
+</Props>
+
+## Children Props
+
+<ChildrenProps>
+  <ChildrenProp name="start" type="function">
+    Start (or resume) re-renders intervals at defined delay (if not passed delay arg it will be used from props).<br />
+    Good way to change delay time when needed.
+  </ChildrenProp>
+  <ChildrenProp name="stop" type="function">
+    Stop (or pause) re-renders intervals
+  </ChildrenProp>
+  <ChildrenProp name="toggle" type="function">
+    Start or Stop re-renders intervals based on current status
+  </ChildrenProp>
+</ChildrenProps>
+

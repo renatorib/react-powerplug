@@ -1,0 +1,70 @@
+---
+name: Map
+menu: 1. State Containers
+---
+
+import { Props, Prop, ChildrenProps, ChildrenProp } from '../_ui/PropsTable'
+import { Map } from '../../dist/react-powerplug.esm'
+
+# Map
+
+The Map component is a generic used for a free key-value logics.
+
+```js
+import { Map } from 'react-powerplug'
+```
+
+```jsx
+<Map initial={{ sounds: true, music: true, graphics: 'medium' }}>
+  {({ set, get }) => (
+    <Tings>
+      <ToggleCheck checked={get('sounds')} onChange={c => set('sounds', c)}>
+        Game Sounds
+      </ToggleCheck>
+      <ToggleCheck checked={get('music')} onChange={c => set('music', c)}>
+        Bg Music
+      </ToggleCheck>
+      <Select
+        label="Graphics"
+        options={['low', 'medium', 'high']}
+        selected={get('graphics')}
+        onSelect={value => set('graphics', value)}
+      />
+    </Tings>
+  )}
+</Map>
+```
+
+## Props
+
+<Props>
+  <Prop name="initial" type="object" default={{}}>
+    Specifies the initial `values` state.
+  </Prop>
+  <Prop name="onChange" type="function">
+    The onChange event of the Map is called whenever the `values` state changes.
+  </Prop>
+  <Prop name="children" type="function">
+    Receive state as function. It can also be `render` prop.
+  </Prop>
+</Props>
+
+## Map Children Props
+
+<ChildrenProps>
+  <ChildrenProp name="values" type="object">
+    Your `values` state value
+  </ChildrenProp>
+  <ChildrenProp name="set" type="function">
+    Assigns `value` to `key`
+  </ChildrenProp>
+  <ChildrenProp name="over" type="function">
+    Takes a `key` and `function`, map a function over key's `value`
+  </ChildrenProp>
+  <ChildrenProp name="get" type="function">
+    Get assigned `value` from `key`
+  </ChildrenProp>
+  <ChildrenProp name="reset" type="function">
+    Reset `values` to initial state
+  </ChildrenProp>
+</ChildrenProps>

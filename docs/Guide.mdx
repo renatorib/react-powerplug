@@ -1,0 +1,49 @@
+---
+name: Guide
+route: /guide
+order: 19
+---
+
+# Guide
+
+## Creating a Dumb Component
+
+Dumb Component, Presentational Component or (sometimes) Controlled Component is a component
+responsible **only for displaying content without any logic behind**. Usually they
+receive specific props, and if they are interactive, it exposes events like onClick, onChange, etc.
+
+A Styled Component a good example.
+
+```jsx
+import React from "react";
+import styled from "styled-components";
+
+const DumbCheckbox = styled("div")`
+  cursor: pointer;
+  &:before {
+    content: '${props => (props.checked ? "■" : "□")} ';
+  }
+`;
+
+const App = () => (
+  <DumbCheckbox>Check me</DumbCheckbox>
+);
+```
+
+## Using React PowerPlug
+
+Now that you have your Dumb Component, you can pass state to it.  
+Using react-powerplug this step is trivial and pretty simple.  
+
+```jsx
+import { Toggle } from "react-powerplug";
+
+<Toggle>
+  {({ on, toggle }) => (
+    <DumbCheckbox checked={on} onClick={toggle}>
+      Check me
+    </DumbCheckbox>
+  )}
+</Toggle>
+```
+

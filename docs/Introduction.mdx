@@ -1,0 +1,53 @@
+---
+name: Introduction
+route: /
+order: 20
+---
+
+# Introduction
+
+**React PowerPlug is a set of pluggable renderless components and utils** that provides
+different types of state and logics so you can use with your dumb components. It creates
+a state and pass down the logic to the children, so you can handle your data.
+Read about [Render Props](https://reactjs.org/docs/render-props.html) pattern.
+
+- Dependency free
+- Super tiny (~3kb)
+- Plug and play
+- Tree shaking friendly (ESM, no side effects)
+- Well documented
+- Bunch of awesome utilities
+
+## Quick Examples
+
+```jsx
+import { State, Toggle } from 'react-powerplug'
+import { Pagination, Tabs, Checkbox } from './MyDumbComponents'
+```
+
+```jsx
+<State initial={{ offset: 0, limit: 10, totalCount: 200 }}>
+  {({ state, setState }) => (
+    <Pagination {...state} onChange={(offset) => setState({ offset })} />
+  )}
+</State>
+```
+
+```jsx
+<Toggle initial={true}>
+  {({ on, toggle }) => (
+    <Checkbox checked={on} onChange={toggle} />
+  )}
+</Toggle>
+```
+
+You can also use a `render` prop instead
+
+```jsx
+<Toggle
+  initial={false}
+  render={({ on, toggle }) => (
+    <Checkbox checked={on} onChange={toggle} />
+  )}
+/>
+```

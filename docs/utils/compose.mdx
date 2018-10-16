@@ -1,6 +1,12 @@
+---
+name: compose
+menu: 5. Utils
+---
+
 # compose
 
-The compose utility is a factory version of [Compose](/docs/components/Compose.md) component.
+The compose utility is a factory version of Compose component.  
+You can read more about in Compose docs.
 
 ```js
 import { compose, Counter, Toggle } from 'react-powerplug' // note lowercased (c)ompose
@@ -17,20 +23,4 @@ const ToggleCounter = compose(
     // toggle.on, toggle.toggle, etc.
   }}
 </ToggleCounter>
-```
-
----
-
-Behind the scenes, that's what happens:
-
-```jsx
-<Counter initial={5}>
-  {counter => (
-    <Toggle>
-      {toggle => (
-        /* ... */
-      )}
-    </Toggle>
-  )}
-</Counter>
 ```
