@@ -1,27 +1,26 @@
 import { Component } from 'react'
 import renderProps from '../utils/renderProps'
 
-const noop = () => {}
-
 class Value extends Component {
   state = {
     value: this.props.initial,
   }
 
-  _set = (updater, cb = noop) => {
-    const { onChange = noop } = this.props
+  _set = (updater, cb) => {
+    const { onChange } = this.props
 
     this.setState(
       typeof updater === 'function'
         ? state => ({ value: updater(state.value) })
         : { value: updater },
       () => {
-        onChange(this.state.value)
-        cb()
+        onChange && onChange(this.state.value)
+        typeof cb === 'function' && cb()
       }
     )
   }
-  _reset = (cb = noop) => {
+
+  _reset = (cb) => {
     this._set(this.props.initial, cb)
   }
 
