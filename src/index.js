@@ -14,6 +14,11 @@ export { default as State } from './components/State'
 export { default as Toggle } from './components/Toggle'
 export { default as Touch } from './components/Touch'
 export { default as Value } from './components/Value'
+export {
+  default as createContext,
+  Provider,
+  Consumer,
+} from './components/context'
 
 export { default as compose } from './utils/compose'
 export { default as composeEvents } from './utils/composeEvents'
