@@ -1,0 +1,81 @@
+---
+name: context
+menu: 16. Context Containers
+---
+
+import { Props, Prop, ChildrenProps, ChildrenProp } from '../_ui/PropsTable'
+import { createContext } from '../../dist/react-powerplug.esm'
+
+# context
+
+Context `Provider`s and `Consumer`s allow you to easily avoid [prop-drilling](https://blog.kentcdodds.com/prop-drilling-bb62e02cb691). `Consumer` is used identically to `State`.
+
+## Usage
+
+```jsx
+import { createContext } from 'react-powerplug'
+
+// you can pass the initial value through Provider props as well
+const { Provider, Consumer } = createContext({ count: 0 })
+
+const Counter = () =>
+  <Provider>
+    <Consumer> { /* <Consumer initial={{ count: 0 }}> */ }
+      {({ state, setState, resetState }) =>
+        <div>
+          count: { state.count }
+          <div>
+            <button
+              onClick={() => setState(({ count }) => ({
+                count: count - 1,
+              }))}
+              children='decrement'
+            />
+            <button
+              onClick={() => setState(({ count }) => ({
+                count: count + 1,
+              }))}
+              children='increment'
+            />
+            <button
+              onClick={ () => resetState() }
+              children='reset'
+            />
+          </div>
+        </div>
+      }
+    </Consumer>
+  </Provider>
+```
+
+## Props
+
+### `Provider` takes in the same props as `State`, but defers the render-prop pattern to its child `Consumer`(s). Wrap the `Provider` component at a place in your tree that encapsulates the dependent `Consumer`(s). 
+
+<Props>
+  <Prop name="initial" type="object" default={{}}>
+    Specifies the initial `state`
+  </Prop>
+  <Prop name="onChange" type="function">
+    The onChange event of the State is called whenever the state changes
+  </Prop>
+  <Prop name="children" type="function">
+    Receive state as function. It can also be `render` prop.
+  </Prop>
+</Props>
+
+### `Consumer` passes the same render-props as State:
+
+<ChildrenProps>
+  <ChildrenProp name="value" type="object">
+    Your `state` value
+  </ChildrenProp>
+  <ChildrenProp name="setState" type="function">
+    State setter. Acts equals to the{' '}
+    <a href="https://facebook.github.io/react/docs/react-component.html#setstate" target="_blank">setState</a> from React.Component.
+  </ChildrenProp>
+  <ChildrenProp name="resetState" type="function">
+    Reset to initial state
+  </ChildrenProp>
+</ChildrenProps>
+

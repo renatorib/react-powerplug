@@ -4,7 +4,7 @@ import Value from './Value'
 const createContext = (initial = {}) => {
   const context = React.createContext({})
 
-  const Provider = ({ initial: initialAsProps, onChange, ...props }) =>
+  const Provider = ({ initial: initialAsProps, onChange, children }) =>
     <Value
       initial={
         initialAsProps
@@ -27,7 +27,7 @@ const createContext = (initial = {}) => {
               ),
             resetState: reset,
           }}
-          { ...props }
+          { ...{ children }}
         />
       }
     </Value>
@@ -37,4 +37,3 @@ const createContext = (initial = {}) => {
 }
 
 export default createContext
-export const { Provider, Consumer } = createContext({})
