@@ -3,7 +3,57 @@ name: Form
 menu: 3. Form Containers
 ---
 
+import { Props, Prop, ChildrenProps, ChildrenProp } from '../_ui/PropsTable'
+import { Form } from '../../dist/react-powerplug.esm'
+
 # Form
 
-> This component has not yet been documented, if you wish to help us, click the "Edit Page"
-> button above and help us create better documentation for react-powerplug!
+The Form component is used for form with multiples fields and a submit handler
+
+## Usage
+
+```js
+import { Form } from 'react-powerplug'
+```
+
+```jsx
+<Form initial={{ firstName: '', lastName: '' }}>
+  {({ field, values }) => (
+    <form
+      onSubmit={e => {
+        e.preventDefault()
+        console.log('Form Submission Data:', values)
+      }}
+    >
+      <input
+        type="text"
+        placeholder="Your First Name"
+        {...field('firstName').bind}
+      />
+      <input
+        type="text"
+        placeholder="Your Last Name"
+        {...field('lastName').bind}
+      />
+      <input type="submit" value="All Done!" />
+    </form>
+  )}
+</Form>
+```
+
+## Props
+
+<Props>
+  <Prop name="initial" type="object" default={"{}"}>
+    Specifies the initial state for fields in the form (Object with keys is name of fields)
+  </Prop>
+  <Prop name="onChange" type="function">
+    The onChange event of the Value is called whenever the on state changes.
+  </Prop>
+  <Prop name="children" type="function">
+    Receive state as function. It can also be `render` prop.
+  </Prop>
+</Props>
+
+## Children Props
+
