@@ -22,11 +22,11 @@ import { List } from 'react-powerplug'
   {({ list, pull, push }) => (
     <div>
       <FormInput onSubmit={push} />
-      {list.map({ tag }) => (
+      {list.map(({ tag }) => (
         <Tag onRemove={() => pull(value => value === tag)}>
           {tag}
         </Tag>
-      )}
+      ))}
     </div>
   )}
 </List>
