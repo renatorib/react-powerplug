@@ -17,7 +17,7 @@ import { Map } from 'react-powerplug'
 ```jsx
 <Map initial={{ sounds: true, music: true, graphics: 'medium' }}>
   {({ set, get }) => (
-    <Tings>
+    <Settings>
       <ToggleCheck checked={get('sounds')} onChange={c => set('sounds', c)}>
         Game Sounds
       </ToggleCheck>
@@ -30,7 +30,7 @@ import { Map } from 'react-powerplug'
         selected={get('graphics')}
         onSelect={value => set('graphics', value)}
       />
-    </Tings>
+    </Settings>
   )}
 </Map>
 ```
