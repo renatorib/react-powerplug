@@ -44,6 +44,33 @@ declare export var Counter: React.ComponentType<
   | {| initial?: number, onChange?: CounterChange, children: CounterRender |}
 >
 
+/* Debounce */
+
+type DebounceFn = (...args: Array<any>) => void
+
+type DebounceRender = ({|
+  fn: DebounceFn,
+  cancel: () => void,
+|}) => React.Node
+
+type DebounceProps =
+  | {|
+      fn?: DebounceFn,
+      method?: DebounceFn,
+      wait?: ?number,
+      timer?: ?number,
+      render: DebounceRender,
+    |}
+  | {|
+      fn?: DebounceFn,
+      method?: DebounceFn,
+      wait?: ?number,
+      timer?: ?number,
+      children: DebounceRender,
+    |}
+
+declare export class Debounce extends React.Component<DebounceProps> {}
+
 /* Focus */
 
 type FocusChange = (focused: boolean) => void
@@ -229,6 +256,33 @@ type StateProps<T> =
   | {| initial: T, onChange?: StateChange<T>, children: StateRender<T> |}
 
 declare export class State<T: Object> extends React.Component<StateProps<T>> {}
+
+/* Throttle */
+
+type ThrottleFn = (...args: Array<any>) => void
+
+type ThrottleRender = ({|
+  fn: ThrottleFn,
+  cancel: () => void,
+|}) => React.Node
+
+type ThrottleProps =
+  | {|
+      fn?: ThrottleFn,
+      method?: ThrottleFn,
+      wait?: ?number,
+      timer?: ?number,
+      render: ThrottleRender,
+    |}
+  | {|
+      fn?: ThrottleFn,
+      method?: ThrottleFn,
+      wait?: ?number,
+      timer?: ?number,
+      children: ThrottleRender,
+    |}
+
+declare export class Throttle extends React.Component<ThrottleProps> {}
 
 /* Interval */
 

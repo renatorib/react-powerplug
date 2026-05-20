@@ -5,6 +5,7 @@ import * as React from 'react'
 import {
   Active,
   Counter,
+  Debounce,
   Focus,
   unstable_FocusManager as FocusManager,
   Form,
@@ -15,6 +16,7 @@ import {
   Map,
   Set,
   State,
+  Throttle,
   Toggle,
   Touch,
   Value,
@@ -159,6 +161,35 @@ const noop = () => null
     <Counter />,
     // $FlowFixMe
     <Counter initial={''} render={noop} />,
+  ]
+}
+
+/* Debounce */
+{
+  const render = ({ fn, cancel }) => {
+    fn()
+    fn('value')
+    cancel()
+    // $FlowFixMe
+    ;(fn: number)
+    // $FlowFixMe
+    ;(cancel: number)
+    return null
+  }
+  const method = value => {
+    ;(value: string)
+  }
+  ;[
+    <Debounce fn={method} wait={200} render={render} />,
+    <Debounce method={method} timer={200}>{render}</Debounce>,
+    <Debounce render={noop} />,
+    <Debounce>{noop}</Debounce>,
+    // $FlowFixMe
+    <Debounce />,
+    // $FlowFixMe
+    <Debounce wait={''} render={noop} />,
+    // $FlowFixMe
+    <Debounce timer={''} render={noop} />,
   ]
 }
 
@@ -560,6 +591,35 @@ const noop = () => null
   ;[
     <State initial={({ n: null }: { n: ?number })} render={render1} />,
     <State initial={({ n: null }: { n: ?number })}>{render1}</State>,
+  ]
+}
+
+/* Throttle */
+{
+  const render = ({ fn, cancel }) => {
+    fn()
+    fn('value')
+    cancel()
+    // $FlowFixMe
+    ;(fn: number)
+    // $FlowFixMe
+    ;(cancel: number)
+    return null
+  }
+  const method = value => {
+    ;(value: string)
+  }
+  ;[
+    <Throttle fn={method} wait={200} render={render} />,
+    <Throttle method={method} timer={200}>{render}</Throttle>,
+    <Throttle render={noop} />,
+    <Throttle>{noop}</Throttle>,
+    // $FlowFixMe
+    <Throttle />,
+    // $FlowFixMe
+    <Throttle wait={''} render={noop} />,
+    // $FlowFixMe
+    <Throttle timer={''} render={noop} />,
   ]
 }
 

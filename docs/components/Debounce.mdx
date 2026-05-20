@@ -1,0 +1,50 @@
+---
+name: Debounce
+menu: 4. Utils Containers
+---
+
+import { Props, Prop, ChildrenProps, ChildrenProp } from '../_ui/PropsTable'
+import { Debounce } from '../../dist/react-powerplug.esm'
+
+# Debounce
+
+The Debounce component delays a function call until it has not been called for the configured wait time.
+
+## Usage
+
+```js
+import { Debounce } from 'react-powerplug'
+```
+
+```jsx
+<Debounce fn={value => console.log(value)} wait={200}>
+  {({ fn }) => (
+    <input onChange={event => fn(event.target.value)} />
+  )}
+</Debounce>
+```
+
+## Props
+
+<Props>
+  <Prop name="fn" type="function">
+    Function to debounce. It can also be provided as `method`.
+  </Prop>
+  <Prop name="wait" type="number" default={0}>
+    Debounce wait time in milliseconds. It can also be provided as `timer`.
+  </Prop>
+  <Prop name="children" type="function">
+    Receive helpers as function. It can also be `render` prop.
+  </Prop>
+</Props>
+
+## Children Props
+
+<ChildrenProps>
+  <ChildrenProp name="fn" type="function">
+    Debounced function.
+  </ChildrenProp>
+  <ChildrenProp name="cancel" type="function">
+    Cancel the pending debounced call.
+  </ChildrenProp>
+</ChildrenProps>
