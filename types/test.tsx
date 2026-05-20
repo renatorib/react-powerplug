@@ -6,6 +6,7 @@ import {
   Active,
   Input,
   Counter,
+  Debounce,
   Focus,
   FocusManager,
   Form,
@@ -14,6 +15,7 @@ import {
   Map,
   Set,
   State,
+  Throttle,
   Toggle,
   Touch,
   Value,
@@ -21,12 +23,14 @@ import {
   SetRender,
   MapRender,
   StateRender,
+  ThrottleRender,
   ToggleRender,
   TouchRender,
   ValueRender,
   ActiveRender,
   InputRender,
   CounterRender,
+  DebounceRender,
   FocusRender,
   FocusManagerRender,
   FormRender,
@@ -93,6 +97,31 @@ const noop = () => null
     <Counter />,
     // $ExpectError
     <Counter initial={''} render={noop} />,
+  ]
+}
+
+/* Debounce */
+{
+  const render: DebounceRender = ({ fn, cancel }) => {
+    fn()
+    fn('value')
+    cancel()
+    return null
+  }
+  const method = (value: string) => {}
+  ;[
+    <Debounce fn={method} wait={200} render={render} />,
+    <Debounce method={method} timer={200}>
+      {render}
+    </Debounce>,
+    <Debounce render={noop} />,
+    <Debounce>{noop}</Debounce>,
+    // $ExpectError
+    <Debounce />,
+    // $ExpectError
+    <Debounce wait={''} render={noop} />,
+    // $ExpectError
+    <Debounce timer={''} render={noop} />,
   ]
 }
 
@@ -254,6 +283,31 @@ const noop = () => null
     <State />,
     // $ExpectError
     <State render={noop} />,
+  ]
+}
+
+/* Throttle */
+{
+  const render: ThrottleRender = ({ fn, cancel }) => {
+    fn()
+    fn('value')
+    cancel()
+    return null
+  }
+  const method = (value: string) => {}
+  ;[
+    <Throttle fn={method} wait={200} render={render} />,
+    <Throttle method={method} timer={200}>
+      {render}
+    </Throttle>,
+    <Throttle render={noop} />,
+    <Throttle>{noop}</Throttle>,
+    // $ExpectError
+    <Throttle />,
+    // $ExpectError
+    <Throttle wait={''} render={noop} />,
+    // $ExpectError
+    <Throttle timer={''} render={noop} />,
   ]
 }
 

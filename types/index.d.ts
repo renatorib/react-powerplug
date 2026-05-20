@@ -50,6 +50,35 @@ export const Counter: React.ComponentType<
   | { initial?: number; onChange?: CounterChange; children: CounterRender }
 >
 
+/* Debounce */
+
+export type DebounceFn = (...args: any[]) => void
+
+export type DebounceRender = (
+  argument: {
+    fn: DebounceFn
+    cancel: () => void
+  }
+) => React.ReactNode
+
+export type DebounceProps =
+  | {
+      fn?: DebounceFn
+      method?: DebounceFn
+      wait?: number
+      timer?: number
+      render: DebounceRender
+    }
+  | {
+      fn?: DebounceFn
+      method?: DebounceFn
+      wait?: number
+      timer?: number
+      children: DebounceRender
+    }
+
+export class Debounce extends React.Component<DebounceProps> {}
+
 /* Focus */
 
 export type FocusChange = Callback<boolean>
@@ -241,6 +270,35 @@ export type StateProps<T> =
   | { initial: T; onChange?: StateChange<T>; children: StateRender<T> }
 
 export class State<T extends {}> extends React.Component<StateProps<T>> {}
+
+/* Throttle */
+
+export type ThrottleFn = (...args: any[]) => void
+
+export type ThrottleRender = (
+  argument: {
+    fn: ThrottleFn
+    cancel: () => void
+  }
+) => React.ReactNode
+
+export type ThrottleProps =
+  | {
+      fn?: ThrottleFn
+      method?: ThrottleFn
+      wait?: number
+      timer?: number
+      render: ThrottleRender
+    }
+  | {
+      fn?: ThrottleFn
+      method?: ThrottleFn
+      wait?: number
+      timer?: number
+      children: ThrottleRender
+    }
+
+export class Throttle extends React.Component<ThrottleProps> {}
 
 /* Toggle */
 
